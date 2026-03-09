@@ -1,66 +1,213 @@
 #!/bin/bash
-# Quick launcher for semantic search system
+# Enhanced Semantic Search Script with API Key Validation
 
-echo "🚀 Market Intelligence Semantic Search System"
-echo "=============================================="
+set -e
 
-# Check if Python virtual environment exists
-if [ -d ".venv" ]; then
-    echo "📦 Activating virtual environment..."
-    source .venv/bin/activate
-fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
-# Check for required environment variables
-if [ -z "$GOOGLE_API_KEY" ]; then
-    echo "⚠️  Warning: GOOGLE_API_KEY not set"
-    echo "Some features may be limited without Gemini API access"
-fi
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-echo ""
-echo "Available commands:"
-echo "1. Interactive search:  ./run_semantic.sh interactive"
-echo "2. Quick test:          ./run_semantic.sh test"
-echo "3. Full test suite:     ./run_semantic.sh fulltest"
-echo "4. Direct query:        ./run_semantic.sh query 'your query here'"
-echo "5. Query + JSON save:   ./run_semantic.sh run 'your query here'"
-echo "6. Test optimizer:      ./run_semantic.sh optimizer"
-echo ""
+print_header() {
+    echo -e "${BLUE}"
+    echo "╔══════════════════════════════════════════════════╗"
+    echo "║          Enhanced Semantic Search Engine         ║"
+    echo "║         Market Intelligence Platform v2.0        ║"
+    echo "╚══════════════════════════════════════════════════╝"
+    echo -e "${NC}"
+}
 
-case "$1" in
-    "interactive")
-        echo "🤖 Starting interactive mode..."
-        python semantic_cli.py
-        ;;
-    "test")
-        echo "⚡ Running quick tests..."
-        python test_semantic_search.py quick
-        ;;
-    "fulltest")
-        echo "🧪 Running full test suite..."
-        python test_semantic_search.py full
-        ;;
-    "query")
-        if [ -n "$2" ]; then
-            echo "🔍 Executing query: $2"
-            python semantic_cli.py "$2"
-        else
-            echo "❌ Please provide a query: ./run_semantic.sh query 'your search here'"
+check_requirements() {
+    echo -e "${YELLOW}🔍 Checking requirements...${NC}"
+    
+    # Check Python
+    if ! command -v python3 &> /dev/null; then
+        echo -e "${RED}❌ Python3 not found${NC}"
+        exit 1
+    fi
+    
+    # Check virtual environment
+    if [[ "$VIRTUAL_ENV" == "" ]]; then
+        echo -e "${YELLOW}⚠️  No virtual environment detected${NC}"
+        echo "Recommendation: activate your virtual environment first"
+    fi
+    
+    # Check required API keys
+    required_keys=("GOOGLE_API_KEY")
+    missing_keys=()
+    
+    for key in "${required_keys[@]}"; do
+        if [[ -z "${!key}" ]]; then
+            missing_keys+=("$key")
         fi
-        ;;
-    "run")
-        if [ -n "$2" ]; then
-            echo "🚀 Running query with JSON save: $2"
-            python run_query.py "$2"
-        else
-            echo "❌ Please provide a query: ./run_semantic.sh run 'your search here'"
+    done
+    
+    if [[ ${#missing_keys[@]} -gt 0 ]]; then
+        echo -e "${RED}❌ Missing required API keys: ${missing_keys[*]}${NC}"
+        echo "Please set the required environment variables:"
+        for key in "${missing_keys[@]}"; do
+            echo "  export $key='your_key_here'"
+        done
+        exit 1
+    fi
+    
+    # Check optional API keys
+    optional_keys=("SERPAPI_KEY" "NEWSAPI_KEY" "GITHUB_TOKEN")
+    available_optional=()
+    
+    for key in "${optional_keys[@]}"; do
+        if [[ -n "${!key}" ]]; then
+            available_optional+=("$key")
         fi
-        ;;
-    "optimizer")
-        echo "🔧 Testing query optimizer integration..."
-        python test_optimizer.py
-        ;;
-    *)
-        echo "🤖 Starting interactive mode by default..."
-        python semantic_cli.py
-        ;;
-esac
+    done
+    
+    if [[ ${#available_optional[@]} -gt 0 ]]; then
+        echo -e "${GREEN}✅ Available optional APIs: ${available_optional[*]}${NC}"
+    fi
+    
+    echo -e "${GREEN}✅ Requirements check completed${NC}"
+}
+
+validate_apis() {
+    echo -e "${YELLOW}🔐 Validating API keys...${NC}"
+    
+    # Run API validation
+    python3 -c "
+import asyncio
+import sys
+sys.path.insert(0, '.')
+from app.api_validator import APIKeyValidator
+import yaml
+
+async def validate():
+    try:
+        with open('config.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+        validator = APIKeyValidator(config)
+        results = await validator.validate_all_keys()
+        valid_count = sum(1 for v in results.values() if v)
+        total_count = len(results)
+        print(f'API Validation: {valid_count}/{total_count} keys valid')
+        return valid_count > 0
+    except Exception as e:
+        print(f'Validation failed: {e}')
+        return False
+
+result = asyncio.run(validate())
+sys.exit(0 if result else 1)
+"
+    
+    if [[ $? -eq 0 ]]; then
+        echo -e "${GREEN}✅ API validation completed${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Some APIs may be invalid, but continuing...${NC}"
+    fi
+}
+
+show_help() {
+    echo "Enhanced Semantic Search Commands:"
+    echo ""
+    echo "  search 'query'     - Execute semantic search"
+    echo "  interactive        - Start interactive mode"
+    echo "  test              - Run API validation tests"
+    echo "  validate          - Validate API keys"
+    echo "  benchmark         - Performance benchmark"
+    echo "  help              - Show this help"
+    echo ""
+    echo "Examples:"
+    echo "  ./run_semantic.sh search 'OpenAI market analysis'"
+    echo "  ./run_semantic.sh interactive"
+    echo "  ./run_semantic.sh validate"
+}
+
+run_search() {
+    local query="$1"
+    if [[ -z "$query" ]]; then
+        echo -e "${RED}❌ Please provide a search query${NC}"
+        echo "Usage: $0 search 'your query here'"
+        exit 1
+    fi
+    
+    echo -e "${BLUE}🔍 Executing search: $query${NC}"
+    echo "=" * 70
+    
+    python3 semantic_cli.py "$query"
+}
+
+run_interactive() {
+    echo -e "${BLUE}🤖 Starting interactive mode...${NC}"
+    python3 semantic_cli.py --interactive
+}
+
+run_benchmark() {
+    echo -e "${BLUE}📊 Running performance benchmark...${NC}"
+    
+    queries=(
+        "NVIDIA AI strategy analysis" 
+        "AI startup funding trends 2024"
+        "OpenAI competitive landscape"
+    )
+    
+    for query in "${queries[@]}"; do
+        echo -e "${YELLOW}Testing: $query${NC}"
+        start_time=$(date +%s.%N)
+        python3 semantic_cli.py "$query" --format summary > /dev/null
+        end_time=$(date +%s.%N)
+        duration=$(echo "$end_time - $start_time" | bc)
+        echo -e "${GREEN}✅ Completed in ${duration}s${NC}"
+    done
+}
+
+main() {
+    print_header
+    check_requirements
+    validate_apis
+    
+    case "${1:-help}" in
+        "search"|"query")
+            run_search "$2"
+            ;;
+        "interactive"|"i")
+            run_interactive
+            ;;
+        "test"|"validate")
+            echo -e "${BLUE}🧪 Running API validation tests...${NC}"
+            python3 -c "
+import asyncio
+import sys
+sys.path.insert(0, '.')
+from app.api_validator import APIKeyValidator
+import yaml
+
+async def test_apis():
+    with open('config.yaml', 'r') as f:
+        config = yaml.safe_load(f)
+    validator = APIKeyValidator(config)
+    results = await validator.validate_all_keys()
+    for service, valid in results.items():
+        status = '✅' if valid else '❌'
+        print(f'{status} {service}: {"Valid" if valid else "Invalid"}')
+
+asyncio.run(test_apis())
+"
+            ;;
+        "benchmark"|"bench")
+            run_benchmark
+            ;;
+        "help"|"--help"|"-h")
+            show_help
+            ;;
+        *)
+            echo -e "${RED}❌ Unknown command: $1${NC}"
+            show_help
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

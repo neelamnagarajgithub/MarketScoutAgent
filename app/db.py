@@ -5,6 +5,14 @@ from sqlalchemy import Column, Integer, String, Text, DateTime, JSON, Index, Flo
 import datetime
 import sqlalchemy as sa
 import uuid
+import asyncio
+import asyncpg
+import logging
+from typing import Dict, List, Any, Optional
+import json
+import hashlib
+
+logger = logging.getLogger(__name__)
 
 Base = declarative_base()
 
@@ -38,102 +46,188 @@ Index("ix_documents_provider_inserted", Document.provider, Document.inserted_at)
 Index("ix_documents_processing", Document.is_processed, Document.processing_status)
 
 class Database:
-    def __init__(self, config):
-        self.engine = create_async_engine(
-            config['database']['url'], 
-            future=True, 
-            echo=False,
-            pool_size=20,
-            max_overflow=30
-        )
-        self.async_session = sessionmaker(
-            self.engine, 
-            expire_on_commit=False, 
-            class_=AsyncSession
-        )
-
-    async def init_models(self):
-        async with self.engine.begin() as conn:
-            await conn.run_sync(Base.metadata.create_all)
-
-    async def save_document(self, doc: dict):
-        async with self.async_session() as session:
+    def __init__(self, config: Dict):
+        self.config = config
+        self.pool = None
+        
+    async def init_pool(self):
+        """Initialize connection pool with better error handling"""
+        if self.pool:
+            return
+            
+        try:
+            # Get database config with defaults
+            db_config = self.config.get('database', {})
+            
+            # Use SQLite as fallback if PostgreSQL fails
+            if not db_config or not all(k in db_config for k in ['host', 'port', 'database', 'user', 'password']):
+                logger.warning("PostgreSQL config incomplete, using SQLite fallback")
+                await self.init_sqlite_fallback()
+                return
+                
+            # Try PostgreSQL connection
             try:
-                # Enhanced deduplication by url and content_hash
-                url = doc.get('url')
-                content_hash = doc.get('content_hash')
-                
-                if not url:
-                    return None
-                
-                # Check for existing document
-                q = sa.select(Document).where(
-                    sa.or_(
-                        Document.url == url,
-                        sa.and_(
-                            Document.content_hash == content_hash,
-                            Document.content_hash != '',
-                            Document.content_hash.isnot(None)
-                        )
-                    )
+                self.pool = await asyncpg.create_pool(
+                    host=db_config['host'],
+                    port=db_config['port'],
+                    database=db_config['database'],
+                    user=db_config['user'],
+                    password=db_config['password'],
+                    min_size=1,
+                    max_size=10,
+                    timeout=5
                 )
-                res = await session.execute(q)
-                existing = res.scalar_one_or_none()
-                
-                if existing:
-                    # Update if we have newer information
-                    if doc.get('published_at') and existing.published_at:
-                        if doc['published_at'] > existing.published_at:
-                            for key, value in doc.items():
-                                if hasattr(existing, key) and value is not None:
-                                    setattr(existing, key, value)
-                            await session.commit()
-                    return existing
-                
-                # Create new document
-                new_doc = Document(
-                    source=doc.get("source"),
-                    provider=doc.get("doc_metadata", {}).get("provider"),
-                    title=doc.get("title"),
-                    url=url,
-                    content=doc.get("content"),
-                    published_at=doc.get("published_at"),
-                    doc_metadata=doc.get("doc_metadata", {}),
-                    content_hash=content_hash,
-                    sentiment_score=doc.get("doc_metadata", {}).get("sentiment_score"),
-                    relevance_score=doc.get("doc_metadata", {}).get("relevance_score"),
-                    company_mentions=doc.get("doc_metadata", {}).get("company_mentions", []),
-                    product_mentions=doc.get("doc_metadata", {}).get("product_mentions", []),
-                    topic_categories=doc.get("doc_metadata", {}).get("topic_categories", [])
-                )
-                
-                session.add(new_doc)
-                await session.commit()
-                await session.refresh(new_doc)
-                return new_doc
+                logger.info("✅ PostgreSQL connection established")
                 
             except Exception as e:
-                await session.rollback()
-                print(f"Database error: {e}")
-                return None
-
-    async def get_recent_documents(self, hours: int = 24, limit: int = 100):
-        """Get recent documents for analysis"""
-        async with self.async_session() as session:
-            cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=hours)
-            q = sa.select(Document).where(
-                Document.inserted_at >= cutoff
-            ).order_by(Document.published_at.desc()).limit(limit)
+                logger.warning(f"PostgreSQL connection failed: {e}, using SQLite fallback")
+                await self.init_sqlite_fallback()
+                
+        except Exception as e:
+            logger.error(f"Database initialization failed: {e}")
+            await self.init_sqlite_fallback()
+    
+    async def init_sqlite_fallback(self):
+        """Initialize SQLite as fallback database"""
+        import aiosqlite
+        import os
+        
+        try:
+            os.makedirs('data', exist_ok=True)
+            self.sqlite_db = 'data/market_intelligence.db'
             
-            res = await session.execute(q)
-            return res.scalars().all()
-
-    async def get_documents_by_source(self, source: str, limit: int = 50):
-        """Get documents from specific source"""
-        async with self.async_session() as session:
-            q = sa.select(Document).where(
-                Document.source == source
-            ).order_by(Document.inserted_at.desc()).limit(limit)
+            # Create tables
+            async with aiosqlite.connect(self.sqlite_db) as db:
+                await db.execute('''
+                    CREATE TABLE IF NOT EXISTS documents (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        source TEXT NOT NULL,
+                        title TEXT,
+                        url TEXT UNIQUE,
+                        content TEXT,
+                        published_at TIMESTAMP,
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        metadata TEXT,
+                        content_hash TEXT UNIQUE
+                    )
+                ''')
+                
+                await db.execute('''
+                    CREATE INDEX IF NOT EXISTS idx_documents_source ON documents(source);
+                ''')
+                
+                await db.execute('''
+                    CREATE INDEX IF NOT EXISTS idx_documents_published_at ON documents(published_at);
+                ''')
+                
+                await db.commit()
             
-            res = await session.execute(q)
-            return res.scalars().all()
+            self.use_sqlite = True
+            logger.info("✅ SQLite fallback database initialized")
+            
+        except Exception as e:
+            logger.error(f"SQLite fallback failed: {e}")
+            self.use_sqlite = False
+
+    async def save_document(self, doc: Dict[str, Any]):
+        """Save document with fallback handling"""
+        try:
+            if hasattr(self, 'use_sqlite') and self.use_sqlite:
+                await self.save_document_sqlite(doc)
+            else:
+                await self.save_document_postgres(doc)
+        except Exception as e:
+            logger.error(f"Failed to save document: {e}")
+    
+    async def save_document_sqlite(self, doc: Dict[str, Any]):
+        """Save document to SQLite"""
+        import aiosqlite
+        
+        try:
+            async with aiosqlite.connect(self.sqlite_db) as db:
+                await db.execute('''
+                    INSERT OR REPLACE INTO documents 
+                    (source, title, url, content, published_at, metadata, content_hash)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', (
+                    doc.get('source'),
+                    doc.get('title'),
+                    doc.get('url'),
+                    doc.get('content'),
+                    doc.get('published_at'),
+                    json.dumps(doc.get('metadata', {})),
+                    doc.get('content_hash')
+                ))
+                await db.commit()
+                
+        except Exception as e:
+            logger.error(f"SQLite save failed: {e}")
+    
+    async def save_document_postgres(self, doc: Dict[str, Any]):
+        """Save document to PostgreSQL"""
+        if not self.pool:
+            await self.init_pool()
+            
+        try:
+            async with self.pool.acquire() as conn:
+                await conn.execute('''
+                    INSERT INTO documents 
+                    (source, title, url, content, published_at, metadata, content_hash)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7)
+                    ON CONFLICT (content_hash) DO UPDATE SET
+                    updated_at = CURRENT_TIMESTAMP
+                ''', 
+                doc.get('source'),
+                doc.get('title'), 
+                doc.get('url'),
+                doc.get('content'),
+                doc.get('published_at'),
+                json.dumps(doc.get('metadata', {})),
+                doc.get('content_hash')
+                )
+        except Exception as e:
+            logger.error(f"PostgreSQL save failed: {e}")
+
+    async def get_recent_documents(self, source: Optional[str] = None, limit: int = 100) -> List[Dict]:
+        """Get recent documents with fallback"""
+        try:
+            if hasattr(self, 'use_sqlite') and self.use_sqlite:
+                return await self.get_recent_documents_sqlite(source, limit)
+            else:
+                return await self.get_recent_documents_postgres(source, limit)
+        except Exception as e:
+            logger.error(f"Failed to get documents: {e}")
+            return []
+    
+    async def get_recent_documents_sqlite(self, source: Optional[str] = None, limit: int = 100) -> List[Dict]:
+        """Get recent documents from SQLite"""
+        import aiosqlite
+        
+        try:
+            async with aiosqlite.connect(self.sqlite_db) as db:
+                if source:
+                    cursor = await db.execute('''
+                        SELECT * FROM documents 
+                        WHERE source = ? 
+                        ORDER BY published_at DESC 
+                        LIMIT ?
+                    ''', (source, limit))
+                else:
+                    cursor = await db.execute('''
+                        SELECT * FROM documents 
+                        ORDER BY published_at DESC 
+                        LIMIT ?
+                    ''', (limit,))
+                
+                rows = await cursor.fetchall()
+                columns = [description[0] for description in cursor.description]
+                
+                return [dict(zip(columns, row)) for row in rows]
+                
+        except Exception as e:
+            logger.error(f"SQLite query failed: {e}")
+            return []
+
+    async def init_models(self):
+        """Initialize database models (compatibility method)"""
+        await self.init_pool()

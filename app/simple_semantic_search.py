@@ -8,43 +8,45 @@ import asyncio
 import json
 import os
 import logging
-from typing import Dict, Any, List, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from datetime import datetime
+from dataclasses import dataclass
+from enum import Enum
+import yaml
+import httpx
 import numpy as np
 from sentence_transformers import SentenceTransformer
-import httpx
-import yaml
-from dataclasses import dataclass
 
-# Local imports
 from app.fetchers import (
-    serpapi, newsapi, github, npm_pypi, rss,
-    news_sources, search_apis, business_intelligence,
-    community_sources, financial_apis
+    serpapi, newsapi, github, 
+    news_sources, financial_apis
 )
 from app.normalizer import normalize_item
 from app.db import Database
+from app.api_validator import APIKeyValidator
+from app.query_optimizer import QueryOptimizer
 
-# Import query optimizer
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from query_optimizer import QueryOptimizer
-
-# Set up logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-@dataclass
-class QueryPlan:
-    """Query execution plan"""
-    query_type: str
+class QueryType(Enum):
+    COMPANY_ANALYSIS = "company_analysis"
+    MARKET_TREND = "market_trend" 
+    PRODUCT_RESEARCH = "product_research"
+    COMPETITOR_ANALYSIS = "competitor_analysis"
+    FUNDING_INTELLIGENCE = "funding_intelligence"
+    TECHNOLOGY_STACK = "technology_stack"
+    NEWS_MONITORING = "news_monitoring"
+    GENERAL_INTELLIGENCE = "general_intelligence"
+
+@dataclass 
+class SearchPlan:
+    query_type: QueryType
     entities: List[str]
-    keywords: List[str] 
+    keywords: List[str]
     sources: List[str]
     search_terms: List[str]
     financial_symbols: List[str]
-    
+
 class SimpleSemanticSearch:
     """Simplified semantic search without external vector databases"""
     
@@ -63,547 +65,541 @@ class SimpleSemanticSearch:
         # Initialize query optimizer for better search quality
         self.query_optimizer = QueryOptimizer()
         
+        # API validation
+        self.api_validator = APIKeyValidator(self.config)
+        
         # In-memory document store for semantic search
         self.document_embeddings = []
         self.documents = []
+        
+        # Source priorities (higher = more reliable)
+        self.source_priorities = {
+            'serpapi': 9,
+            'newsapi': 8,
+            'gnews': 7,
+            'github': 6,
+            'alpha_vantage': 5
+        }
 
-    async def plan_query(self, user_query: str) -> QueryPlan:
-        """Create a simple query plan with enhanced optimization"""
-        query_lower = user_query.lower()
+    async def validate_apis(self) -> bool:
+        """Validate API keys before starting"""
+        logger.info("🔍 Validating API keys...")
+        
+        results = await self.api_validator.validate_all_keys()
+        valid_keys = self.api_validator.get_valid_keys()
+        invalid_keys = self.api_validator.get_invalid_keys()
+        
+        if valid_keys:
+            logger.info(f"✅ Valid APIs: {', '.join(valid_keys)}")
+        
+        if invalid_keys:
+            logger.warning(f"⚠️  Invalid APIs: {', '.join(invalid_keys)}")
+        
+        # Need at least one search API
+        search_apis = ['serpapi', 'newsapi', 'gnews']
+        has_search = any(api in valid_keys for api in search_apis)
+        
+        if not has_search:
+            logger.error("❌ No valid search APIs available")
+            return False
+        
+        return True
+
+    async def plan_search(self, query: str) -> SearchPlan:
+        """Create intelligent search plan"""
+        
+        # Use query optimizer for better search terms
+        optimized = self.query_optimizer.optimize_query(query)
         
         # Determine query type
-        if any(word in query_lower for word in ["company", "startup", "business", "organization"]):
-            query_type = "company_analysis"
-        elif any(word in query_lower for word in ["product", "launch", "release", "tool", "app"]):
-            query_type = "product_research"
-        elif any(word in query_lower for word in ["market", "trend", "industry", "sector"]):
-            query_type = "market_trend" 
-        elif any(word in query_lower for word in ["competitor", "competition", "vs", "compare"]):
-            query_type = "competitor_analysis"
-        elif any(word in query_lower for word in ["funding", "investment", "round", "series"]):
-            query_type = "funding_intelligence"
-        elif any(word in query_lower for word in ["news", "update", "announcement"]):
-            query_type = "news_monitoring"
-        else:
-            query_type = "general_intelligence"
+        query_type = self._classify_query(query)
         
-        # Extract entities (simple keyword extraction)
-        entities = []
-        keywords = user_query.split()
+        # Extract entities and keywords
+        entities = self._extract_entities(query)
+        keywords = optimized.get('keywords', [])
         
-        # Use query optimizer for enhanced search terms and financial symbols
-        optimized_search_terms = self.query_optimizer.optimize_search_terms(user_query)
-        optimized_financial_symbols = self.query_optimizer.enhance_financial_symbols(user_query)
+        # Plan data sources based on query type
+        sources = self._plan_sources(query_type)
         
-        # Select data sources based on query type
-        if query_type == "company_analysis":
-            sources = ["search_discovery", "news_intelligence", "financial_intelligence", "github_intelligence"]
-        elif query_type == "product_research":
-            sources = ["search_discovery", "tech_intelligence", "github_intelligence", "community_intelligence"]
-        elif query_type == "market_trend":
-            sources = ["search_discovery", "news_intelligence", "community_intelligence", "rss_intelligence"]
-        elif query_type == "funding_intelligence":
-            sources = ["search_discovery", "news_intelligence", "financial_intelligence"]
-        else:
-            sources = ["search_discovery", "news_intelligence"]
+        # Generate search terms
+        search_terms = self._generate_search_terms(query, entities, keywords)
         
-        return QueryPlan(
+        # Map to financial symbols if relevant
+        financial_symbols = self._map_to_symbols(entities)
+        
+        plan = SearchPlan(
             query_type=query_type,
             entities=entities,
-            keywords=keywords[:10],  # Limit keywords
+            keywords=keywords,
             sources=sources,
-            search_terms=optimized_search_terms,  # Use optimized terms
-            financial_symbols=optimized_financial_symbols  # Use optimized symbols
+            search_terms=search_terms,
+            financial_symbols=financial_symbols
         )
+        
+        logger.info(f"Query plan: {query_type.value}, Sources: {sources}")
+        return plan
 
-    async def execute_search_discovery(self, search_terms: List[str]) -> Dict[str, Any]:
-        """Execute search across multiple search APIs with result filtering"""
-        results = {}
+    def _classify_query(self, query: str) -> QueryType:
+        """Classify query type using keyword matching"""
+        query_lower = query.lower()
         
-        async with httpx.AsyncClient(timeout=30) as client:
-            # SerpAPI
-            serp_key = self.config.get('keys', {}).get('serpapi')
-            if serp_key:
-                serp_results = {}
-                for term in search_terms[:3]:  # Limit API calls
-                    try:
-                        data = await serpapi.serp_search(client, serp_key, term)
-                        # Apply result filtering for relevance
-                        if isinstance(data, list):
-                            filtered_data = self.query_optimizer.filter_search_results(data)
-                            serp_results[term] = filtered_data
-                        else:
-                            serp_results[term] = data
-                    except Exception as e:
-                        serp_results[term] = {"error": str(e)}
-                results["serpapi"] = serp_results
-            
-            # Bing Search  
-            bing_key = self.config.get('keys', {}).get('bing_search')
-            if bing_key:
-                bing_results = {}
-                for term in search_terms[:2]:
-                    try:
-                        data = await search_apis.fetch_bing_search(client, bing_key, term)
-                        # Apply result filtering for relevance
-                        if isinstance(data, list):
-                            filtered_data = self.query_optimizer.filter_search_results(data)
-                            bing_results[term] = filtered_data
-                        else:
-                            bing_results[term] = data
-                    except Exception as e:
-                        bing_results[term] = {"error": str(e)}
-                results["bing"] = bing_results
+        # Company-specific analysis
+        if any(word in query_lower for word in ['nvidia', 'openai', 'microsoft', 'google', 'apple']):
+            return QueryType.COMPANY_ANALYSIS
         
-        return results
+        # Funding and investment queries
+        if any(word in query_lower for word in ['funding', 'investment', 'round', 'venture', 'capital']):
+            return QueryType.FUNDING_INTELLIGENCE
+        
+        # Market trend queries
+        if any(word in query_lower for word in ['market', 'trend', 'growth', 'industry']):
+            return QueryType.MARKET_TREND
+        
+        # Product research
+        if any(word in query_lower for word in ['product', 'launch', 'announcement', 'release']):
+            return QueryType.PRODUCT_RESEARCH
+        
+        # Competitor analysis
+        if any(word in query_lower for word in ['competitor', 'competition', 'vs', 'compare']):
+            return QueryType.COMPETITOR_ANALYSIS
+        
+        return QueryType.GENERAL_INTELLIGENCE
 
-    async def execute_news_intelligence(self, search_terms: List[str]) -> Dict[str, Any]:
-        """Execute news gathering from multiple sources with relevance filtering"""
-        results = {}
+    def _extract_entities(self, query: str) -> List[str]:
+        """Extract company names and key entities"""
+        # Simple entity extraction - could be enhanced with NLP
+        companies = ['nvidia', 'openai', 'microsoft', 'google', 'apple', 'amazon', 'tesla', 'meta']
+        entities = []
         
-        async with httpx.AsyncClient(timeout=30) as client:
-            # NewsAPI
-            news_key = self.config.get('keys', {}).get('newsapi')
-            if news_key:
-                news_results = {}
-                for term in search_terms[:3]:
-                    try:
-                        data = await newsapi.search_newsapi(client, news_key, term)
-                        # Apply result filtering for relevance
-                        if isinstance(data, list):
-                            filtered_data = self.query_optimizer.filter_search_results(data)
-                            news_results[term] = filtered_data
-                        else:
-                            news_results[term] = data
-                    except Exception as e:
-                        news_results[term] = {"error": str(e)}
-                results["newsapi"] = news_results
-            
-            # GNews
-            gnews_key = self.config.get('keys', {}).get('gnews')
-            if gnews_key:
-                gnews_results = {}
-                for term in search_terms[:2]:
-                    try:
-                        data = await news_sources.fetch_gnews(client, gnews_key, term)
-                        # Apply result filtering for relevance
-                        if isinstance(data, list):
-                            filtered_data = self.query_optimizer.filter_search_results(data)
-                            gnews_results[term] = filtered_data
-                        else:
-                            gnews_results[term] = data
-                    except Exception as e:
-                        gnews_results[term] = {"error": str(e)}
-                results["gnews"] = gnews_results
+        query_lower = query.lower()
+        for company in companies:
+            if company in query_lower:
+                entities.append(company.upper())
         
-        return results
+        return entities
 
-    async def execute_github_intelligence(self, search_terms: List[str]) -> Dict[str, Any]:
-        """Execute GitHub organization and repository analysis"""
-        results = {}
+    def _plan_sources(self, query_type: QueryType) -> List[str]:
+        """Plan which data sources to use based on query type"""
+        base_sources = ['search_discovery', 'news_intelligence']
         
-        async with httpx.AsyncClient(timeout=30) as client:
-            gh_key = self.config.get('keys', {}).get('github')
-            if not gh_key:
-                return {"error": "GitHub API key not configured"}
+        if query_type in [QueryType.COMPANY_ANALYSIS, QueryType.FUNDING_INTELLIGENCE]:
+            base_sources.extend(['financial_intelligence', 'github_intelligence'])
+        elif query_type == QueryType.TECHNOLOGY_STACK:
+            base_sources.append('github_intelligence')
+        elif query_type == QueryType.MARKET_TREND:
+            base_sources.append('financial_intelligence')
             
-            # Get popular organizations
-            orgs = self.config.get('sources', {}).get('github_orgs', ['openai', 'vercel', 'microsoft', 'google'])
+        return base_sources
+
+    def _generate_search_terms(self, query: str, entities: List[str], keywords: List[str]) -> List[str]:
+        """Generate optimized search terms"""
+        terms = [query]
+        
+        # Add entity-specific terms
+        for entity in entities:
+            terms.append(f"{entity} news")
+            terms.append(f"{entity} analysis")
+        
+        # Add keyword combinations
+        if len(keywords) >= 2:
+            terms.append(" ".join(keywords[:3]))
+        
+        return terms[:5]  # Limit to prevent rate limiting
+
+    def _map_to_symbols(self, entities: List[str]) -> List[str]:
+        """Map company names to stock symbols"""
+        symbol_map = {
+            'NVIDIA': 'NVDA',
+            'MICROSOFT': 'MSFT', 
+            'GOOGLE': 'GOOGL',
+            'APPLE': 'AAPL',
+            'AMAZON': 'AMZN',
+            'TESLA': 'TSLA',
+            'META': 'META'
+        }
+        
+        symbols = []
+        for entity in entities:
+            if entity in symbol_map:
+                symbols.append(symbol_map[entity])
+        
+        # Add default tech symbols if none found
+        if not symbols:
+            symbols = ['NVDA', 'GOOGL', 'MSFT']
+        
+        return symbols
+
+    async def execute_search(self, plan: SearchPlan) -> Dict[str, Any]:
+        """Execute the search plan"""
+        results = {
+            'search_discovery': {},
+            'news_intelligence': {}, 
+            'github_intelligence': {},
+            'financial_intelligence': {}
+        }
+        
+        async with httpx.AsyncClient(follow_redirects=True, timeout=30) as client:
+            tasks = []
             
-            org_results = {}
-            for org in orgs[:4]:  # Limit to avoid rate limits
-                try:
-                    repos = await github.fetch_org_repos(client, gh_key, org)
-                    # Sort by updated_at and take most recent
-                    if isinstance(repos, list):
-                        sorted_repos = sorted(repos, key=lambda x: x.get('updated_at', ''), reverse=True)
-                        org_results[org] = sorted_repos[:5]
+            # Search discovery (SerpAPI)
+            if 'search_discovery' in plan.sources:
+                tasks.extend(await self._create_search_tasks(client, plan.search_terms))
+            
+            # News intelligence
+            if 'news_intelligence' in plan.sources:
+                tasks.extend(await self._create_news_tasks(client, plan.search_terms))
+            
+            # GitHub intelligence  
+            if 'github_intelligence' in plan.sources:
+                tasks.extend(await self._create_github_tasks(client, plan.entities))
+            
+            # Financial intelligence
+            if 'financial_intelligence' in plan.sources:
+                tasks.extend(await self._create_financial_tasks(client, plan.financial_symbols))
+            
+            # Execute all tasks
+            if tasks:
+                # Extract coroutines and metadata
+                coroutines = []
+                task_metadata = []
+                
+                for task in tasks:
+                    coroutines.append(task['coro'])
+                    task_metadata.append({
+                        'type': task['type'],
+                        'source': task['source'],
+                        'query': task['query']
+                    })
+                
+                # Execute coroutines
+                coro_results = await asyncio.gather(*coroutines, return_exceptions=True)
+                
+                # Combine results with metadata
+                task_results = []
+                for i, result in enumerate(coro_results):
+                    if isinstance(result, Exception):
+                        task_results.append(result)
                     else:
-                        org_results[org] = repos
-                except Exception as e:
-                    org_results[org] = {"error": str(e)}
-            
-            results["github_orgs"] = org_results
+                        combined_result = task_metadata[i].copy()
+                        combined_result['data'] = result
+                        task_results.append(combined_result)
+                
+                results = self._process_task_results(task_results)
         
         return results
 
-    async def execute_financial_intelligence(self, symbols: List[str], search_terms: List[str]) -> Dict[str, Any]:
-        """Execute financial data gathering"""
-        results = {}
+    async def _create_search_tasks(self, client: httpx.AsyncClient, search_terms: List[str]) -> List:
+        """Create search discovery tasks"""
+        tasks = []
+        serp_key = self.config.get('keys', {}).get('serpapi')
         
-        async with httpx.AsyncClient(timeout=30) as client:
-            # Alpha Vantage
-            av_key = self.config.get('keys', {}).get('alpha_vantage')
-            if av_key:
-                # Default symbols if none provided
-                if not symbols:
-                    symbols = ['MSFT', 'GOOGL', 'AAPL', 'NVDA']  # Default tech stocks
+        if serp_key:
+            for term in search_terms[:3]:  # Limit to prevent rate limiting
+                tasks.append({
+                    'type': 'search_discovery',
+                    'source': 'serpapi',
+                    'query': term,
+                    'coro': serpapi.serp_search(client, serp_key, term)
+                })
+        
+        return tasks
+
+    async def _create_news_tasks(self, client: httpx.AsyncClient, search_terms: List[str]) -> List:
+        """Create news intelligence tasks"""
+        tasks = []
+        
+        # NewsAPI
+        newsapi_key = self.config.get('keys', {}).get('newsapi')
+        if newsapi_key:
+            for term in search_terms[:3]:
+                tasks.append({
+                    'type': 'news_intelligence', 
+                    'source': 'newsapi',
+                    'query': term,
+                    'coro': newsapi.search_newsapi(client, newsapi_key, term)
+                })
+        
+        # GNews
+        gnews_key = self.config.get('keys', {}).get('gnews')
+        if gnews_key:
+            for term in search_terms[:2]:
+                tasks.append({
+                    'type': 'news_intelligence',
+                    'source': 'gnews', 
+                    'query': term,
+                    'coro': news_sources.fetch_gnews(client, gnews_key, term)
+                })
+        
+        return tasks
+
+    async def _create_github_tasks(self, client: httpx.AsyncClient, entities: List[str]) -> List:
+        """Create GitHub intelligence tasks"""
+        tasks = []
+        gh_key = self.config.get('keys', {}).get('github')
+        
+        if gh_key:
+            # Map entities to likely GitHub orgs
+            org_mapping = {
+                'NVIDIA': 'nvidia',
+                'OPENAI': 'openai', 
+                'MICROSOFT': 'microsoft',
+                'GOOGLE': 'google',
+                'VERCEL': 'vercel',
+                'STRIPE': 'stripe'
+            }
+            
+            orgs = []
+            for entity in entities:
+                if entity in org_mapping:
+                    orgs.append(org_mapping[entity])
+            
+            # Add default orgs if none found
+            if not orgs:
+                orgs = ['openai', 'vercel', 'stripe', 'aws']
+            
+            for org in orgs[:4]:  # Limit API calls
+                tasks.append({
+                    'type': 'github_intelligence',
+                    'source': 'github',
+                    'query': org,
+                    'coro': github.fetch_org_repos(client, gh_key, org)
+                })
+        
+        return tasks
+
+    async def _create_financial_tasks(self, client: httpx.AsyncClient, symbols: List[str]) -> List:
+        """Create financial intelligence tasks"""
+        tasks = []
+        av_key = self.config.get('keys', {}).get('alpha_vantage')
+        
+        if av_key:
+            # Company overview for each symbol
+            for symbol in symbols[:3]:
+                tasks.append({
+                    'type': 'financial_intelligence',
+                    'source': 'alpha_vantage',
+                    'query': symbol,
+                    'coro': financial_apis.fetch_alpha_vantage_company_overview(client, av_key, symbol)
+                })
+            
+            # News for symbols
+            if symbols:
+                tasks.append({
+                    'type': 'financial_intelligence',
+                    'source': 'alpha_vantage_news',
+                    'query': ','.join(symbols[:3]),
+                    'coro': financial_apis.fetch_company_news_alpha_vantage(client, av_key, ','.join(symbols[:3]))
+                })
+        
+        return tasks
+
+    def _process_task_results(self, task_results: List) -> Dict[str, Any]:
+        """Process and organize task results"""
+        organized_results = {
+            'search_discovery': {},
+            'news_intelligence': {},
+            'github_intelligence': {},
+            'financial_intelligence': {}
+        }
+        
+        successful_count = 0
+        total_count = len(task_results)
+        
+        for result in task_results:
+            if isinstance(result, Exception):
+                logger.error(f"Task failed: {result}")
+                continue
                 
-                av_results = {}
-                for symbol in symbols[:3]:  # Limit API calls
+            if not isinstance(result, dict) or 'type' not in result:
+                continue
+            
+            result_type = result['type']
+            source = result.get('source', 'unknown')
+            query = result.get('query', '')
+            data = result.get('data', [])
+            
+            # Normalize data
+            normalized_data = []
+            if isinstance(data, list):
+                for item in data:
                     try:
-                        data = await financial_apis.fetch_alpha_vantage_company_overview(client, av_key, symbol)
-                        av_results[symbol] = data
+                        normalized = normalize_item(source, item)
+                        normalized_data.append(normalized)
                     except Exception as e:
-                        av_results[symbol] = {"error": str(e)}
-                
-                # Get financial news
+                        logger.error(f"Normalization error: {e}")
+            elif isinstance(data, dict) and data:
                 try:
-                    news_data = await financial_apis.fetch_company_news_alpha_vantage(client, av_key, ",".join(symbols[:3]))
-                    av_results["news"] = news_data[:5] if isinstance(news_data, list) else news_data
+                    normalized = normalize_item(source, data)
+                    normalized_data = [normalized]
                 except Exception as e:
-                    av_results["news"] = {"error": str(e)}
-                
-                results["alpha_vantage"] = av_results
-        
-        return results
-
-    async def execute_community_intelligence(self, search_terms: List[str]) -> Dict[str, Any]:
-        """Execute community platform data gathering"""
-        results = {}
-        
-        async with httpx.AsyncClient(timeout=30) as client:
-            # Hacker News
-            try:
-                # Get top stories and new stories
-                top_stories = await community_sources.fetch_hackernews_stories(client, "topstories", 20)
-                new_stories = await community_sources.fetch_hackernews_stories(client, "newstories", 20)
-                
-                # Filter by relevance to search terms
-                relevant_top = []
-                relevant_new = []
-                
-                for story in top_stories if isinstance(top_stories, list) else []:
-                    title = story.get('title', '').lower()
-                    if any(term.lower() in title for term in search_terms):
-                        relevant_top.append(story)
-                
-                for story in new_stories if isinstance(new_stories, list) else []:
-                    title = story.get('title', '').lower()
-                    if any(term.lower() in title for term in search_terms):
-                        relevant_new.append(story)
-                
-                results["hackernews"] = {
-                    "relevant_top": relevant_top[:10],
-                    "relevant_new": relevant_new[:10],
-                    "all_top": top_stories[:5] if isinstance(top_stories, list) else top_stories,
-                    "all_new": new_stories[:5] if isinstance(new_stories, list) else new_stories
-                }
-                
-            except Exception as e:
-                results["hackernews"] = {"error": str(e)}
-        
-        return results
-
-    async def execute_rss_intelligence(self, search_terms: List[str]) -> Dict[str, Any]:
-        """Execute RSS feed monitoring"""
-        results = {}
-        
-        # Get RSS feeds from config
-        rss_feeds = self.config.get('sources', {}).get('rss_feeds', [])
-        
-        for feed_url in rss_feeds[:4]:  # Limit feeds
-            try:
-                feed_data = await asyncio.to_thread(rss.fetch_rss_feed, feed_url, 10)
-                feed_name = feed_url.split('//')[1].split('/')[0] if '//' in feed_url else feed_url
-                results[feed_name] = feed_data
-            except Exception as e:
-                feed_name = feed_url.split('//')[1].split('/')[0] if '//' in feed_url else "unknown_feed"
-                results[feed_name] = {"error": str(e)}
-        
-        return results
-
-    async def execute_tech_intelligence(self, search_terms: List[str]) -> Dict[str, Any]:
-        """Execute technology and package analysis"""
-        results = {}
-        
-        async with httpx.AsyncClient(timeout=30) as client:
-            # NPM packages
-            npm_results = {}
-            # Simple heuristics for relevant packages
-            if any(term in ' '.join(search_terms).lower() for term in ['react', 'javascript', 'frontend']):
-                packages = ['react', 'vue', 'next', '@angular/core']
-            elif any(term in ' '.join(search_terms).lower() for term in ['ai', 'ml', 'python']):
-                packages = ['transformers', 'langchain', 'torch', 'tensorflow']
-            else:
-                packages = ['express', 'fastapi', 'django', 'flask']
+                    logger.error(f"Normalization error: {e}")
             
-            for package in packages[:4]:
-                try:
-                    data = await npm_pypi.fetch_npm_package(client, package)
-                    npm_results[package] = {
-                        "name": data.get("name"),
-                        "description": (data.get("description", "") or "")[:200],
-                        "version": data.get("dist-tags", {}).get("latest"),
-                        "homepage": data.get("homepage"),
-                        "weekly_downloads": data.get("downloads")
-                    }
-                except Exception as e:
-                    npm_results[package] = {"error": str(e)}
-            
-            results["npm_packages"] = npm_results
+            # Store results
+            if result_type in organized_results:
+                if source not in organized_results[result_type]:
+                    organized_results[result_type][source] = {}
+                organized_results[result_type][source][query] = normalized_data
+                successful_count += 1
         
-        return results
+        # Add metadata
+        organized_results['_metadata'] = {
+            'total_tasks': total_count,
+            'successful_tasks': successful_count,
+            'success_rate': successful_count / total_count if total_count > 0 else 0
+        }
+        
+        return organized_results
 
-    async def comprehensive_search(self, user_query: str, save_json: bool = True) -> Dict[str, Any]:
-        """Execute comprehensive semantic search"""
-        logger.info(f"Starting comprehensive search for: {user_query}")
+    async def comprehensive_search(self, query: str) -> Dict[str, Any]:
+        """Main search interface"""
+        logger.info(f"Starting comprehensive search for: {query}")
         
         try:
-            # Step 1: Plan the query
-            plan = await self.plan_query(user_query)
-            logger.info(f"Query plan: {plan.query_type}, Sources: {plan.sources}")
+            # Validate APIs first
+            if not await self.validate_apis():
+                return {
+                    'error': 'No valid APIs available',
+                    'query': query,
+                    'status': 'failed'
+                }
             
-            # Step 2: Execute searches based on plan
-            search_results = {}
+            # Create search plan
+            plan = await self.plan_search(query)
             
-            if "search_discovery" in plan.sources:
-                search_results["search_discovery"] = await self.execute_search_discovery(plan.search_terms)
+            # Execute search
+            raw_results = await self.execute_search(plan)
             
-            if "news_intelligence" in plan.sources:
-                search_results["news_intelligence"] = await self.execute_news_intelligence(plan.search_terms)
+            # Generate final response
+            final_results = await self._generate_final_response(query, plan, raw_results)
             
-            if "github_intelligence" in plan.sources:
-                search_results["github_intelligence"] = await self.execute_github_intelligence(plan.search_terms)
+            # Save to database
+            await self._save_search_session(final_results)
             
-            if "financial_intelligence" in plan.sources:
-                search_results["financial_intelligence"] = await self.execute_financial_intelligence(
-                    plan.financial_symbols, plan.search_terms
-                )
+            # Save JSON file
+            await self._save_json_file(final_results)
             
-            if "community_intelligence" in plan.sources:
-                search_results["community_intelligence"] = await self.execute_community_intelligence(plan.search_terms)
-            
-            if "rss_intelligence" in plan.sources:
-                search_results["rss_intelligence"] = await self.execute_rss_intelligence(plan.search_terms)
-            
-            if "tech_intelligence" in plan.sources:
-                search_results["tech_intelligence"] = await self.execute_tech_intelligence(plan.search_terms)
-            
-            # Step 3: Generate insights and structure results
-            final_result = await self.generate_insights(user_query, plan, search_results)
-            
-            # Step 4: Save JSON to local file if requested
-            if save_json:
-                json_filename = await self.save_json_result(final_result)
-                final_result["json_file_saved"] = json_filename
-            
-            # Step 5: Save to database (optional)
-            await self.save_search_session(final_result)
-            
-            return final_result
+            return final_results
             
         except Exception as e:
             logger.error(f"Comprehensive search failed: {e}")
             return {
-                "query": user_query,
-                "status": "error",
-                "error": str(e),
-                "timestamp": datetime.now().isoformat()
+                'error': str(e),
+                'query': query,
+                'status': 'failed'
             }
 
-    async def generate_insights(self, query: str, plan: QueryPlan, results: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate insights from search results"""
+    async def _generate_final_response(self, query: str, plan: SearchPlan, raw_results: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate structured final response"""
         
-        # Count total documents and successful sources
-        total_docs = 0
+        # Count successful sources and documents
         successful_sources = 0
+        total_documents = 0
         
-        for source, data in results.items():
-            if isinstance(data, dict) and "error" not in data:
+        for source_type, source_data in raw_results.items():
+            if source_type.startswith('_'):
+                continue
+            if source_data:
                 successful_sources += 1
-                # Estimate document count
-                if isinstance(data, dict):
-                    for key, value in data.items():
-                        if isinstance(value, list):
-                            total_docs += len(value)
-                        elif isinstance(value, dict) and "error" not in value:
-                            total_docs += 1
+                for source_name, query_results in source_data.items():
+                    for query_key, documents in query_results.items():
+                        if isinstance(documents, list):
+                            total_documents += len(documents)
+                        elif documents:
+                            total_documents += 1
         
-        # Extract key entities and topics (simple keyword analysis)
-        all_text = []
-        for source_data in results.values():
-            if isinstance(source_data, dict):
-                all_text.append(json.dumps(source_data)[:1000])
+        # Extract search terms used
+        search_terms_used = len(plan.search_terms)
         
-        # Simple keyword extraction
-        combined_text = ' '.join(all_text).lower()
-        keywords = plan.keywords + plan.entities
+        # Generate insights and recommendations
+        insights = [
+            f"Successfully gathered data from {successful_sources} different sources",
+        ]
         
-        # Generate insights
-        insights = []
-        if successful_sources > 2:
-            insights.append(f"Successfully gathered data from {successful_sources} different sources")
-        if total_docs > 10:
-            insights.append(f"Retrieved {total_docs} documents for analysis")
         if plan.financial_symbols:
             insights.append(f"Financial analysis included symbols: {', '.join(plan.financial_symbols)}")
         
-        # Generate recommendations based on query type
-        recommendations = []
-        if plan.query_type == "company_analysis":
-            recommendations.append("Review financial metrics and recent news for comprehensive analysis")
-            recommendations.append("Check competitor activity and market positioning")
-        elif plan.query_type == "market_trend":
-            recommendations.append("Monitor community discussions for emerging trends")   
-            recommendations.append("Track RSS feeds for industry updates")
-        elif plan.query_type == "product_research":
-            recommendations.append("Analyze GitHub activity for technical developments")
-            recommendations.append("Review package ecosystems for related tools")
-        else:
-            recommendations.append("Continue monitoring multiple data sources for updates")
-            recommendations.append("Set up alerts for key entities and topics")
+        recommendations = [
+            "Review financial metrics and recent news for comprehensive analysis",
+            "Check competitor activity and market positioning"
+        ]
         
-        return {
-            "query": query,
-            "query_type": plan.query_type,
-            "status": "success",
-            "timestamp": datetime.now().isoformat(),
-            "plan": {
-                "entities": plan.entities,
-                "keywords": plan.keywords,
-                "sources": plan.sources,
-                "search_terms": plan.search_terms,
-                "financial_symbols": plan.financial_symbols
+        # Build final response
+        final_response = {
+            'query': query,
+            'query_type': plan.query_type.value,
+            'status': 'success',
+            'timestamp': datetime.now().isoformat(),
+            'plan': {
+                'entities': plan.entities,
+                'keywords': plan.keywords,
+                'sources': plan.sources,
+                'search_terms': plan.search_terms,
+                'financial_symbols': plan.financial_symbols
             },
-            "summary": {
-                "total_sources_queried": len(plan.sources),
-                "successful_sources": successful_sources,
-                "total_documents": total_docs,
-                "search_terms_used": len(plan.search_terms)
+            'summary': {
+                'total_sources_queried': len(plan.sources),
+                'successful_sources': successful_sources,
+                'total_documents': total_documents,
+                'search_terms_used': search_terms_used
             },
-            "insights": insights,
-            "recommendations": recommendations,
-            "raw_data": results,
-            "confidence_score": min(0.9, 0.3 + (successful_sources * 0.15) + (total_docs * 0.01))
+            'insights': insights,
+            'recommendations': recommendations,
+            'raw_data': raw_results
         }
+        
+        return final_response
 
-    async def save_json_result(self, result: Dict[str, Any]) -> str:
-        """Save search result as JSON file with intelligent naming"""
-        try:
-            import os
-            import re
-            
-            # Create results directory if it doesn't exist
-            results_dir = "search_results"
-            os.makedirs(results_dir, exist_ok=True)
-            
-            # Generate intelligent filename
-            query = result.get("query", "unknown_query")
-            query_type = result.get("query_type", "general")
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            
-            # Clean query for filename (remove special chars, limit length)
-            clean_query = re.sub(r'[^\w\s-]', '', query).strip()
-            clean_query = re.sub(r'[-\s]+', '_', clean_query)
-            clean_query = clean_query[:50]  # Limit length
-            
-            filename = f"{results_dir}/{timestamp}_{query_type}_{clean_query}.json"
-            
-            # Save the JSON file
-            with open(filename, 'w', encoding='utf-8') as f:
-                json.dump(result, f, indent=2, default=str, ensure_ascii=False)
-            
-            logger.info(f"JSON result saved to: {filename}")
-            print(f"💾 JSON saved: {filename}")
-            
-            return filename
-            
-        except Exception as e:
-            logger.error(f"Failed to save JSON result: {e}")
-            return f"Error saving: {str(e)}"
-
-    async def save_search_session(self, result: Dict[str, Any]):
+    async def _save_search_session(self, results: Dict[str, Any]):
         """Save search session to database"""
         try:
-            await self.db.init_models()
+            await self.db.init_pool()
             
             doc = {
-                "source": "simple_semantic_search",
-                "title": f"Market Search: {result.get('query', 'Unknown Query')}",
-                "url": f"internal://search/{int(datetime.now().timestamp())}",
-                "content": json.dumps(result, indent=2),
-                "published_at": datetime.now(),
-                "doc_metadata": {
-                    "provider": "simple_semantic_search",
-                    "query_type": result.get("query_type"),
-                    "confidence_score": result.get("confidence_score", 0.0),
-                    "sources_count": result.get("summary", {}).get("successful_sources", 0)
+                'source': 'semantic_search',
+                'title': f"Semantic Search: {results.get('query', 'Unknown')}",
+                'url': f"internal://semantic_search_{int(datetime.now().timestamp())}",
+                'content': json.dumps(results.get('summary', {}), indent=2),
+                'published_at': datetime.now(),
+                'metadata': {
+                    'query_type': results.get('query_type'),
+                    'status': results.get('status'),
+                    'total_documents': results.get('summary', {}).get('total_documents', 0)
                 },
-                "content_hash": str(hash(json.dumps(result, sort_keys=True)))[:64]
+                'content_hash': str(hash(str(results.get('summary', {}))))[:64]
             }
             
             await self.db.save_document(doc)
-            logger.info("Search session saved to database")
+            logging.getLogger(__name__).info("✅ Search session saved to database")
             
         except Exception as e:
-            logger.error(f"Failed to save search session: {e}")
+            logging.getLogger(__name__).error(f"Failed to save search session: {e}")
 
-# Convenience functions
-async def search(query: str, config_path: str = "config.yaml", save_json: bool = True) -> Dict[str, Any]:
-    """Simple interface for semantic search with automatic JSON saving"""
-    engine = SimpleSemanticSearch(config_path)
-    return await engine.comprehensive_search(query, save_json=save_json)
+    async def _save_json_file(self, results: Dict[str, Any]) -> str:
+        """Save results to JSON file"""
+        try:
+            # Create search_results directory
+            os.makedirs('search_results', exist_ok=True)
+            
+            # Generate filename
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            query_type = results.get('query_type', 'search')
+            query_slug = "".join(c.lower() if c.isalnum() else "_" for c in results.get('query', 'query'))[:50]
+            
+            filename = f"search_results/{timestamp}_{query_type}_{query_slug}.json"
+            
+            # Save file
+            with open(filename, 'w') as f:
+                json.dump(results, f, indent=2, default=str)
+            
+            logger.info(f"JSON result saved to: {filename}")
+            return filename
+            
+        except Exception as e:
+            logger.error(f"Failed to save JSON file: {e}")
+            return ""
 
-# CLI interface
-async def main():
-    import sys
-    
-    if len(sys.argv) < 2:
-        print("Usage: python -m app.simple_semantic_search 'your search query'")
-        print("\nExample queries:")
-        print("  python -m app.simple_semantic_search 'AI startups funding'")
-        print("  python -m app.simple_semantic_search 'OpenAI competitors'")
-        print("  python -m app.simple_semantic_search 'SaaS market trends'")
-        return
-    
-    query = " ".join(sys.argv[1:])
-    print(f"🔍 Semantic Market Search: {query}")
-    print("=" * 60)
-    
-    results = await search(query)
-    
-    # Print summary
-    print(f"\n📊 Search Results Summary")
-    print(f"Query Type: {results.get('query_type')}")
-    print(f"Status: {results.get('status')}")
-    print(f"Sources: {results.get('summary', {}).get('successful_sources', 0)}")
-    print(f"Documents: {results.get('summary', {}).get('total_documents', 0)}")
-    print(f"Confidence: {results.get('confidence_score', 0):.2f}")
-    
-    # Print insights
-    insights = results.get('insights', [])
-    if insights:
-        print(f"\n💡 Key Insights:")
-        for i, insight in enumerate(insights[:5], 1):
-            print(f"  {i}. {insight}")
-    
-    # Print recommendations  
-    recommendations = results.get('recommendations', [])
-    if recommendations:
-        print(f"\n🎯 Recommendations:")
-        for i, rec in enumerate(recommendations[:3], 1):
-            print(f"  {i}. {rec}")
-    
-    # Print data sources with results
-    raw_data = results.get('raw_data', {})
-    if raw_data:
-        print(f"\n📈 Data Sources:")
-        for source, data in raw_data.items():
-            if isinstance(data, dict) and "error" not in data:
-                count = sum(len(v) if isinstance(v, list) else 1 for v in data.values() if not isinstance(v, dict) or "error" not in v)
-                print(f"  ✅ {source}: {count} items")
-            else:
-                print(f"  ❌ {source}: error")
-    
-    print("\n" + "=" * 60)
-    
-    # Optionally save full results
-    if "--save" in sys.argv:
-        filename = f"search_results_{int(datetime.now().timestamp())}.json"
-        with open(filename, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
-        print(f"💾 Full results saved to: {filename}")
-
-if __name__ == "__main__":
-    asyncio.run(main())
+# Convenience function
+async def semantic_search(query: str) -> Dict[str, Any]:
+    """Simple interface for semantic search"""
+    engine = SimpleSemanticSearch()
+    return await engine.comprehensive_search(query)

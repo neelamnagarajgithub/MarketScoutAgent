@@ -7,7 +7,7 @@ Shows before/after comparison of search terms and results
 import asyncio
 import json
 from app.simple_semantic_search import SimpleSemanticSearch
-from query_optimizer import QueryOptimizer
+from app.query_optimizer import QueryOptimizer
 
 async def test_query_optimization():
     print("🔧 Testing Query Optimizer Integration")

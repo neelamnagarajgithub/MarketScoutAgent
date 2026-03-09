@@ -10,7 +10,7 @@ from datetime import datetime
 
 sys.path.insert(0, '/home/naagaraj/marketscoutagent/market-aggregator')
 
-from app.semantic_search import SemanticSearchEngine
+from app.semantic_agent import SemanticSearchEngine
 
 class SemanticSearchTester:
     def __init__(self):
