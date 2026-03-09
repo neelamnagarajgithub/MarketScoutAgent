@@ -1,0 +1,29 @@
+httpx[http2]
+beautifulsoup4
+python-dateutil
+tenacity
+aiolimiter
+PyYAML
+SQLAlchemy
+asyncpg
+alembic
+feedparser
+uvicorn
+APScheduler
+praw
+requests
+pandas
+numpy
+
+# LangChain dependencies - compatible versions
+langchain
+langchain-google-genai
+langchain-core
+langchain-community
+google-generativeai
+pydantic
+
+# Semantic search dependencies
+sentence-transformers
+faiss-cpu
+pinecone

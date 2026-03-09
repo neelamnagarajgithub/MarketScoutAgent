@@ -1,0 +1,76 @@
+
+database:
+  
+  url: "postgresql+asyncpg://postgres:password@localhost:5432/marketdb"
+
+fetch:
+  concurrency: 8
+  rate_limit_per_sec: 5
+
+keys:
+  # Search & Discovery APIs
+  serpapi: ""
+  serpapi_engine: "google"
+  bing_search: ""
+  google_custom_search: ""
+  google_custom_search_id: ""
+  
+  # News APIs
+  newsapi: ""
+  gnews: ""
+  mediastack: ""
+  currents: ""
+  
+  # Tech/Product APIs
+  github: ""
+  gitlab: ""
+  crunchbase: ""
+  clearbit: ""
+  apollo: ""
+  builtwith: ""
+  
+  # Financial APIs
+  alpha_vantage: ""
+  polygon: ""
+  
+  # Social/Community APIs
+  reddit_client_id: ""
+  reddit_client_secret: ""
+  reddit_user_agent: "MarketScoutBot/1.0"
+
+sources:
+  # RSS feeds for company/product intelligence
+  rss_feeds:
+    - "https://blog.openai.com/rss/"
+    - "https://github.blog/feed/"
+    - "https://blog.stripe.com/feed"
+    - "https://blog.vercel.com/feed"
+    - "https://aws.amazon.com/blogs/aws/feed/"
+    - "https://blog.google/technology/ai/rss/"
+    - "https://techcrunch.com/feed/"
+    - "https://news.ycombinator.com/rss"
+  
+  # Target organizations for monitoring
+  github_orgs:
+    - "openai"
+    - "vercel"
+    - "stripe"
+    - "aws"
+    - "microsoft"
+    - "google"
+    
+  # Product Hunt categories to monitor
+  product_hunt_categories:
+    - "artificial-intelligence"
+    - "developer-tools"
+    - "saas"
+    - "productivity"
+    
+  # Subreddits for market intelligence
+  subreddits:
+    - "startups"
+    - "entrepreneur"
+    - "SaaS"
+    - "MachineLearning"
+    - "programming"
+    - "technology"
