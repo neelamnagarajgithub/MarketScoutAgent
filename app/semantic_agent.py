@@ -374,7 +374,7 @@ class SemanticMarketAgent:
             results = {}
             async with httpx.AsyncClient(timeout=30) as client:
                 av_key = self.config.get("keys", {}).get("alpha_vantage")
-                polygon_key = self.config.get("keys", {}).get("polygon")
+                massive_key = self.config.get("keys", {}).get("massive")
                 if av_key:
                     avr = {}
                     for s in symbols[:3]:
@@ -390,15 +390,16 @@ class SemanticMarketAgent:
                     except Exception as e:
                         avr["news"] = {"error": str(e)}
                     results["alpha_vantage"] = avr
-                if polygon_key:
-                    poly = {}
-                    for s in symbols[:2]:
-                        try:
-                            d = await financial_apis.fetch_polygon_company_details(client, polygon_key, s)
-                            poly[s] = d
-                        except Exception as e:
-                            poly[s] = {"error": str(e)}
-                    results["polygon"] = poly
+                if massive_key:
+                    massive_data = {}
+                    try:
+                        dividends = await financial_apis.fetch_massive_dividends(client, massive_key, symbols[:3])
+                        massive_data["dividends"] = dividends[:5] if isinstance(dividends, list) else dividends
+                        market_data = await financial_apis.fetch_massive_market_data(client, massive_key, symbols[:3])
+                        massive_data["market_data"] = market_data[:5] if isinstance(market_data, list) else market_data
+                    except Exception as e:
+                        massive_data["error"] = str(e)
+                    results["massive"] = massive_data
             return json.dumps(results, default=str, indent=2)
 
         async def intelligent_rss_monitoring(query_plan: str) -> str:

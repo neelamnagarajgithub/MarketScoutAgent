@@ -31,43 +31,17 @@ check_requirements() {
         exit 1
     fi
     
-    # Check virtual environment
+    # Check virtual environment (optional warning)
     if [[ "$VIRTUAL_ENV" == "" ]]; then
         echo -e "${YELLOW}⚠️  No virtual environment detected${NC}"
         echo "Recommendation: activate your virtual environment first"
     fi
     
-    # Check required API keys
-    required_keys=("GOOGLE_API_KEY")
-    missing_keys=()
-    
-    for key in "${required_keys[@]}"; do
-        if [[ -z "${!key}" ]]; then
-            missing_keys+=("$key")
-        fi
-    done
-    
-    if [[ ${#missing_keys[@]} -gt 0 ]]; then
-        echo -e "${RED}❌ Missing required API keys: ${missing_keys[*]}${NC}"
-        echo "Please set the required environment variables:"
-        for key in "${missing_keys[@]}"; do
-            echo "  export $key='your_key_here'"
-        done
+    # Check if config.yaml exists
+    if [[ ! -f "config.yaml" ]]; then
+        echo -e "${RED}❌ config.yaml not found${NC}"
+        echo "Please ensure config.yaml exists with your API keys"
         exit 1
-    fi
-    
-    # Check optional API keys
-    optional_keys=("SERPAPI_KEY" "NEWSAPI_KEY" "GITHUB_TOKEN")
-    available_optional=()
-    
-    for key in "${optional_keys[@]}"; do
-        if [[ -n "${!key}" ]]; then
-            available_optional+=("$key")
-        fi
-    done
-    
-    if [[ ${#available_optional[@]} -gt 0 ]]; then
-        echo -e "${GREEN}✅ Available optional APIs: ${available_optional[*]}${NC}"
     fi
     
     echo -e "${GREEN}✅ Requirements check completed${NC}"

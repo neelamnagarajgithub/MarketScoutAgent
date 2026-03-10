@@ -15,6 +15,10 @@ requests
 pandas
 numpy
 
+# Database drivers
+aiosqlite
+psycopg2-binary
+
 # LangChain dependencies - compatible versions
 langchain
 langchain-google-genai
@@ -26,4 +30,32 @@ pydantic
 # Semantic search dependencies
 sentence-transformers
 faiss-cpu
-pinecone
+
+# Additional scraping and parsing
+lxml
+html5lib
+selenium
+webdriver-manager
+
+# API clients and utilities
+tweepy
+python-linkedin-v2
+reddit-scraper
+twint
+
+# Development and testing
+pytest
+pytest-asyncio
+pytest-mock
+python-dotenv
+
+# Data processing
+xmltodict
+jsonschema
+dateparser
+fuzzywuzzy
+python-levenshtein
+
+# Security and encoding
+cryptography
+pytz

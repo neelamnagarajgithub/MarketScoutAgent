@@ -19,7 +19,8 @@ from sentence_transformers import SentenceTransformer
 
 from app.fetchers import (
     serpapi, newsapi, github, 
-    news_sources, financial_apis
+    news_sources, financial_apis, business_intelligence,
+    community_sources, social_media, startup_tracker, shodan
 )
 from app.normalizer import normalize_item
 from app.db import Database
@@ -167,27 +168,52 @@ class SimpleSemanticSearch:
 
     def _extract_entities(self, query: str) -> List[str]:
         """Extract company names and key entities"""
-        # Simple entity extraction - could be enhanced with NLP
-        companies = ['nvidia', 'openai', 'microsoft', 'google', 'apple', 'amazon', 'tesla', 'meta']
+        # Known companies - could be enhanced with NLP
+        companies = ['nvidia', 'openai', 'microsoft', 'google', 'apple', 'amazon', 'tesla', 'meta', 
+                    'stripe', 'vercel', 'anthropic', 'aws', 'azure']
         entities = []
         
         query_lower = query.lower()
+        
+        # Check for known companies first
         for company in companies:
             if company in query_lower:
                 entities.append(company.upper())
+        
+        # If no specific companies found, extract generic business entities from query context
+        if not entities:
+            # For business/funding/startup queries, use relevant tech companies
+            if any(term in query_lower for term in ['startup', 'funding', 'venture', 'investment', 'business']):
+                entities.extend(['NVIDIA', 'OPENAI', 'STRIPE'])  # Major tech/AI companies for business context
+            # For product/tech queries, use major tech companies  
+            elif any(term in query_lower for term in ['product', 'tech', 'software', 'development', 'api']):
+                entities.extend(['GOOGLE', 'MICROSOFT', 'VERCEL'])
+            # For AI/ML queries 
+            elif any(term in query_lower for term in ['ai', 'artificial', 'machine learning', 'ml', 'neural']):
+                entities.extend(['NVIDIA', 'OPENAI', 'MICROSOFT'])
+            # Default fallback for other queries
+            else:
+                entities.extend(['GOOGLE', 'MICROSOFT'])  # Major companies with broad business data
         
         return entities
 
     def _plan_sources(self, query_type: QueryType) -> List[str]:
         """Plan which data sources to use based on query type"""
-        base_sources = ['search_discovery', 'news_intelligence']
+        base_sources = ['search_discovery', 'news_intelligence', 'community_intelligence']
         
         if query_type in [QueryType.COMPANY_ANALYSIS, QueryType.FUNDING_INTELLIGENCE]:
-            base_sources.extend(['financial_intelligence', 'github_intelligence'])
+            base_sources.extend(['financial_intelligence', 'github_intelligence', 'business_intelligence', 'startup_intelligence', 'social_media'])
         elif query_type == QueryType.TECHNOLOGY_STACK:
-            base_sources.append('github_intelligence')
+            base_sources.extend(['github_intelligence', 'business_intelligence', 'security_intelligence'])
         elif query_type == QueryType.MARKET_TREND:
-            base_sources.append('financial_intelligence')
+            base_sources.extend(['financial_intelligence', 'social_media', 'startup_intelligence'])
+        elif query_type == QueryType.COMPETITOR_ANALYSIS:
+            base_sources.extend(['business_intelligence', 'financial_intelligence', 'social_media', 'startup_intelligence', 'security_intelligence'])
+        elif query_type == QueryType.PRODUCT_RESEARCH:
+            base_sources.extend(['github_intelligence', 'community_intelligence', 'social_media'])
+        else:
+            # Default for unknown query types
+            base_sources.extend(['business_intelligence', 'startup_intelligence'])
             
         return base_sources
 
@@ -235,7 +261,12 @@ class SimpleSemanticSearch:
             'search_discovery': {},
             'news_intelligence': {}, 
             'github_intelligence': {},
-            'financial_intelligence': {}
+            'financial_intelligence': {},
+            'business_intelligence': {},
+            'social_media': {},
+            'community_intelligence': {},
+            'startup_intelligence': {},
+            'security_intelligence': {}
         }
         
         async with httpx.AsyncClient(follow_redirects=True, timeout=30) as client:
@@ -256,6 +287,26 @@ class SimpleSemanticSearch:
             # Financial intelligence
             if 'financial_intelligence' in plan.sources:
                 tasks.extend(await self._create_financial_tasks(client, plan.financial_symbols))
+
+            # Business intelligence
+            if 'business_intelligence' in plan.sources:
+                tasks.extend(await self._create_business_intelligence_tasks(client, plan.entities))
+
+            # Social media intelligence
+            if 'social_media' in plan.sources:
+                tasks.extend(await self._create_social_media_tasks(client, plan.search_terms))
+
+            # Community intelligence
+            if 'community_intelligence' in plan.sources:
+                tasks.extend(await self._create_community_tasks(client, plan.search_terms))
+
+            # Startup intelligence
+            if 'startup_intelligence' in plan.sources:
+                tasks.extend(await self._create_startup_tasks(client, plan.entities))
+
+            # Security intelligence
+            if 'security_intelligence' in plan.sources:
+                tasks.extend(await self._create_security_tasks(client, plan.search_terms, plan.entities))
             
             # Execute all tasks
             if tasks:
@@ -329,13 +380,35 @@ class SimpleSemanticSearch:
                     'query': term,
                     'coro': news_sources.fetch_gnews(client, gnews_key, term)
                 })
+
+        # Mediastack
+        mediastack_key = self.config.get('keys', {}).get('mediastack')
+        if mediastack_key:
+            for term in search_terms[:2]:
+                tasks.append({
+                    'type': 'news_intelligence',
+                    'source': 'mediastack',
+                    'query': term,
+                    'coro': news_sources.fetch_mediastack(client, mediastack_key, term)
+                })
+
+        # Currents
+        currents_key = self.config.get('keys', {}).get('currents')
+        if currents_key:
+            for term in search_terms[:2]:
+                tasks.append({
+                    'type': 'news_intelligence',
+                    'source': 'currents',
+                    'query': term,
+                    'coro': news_sources.fetch_currents_api(client, currents_key, term)
+                })
         
         return tasks
 
     async def _create_github_tasks(self, client: httpx.AsyncClient, entities: List[str]) -> List:
         """Create GitHub intelligence tasks"""
         tasks = []
-        gh_key = self.config.get('keys', {}).get('github')
+        gh_key = self.config.get('keys', {}).get('github_personal_access_token')
         
         if gh_key:
             # Map entities to likely GitHub orgs
@@ -370,8 +443,9 @@ class SimpleSemanticSearch:
     async def _create_financial_tasks(self, client: httpx.AsyncClient, symbols: List[str]) -> List:
         """Create financial intelligence tasks"""
         tasks = []
-        av_key = self.config.get('keys', {}).get('alpha_vantage')
         
+        # Alpha Vantage
+        av_key = self.config.get('keys', {}).get('alpha_vantage')
         if av_key:
             # Company overview for each symbol
             for symbol in symbols[:3]:
@@ -390,7 +464,230 @@ class SimpleSemanticSearch:
                     'query': ','.join(symbols[:3]),
                     'coro': financial_apis.fetch_company_news_alpha_vantage(client, av_key, ','.join(symbols[:3]))
                 })
+
+        # Massive.com Market Data
+        massive_key = self.config.get('keys', {}).get('massive')
+        if massive_key and symbols:
+            tasks.append({
+                'type': 'financial_intelligence',
+                'source': 'massive',
+                'query': ','.join(symbols[:3]),
+                'coro': financial_apis.fetch_massive_dividends(client, massive_key, symbols[:3])
+            })
+
+        # Finnhub
+        finnhub_key = self.config.get('keys', {}).get('finnhub')
+        if finnhub_key:
+            for symbol in symbols[:2]:
+                tasks.append({
+                    'type': 'financial_intelligence',
+                    'source': 'finnhub',
+                    'query': symbol,
+                    'coro': financial_apis.fetch_finnhub_news(client, finnhub_key, symbol)
+                })
+
+        # Quandl
+        quandl_key = self.config.get('keys', {}).get('quandl')
+        if quandl_key:
+            for symbol in symbols[:1]:  # Limit Quandl calls
+                tasks.append({
+                    'type': 'financial_intelligence',
+                    'source': 'quandl',
+                    'query': f"WIKI/{symbol}",
+                    'coro': financial_apis.fetch_quandl_data(client, quandl_key, f"WIKI/{symbol}")
+                })
         
+        return tasks
+
+    async def _create_business_intelligence_tasks(self, client: httpx.AsyncClient, entities: List[str]) -> List:
+        """Create business intelligence tasks"""
+        tasks = []
+        
+        # Crunchbase
+        crunchbase_key = self.config.get('keys', {}).get('crunchbase')
+        if crunchbase_key:
+            for entity in entities[:2]:
+                tasks.append({
+                    'type': 'business_intelligence',
+                    'source': 'crunchbase',
+                    'query': entity,
+                    'coro': business_intelligence.fetch_crunchbase_organizations(client, crunchbase_key, entity)
+                })
+
+        # Clearbit
+        clearbit_key = self.config.get('keys', {}).get('clearbit')
+        if clearbit_key:
+            for entity in entities[:2]:
+                # Assume entity might be a domain
+                domain = f"{entity.lower()}.com" if '.' not in entity else entity
+                tasks.append({
+                    'type': 'business_intelligence',
+                    'source': 'clearbit',
+                    'query': domain,
+                    'coro': business_intelligence.fetch_clearbit_company(client, clearbit_key, domain)
+                })
+
+        # Apollo
+        apollo_key = self.config.get('keys', {}).get('apollo')
+        if apollo_key:
+            for entity in entities[:1]:  # Limit Apollo calls
+                domain = f"{entity.lower()}.com" if '.' not in entity else entity
+                tasks.append({
+                    'type': 'business_intelligence',
+                    'source': 'apollo',
+                    'query': domain,
+                    'coro': business_intelligence.fetch_apollo_contacts(client, apollo_key, domain)
+                })
+
+        # BuiltWith
+        builtwith_key = self.config.get('keys', {}).get('builtwith')
+        if builtwith_key:
+            for entity in entities[:2]:
+                domain = f"{entity.lower()}.com" if '.' not in entity else entity
+                tasks.append({
+                    'type': 'business_intelligence',
+                    'source': 'builtwith',
+                    'query': domain,
+                    'coro': business_intelligence.fetch_builtwith_domain(client, builtwith_key, domain)
+                })
+
+        return tasks
+
+    async def _create_social_media_tasks(self, client: httpx.AsyncClient, search_terms: List[str]) -> List:
+        """Create social media tasks"""
+        tasks = []
+
+        # Twitter/X
+        twitter_key = self.config.get('keys', {}).get('twitter') or self.config.get('keys', {}).get('x')
+        if twitter_key:
+            for term in search_terms[:2]:
+                tasks.append({
+                    'type': 'social_media',
+                    'source': 'twitter',
+                    'query': term,
+                    'coro': social_media.fetch_twitter_tweets(client, twitter_key, term)
+                })
+
+        # LinkedIn
+        linkedin_key = self.config.get('keys', {}).get('linkedin')
+        if linkedin_key:
+            for term in search_terms[:1]:  # LinkedIn has strict rate limits
+                tasks.append({
+                    'type': 'social_media',
+                    'source': 'linkedin',
+                    'query': term,
+                    'coro': social_media.search_linkedin_companies(client, linkedin_key, term)
+                })
+
+        return tasks
+
+    async def _create_community_tasks(self, client: httpx.AsyncClient, search_terms: List[str]) -> List:
+        """Create community intelligence tasks"""
+        tasks = []
+
+        # Reddit (scraping - no API key needed)
+        for term in search_terms[:2]:
+            for subreddit in ['technology', 'startups', 'entrepreneur', 'business']:
+                tasks.append({
+                    'type': 'community_intelligence',
+                    'source': 'reddit',
+                    'query': f"{subreddit}:{term}",
+                    'coro': community_sources.scrape_reddit_posts(client, subreddit)
+                })
+
+        # Hacker News search
+        for term in search_terms[:3]:
+            tasks.append({
+                'type': 'community_intelligence',
+                'source': 'hackernews',
+                'query': term,
+                'coro': community_sources.scrape_hackernews_search(client, term)
+            })
+
+        # Product Hunt
+        product_hunt_key = self.config.get('keys', {}).get('product_hunt')
+        if product_hunt_key:
+            tasks.append({
+                'type': 'community_intelligence',
+                'source': 'product_hunt',
+                'query': 'latest',
+                'coro': community_sources.fetch_product_hunt_posts(client, product_hunt_key)
+            })
+
+        # Indie Hackers (scraping)
+        for term in search_terms[:1]:
+            tasks.append({
+                'type': 'community_intelligence',
+                'source': 'indie_hackers',
+                'query': term,
+                'coro': community_sources.fetch_indie_hackers_posts(client, term)
+            })
+
+        return tasks
+
+    async def _create_startup_tasks(self, client: httpx.AsyncClient, entities: List[str]) -> List:
+        """Create startup intelligence tasks"""
+        tasks = []
+
+        # Custom startup tracker
+        startup_tracker_key = self.config.get('keys', {}).get('startup_tracker')
+        if startup_tracker_key:
+            for entity in entities[:2]:
+                tasks.append({
+                    'type': 'startup_intelligence',
+                    'source': 'startup_tracker',
+                    'query': entity,
+                    'coro': startup_tracker.fetch_startup_tracker_companies(client, startup_tracker_key, entity)
+                })
+
+        # BetaList (scraping)
+        tasks.append({
+            'type': 'startup_intelligence',
+            'source': 'betalist',
+            'query': 'latest',
+            'coro': community_sources.fetch_betalist_startups(client)
+        })
+
+        # TechCrunch RSS
+        for entity in entities[:1]:
+            tasks.append({
+                'type': 'startup_intelligence',
+                'source': 'techcrunch',
+                'query': entity,
+                'coro': startup_tracker.fetch_techcrunch_startups(client, 'startups')
+            })
+
+        return tasks
+
+    async def _create_security_tasks(self, client: httpx.AsyncClient, search_terms: List[str], entities: List[str]) -> List:
+        """Create security intelligence tasks"""
+        tasks = []
+
+        # Shodan security intelligence
+        shodan_key = self.config.get('keys', {}).get('shodan')
+        if shodan_key:
+            # Search for technologies/services mentioned in query
+            for term in search_terms[:2]:
+                # Look for exposed services related to the search terms
+                shodan_query = f"product:{term}"
+                tasks.append({
+                    'type': 'security_intelligence',
+                    'source': 'shodan',
+                    'query': shodan_query,
+                    'coro': shodan.search_shodan(client, shodan_key, shodan_query, limit=10)
+                })
+
+            # Search for company entities in Shodan
+            for entity in entities[:2]:
+                # Look for infrastructure owned by the entity
+                shodan_query = f"org:\"{entity}\""
+                tasks.append({
+                    'type': 'security_intelligence',
+                    'source': 'shodan_org',
+                    'query': shodan_query,
+                    'coro': shodan.search_shodan(client, shodan_key, shodan_query, limit=5)
+                })
+
         return tasks
 
     def _process_task_results(self, task_results: List) -> Dict[str, Any]:
@@ -399,7 +696,12 @@ class SimpleSemanticSearch:
             'search_discovery': {},
             'news_intelligence': {},
             'github_intelligence': {},
-            'financial_intelligence': {}
+            'financial_intelligence': {},
+            'business_intelligence': {},
+            'social_media': {},
+            'community_intelligence': {},
+            'startup_intelligence': {},
+            'security_intelligence': {}
         }
         
         successful_count = 0

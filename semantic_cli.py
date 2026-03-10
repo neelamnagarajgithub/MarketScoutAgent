@@ -29,17 +29,6 @@ class EnhancedSemanticCLI:
         try:
             print("🚀 Initializing Enhanced Semantic Search Engine...")
             
-            # Check for required environment variables
-            required_env = ['GOOGLE_API_KEY']
-            missing_env = [env for env in required_env if not os.getenv(env)]
-            
-            if missing_env:
-                print(f"❌ Missing environment variables: {', '.join(missing_env)}")
-                print("Please set the required environment variables:")
-                for env in missing_env:
-                    print(f"  export {env}='your_key_here'")
-                return False
-            
             # Import and initialize
             from app.simple_semantic_search import SimpleSemanticSearch
             self.engine = SimpleSemanticSearch()

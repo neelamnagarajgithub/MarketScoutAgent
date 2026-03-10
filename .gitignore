@@ -1,2 +1,26 @@
 config.yaml
 .env
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Python cache / compiled
+*.pyo
+*.pyd
+.Python
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
