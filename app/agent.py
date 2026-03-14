@@ -39,7 +39,7 @@ class MarketIntelligenceAgent:
             raise ValueError("GOOGLE_API_KEY not found in environment variables")
         
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             google_api_key=gemini_api_key,
             temperature=0.1,
             max_tokens=4096

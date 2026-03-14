@@ -15,9 +15,11 @@ from app.pipeline.types import RetrievedItem, JudgedDataset
 class LLMJudge:
     """LLM-based relevance judge with guardrails, dedupe, source diversity balancing."""
 
-    def __init__(self):
+    def __init__(self, google_api_key: str = ""):
         self.guardrails = GuardrailEngine()
-        key = os.getenv("GOOGLE_API_KEY")
+
+        key = google_api_key or os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
             google_api_key=key,
@@ -44,15 +46,26 @@ class LLMJudge:
                     for d in docs:
                         if not isinstance(d, dict):
                             continue
+
+                        title = self._normalize_string(d.get("title", ""))
+                        url = self._normalize_string(d.get("url", ""))
+                        content = self._normalize_string(d.get("content", ""))
+
+                        # drop skeletal dicts like {"content_hash": "..."}
+                        if not (title or url or content):
+                            continue
+
                         items.append(
                             RetrievedItem(
                                 source_type=source_type,
                                 source=source_name,
                                 query_key=str(query_key),
-                                title=self._normalize_string(d.get("title", "")),
-                                url=self._normalize_string(d.get("url", "")),
-                                content=self._normalize_string(d.get("content", d.get("snippet", ""))),
-                                published_at=d.get("publishedAt") or d.get("published_at"),
+                                title=title,
+                                url=url,
+                                content=content,
+                                published_at=self._normalize_string(
+                                    d.get("published_at") or d.get("publishedAt") or ""
+                                ) or None,
                                 metadata=d.get("metadata", {}) if isinstance(d.get("metadata", {}), dict) else {},
                             )
                         )

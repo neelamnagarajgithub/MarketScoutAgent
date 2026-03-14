@@ -1,23 +1,27 @@
 import json
+import logging
 import os
 import re
+import ast
 from collections import Counter, defaultdict
 from datetime import datetime
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 from app.pipeline.types import AnalysisReport, JudgedDataset, RetrievedItem
 
+logger = logging.getLogger(__name__)
+
 
 class AnalyzerAgent:
     """Detailed strategic analyzer with stats + structured narrative."""
 
-    def __init__(self, google_api_key: str | None = None):
-        key = google_api_key or os.getenv("GOOGLE_API_KEY")
+    def __init__(self, google_api_key: Optional[str] = None):
+        key = google_api_key or os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             google_api_key=key,
             temperature=0.2,
             max_output_tokens=7000,
@@ -134,7 +138,7 @@ class AnalyzerAgent:
 
     def _coerce_list(self, value: Any, fallback: List[str]) -> List[str]:
         if isinstance(value, list):
-            return [str(v).strip() for v in value if str(v).strip()][:12] or fallback
+            return [str(v).strip() for v in value if str(v).strip()][:24] or fallback
         if isinstance(value, str) and value.strip():
             return [value.strip()]
         return fallback
@@ -281,25 +285,29 @@ Objectives:
 - Separate facts from assumptions.
 - Explicitly state uncertainty and blind spots.
 
-Depth requirements (mandatory):
-- summary: 1 dense paragraph (120-220 words).
-- key_findings: 8-14 bullets.
-- risks: 6-10 bullets.
-- recommendations: 8-12 bullets (action-oriented, ownership-ready).
-- sections must be deeply elaborated:
-  - executive_overview: 180-300 words
-  - business_context: 180-300 words
-  - market_landscape: 220-380 words
-  - customer_and_user_signals: 8-14 bullets
-  - competitive_landscape: 8-14 bullets
-  - product_implications: 8-14 bullets
-  - feature_recommendations: 10-16 bullets
-  - go_to_market_implications: 8-14 bullets
-  - strategic_implications: 8-14 bullets
-  - opportunities: 8-14 bullets
-  - risks_and_constraints: 8-14 bullets
-  - decision_ready_next_steps: 10-16 bullets with priority hints (now/next/later)
-  - evidence_highlights: 10-16 items, each with "title", "source", "why_it_matters"
+Depth requirements (mandatory and bounded):
+- summary: 1 dense paragraph (90-160 words).
+- key_findings: 7-10 bullets.
+- risks: 5-8 bullets.
+- recommendations: 7-10 bullets (action-oriented, ownership-ready).
+- sections must be detailed but concise:
+    - executive_overview: 120-220 words
+    - business_context: 120-220 words
+    - market_landscape: 140-260 words
+    - customer_and_user_signals: 6-10 bullets
+    - competitive_landscape: 6-10 bullets
+    - product_implications: 6-10 bullets
+    - feature_recommendations: 7-12 bullets
+    - go_to_market_implications: 6-10 bullets
+    - strategic_implications: 6-10 bullets
+    - opportunities: 6-10 bullets
+    - risks_and_constraints: 6-10 bullets
+    - decision_ready_next_steps: 7-12 bullets with priority hints (now/next/later)
+    - evidence_highlights: 8-12 items, each with "title", "source", "why_it_matters"
+
+Output limit:
+- Keep total output under ~2200 words.
+- Do not include any prose outside the JSON object.
 
 Confidence scoring:
 - 0.85-1.0 only for broad, recent, cross-source consistency.
@@ -338,32 +346,286 @@ Context:
 {json.dumps(context, ensure_ascii=False)}
 """
 
+    def _compact_context(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        evidence = context.get("evidence_samples", [])
+        compact_evidence = []
+        for item in evidence[:8]:
+            if not isinstance(item, dict):
+                continue
+            compact_evidence.append({
+                "source_type": item.get("source_type"),
+                "source": item.get("source"),
+                "title": str(item.get("title", ""))[:180],
+                "published_at": item.get("published_at"),
+            })
+
+        sb = context.get("source_breakdown", {}) if isinstance(context.get("source_breakdown", {}), dict) else {}
+        tb = context.get("theme_breakdown", {}) if isinstance(context.get("theme_breakdown", {}), dict) else {}
+        tl = context.get("timeline_breakdown", {}) if isinstance(context.get("timeline_breakdown", {}), dict) else {}
+
+        return {
+            "query": context.get("query"),
+            "report_type": context.get("report_type"),
+            "primary_lens": context.get("primary_lens"),
+            "product_focus": context.get("product_focus"),
+            "item_count": context.get("item_count", 0),
+            "top_sources": sb.get("top_sources", [])[:6],
+            "source_type_counts": sb.get("source_type_counts", {}),
+            "dominant_terms": (tb.get("dominant_terms", []) if isinstance(tb, dict) else [])[:12],
+            "latest_period": tl.get("latest_period") if isinstance(tl, dict) else None,
+            "guardrail_flags": context.get("guardrail_flags", []),
+            "judge_notes": context.get("judge_notes", []),
+            "evidence_samples": compact_evidence,
+        }
+
+    def _build_compact_prompt(self, context: Dict[str, Any]) -> str:
+        compact = self._compact_context(context)
+        return f"""
+Return STRICT JSON only. No markdown. No prose outside JSON.
+
+You are generating a concise but decision-ready market intelligence report.
+Keep total output under 1100 words.
+
+Required schema:
+{{
+  "summary": "string",
+  "key_findings": ["string"],
+  "risks": ["string"],
+  "recommendations": ["string"],
+  "confidence_score": 0.0,
+  "sections": {{
+    "executive_overview": "string",
+    "business_context": "string",
+    "market_landscape": "string",
+    "customer_and_user_signals": ["string"],
+    "competitive_landscape": ["string"],
+    "product_implications": ["string"],
+    "feature_recommendations": ["string"],
+    "go_to_market_implications": ["string"],
+    "strategic_implications": ["string"],
+    "opportunities": ["string"],
+    "risks_and_constraints": ["string"],
+    "decision_ready_next_steps": ["string"],
+    "evidence_highlights": [{{"title":"string","source":"string","why_it_matters":"string"}}],
+    "source_breakdown": {{}},
+    "theme_breakdown": {{}},
+    "timeline_breakdown": {{}},
+    "guardrail_summary": {{}}
+  }}
+}}
+
+Minimum detail:
+- key_findings/recommendations: 6-8 bullets each
+- list-based sections: 4-8 bullets each
+
+Compact context:
+{json.dumps(compact, ensure_ascii=False)}
+"""
+
+    def _is_token_truncated(self, resp: Any) -> bool:
+        meta = getattr(resp, "response_metadata", {}) or {}
+        finish = str(meta.get("finish_reason", "")).upper()
+        return finish in {"MAX_TOKENS", "LENGTH", "RECITATION"}
+
+    def _extract_balanced_json(self, text: str) -> List[str]:
+        """Extract candidate JSON objects even when model wraps output with prose/markdown."""
+        candidates: List[str] = []
+        if not text:
+            return candidates
+
+        # fenced blocks
+        for m in re.finditer(r"```(?:json)?\s*(\{.*?\})\s*```", text, flags=re.DOTALL | re.IGNORECASE):
+            candidates.append(m.group(1).strip())
+
+        # balanced object scan
+        start = -1
+        depth = 0
+        in_str = False
+        esc = False
+        for i, ch in enumerate(text):
+            if start < 0:
+                if ch == "{":
+                    start = i
+                    depth = 1
+                    in_str = False
+                    esc = False
+                continue
+
+            if in_str:
+                if esc:
+                    esc = False
+                elif ch == "\\":
+                    esc = True
+                elif ch == '"':
+                    in_str = False
+                continue
+
+            if ch == '"':
+                in_str = True
+            elif ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0 and start >= 0:
+                    candidates.append(text[start:i + 1].strip())
+                    start = -1
+
+        # full text as last chance
+        candidates.append(text.strip())
+        # unique preserve order
+        seen = set()
+        uniq = []
+        for c in candidates:
+            if c and c not in seen:
+                seen.add(c)
+                uniq.append(c)
+        return uniq
+
+    def _response_to_text(self, resp: Any) -> str:
+        """Normalize LLM response content to a single text blob."""
+        content = getattr(resp, "content", resp)
+
+        if isinstance(content, str):
+            return content
+
+        if isinstance(content, list):
+            parts: List[str] = []
+            for item in content:
+                if isinstance(item, str):
+                    parts.append(item)
+                elif isinstance(item, dict):
+                    # LangChain/Gemini often returns segmented parts like {'type':'text','text':'...'}
+                    text_part = item.get("text") or item.get("output_text") or item.get("content") or ""
+                    if text_part:
+                        parts.append(str(text_part))
+                else:
+                    parts.append(str(item))
+            return "\n".join(p for p in parts if p).strip()
+
+        return str(content)
+
+    def _try_parse_candidate(self, candidate: str) -> Optional[Dict[str, Any]]:
+        """Best-effort parse for JSON-ish model output."""
+        if not candidate:
+            return None
+
+        # 1) strict JSON
+        try:
+            obj = json.loads(candidate)
+            if isinstance(obj, dict):
+                return obj
+            if isinstance(obj, list):
+                for item in obj:
+                    if isinstance(item, dict):
+                        return item
+        except Exception:
+            pass
+
+        # 2) Python-literal style dicts using single quotes/trailing commas
+        try:
+            obj = ast.literal_eval(candidate)
+            if isinstance(obj, dict):
+                return obj
+            if isinstance(obj, list):
+                for item in obj:
+                    if isinstance(item, dict):
+                        return item
+        except Exception:
+            pass
+
+        return None
+
     def _parse_llm_output(self, text: str) -> Dict[str, Any]:
-        start = text.find("{")
-        end = text.rfind("}") + 1
-        if start < 0 or end <= 0:
-            raise ValueError("No JSON object found in LLM output")
-        return json.loads(text[start:end])
+        for candidate in self._extract_balanced_json(text):
+            obj = self._try_parse_candidate(candidate)
+            if isinstance(obj, dict):
+                return obj
+        raise ValueError("No valid JSON object found in LLM output")
+
+    def _repair_json_with_llm(self, raw_output: str, prompt: str) -> Dict[str, Any]:
+        """Ask model to repair its own malformed output into strict JSON."""
+        repair_prompt = (
+            "You returned malformed output previously. Convert it into STRICT valid JSON only. "
+            "No markdown, no commentary, no code fences.\n\n"
+            "The JSON must match the schema implied by this original task prompt:\n"
+            f"{prompt[:10000]}\n\n"
+            "Malformed output to repair:\n"
+            f"{(raw_output or '')[:14000]}"
+        )
+        resp = self.llm.invoke([HumanMessage(content=repair_prompt)])
+        repaired_txt = self._response_to_text(resp)
+        return self._parse_llm_output(repaired_txt)
 
     async def analyze(self, ds: JudgedDataset) -> AnalysisReport:
+        fallback = self._fallback(ds)
+
         if not ds.items or not self.llm:
-            return self._fallback(ds)
+            fallback.sections.setdefault("guardrail_summary", {}).setdefault("judge_notes", []).append(
+                "analyzer_fallback_reason=no_items_or_no_llm"
+            )
+            return fallback
 
         context = self._build_dataset_context(ds)
         prompt = self._build_prompt(context)
 
         try:
             resp = self.llm.invoke([HumanMessage(content=prompt)])
-            txt = getattr(resp, "content", str(resp))
+            txt = self._response_to_text(resp)
+            if self._is_token_truncated(resp):
+                resp = self.llm.invoke([HumanMessage(content=self._build_compact_prompt(context))])
+                txt = self._response_to_text(resp)
+
             obj = self._parse_llm_output(txt)
+
             sections = self._normalize_sections(obj.get("sections", {}), context)
+
+            # quality gate: if model returns too-thin output, run one strict retry
+            kf = self._coerce_list(obj.get("key_findings"), fallback.key_findings)
+            recs = self._coerce_list(obj.get("recommendations"), fallback.recommendations)
+            if len(kf) < 4 or len(recs) < 4:
+                retry_prompt = (
+                    "Return STRICT JSON only. No markdown. No prose outside JSON. "
+                    "Ensure minimum 8 key_findings and 8 recommendations.\n\n"
+                    + prompt
+                )
+                retry_resp = self.llm.invoke([HumanMessage(content=retry_prompt)])
+                retry_txt = self._response_to_text(retry_resp)
+                retry_obj = self._parse_llm_output(retry_txt)
+                obj = retry_obj
+                sections = self._normalize_sections(obj.get("sections", {}), context)
+                kf = self._coerce_list(obj.get("key_findings"), fallback.key_findings)
+                recs = self._coerce_list(obj.get("recommendations"), fallback.recommendations)
+
             return AnalysisReport(
-                summary=str(obj.get("summary", "") or self._fallback(ds).summary),
-                key_findings=self._coerce_list(obj.get("key_findings"), self._fallback(ds).key_findings),
-                risks=self._coerce_list(obj.get("risks"), self._fallback(ds).risks),
-                recommendations=self._coerce_list(obj.get("recommendations"), self._fallback(ds).recommendations),
+                summary=str(obj.get("summary", "") or fallback.summary),
+                key_findings=kf,
+                risks=self._coerce_list(obj.get("risks"), fallback.risks),
+                recommendations=recs,
                 confidence_score=max(0.0, min(1.0, float(obj.get("confidence_score", 0.0) or 0.0))),
                 sections=sections,
             )
-        except Exception:
-            return self._fallback(ds)
+        except ValueError as e:
+            logger.warning("Analyzer parse failed on first pass; attempting JSON repair: %s", e)
+            try:
+                repaired_obj = self._repair_json_with_llm(txt if 'txt' in locals() else "", prompt)
+                repaired_sections = self._normalize_sections(repaired_obj.get("sections", {}), context)
+                return AnalysisReport(
+                    summary=str(repaired_obj.get("summary", "") or fallback.summary),
+                    key_findings=self._coerce_list(repaired_obj.get("key_findings"), fallback.key_findings),
+                    risks=self._coerce_list(repaired_obj.get("risks"), fallback.risks),
+                    recommendations=self._coerce_list(repaired_obj.get("recommendations"), fallback.recommendations),
+                    confidence_score=max(0.0, min(1.0, float(repaired_obj.get("confidence_score", 0.0) or 0.0))),
+                    sections=repaired_sections,
+                )
+            except Exception as repair_error:
+                logger.exception("Analyzer JSON repair failed; using fallback: %s", repair_error)
+                fallback.sections.setdefault("guardrail_summary", {}).setdefault("judge_notes", []).append(
+                    f"analyzer_fallback_reason={type(repair_error).__name__}:{str(repair_error)[:180]}"
+                )
+                return fallback
+        except Exception as e:
+            logger.exception("Analyzer LLM stage failed; using fallback: %s", e)
+            fallback.sections.setdefault("guardrail_summary", {}).setdefault("judge_notes", []).append(
+                f"analyzer_fallback_reason={type(e).__name__}:{str(e)[:180]}"
+            )
+            return fallback

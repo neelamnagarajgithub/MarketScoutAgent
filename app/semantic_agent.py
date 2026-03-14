@@ -131,7 +131,7 @@ class SemanticMarketAgent:
         if not gemini_api_key:
             raise ValueError("GOOGLE_API_KEY is required in env")
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             google_api_key=gemini_api_key,
             temperature=0.1,
             max_output_tokens=4096,

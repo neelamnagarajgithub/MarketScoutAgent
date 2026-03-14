@@ -4,12 +4,15 @@ import uuid
 import yaml
 from datetime import datetime
 from typing import Any, Dict, Optional
+import logging
 
 from app.db import Database
 from app.simple_semantic_search import SimpleSemanticSearch
 from app.pipeline.analyzer import AnalyzerAgent
 from app.pipeline.llm_judge import LLMJudge
 from app.pipeline.reporting import ReportGenerator
+
+logger = logging.getLogger(__name__)
 
 
 class IntelligenceOrchestrator:
@@ -22,8 +25,19 @@ class IntelligenceOrchestrator:
         self.search_engine = SimpleSemanticSearch(config_path=config_path)
         self.reporter = ReportGenerator()
 
-        gkey = os.getenv("GOOGLE_API_KEY", "")
-        self.judge = LLMJudge()
+        keys = self.config.get("keys", {}) if isinstance(self.config, dict) else {}
+        gkey = (
+            os.getenv("GOOGLE_API_KEY", "")
+            or os.getenv("GEMINI_API_KEY", "")
+            or str(keys.get("GOOGLE_API_KEY", "") or "").strip()
+            or str(keys.get("google_api_key", "") or "").strip()
+            or str(keys.get("gemini_api_key", "") or "").strip()
+            or str(keys.get("google_genai_api_key", "") or "").strip()
+        )
+        if not gkey:
+            logger.warning("No Gemini/Google API key configured; analyzer and judge will run in heuristic/fallback mode")
+
+        self.judge = LLMJudge(gkey)
         self.analyzer = AnalyzerAgent(gkey)
 
     async def run(self, query: str, user_id: Optional[str] = None) -> Dict[str, Any]:
@@ -44,18 +58,25 @@ class IntelligenceOrchestrator:
             "sections": analyzed.sections,
         }
 
+        guardrail_summary = analyzed.sections.get("guardrail_summary", {}) if isinstance(analyzed.sections, dict) else {}
+        judge_notes = guardrail_summary.get("judge_notes", []) if isinstance(guardrail_summary, dict) else []
+        fallback_note = next((n for n in judge_notes if isinstance(n, str) and n.startswith("analyzer_fallback_reason=")), None)
+        analysis_mode = "fallback" if fallback_note else "llm"
+
         response = {
             "status": "success",
             "query": query,
             "pdf_link": pdf_url,   # keep frontend compatibility
             "report": report_payload,
+            "analysis_mode": analysis_mode,
+            "fallback_reason": fallback_note,
             "sources_count": len((analyzed.sections.get("source_breakdown", {}) or {}).get("source_counts", {})),
             "documents_count": raw.get("summary", {}).get("total_documents", 0),
         }
 
         report_id = await self.db.save_analysis_report(
             query=query,
-            response=response,
+            report_payload=response,
             pdf_url=pdf_url,
             user_id=user_id,
         )

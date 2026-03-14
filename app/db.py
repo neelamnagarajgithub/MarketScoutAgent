@@ -13,15 +13,22 @@ import hashlib
 import mimetypes
 from typing import Dict, List, Any, Optional
 from datetime import datetime
-
-# SQLAlchemy for ORM (optional, used by ingest.py)
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy import Column, Integer, String, Text, DateTime, JSON, Float, Boolean, Index
-import sqlalchemy as sa
-import datetime as dt
+from uuid import uuid4
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+    Text,
+    DateTime,
+    JSON,
+    Float,
+    Boolean,
+    Index,
+)
+from sqlalchemy.orm import declarative_base
 
 logger = logging.getLogger(__name__)
+
 Base = declarative_base()
 
 
@@ -38,7 +45,7 @@ class Document(Base):
     published_at    = Column(DateTime, nullable=True, index=True)
     doc_metadata    = Column(JSON, default={})
     content_hash    = Column(String(64), index=True)
-    inserted_at     = Column(DateTime, default=dt.datetime.utcnow, index=True)
+    inserted_at     = Column(DateTime, default=datetime.utcnow, index=True)
     sentiment_score = Column(Float, nullable=True)
     relevance_score = Column(Float, nullable=True)
     is_processed    = Column(Boolean, default=False, index=True)
@@ -485,3 +492,93 @@ class Database:
             "supa_rest":    self._supa_client is not None,
             "sqlite_path":  self.sqlite_path,
         }
+
+    async def save_analysis_report(
+        self,
+        query: str,
+        user_id: Optional[str],
+        report_payload: Optional[Dict[str, Any]] = None,
+        response: Optional[Dict[str, Any]] = None,
+        pdf_url: Optional[str] = None,
+    ) -> str:
+        """
+        Persist analysis report if table exists; never hard-fail request path.
+        Returns a string report_id (uuid fallback).
+        """
+        report_id = str(uuid4())
+        now = datetime.utcnow()
+
+        payload = report_payload if report_payload is not None else response
+        if payload is None:
+            payload = {}
+
+        try:
+            # asyncpg path
+            if hasattr(self, "pool") and self.pool:
+                async with self.pool.acquire() as conn:
+                    # create table lazily (safe)
+                    await conn.execute(
+                        """
+                        CREATE TABLE IF NOT EXISTS analysis_reports (
+                            id UUID PRIMARY KEY,
+                            user_id TEXT,
+                            query TEXT NOT NULL,
+                            report JSONB NOT NULL,
+                            pdf_url TEXT,
+                            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+                        )
+                        """
+                    )
+
+                    columns = await conn.fetch(
+                        """
+                        SELECT column_name, data_type
+                        FROM information_schema.columns
+                        WHERE table_schema = 'public' AND table_name = 'analysis_reports'
+                        """
+                    )
+                    col_map = {row["column_name"]: row["data_type"] for row in columns}
+                    payload_col = "report" if "report" in col_map else "response_json" if "response_json" in col_map else None
+
+                    if not payload_col:
+                        logger.warning("analysis_reports has no report payload column; skipping DB persistence")
+                        return report_id
+
+                    payload_json = json.dumps(payload, default=str)
+
+                    if col_map.get("id") == "uuid":
+                        await conn.execute(
+                            f"""
+                            INSERT INTO analysis_reports (id, user_id, query, {payload_col}, pdf_url, created_at)
+                            VALUES ($1, $2, $3, $4::jsonb, $5, $6)
+                            """,
+                            report_id,
+                            user_id,
+                            query,
+                            payload_json,
+                            pdf_url,
+                            now,
+                        )
+                        return report_id
+
+                    inserted_id = await conn.fetchval(
+                        f"""
+                        INSERT INTO analysis_reports (user_id, query, {payload_col}, pdf_url, created_at)
+                        VALUES ($1, $2, $3::jsonb, $4, $5)
+                        RETURNING id
+                        """,
+                        user_id,
+                        query,
+                        payload_json,
+                        pdf_url,
+                        now,
+                    )
+                    return str(inserted_id) if inserted_id is not None else report_id
+
+            # no DB pool available -> soft success with generated id
+            logger.warning("save_analysis_report: no DB pool; returning generated report_id only")
+            return report_id
+
+        except Exception as e:
+            logger.exception("save_analysis_report failed, continuing without DB persistence: %s", e)
+            return report_id
