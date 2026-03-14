@@ -1,61 +1,71 @@
-httpx[http2]
-beautifulsoup4
-python-dateutil
-tenacity
-aiolimiter
-PyYAML
-SQLAlchemy
-asyncpg
-alembic
-feedparser
-uvicorn
-APScheduler
-praw
+# ── Async HTTP & core ──────────────────────────────────────────────────────────
+httpx
+aiohttp
+aiofiles
 requests
-pandas
-numpy
 
-# Database drivers
+# ── Database ───────────────────────────────────────────────────────────────────
+asyncpg
 aiosqlite
-psycopg2-binary
+sqlalchemy
+alembic
+psycopg
+supabase
+gotrue
+postgrest
+realtime
 
-# LangChain dependencies - compatible versions
-langchain
-langchain-google-genai
-langchain-core
-langchain-community
-google-generativeai
+# ── Rate limiting & scheduling ─────────────────────────────────────────────────
+aiolimiter
+tenacity
+APScheduler
+
+# ── Config & validation ────────────────────────────────────────────────────────
+PyYAML
+python-dotenv
 pydantic
+jsonschema
 
-# Semantic search dependencies
+# ── NLP / Embeddings ───────────────────────────────────────────────────────────
 sentence-transformers
+transformers
+tokenizers
+torch
+numpy
 faiss-cpu
 
-# Additional scraping and parsing
-lxml
+# ── LangChain ──────────────────────────────────────────────────────────────────
+langchain
+langchain-core
+langchain-google-genai
+langchain-community
+google-generativeai
+
+# ── Data / parsing / scraping ──────────────────────────────────────────────────
+beautifulsoup4
+feedparser
 html5lib
+python-dateutil
+dateparser
+xmltodict
+pandas
+reportlab
 selenium
 webdriver-manager
-
-# API clients and utilities
+praw
 tweepy
 python-linkedin-v2
-reddit-scraper
-twint
 
-# Development and testing
+# ── Utility / quality ──────────────────────────────────────────────────────────
+fuzzywuzzy
+python-levenshtein
+cryptography
+pytz
+
+# ── Optional integrations ──────────────────────────────────────────────────────
+pinecone-client
+
+# ── Dev / test ─────────────────────────────────────────────────────────────────
 pytest
 pytest-asyncio
 pytest-mock
-python-dotenv
-
-# Data processing
-xmltodict
-jsonschema
-dateparser
-fuzzywuzzy
-python-levenshtein
-
-# Security and encoding
-cryptography
-pytz

@@ -2,6 +2,33 @@
 import asyncio
 from app.ingest import Ingestor
 import argparse
+from fastapi import FastAPI, HTTPException
+from app.schemas import AnalyzeRequest, AnalyzeResponse
+from app.orchestrator import IntelligenceOrchestrator
+from datetime import datetime
+
+app = FastAPI(title="Market Intelligence API")
+orchestrator = IntelligenceOrchestrator(config_path="config.yaml")
+
+
+@app.post("/v1/analyze", response_model=AnalyzeResponse)
+async def analyze(req: AnalyzeRequest):
+    try:
+        out = await orchestrator.run(req.query, req.user_id)
+
+        # Normalize response envelope for schema safety
+        normalized = {
+            "query": out.get("query", req.query),
+            "status": out.get("status", "success"),
+            "response": out.get("response", out if isinstance(out, dict) else {}),
+            "pdf_url": out.get("pdf_url"),
+            "report_id": out.get("report_id"),
+            "timestamp": out.get("timestamp", datetime.utcnow().isoformat()),
+        }
+        return AnalyzeResponse(**normalized)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 async def main():
     parser = argparse.ArgumentParser()
