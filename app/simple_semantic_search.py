@@ -680,9 +680,6 @@ class SimpleSemanticSearch:
             # Save to database
             await self._save_search_session(final_results)
             
-            # Save JSON file
-            await self._save_json_file(final_results)
-            
             return final_results
             
         except Exception as e:

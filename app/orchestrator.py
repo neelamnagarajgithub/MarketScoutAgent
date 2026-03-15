@@ -2,6 +2,7 @@ import json
 import os
 import uuid
 import yaml
+import tempfile
 from datetime import datetime
 from typing import Any, Dict, Optional
 import logging
@@ -45,9 +46,14 @@ class IntelligenceOrchestrator:
         judged = await self.judge.judge(query, raw)
         analyzed = await self.analyzer.analyze(judged)
 
-        pdf_local = self.reporter.render_pdf(query, judged, analyzed)
-        await self.db.init_models()
-        pdf_url = await self.db.upload_pdf_report(pdf_local, bucket="reports")
+        pdf_url = None
+        with tempfile.TemporaryDirectory(prefix="scoutai_report_") as temp_dir:
+            pdf_local = self.reporter.render_pdf(query, judged, analyzed, out_dir=temp_dir)
+            await self.db.init_models()
+            uploaded = await self.db.upload_pdf_report(pdf_local, bucket="reports")
+            # Local PDF fallback is intentionally disabled once Supabase storage is active.
+            if uploaded and uploaded != pdf_local:
+                pdf_url = uploaded
 
         report_payload = {
             "summary": analyzed.summary,
