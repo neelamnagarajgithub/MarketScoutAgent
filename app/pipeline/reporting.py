@@ -7,7 +7,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.platypus import (
-    Paragraph, SimpleDocTemplate, Spacer, ListFlowable, ListItem, Table, TableStyle, PageBreak
+    Paragraph, SimpleDocTemplate, Spacer, ListFlowable, ListItem, Table, TableStyle, PageBreak, Image
 )
 import html
 
@@ -15,6 +15,10 @@ from app.pipeline.types import AnalysisReport, JudgedDataset
 
 
 class ReportGenerator:
+    def _logo_path(self) -> str:
+        # app/pipeline/reporting.py -> repo/utils/logo.png
+        return os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", "utils", "logo.png"))
+
     def _source_index(self, bibliography: list) -> dict:
         index = {}
         source_first = {}
@@ -94,7 +98,7 @@ class ReportGenerator:
         canvas.saveState()
         canvas.setFillColor(colors.HexColor("#1f2937"))
         canvas.setFont("Helvetica", 9)
-        canvas.drawString(16 * mm, 10 * mm, "Market Intelligence Report")
+        canvas.drawString(16 * mm, 10 * mm, "Scout AI")
         canvas.drawRightString(195 * mm, 10 * mm, f"Page {doc.page}")
         canvas.restoreState()
 
@@ -157,6 +161,9 @@ class ReportGenerator:
             leftIndent=12,
         )
 
+    def _section_title(self, label: str, style):
+        return Paragraph(self._safe_text(f"Scout AI - {label}"), style)
+
     def render_pdf(self, query: str, judged: JudgedDataset, report: AnalysisReport, out_dir: str = "search_results") -> str:
         os.makedirs(out_dir, exist_ok=True)
         ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
@@ -179,7 +186,23 @@ class ReportGenerator:
         small = ParagraphStyle("SmallX", parent=styles["BodyText"], fontSize=9, leading=12, textColor=colors.HexColor("#374151"))
 
         story = []
-        story.append(Paragraph("Market Intelligence Report", title))
+        logo_path = self._logo_path()
+        if os.path.exists(logo_path):
+            logo = Image(logo_path, width=16 * mm, height=16 * mm)
+            cover_head = Table(
+                [[logo, Paragraph("Scout AI - Market Intelligence Report", title)]],
+                colWidths=[20 * mm, 158 * mm],
+            )
+            cover_head.setStyle(TableStyle([
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+            ]))
+            story.append(cover_head)
+        else:
+            story.append(Paragraph("Scout AI - Market Intelligence Report", title))
         story.append(Spacer(1, 6))
         story.append(self._p(f"Query: {query}", body))
         story.append(self._p(f"Generated: {datetime.utcnow().isoformat()}Z", small))
@@ -202,20 +225,26 @@ class ReportGenerator:
         sections = report.sections or {}
         evidence = sections.get("evidence_highlights", []) if isinstance(sections.get("evidence_highlights", []), list) else []
 
-        story.append(Paragraph("Key Findings", h2))
+        story.append(self._section_title("Key Findings", h2))
         bibliography = self._collect_bibliography(judged)
         src_idx = self._source_index(bibliography)
         kf_cites = self._citation_text(self._section_citations("key_findings", evidence, src_idx))
-        story.append(self._bullets([f"{x}{kf_cites}" for x in report.key_findings[:20]], body))
-        story.append(Paragraph("Risks", h2))
-        risk_cites = self._citation_text(self._section_citations("risks_and_constraints", evidence, src_idx))
-        story.append(self._bullets([f"{x}{risk_cites}" for x in report.risks[:20]], body))
-        story.append(Paragraph("Recommendations", h2))
-        rec_cites = self._citation_text(self._section_citations("decision_ready_next_steps", evidence, src_idx))
-        story.append(self._bullets([f"{x}{rec_cites}" for x in report.recommendations[:24]], body))
+        story.append(self._bullets(report.key_findings[:20], body))
+        if kf_cites:
+            story.append(self._p(f"Section Sources:{kf_cites}", small))
 
-        source_breakdown = sections.get("source_breakdown", {}) if isinstance(sections.get("source_breakdown", {}), dict) else {}
-        top_sources = source_breakdown.get("top_sources", []) if isinstance(source_breakdown.get("top_sources", []), list) else []
+        story.append(self._section_title("Risks", h2))
+        risk_cites = self._citation_text(self._section_citations("risks_and_constraints", evidence, src_idx))
+        story.append(self._bullets(report.risks[:20], body))
+        if risk_cites:
+            story.append(self._p(f"Section Sources:{risk_cites}", small))
+
+        story.append(self._section_title("Recommendations", h2))
+        rec_cites = self._citation_text(self._section_citations("decision_ready_next_steps", evidence, src_idx))
+        story.append(self._bullets(report.recommendations[:24], body))
+        if rec_cites:
+            story.append(self._p(f"Section Sources:{rec_cites}", small))
+
         for name in [
             "executive_overview", "business_context", "market_landscape",
             "customer_and_user_signals", "competitive_landscape", "product_implications",
@@ -226,19 +255,19 @@ class ReportGenerator:
             if not val:
                 continue
             story.append(PageBreak() if name in {"market_landscape", "feature_recommendations"} else Spacer(1, 4))
-            story.append(Paragraph(name.replace("_", " ").title(), h2))
+            story.append(self._section_title(name.replace("_", " ").title(), h2))
             section_cites = self._citation_text(self._section_citations(name, evidence, src_idx))
             if isinstance(val, list):
-                story.append(self._bullets([f"{str(v)}{section_cites}" for v in val[:40]], body))
+                story.append(self._bullets([str(v) for v in val[:40]], body))
             else:
-                story.append(self._p(f"{val}{section_cites}", body))
-            if top_sources:
-                story.append(self._p(f"Sources referenced: {', '.join(top_sources[:6])}", small))
+                story.append(self._p(str(val), body))
+            if section_cites:
+                story.append(self._p(f"Section Sources:{section_cites}", small))
 
         evidence = sections.get("evidence_highlights", [])
         if isinstance(evidence, list) and evidence:
             story.append(PageBreak())
-            story.append(Paragraph("Evidence Highlights", h2))
+            story.append(self._section_title("Evidence Highlights", h2))
             rows = [["Title", "Source", "Why it matters"]]
             for e in evidence[:20]:
                 rows.append([
@@ -261,7 +290,7 @@ class ReportGenerator:
 
         if bibliography:
             story.append(PageBreak())
-            story.append(Paragraph("Sources (Bibliography)", h2))
+            story.append(self._section_title("Sources (Bibliography)", h2))
             b_rows = [["#", "Source", "Title", "URL"]]
             for i, ref in enumerate(bibliography[:300], start=1):
                 b_rows.append([

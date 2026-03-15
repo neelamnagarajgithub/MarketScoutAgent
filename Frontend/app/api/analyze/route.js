@@ -12,7 +12,7 @@ function buildMockResponse(query) {
       query,
       pdf_link: "https://nvfkjbczkgbuizdqqdum.supabase.co/storage/v1/object/public/reports/report_20260315_063925.pdf",
       report: {
-        summary: "Anthropic's Claude 3.5 Sonnet is positioned for significant growth in 2025, leveraging its strong ethical AI stance and enterprise integrations. The competitive landscape remains intense, with rivals like OpenAI and Google pushing multimodal capabilities and specialized offerings. Differentiation will hinge on robust enterprise features, developer ecosystem support, and strategic GTM partnerships, while mitigating risks related to model bias and regulatory scrutiny.",
+        summary: "Mock Anthropic's Claude 3.5 Sonnet is positioned for significant growth in 2025, leveraging its strong ethical AI stance and enterprise integrations. The competitive landscape remains intense, with rivals like OpenAI and Google pushing multimodal capabilities and specialized offerings. Differentiation will hinge on robust enterprise features, developer ecosystem support, and strategic GTM partnerships, while mitigating risks related to model bias and regulatory scrutiny.",
         key_findings: [
           "Claude 3.5 Sonnet is gaining traction in enterprise settings, evidenced by integrations like 'Claude for Office' and use by entities like Palantir.",
           "The competitive environment is highly dynamic, with continuous advancements from OpenAI (GPT series) and Google (Gemini) in multimodal and agentic AI.",

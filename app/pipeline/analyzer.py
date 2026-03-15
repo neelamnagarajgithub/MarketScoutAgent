@@ -528,7 +528,20 @@ Compact context:
         try:
             obj = json.loads(c)
             if isinstance(obj, dict):
+                if isinstance(obj.get("report"), dict):
+                    return obj["report"]
+                if isinstance(obj.get("analysis"), dict):
+                    return obj["analysis"]
                 return obj
+            if isinstance(obj, str):
+                # Some model responses wrap JSON as a quoted string.
+                nested = json.loads(obj)
+                if isinstance(nested, dict):
+                    if isinstance(nested.get("report"), dict):
+                        return nested["report"]
+                    if isinstance(nested.get("analysis"), dict):
+                        return nested["analysis"]
+                    return nested
             if isinstance(obj, list):
                 for item in obj:
                     if isinstance(item, dict):
@@ -548,6 +561,10 @@ Compact context:
             try:
                 obj = json.loads(variant)
                 if isinstance(obj, dict):
+                    if isinstance(obj.get("report"), dict):
+                        return obj["report"]
+                    if isinstance(obj.get("analysis"), dict):
+                        return obj["analysis"]
                     return obj
                 if isinstance(obj, list):
                     for item in obj:
@@ -560,6 +577,10 @@ Compact context:
         try:
             obj = ast.literal_eval(c)
             if isinstance(obj, dict):
+                if isinstance(obj.get("report"), dict):
+                    return obj["report"]
+                if isinstance(obj.get("analysis"), dict):
+                    return obj["analysis"]
                 return obj
             if isinstance(obj, list):
                 for item in obj:
@@ -576,6 +597,17 @@ Compact context:
         if isinstance(direct, dict):
             return direct
 
+        # Try to decode if output is JSON escaped in a markdown/code wrapper or quoted blob.
+        stripped = (text or "").strip()
+        if stripped.startswith('"') and stripped.endswith('"'):
+            try:
+                decoded = json.loads(stripped)
+                obj = self._try_parse_candidate(decoded)
+                if isinstance(obj, dict):
+                    return obj
+            except Exception:
+                pass
+
         for candidate in self._extract_balanced_json(text):
             obj = self._try_parse_candidate(candidate)
             if isinstance(obj, dict):
@@ -586,7 +618,7 @@ Compact context:
         """Ask model to repair its own malformed output into strict JSON."""
         repair_prompt = (
             "You returned malformed output previously. Convert it into STRICT valid JSON only. "
-            "No markdown, no commentary, no code fences.\n\n"
+            "No markdown, no commentary, no code fences. The response MUST begin with '{' and end with '}'.\n\n"
             "The JSON must match the schema implied by this original task prompt:\n"
             f"{prompt[:10000]}\n\n"
             "Malformed output to repair:\n"
@@ -615,7 +647,13 @@ Compact context:
                 resp = self.llm.invoke([HumanMessage(content=self._build_compact_prompt(context))])
                 txt = self._response_to_text(resp)
 
-            obj = self._parse_llm_output(txt)
+            try:
+                obj = self._parse_llm_output(txt)
+            except ValueError:
+                # Retry once with compact prompt before repair step.
+                compact_resp = self.llm.invoke([HumanMessage(content=self._build_compact_prompt(context))])
+                compact_txt = self._response_to_text(compact_resp)
+                obj = self._parse_llm_output(compact_txt)
 
             sections = self._normalize_sections(obj.get("sections", {}), context)
 

@@ -1,0 +1,3828 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/Contents 452 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+5 0 obj
+<<
+/Contents 453 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+6 0 obj
+<<
+/Contents 454 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+7 0 obj
+<<
+/Contents 455 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+8 0 obj
+<<
+/Contents 456 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+9 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/Audio2Face-3D-Samples)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 741.4047 528.0573 752.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/DreamDojo)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 723.4047 473.0313 734.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/Isaac-GR00T)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 705.4047 481.0413 716.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/Megatron-LM)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 687.4047 481.0413 698.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+13 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/NeMo-Agent-Toolkit)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 669.4047 507.5463 680.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+14 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/NeMo-Retriever)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 651.4047 491.0313 662.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+15 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/Nvidia-Comms-Perf-Suite)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 633.4047 529.5333 644.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+16 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/TensorRT)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 615.4047 467.5323 626.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+17 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/TensorRT-LLM)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 597.4047 488.0343 608.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+18 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/TransformerEngine)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 579.4047 504.5493 590.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+19 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/accelerated-computing-hub)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 561.4047 536.5713 572.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+20 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/aerial-cuda-accelerated-ran)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 543.4047 537.5613 554.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+21 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/bare-metal-manager-rest)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 525.4047 527.0493 536.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+22 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/cuDecomp)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 507.4047 470.5383 518.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+23 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/cuda-tile)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 489.4047 461.5383 500.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+24 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/cutile-python)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 471.4047 478.5483 482.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+25 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/cutlass)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 453.4047 455.5353 464.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+26 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/dcgm-exporter)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 435.4047 485.5413 446.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+27 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/dgx-spark-playbooks)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 417.4047 510.5523 428.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+28 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/garak)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 399.4047 450.0363 410.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+29 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/k8s-device-plugin)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 381.4047 497.5473 392.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+30 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/nim-anywhere)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 363.4047 484.0383 374.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+31 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/nsight-python)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 345.4047 481.5543 356.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+32 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/nvbandwidth)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 327.4047 478.0533 338.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+33 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/open-gpu-kernel-modules)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 309.4047 530.0643 320.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+34 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/tao_tutorials)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 291.4047 476.5503 302.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+35 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NVIDIA/warp)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 273.4047 447.0303 284.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+36 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 255.4047 545.5713 266.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+37 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 243.4047 360.9903 254.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+38 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Justi1980/Dawn-Validator-BOT)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 225.4047 519.0573 236.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+39 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/shuyicc/MathLens)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 195.4047 467.0463 206.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+40 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/aiming-lab/MetaClaw)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 165.4047 479.0343 176.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+41 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Comfy-Org/Nvidia_RTX_Nodes_ComfyUI)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 135.4047 544.5453 146.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+42 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Comfy-Org/Nvidia_RTX_Nodes_ComfyUI)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 123.4047 337.4823 134.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+43 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/MINT-SJTU/RoboClaw)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 105.4047 486.5223 116.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+44 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/THU-SI/Spatial-TTT)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 75.40472 474.5253 86.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+45 0 obj
+<<
+/Annots [ 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 
+  19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 
+  29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 
+  39 0 R 40 0 R 41 0 R 42 0 R 43 0 R 44 0 R ] /Contents 457 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+46 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ythx-101/ask-search)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 476.0463 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+47 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/PIPIKAI/auto-painter-win)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 734.4047 493.5603 745.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+48 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/RightNow-AI/autokernel)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 704.4047 490.0503 715.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+49 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/jackwener/boss-cli)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 674.4047 468.5313 685.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+50 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/notoriouslab/doc-cleaner)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 644.4047 493.5603 655.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+51 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Kaleighc793/freqtrade-bot)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 614.4047 498.5733 625.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+52 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/PatrikFehrenbach/h1-brain)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 584.4047 501.5613 595.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+53 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NousResearch/hermes-agent-self-evolution)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 554.4047 542.0613 565.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+54 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/NousResearch/hermes-agent-self-evolution)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 542.4047 347.9943 553.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+55 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/TeleHuman/humanoid_skateboarding)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 524.4047 545.0853 535.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+56 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/knowsuchagency/mcp2cli)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 494.4047 497.0523 505.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+57 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/pretyflaco/meetscribe)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 464.4047 480.5463 475.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+58 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/manuelschipper/nah)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 434.4047 476.0553 445.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+59 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/shenhao-stu/ohmycaptcha)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 404.4047 500.5713 415.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+60 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/qntrade1/polymarket-arbitrage-trading-bot)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 374.4047 541.0713 385.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+61 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/qntrade1/polymarket-arbitrage-trading-bot)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 362.4047 341.9913 373.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+62 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/tokoroten/prompt-review)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 344.4047 492.0483 355.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+63 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/jackwener/rdt-cli)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 314.4047 460.0263 325.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+64 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/ZimoLiao/scholaraio)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 284.4047 475.5423 295.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+65 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/KeyID-AI/sdk-py)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 254.4047 460.0353 265.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+66 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/skernelx/tavily-key-generator)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 224.4047 510.0483 235.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+67 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/dunn.dev/immutable/basec)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 194.4047 499.5633 205.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+68 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/cdesiniotis/cnt-docs)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 176.4047 470.5383 187.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+69 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/cloud-native/cnt-docs)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 158.4047 503.0553 169.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+70 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/riccelso/dictee-deletion_scheduled-80230405)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 140.4047 542.5743 151.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+71 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/riccelso/dictee-deletion_scheduled-80230405)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 128.4047 351.5043 139.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+72 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/andrew.shin.999/docker-steam-headless)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 110.4047 545.0763 121.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+73 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/andrew.shin.999/docker-steam-headless)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 98.40472 330.4803 109.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+74 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/kubitus-project/apps/gpu-operator)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 80.40472 526.5723 91.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+75 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/kubernetes/gpu-operator)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 62.40472 516.5733 73.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+76 0 obj
+<<
+/Annots [ 46 0 R 47 0 R 48 0 R 49 0 R 50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 55 0 R 
+  56 0 R 57 0 R 58 0 R 59 0 R 60 0 R 61 0 R 62 0 R 63 0 R 64 0 R 65 0 R 
+  66 0 R 67 0 R 68 0 R 69 0 R 70 0 R 71 0 R 72 0 R 73 0 R 74 0 R 75 0 R ] /Contents 458 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+77 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/cloud-native/k8s-cc-manager)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 533.5563 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+78 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/cloud-native/k8s-driver-manager)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 746.4047 544.0593 757.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+79 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/cloud-native/k8s-driver-manager)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 734.4047 324.4773 745.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+80 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/herecura/packages/nvidia-bede-lts)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 716.4047 529.5693 727.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+81 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/gitlab-oss-package-research/tools/libbehave/3.2.0/golang/nv/nvidia-container-toolkit-2e5335f2)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 698.4047 543.5643 709.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+82 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/gitlab-oss-package-research/tools/libbehave/3.2.0/golang/nv/nvidia-container-toolkit-2e5335f2)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 686.4047 543.0963 697.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+83 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/gitlab-oss-package-research/source/pypi/nv/nvidia-cuda-nvrtc-cu12-a87c9352)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 668.4047 542.5653 679.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+84 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/gitlab-oss-package-research/source/pypi/nv/nvidia-cuda-nvrtc-cu12-a87c9352)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 656.4047 481.0413 667.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+85 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/gitlab-oss-package-research/source/pypi/nv/nvidia-nccl-cu12-69f72da5)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 638.4047 542.5653 649.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+86 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/gitlab-oss-package-research/source/pypi/nv/nvidia-nccl-cu12-69f72da5)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 626.4047 453.0333 637.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+87 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/IsolatedOctopi/nvidia_greenboost)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 608.4047 525.5823 619.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+88 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/alansill/nvidia_greenboost)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 590.4047 495.5583 601.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+89 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/dunn.dev/immutable/pipeline)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 572.4047 506.5653 583.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+90 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/amyspark/aivero-see)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 554.4047 475.5333 565.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+91 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/damachine/tkginstaller)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 536.4047 481.5453 547.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+92 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/cloud-native/vgpu-device-manager)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 518.4047 543.0693 529.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+93 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://gitlab.com/nvidia/cloud-native/vgpu-device-manager)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 506.4047 334.4853 517.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+94 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-going-after-apple-meta-microsoft-google-european-unions-antitrust-chief-now-has-warning-for-americas-biggest-chip-companies-nvidia-and-amd-says-we-are-looking-at-/articleshow/129518308.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 488.4047 544.0683 499.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+95 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-going-after-apple-meta-microsoft-google-european-unions-antitrust-chief-now-has-warning-for-americas-biggest-chip-companies-nvidia-and-amd-says-we-are-looking-at-/articleshow/129518308.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 476.4047 541.0533 487.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+96 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-going-after-apple-meta-microsoft-google-european-unions-antitrust-chief-now-has-warning-for-americas-biggest-chip-companies-nvidia-and-amd-says-we-are-looking-at-/articleshow/129518308.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 464.4047 545.5263 475.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+97 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-going-after-apple-meta-microsoft-google-european-unions-antitrust-chief-now-has-warning-for-americas-biggest-chip-companies-nvidia-and-amd-says-we-are-looking-at-/articleshow/129518308.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 452.4047 543.5283 463.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+98 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-going-after-apple-meta-microsoft-google-european-unions-antitrust-chief-now-has-warning-for-americas-biggest-chip-companies-nvidia-and-amd-says-we-are-looking-at-/articleshow/129518308.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 440.4047 470.5383 451.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+99 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-saying-we-are-fine-for-months-nvidia-seemingly-accepts-that-google-and-meta-are-coming-for-it/articleshow/129570451.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 422.4047 544.0683 433.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+100 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-saying-we-are-fine-for-months-nvidia-seemingly-accepts-that-google-and-meta-are-coming-for-it/articleshow/129570451.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 410.4047 542.5203 421.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+101 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-saying-we-are-fine-for-months-nvidia-seemingly-accepts-that-google-and-meta-are-coming-for-it/articleshow/129570451.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 398.4047 541.5393 409.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+102 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/after-saying-we-are-fine-for-months-nvidia-seemingly-accepts-that-google-and-meta-are-coming-for-it/articleshow/129570451.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 386.4047 404.5233 397.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+103 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/how-one-of-chinas-biggest-internet-companies-may-be-getting-access-to-nvidias-top-ai-chips-despite-us-ban/articleshow/129564656.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 368.4047 544.0683 379.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+104 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/how-one-of-chinas-biggest-internet-companies-may-be-getting-access-to-nvidias-top-ai-chips-despite-us-ban/articleshow/129564656.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 356.4047 542.0433 367.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+105 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/how-one-of-chinas-biggest-internet-companies-may-be-getting-access-to-nvidias-top-ai-chips-despite-us-ban/articleshow/129564656.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 344.4047 543.5463 355.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+106 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/how-one-of-chinas-biggest-internet-companies-may-be-getting-access-to-nvidias-top-ai-chips-despite-us-ban/articleshow/129564656.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 332.4047 433.0263 343.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+107 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://economictimes.indiatimes.com/news/defence/iran-threatens-to-hit-us-israeli-economic-and-tech-targets/articleshow/129490842.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 314.4047 541.5573 325.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+108 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://economictimes.indiatimes.com/news/defence/iran-threatens-to-hit-us-israeli-economic-and-tech-targets/articleshow/129490842.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 302.4047 541.5393 313.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+109 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://economictimes.indiatimes.com/news/defence/iran-threatens-to-hit-us-israeli-economic-and-tech-targets/articleshow/129490842.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 290.4047 433.0263 301.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+110 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/new-inference-chip-geopolitics-of-gpus-and-other-things-nvidia-ceo-jensen-huang-is-expected-to-discuss-at-companys-annual-gtc-conference/articleshow/129557060.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 272.4047 544.0683 283.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+111 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/new-inference-chip-geopolitics-of-gpus-and-other-things-nvidia-ceo-jensen-huang-is-expected-to-discuss-at-companys-annual-gtc-conference/articleshow/129557060.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 260.4047 542.0523 271.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+112 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/new-inference-chip-geopolitics-of-gpus-and-other-things-nvidia-ceo-jensen-huang-is-expected-to-discuss-at-companys-annual-gtc-conference/articleshow/129557060.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 248.4047 543.0423 259.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+113 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/new-inference-chip-geopolitics-of-gpus-and-other-things-nvidia-ceo-jensen-huang-is-expected-to-discuss-at-companys-annual-gtc-conference/articleshow/129557060.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 236.4047 545.5803 247.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+114 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/new-inference-chip-geopolitics-of-gpus-and-other-things-nvidia-ceo-jensen-huang-is-expected-to-discuss-at-companys-annual-gtc-conference/articleshow/129557060.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 224.4047 340.4793 235.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+115 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.investors.com/news/technology/nvidia-stock-nvda-catalyst-gtc-news/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 206.4047 545.5533 217.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+116 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.investors.com/news/technology/nvidia-stock-nvda-catalyst-gtc-news/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 194.4047 419.0043 205.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+117 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://seekingalpha.com/article/4881831-nvidia-one-answer-that-scared-investors-rating-upgrade)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 176.4047 542.5833 187.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+118 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://seekingalpha.com/article/4881831-nvidia-one-answer-that-scared-investors-rating-upgrade)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 164.4047 489.0243 175.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+119 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ndtv.com/opinion/iran-israel-war-the-dangerous-list-of-tech-firms-iran-plans-to-target-11209577)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 146.4047 544.5453 157.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+120 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ndtv.com/opinion/iran-israel-war-the-dangerous-list-of-tech-firms-iran-plans-to-target-11209577)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 134.4047 525.0333 145.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+121 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techstartups.com/2026/03/13/top-tech-news-today-march-13-2026/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 116.4047 544.0953 127.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+122 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techstartups.com/2026/03/13/top-tech-news-today-march-13-2026/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 104.4047 392.4993 115.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+123 0 obj
+<<
+/Annots [ 77 0 R 78 0 R 79 0 R 80 0 R 81 0 R 82 0 R 83 0 R 84 0 R 85 0 R 86 0 R 
+  87 0 R 88 0 R 89 0 R 90 0 R 91 0 R 92 0 R 93 0 R 94 0 R 95 0 R 96 0 R 
+  97 0 R 98 0 R 99 0 R 100 0 R 101 0 R 102 0 R 103 0 R 104 0 R 105 0 R 106 0 R 
+  107 0 R 108 0 R 109 0 R 110 0 R 111 0 R 112 0 R 113 0 R 114 0 R 115 0 R 116 0 R 
+  117 0 R 118 0 R 119 0 R 120 0 R 121 0 R 122 0 R ] /Contents 459 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+124 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/weeks-after-nvidia-and-amd-deals-meta-enters-custom-ai-chip-club-with-google-microsoft/articleshow/129512696.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 544.0683 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+125 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/weeks-after-nvidia-and-amd-deals-meta-enters-custom-ai-chip-club-with-google-microsoft/articleshow/129512696.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 540.0363 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+126 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/weeks-after-nvidia-and-amd-deals-meta-enters-custom-ai-chip-club-with-google-microsoft/articleshow/129512696.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 740.4047 541.5303 751.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+127 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://timesofindia.indiatimes.com/technology/tech-news/weeks-after-nvidia-and-amd-deals-meta-enters-custom-ai-chip-club-with-google-microsoft/articleshow/129512696.cms)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 728.4047 360.4953 739.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+128 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2019)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 710.4047 542.5653 721.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+129 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2019)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 698.4047 488.5113 709.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+130 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-doubles-down-announces-a100-80gb-gpu-supercharging-worlds-most-powerful-gpu-for-ai-supercomputing)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 680.4047 542.0613 691.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+131 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-doubles-down-announces-a100-80gb-gpu-supercharging-worlds-most-powerful-gpu-for-ai-supercomputing)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 668.4047 542.0613 679.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+132 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-doubles-down-announces-a100-80gb-gpu-supercharging-worlds-most-powerful-gpu-for-ai-supercomputing)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 656.4047 474.0213 667.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+133 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2024)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 638.4047 542.5653 649.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+134 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2024)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 626.4047 515.0343 637.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+135 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.nvidia.com/en-us/geforce/news/nvidia-broadcast-app/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 608.4047 541.5573 619.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+136 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.nvidia.com/en-us/geforce/news/nvidia-broadcast-app/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 596.4047 363.5013 607.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+137 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (http://www.trustedreviews.com/news/nvidia-ceo-good-vr-20-years-away)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 578.4047 544.0413 589.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+138 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (http://www.trustedreviews.com/news/nvidia-ceo-good-vr-20-years-away)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 566.4047 383.4903 577.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+139 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-introduces-grace-cpu-superchip)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 548.4047 543.5553 559.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+140 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-introduces-grace-cpu-superchip)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 536.4047 395.5053 547.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+141 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-isaac-launches-new-era-of-autonomous-machines?ncid=pa-fac-ndscpmcxlh-42580)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 518.4047 541.5573 529.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+142 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-isaac-launches-new-era-of-autonomous-machines?ncid=pa-fac-ndscpmcxlh-42580)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 506.4047 544.8063 517.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+143 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-isaac-launches-new-era-of-autonomous-machines?ncid=pa-fac-ndscpmcxlh-42580)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 494.4047 378.0003 505.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+144 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-announces-cryptocurrency-mining-processor-gpu-line)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 476.4047 543.5553 487.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+145 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-announces-cryptocurrency-mining-processor-gpu-line)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 464.4047 490.5093 475.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+146 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (http://www.tomshardware.com/news/nvidia-linux-basemosaic-ubuntu-parity,24519.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 446.4047 543.5373 457.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+147 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (http://www.tomshardware.com/news/nvidia-linux-basemosaic-ubuntu-parity,24519.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 434.4047 445.0323 445.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+148 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-reveals-rtx-6000-with-48gb-gddr6-ecc-memory)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 416.4047 544.5273 427.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+149 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-reveals-rtx-6000-with-48gb-gddr6-ecc-memory)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 404.4047 462.0153 415.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+150 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-unveils-144-core-grace-cpu-superchip-claims-arm-chip-15x-faster-than-amds-epyc-rome)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 386.4047 545.5443 397.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+151 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-unveils-144-core-grace-cpu-superchip-claims-arm-chip-15x-faster-than-amds-epyc-rome)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 374.4047 542.0073 385.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+152 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-unveils-144-core-grace-cpu-superchip-claims-arm-chip-15x-faster-than-amds-epyc-rome)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 362.4047 406.9983 373.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+153 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.allaboutcircuits.com/news/nvidia-unveils-culitho-breakthrough-in-computational-lithography/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 344.4047 544.5363 355.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+154 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.allaboutcircuits.com/news/nvidia-unveils-culitho-breakthrough-in-computational-lithography/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 332.4047 510.5523 343.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+155 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-wouldnt-exist-if-ceo-could-turn-the-clock-back-30-years)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 314.4047 545.0403 325.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+156 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/news/nvidia-wouldnt-exist-if-ceo-could-turn-the-clock-back-30-years)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 302.4047 495.5133 313.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+157 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2025)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 284.4047 542.5653 295.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+158 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2025)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 272.4047 488.5113 283.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+159 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2024)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 254.4047 542.5653 265.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+160 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2024)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 242.4047 503.0283 253.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+161 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.phoronix.com/news/NVIDIA-3D-Headers-Fermi-Ampere)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 224.4047 545.5353 235.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+162 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.phoronix.com/news/NVIDIA-3D-Headers-Fermi-Ampere)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 212.4047 368.4783 223.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+163 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 194.4047 542.0523 205.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+164 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 182.4047 543.5013 193.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+165 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 408.5103 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+166 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-to-acquire-mellanox-for-6-9-billion)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 152.4047 541.5483 163.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+167 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/news/nvidia-to-acquire-mellanox-for-6-9-billion)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 140.4047 405.4953 151.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+168 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://finance.yahoo.com/quote/NVDA)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 122.4047 476.5593 133.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+169 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://zirk.us/@ChrisMayLA6/116232173685749360)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 104.4047 532.7193 115.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+170 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@aihaberleri/116232202003153525)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 86.40472 544.7343 97.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+171 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@aihaberleri/116232202003153525)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 74.40472 336.4923 85.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+172 0 obj
+<<
+/Annots [ 124 0 R 125 0 R 126 0 R 127 0 R 128 0 R 129 0 R 130 0 R 131 0 R 132 0 R 133 0 R 
+  134 0 R 135 0 R 136 0 R 137 0 R 138 0 R 139 0 R 140 0 R 141 0 R 142 0 R 143 0 R 
+  144 0 R 145 0 R 146 0 R 147 0 R 148 0 R 149 0 R 150 0 R 151 0 R 152 0 R 153 0 R 
+  154 0 R 155 0 R 156 0 R 157 0 R 158 0 R 159 0 R 160 0 R 161 0 R 162 0 R 163 0 R 
+  164 0 R 165 0 R 166 0 R 167 0 R 168 0 R 169 0 R 170 0 R 171 0 R ] /Contents 460 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+173 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@aihaberleri/116232201406289923)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 544.7343 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+174 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@aihaberleri/116232201406289923)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 336.4923 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+175 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@aisight/116232238210946359)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 734.4047 543.7443 745.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+176 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@aisight/116232223384420832)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 716.4047 543.7443 727.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+177 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@anthroposamu/116232162453622745)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 698.4047 545.2383 709.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+178 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@anthroposamu/116232162453622745)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 686.4047 351.5043 697.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+179 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://fed.brid.gy/r/https://bsky.app/profile/did:plc:vob6rpaopg4juz44h62cudt4/post/3mh3jsbw6mc2j)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 668.4047 542.0883 679.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+180 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://fed.brid.gy/r/https://bsky.app/profile/did:plc:vob6rpaopg4juz44h62cudt4/post/3mh3jsbw6mc2j)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 656.4047 496.5663 667.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+181 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@bagrounds/116232176262654105)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 638.4047 545.2473 649.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+182 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@bagrounds/116232176262654105)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 626.4047 336.4923 637.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+183 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@bagrounds/116232175472551904)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 608.4047 545.2473 619.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+184 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@bagrounds/116232175472551904)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 596.4047 336.4923 607.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+185 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:zajw6e2yk4vvxzfhadroqrxq/post/3mh3itfvk6s2q)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 578.4047 543.5733 589.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+186 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:zajw6e2yk4vvxzfhadroqrxq/post/3mh3itfvk6s2q)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 566.4047 491.5533 577.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+187 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@danish_akhtar7/116232238477273765)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 548.4047 544.2393 559.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+188 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@danish_akhtar7/116232238477273765)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 536.4047 356.5083 547.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+189 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://igeek.gamer-geek-news.com/@feed/statuses/01KKR8FRVNY7FATR9YQ4RVXXHR)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 518.4047 541.7103 529.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+190 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://igeek.gamer-geek-news.com/@feed/statuses/01KKR8FRVNY7FATR9YQ4RVXXHR)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 506.4047 464.5083 517.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+191 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.ml/@livefish/116232202678154674)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 488.4047 531.7293 499.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+192 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://graphics.social/@metin/116232205815117782)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 470.4047 534.2313 481.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+193 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@pauldesai/116232254143138927)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 452.4047 541.2423 463.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+194 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@pauldesai/116232254143138927)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 440.4047 336.4923 451.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+195 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@silentexception/116232239220403249)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 422.4047 542.2323 433.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+196 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@silentexception/116232239220403249)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 410.4047 356.5083 421.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+197 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@silentexception/116232165977587526)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 392.4047 542.2323 403.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+198 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@silentexception/116232165977587526)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 380.4047 356.5083 391.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+199 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@stefanogalloni/116232244569925149)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 362.4047 543.2403 373.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+200 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://mastodon.social/@stefanogalloni/116232244569925149)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 350.4047 351.5043 361.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+201 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://fed.brid.gy/r/https://www.thebeaverton.com/2026/03/ai-job-losses-free-up-time-for-unemployed-mobs-to-burn-down-tech-ceos-houses/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 332.4047 544.5903 343.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+202 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://fed.brid.gy/r/https://www.thebeaverton.com/2026/03/ai-job-losses-free-up-time-for-unemployed-mobs-to-burn-down-tech-ceos-houses/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 320.4047 545.0313 331.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+203 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://fed.brid.gy/r/https://www.thebeaverton.com/2026/03/ai-job-losses-free-up-time-for-unemployed-mobs-to-burn-down-tech-ceos-houses/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 308.4047 435.5193 319.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+204 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://musicworld.social/@vlcam/116232199533342792)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 290.4047 541.7103 301.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+205 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://musicworld.social/@vlcam/116232199533342792)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 278.4047 326.4843 289.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+206 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.marketingprofs.com/opinions/2026/54427/ai-update-march-13-2026-ai-news-and-views-from-the-past-week)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 260.4047 545.0763 271.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+207 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.marketingprofs.com/opinions/2026/54427/ai-update-march-13-2026-ai-news-and-views-from-the-past-week)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 248.4047 543.0333 259.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+208 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.marketingprofs.com/opinions/2026/54427/ai-update-march-13-2026-ai-news-and-views-from-the-past-week)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 236.4047 352.4853 247.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+209 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255318/28124/en/AI-in-Life-Sciences-Market-2026-2040-Industry-Trends-and-Global-Forecasts-IBM-IQVIA-and-Oracle-Lead-Data-Platforms-While-Roche-Pfizer-and-AI-Startups-Accelerate-Drug-Discovery-Inno.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 218.4047 543.0603 229.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+210 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255318/28124/en/AI-in-Life-Sciences-Market-2026-2040-Industry-Trends-and-Global-Forecasts-IBM-IQVIA-and-Oracle-Lead-Data-Platforms-While-Roche-Pfizer-and-AI-Startups-Accelerate-Drug-Discovery-Inno.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 206.4047 543.5823 217.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+211 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255318/28124/en/AI-in-Life-Sciences-Market-2026-2040-Industry-Trends-and-Global-Forecasts-IBM-IQVIA-and-Oracle-Lead-Data-Platforms-While-Roche-Pfizer-and-AI-Startups-Accelerate-Drug-Discovery-Inno.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 194.4047 543.0423 205.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+212 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255318/28124/en/AI-in-Life-Sciences-Market-2026-2040-Industry-Trends-and-Global-Forecasts-IBM-IQVIA-and-Oracle-Lead-Data-Platforms-While-Roche-Pfizer-and-AI-Startups-Accelerate-Drug-Discovery-Inno.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 182.4047 543.5193 193.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+213 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255318/28124/en/AI-in-Life-Sciences-Market-2026-2040-Industry-Trends-and-Global-Forecasts-IBM-IQVIA-and-Oracle-Lead-Data-Platforms-While-Roche-Pfizer-and-AI-Startups-Accelerate-Drug-Discovery-Inno.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 530.0283 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+214 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pcworld.com/article/3087594/ai-is-changing-pc-graphics-microsoft-wants-directx-ready.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 140.4047 543.5553 151.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+215 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pcworld.com/article/3087594/ai-is-changing-pc-graphics-microsoft-wants-directx-ready.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 128.4047 511.5063 139.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+216 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cryptoslate.com/ai-begins-stealing-thousands-of-jobs-from-humans-but-is-it-as-bad-as-we-all-feared/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 110.4047 544.5633 121.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+217 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://cryptoslate.com/ai-begins-stealing-thousands-of-jobs-from-humans-but-is-it-as-bad-as-we-all-feared/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 98.40472 525.0153 109.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+218 0 obj
+<<
+/Annots [ 173 0 R 174 0 R 175 0 R 176 0 R 177 0 R 178 0 R 179 0 R 180 0 R 181 0 R 182 0 R 
+  183 0 R 184 0 R 185 0 R 186 0 R 187 0 R 188 0 R 189 0 R 190 0 R 191 0 R 192 0 R 
+  193 0 R 194 0 R 195 0 R 196 0 R 197 0 R 198 0 R 199 0 R 200 0 R 201 0 R 202 0 R 
+  203 0 R 204 0 R 205 0 R 206 0 R 207 0 R 208 0 R 209 0 R 210 0 R 211 0 R 212 0 R 
+  213 0 R 214 0 R 215 0 R 216 0 R 217 0 R ] /Contents 461 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+219 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://siliconangle.com/2026/03/13/ai-startups-funding-frenzy-aws-goes-next-whats-coming-nvidias-gtc-event/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 545.0853 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+220 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://siliconangle.com/2026/03/13/ai-startups-funding-frenzy-aws-goes-next-whats-coming-nvidias-gtc-event/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 537.0303 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+221 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/tech-industry/artificial-intelligence/amd-broadcom-and-nvidia-join-hyperscalers-to-define-optical-scale-up-interconnect-of-the-future-for-ai-clusters-meta-microsoft-and-openai-to-benefit-as-speeds-eventually-scale-to-3-2-tb-s)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 722.4047 544.0323 733.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+222 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/tech-industry/artificial-intelligence/amd-broadcom-and-nvidia-join-hyperscalers-to-define-optical-scale-up-interconnect-of-the-future-for-ai-clusters-meta-microsoft-and-openai-to-benefit-as-speeds-eventually-scale-to-3-2-tb-s)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 710.4047 543.5373 721.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+223 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/tech-industry/artificial-intelligence/amd-broadcom-and-nvidia-join-hyperscalers-to-define-optical-scale-up-interconnect-of-the-future-for-ai-clusters-meta-microsoft-and-openai-to-benefit-as-speeds-eventually-scale-to-3-2-tb-s)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 698.4047 545.5533 709.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+224 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/tech-industry/artificial-intelligence/amd-broadcom-and-nvidia-join-hyperscalers-to-define-optical-scale-up-interconnect-of-the-future-for-ai-clusters-meta-microsoft-and-openai-to-benefit-as-speeds-eventually-scale-to-3-2-tb-s)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 686.4047 543.5373 697.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+225 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/tech-industry/artificial-intelligence/amd-broadcom-and-nvidia-join-hyperscalers-to-define-optical-scale-up-interconnect-of-the-future-for-ai-clusters-meta-microsoft-and-openai-to-benefit-as-speeds-eventually-scale-to-3-2-tb-s)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 674.4047 443.0073 685.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+226 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pymnts.com/artificial-intelligence-2/2026/aws-nvidia-and-massrobotics-name-9-startups-for-2026-physical-ai-fellowship/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 656.4047 544.5453 667.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+227 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pymnts.com/artificial-intelligence-2/2026/aws-nvidia-and-massrobotics-name-9-startups-for-2026-physical-ai-fellowship/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 644.4047 544.5363 655.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+228 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.pymnts.com/artificial-intelligence-2/2026/aws-nvidia-and-massrobotics-name-9-startups-for-2026-physical-ai-fellowship/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 632.4047 398.9883 643.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+229 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253550/28124/en/Advanced-Diamond-Materials-and-Technology-Market-Report-2026-2036-45-Company-Profiles-with-Technology-Descriptions-Products-Funding-Headquarters-and-Strategic-Positioning.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 614.4047 543.0603 625.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+230 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253550/28124/en/Advanced-Diamond-Materials-and-Technology-Market-Report-2026-2036-45-Company-Profiles-with-Technology-Descriptions-Products-Funding-Headquarters-and-Strategic-Positioning.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 602.4047 543.0873 613.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+231 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253550/28124/en/Advanced-Diamond-Materials-and-Technology-Market-Report-2026-2036-45-Company-Profiles-with-Technology-Descriptions-Products-Funding-Headquarters-and-Strategic-Positioning.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 590.4047 540.0453 601.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+232 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253550/28124/en/Advanced-Diamond-Materials-and-Technology-Market-Report-2026-2036-45-Company-Profiles-with-Technology-Descriptions-Products-Funding-Headquarters-and-Strategic-Positioning.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 578.4047 541.5303 589.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+233 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253550/28124/en/Advanced-Diamond-Materials-and-Technology-Market-Report-2026-2036-45-Company-Profiles-with-Technology-Descriptions-Products-Funding-Headquarters-and-Strategic-Positioning.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 566.4047 507.0423 577.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+234 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247140/28124/en/China-and-Global-Intelligent-Vehicle-Cockpit-driving-Parking-Integration-Industry-Research-Report-2025-36-CAGR-by-2030-Single-Chip-Cockpit-driving-integration-Solutions-Enter-Mass-.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 536.4047 543.0603 547.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+235 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247140/28124/en/China-and-Global-Intelligent-Vehicle-Cockpit-driving-Parking-Integration-Industry-Research-Report-2025-36-CAGR-by-2030-Single-Chip-Cockpit-driving-integration-Solutions-Enter-Mass-.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 524.4047 544.5993 535.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+236 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247140/28124/en/China-and-Global-Intelligent-Vehicle-Cockpit-driving-Parking-Integration-Industry-Research-Report-2025-36-CAGR-by-2030-Single-Chip-Cockpit-driving-integration-Solutions-Enter-Mass-.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 512.4047 541.5303 523.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+237 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247140/28124/en/China-and-Global-Intelligent-Vehicle-Cockpit-driving-Parking-Integration-Industry-Research-Report-2025-36-CAGR-by-2030-Single-Chip-Cockpit-driving-integration-Solutions-Enter-Mass-.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 500.4047 544.0323 511.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+238 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247140/28124/en/China-and-Global-Intelligent-Vehicle-Cockpit-driving-Parking-Integration-Industry-Research-Report-2025-36-CAGR-by-2030-Single-Chip-Cockpit-driving-integration-Solutions-Enter-Mass-.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 488.4047 507.5193 499.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+239 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/chinas-bytedance-to-access-36-000-blackwell-gpu-cluster-through-malaysia-cloud-operator-nvidia-confirms-no-objections-deal-is-in-line-with-us-export-controls)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 470.4047 545.0583 481.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+240 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/chinas-bytedance-to-access-36-000-blackwell-gpu-cluster-through-malaysia-cloud-operator-nvidia-confirms-no-objections-deal-is-in-line-with-us-export-controls)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 458.4047 545.0403 469.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+241 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/chinas-bytedance-to-access-36-000-blackwell-gpu-cluster-through-malaysia-cloud-operator-nvidia-confirms-no-objections-deal-is-in-line-with-us-export-controls)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 446.4047 543.0333 457.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+242 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/chinas-bytedance-to-access-36-000-blackwell-gpu-cluster-through-malaysia-cloud-operator-nvidia-confirms-no-objections-deal-is-in-line-with-us-export-controls)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 434.4047 500.5083 445.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+243 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.businessinsider.com/coreweave-nvidia-gaurantee-data-center-leases-financing-2026-2)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 404.4047 545.5443 415.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+244 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.businessinsider.com/coreweave-nvidia-gaurantee-data-center-leases-financing-2026-2)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 392.4047 491.5533 403.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+245 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/04/3249434/28124/en/Data-Center-Liquid-Cooling-Global-Market-Forecasts-2026-2032.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 374.4047 543.0603 385.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+246 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/04/3249434/28124/en/Data-Center-Liquid-Cooling-Global-Market-Forecasts-2026-2032.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 362.4047 543.0873 373.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+247 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/04/3249434/28124/en/Data-Center-Liquid-Cooling-Global-Market-Forecasts-2026-2032.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 350.4047 467.0193 361.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+248 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/05/3250327/28124/en/Data-Center-Solutions-Company-Evaluation-Report-2025-Dell-Broadcom-and-HPE-Drive-Growth-with-AI-Ready-Servers-ASIC-Networking-and-Consumption-Based-Cloud-Platforms.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 332.4047 543.0603 343.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+249 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/05/3250327/28124/en/Data-Center-Solutions-Company-Evaluation-Report-2025-Dell-Broadcom-and-HPE-Drive-Growth-with-AI-Ready-Servers-ASIC-Networking-and-Consumption-Based-Cloud-Platforms.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 320.4047 545.0853 331.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+250 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/05/3250327/28124/en/Data-Center-Solutions-Company-Evaluation-Report-2025-Dell-Broadcom-and-HPE-Drive-Growth-with-AI-Ready-Servers-ASIC-Networking-and-Consumption-Based-Cloud-Platforms.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 308.4047 545.5263 319.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+251 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/05/3250327/28124/en/Data-Center-Solutions-Company-Evaluation-Report-2025-Dell-Broadcom-and-HPE-Drive-Growth-with-AI-Ready-Servers-ASIC-Networking-and-Consumption-Based-Cloud-Platforms.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 296.4047 543.5103 307.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+252 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/05/3250327/28124/en/Data-Center-Solutions-Company-Evaluation-Report-2025-Dell-Broadcom-and-HPE-Drive-Growth-with-AI-Ready-Servers-ASIC-Networking-and-Consumption-Based-Cloud-Platforms.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 284.4047 483.5253 295.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+253 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/09/3251499/0/en/DisplayPort-IP-Market-Size-to-Grow-USD-11-60-Billion-by-2035-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 266.4047 543.0603 277.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+254 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/09/3251499/0/en/DisplayPort-IP-Market-Size-to-Grow-USD-11-60-Billion-by-2035-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 254.4047 544.5453 265.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+255 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/09/3251499/0/en/DisplayPort-IP-Market-Size-to-Grow-USD-11-60-Billion-by-2035-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 242.4047 493.5153 253.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+256 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255467/12618/en/Duos-Technologies-Group-Executes-Definitive-Agreement-with-Hydra-Host.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 224.4047 543.0603 235.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+257 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255467/12618/en/Duos-Technologies-Group-Executes-Definitive-Agreement-with-Hydra-Host.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 212.4047 545.0943 223.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+258 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255467/12618/en/Duos-Technologies-Group-Executes-Definitive-Agreement-with-Hydra-Host.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 200.4047 507.5103 211.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+259 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255370/0/en/Embedded-Systems-Market-Size-to-Exceed-213-62-Billion-by-2035-Research-by-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 182.4047 543.0603 193.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+260 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255370/0/en/Embedded-Systems-Market-Size-to-Exceed-213-62-Billion-by-2035-Research-by-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 543.0693 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+261 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255370/0/en/Embedded-Systems-Market-Size-to-Exceed-213-62-Billion-by-2035-Research-by-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 158.4047 544.5363 169.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+262 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255370/0/en/Embedded-Systems-Market-Size-to-Exceed-213-62-Billion-by-2035-Research-by-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 146.4047 340.9833 157.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+263 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247500/28124/en/Hardware-Optimized-Diffusion-Model-Intellectual-Property-IP-Global-Market-Analysis-Report-2025-2034-Featuring-Leading-Players-Samsung-Intel-Qualcomm-Broadcom-NVIDIA-AMD.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 128.4047 543.0603 139.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+264 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247500/28124/en/Hardware-Optimized-Diffusion-Model-Intellectual-Property-IP-Global-Market-Analysis-Report-2025-2034-Featuring-Leading-Players-Samsung-Intel-Qualcomm-Broadcom-NVIDIA-AMD.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 116.4047 542.5653 127.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+265 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247500/28124/en/Hardware-Optimized-Diffusion-Model-Intellectual-Property-IP-Global-Market-Analysis-Report-2025-2034-Featuring-Leading-Players-Samsung-Intel-Qualcomm-Broadcom-NVIDIA-AMD.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 104.4047 543.5283 115.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+266 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247500/28124/en/Hardware-Optimized-Diffusion-Model-Intellectual-Property-IP-Global-Market-Analysis-Report-2025-2034-Featuring-Leading-Players-Samsung-Intel-Qualcomm-Broadcom-NVIDIA-AMD.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 92.40472 543.5643 103.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+267 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/02/3247500/28124/en/Hardware-Optimized-Diffusion-Model-Intellectual-Property-IP-Global-Market-Analysis-Report-2025-2034-Featuring-Leading-Players-Samsung-Intel-Qualcomm-Broadcom-NVIDIA-AMD.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 80.40472 496.9983 91.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+268 0 obj
+<<
+/Annots [ 219 0 R 220 0 R 221 0 R 222 0 R 223 0 R 224 0 R 225 0 R 226 0 R 227 0 R 228 0 R 
+  229 0 R 230 0 R 231 0 R 232 0 R 233 0 R 234 0 R 235 0 R 236 0 R 237 0 R 238 0 R 
+  239 0 R 240 0 R 241 0 R 242 0 R 243 0 R 244 0 R 245 0 R 246 0 R 247 0 R 248 0 R 
+  249 0 R 250 0 R 251 0 R 252 0 R 253 0 R 254 0 R 255 0 R 256 0 R 257 0 R 258 0 R 
+  259 0 R 260 0 R 261 0 R 262 0 R 263 0 R 264 0 R 265 0 R 266 0 R 267 0 R ] /Contents 462 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+269 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/10/3252431/0/en/Microelectronics-Market-Size-to-Surpass-USD-1597-78-Million-by-2035-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 543.0603 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+270 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/10/3252431/0/en/Microelectronics-Market-Size-to-Surpass-USD-1597-78-Million-by-2035-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 545.0583 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+271 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/10/3252431/0/en/Microelectronics-Market-Size-to-Surpass-USD-1597-78-Million-by-2035-SNS-Insider.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 740.4047 523.5123 751.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+272 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/nvidia-reportedly-fires-unusual-criticism-at-suppliers-like-samsung-before-deals-all-to-gain-pricing-leverage/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 722.4047 543.5373 733.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+273 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/nvidia-reportedly-fires-unusual-criticism-at-suppliers-like-samsung-before-deals-all-to-gain-pricing-leverage/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 710.4047 544.0143 721.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+274 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/nvidia-reportedly-fires-unusual-criticism-at-suppliers-like-samsung-before-deals-all-to-gain-pricing-leverage/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 698.4047 387.9993 709.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+275 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/nvidia-rolls-out-g-sync-pulsar-update-for-improving-clarity-under-90-fps/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 680.4047 544.0413 691.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+276 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/nvidia-rolls-out-g-sync-pulsar-update-for-improving-clarity-under-90-fps/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 668.4047 467.5053 679.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+277 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/nvidia-claims-1-million-times-better-path-tracing-performance-is-coming-in-future-gaming-gpus-says-current-gpus-are-already-10-000x-faster-than-pascal)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 650.4047 545.0583 661.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+278 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/nvidia-claims-1-million-times-better-path-tracing-performance-is-coming-in-future-gaming-gpus-says-current-gpus-are-already-10-000x-faster-than-pascal)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 638.4047 545.5083 649.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+279 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/nvidia-claims-1-million-times-better-path-tracing-performance-is-coming-in-future-gaming-gpus-says-current-gpus-are-already-10-000x-faster-than-pascal)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 626.4047 541.5213 637.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+280 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tomshardware.com/pc-components/gpus/nvidia-claims-1-million-times-better-path-tracing-performance-is-coming-in-future-gaming-gpus-says-current-gpus-are-already-10-000x-faster-than-pascal)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 614.4047 477.5313 625.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+281 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/the-us-built-a-wall-around-nvidia-best-chips-but-bytedance-found-a-secret-door/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 596.4047 542.0433 607.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+282 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wccftech.com/the-us-built-a-wall-around-nvidia-best-chips-but-bytedance-found-a-secret-door/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 584.4047 502.0473 595.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+283 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253645/28124/en/U-S-Data-Center-Construction-Market-Outlook-Report-2026-2031-Featuring-Key-Investors-Apple-Applied-Digital-AWS-CyrusOne-DataBank-Digital-Realty-Equinix-Google-Meta-Microsoft-NTT-Va.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 554.4047 543.0603 565.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+284 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253645/28124/en/U-S-Data-Center-Construction-Market-Outlook-Report-2026-2031-Featuring-Key-Investors-Apple-Applied-Digital-AWS-CyrusOne-DataBank-Digital-Realty-Equinix-Google-Meta-Microsoft-NTT-Va.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 542.4047 543.0693 553.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+285 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253645/28124/en/U-S-Data-Center-Construction-Market-Outlook-Report-2026-2031-Featuring-Key-Investors-Apple-Applied-Digital-AWS-CyrusOne-DataBank-Digital-Realty-Equinix-Google-Meta-Microsoft-NTT-Va.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 530.4047 543.0603 541.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+286 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253645/28124/en/U-S-Data-Center-Construction-Market-Outlook-Report-2026-2031-Featuring-Key-Investors-Apple-Applied-Digital-AWS-CyrusOne-DataBank-Digital-Realty-Equinix-Google-Meta-Microsoft-NTT-Va.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 518.4047 544.0143 529.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+287 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253645/28124/en/U-S-Data-Center-Construction-Market-Outlook-Report-2026-2031-Featuring-Key-Investors-Apple-Applied-Digital-AWS-CyrusOne-DataBank-Digital-Realty-Equinix-Google-Meta-Microsoft-NTT-Va.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 506.4047 540.5133 517.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+288 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255349/28124/en/United-States-Cryptocurrency-Market-Forecast-and-Company-Analysis-Report-2025-2033-Featuring-AMD-Binance-Bit-fury-Bit-Go-Bit-Main-Technologies-Intel-NVIDIA-Ripple-Xapo-Xilinx.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 476.4047 543.0603 487.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+289 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255349/28124/en/United-States-Cryptocurrency-Market-Forecast-and-Company-Analysis-Report-2025-2033-Featuring-AMD-Binance-Bit-fury-Bit-Go-Bit-Main-Technologies-Intel-NVIDIA-Ripple-Xapo-Xilinx.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 464.4047 545.5803 475.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+290 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255349/28124/en/United-States-Cryptocurrency-Market-Forecast-and-Company-Analysis-Report-2025-2033-Featuring-AMD-Binance-Bit-fury-Bit-Go-Bit-Main-Technologies-Intel-NVIDIA-Ripple-Xapo-Xilinx.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 452.4047 541.5393 463.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+291 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255349/28124/en/United-States-Cryptocurrency-Market-Forecast-and-Company-Analysis-Report-2025-2033-Featuring-AMD-Binance-Bit-fury-Bit-Go-Bit-Main-Technologies-Intel-NVIDIA-Ripple-Xapo-Xilinx.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 440.4047 545.0133 451.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+292 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/13/3255349/28124/en/United-States-Cryptocurrency-Market-Forecast-and-Company-Analysis-Report-2025-2033-Featuring-AMD-Binance-Bit-fury-Bit-Go-Bit-Main-Technologies-Intel-NVIDIA-Ripple-Xapo-Xilinx.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 428.4047 504.5223 439.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+293 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253667/28124/en/Western-Europe-Colocation-Data-Center-Portfolio-Report-2026-Detailed-Analysis-of-1-038-Existing-Data-Centers-328-Upcoming-Data-Centers-and-400-Major-Operators-Investors.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 398.4047 543.0603 409.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+294 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253667/28124/en/Western-Europe-Colocation-Data-Center-Portfolio-Report-2026-Detailed-Analysis-of-1-038-Existing-Data-Centers-328-Upcoming-Data-Centers-and-400-Major-Operators-Investors.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 386.4047 544.5903 397.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+295 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253667/28124/en/Western-Europe-Colocation-Data-Center-Portfolio-Report-2026-Detailed-Analysis-of-1-038-Existing-Data-Centers-328-Upcoming-Data-Centers-and-400-Major-Operators-Investors.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 374.4047 544.5363 385.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+296 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253667/28124/en/Western-Europe-Colocation-Data-Center-Portfolio-Report-2026-Detailed-Analysis-of-1-038-Existing-Data-Centers-328-Upcoming-Data-Centers-and-400-Major-Operators-Investors.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 362.4047 543.5283 373.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+297 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.globenewswire.com/news-release/2026/03/11/3253667/28124/en/Western-Europe-Colocation-Data-Center-Portfolio-Report-2026-Detailed-Analysis-of-1-038-Existing-Data-Centers-328-Upcoming-Data-Centers-and-400-Major-Operators-Investors.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 350.4047 477.0183 361.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+298 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://siliconangle.com/2026/03/03/nvidia-gtc-technology-show-event-thecube-march-nvidiagtcai/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 332.4047 545.5893 343.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+299 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://siliconangle.com/2026/03/03/nvidia-gtc-technology-show-event-thecube-march-nvidiagtcai/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 320.4047 486.0273 331.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+300 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://pypi.org/project/locotrainer/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 302.4047 457.0383 313.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+301 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru393p/any_good_resourceschannelspodcasts_for_those/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 284.4047 542.0793 295.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+302 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru393p/any_good_resourceschannelspodcasts_for_those/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 272.4047 493.0653 283.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+303 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/artificial/comments/1rtm0vs/breaking_elon_musk_announces_tesla_terafab_chip/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 242.4047 544.5453 253.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+304 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/artificial/comments/1rtm0vs/breaking_elon_musk_announces_tesla_terafab_chip/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 230.4047 500.0763 241.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+305 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru39og/building_a_finance_app_with_zero_experience_i/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 200.4047 543.5733 211.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+306 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru39og/building_a_finance_app_with_zero_experience_i/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 188.4047 487.5663 199.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+307 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtgqf1/building_an_app_with_zero_experience_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 543.5733 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+308 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtgqf1/building_an_app_with_zero_experience_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 158.4047 488.5563 169.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+309 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtypx1/built_2m_from_business_what_made_it_take_off_and/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 140.4047 543.0603 151.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+310 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtypx1/built_2m_from_business_what_made_it_take_off_and/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 128.4047 505.5753 139.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+311 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru7x4a/built_an_enterprise_rag_architecture_for_2_years/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 110.4047 543.5733 121.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+312 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru7x4a/built_an_enterprise_rag_architecture_for_2_years/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 98.40472 491.5533 109.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+313 0 obj
+<<
+/Annots [ 269 0 R 270 0 R 271 0 R 272 0 R 273 0 R 274 0 R 275 0 R 276 0 R 277 0 R 278 0 R 
+  279 0 R 280 0 R 281 0 R 282 0 R 283 0 R 284 0 R 285 0 R 286 0 R 287 0 R 288 0 R 
+  289 0 R 290 0 R 291 0 R 292 0 R 293 0 R 294 0 R 295 0 R 296 0 R 297 0 R 298 0 R 
+  299 0 R 300 0 R 301 0 R 302 0 R 303 0 R 304 0 R 305 0 R 306 0 R 307 0 R 308 0 R 
+  309 0 R 310 0 R 311 0 R 312 0 R ] /Contents 463 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+314 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/artificial/comments/1rsm8ih/chinas_bytedance_outsmarts_us_sanctions_with/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 541.0443 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+315 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/artificial/comments/1rsm8ih/chinas_bytedance_outsmarts_us_sanctions_with/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 488.5563 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+316 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru6jqz/dragging_feet_to_do_social_media_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 734.4047 544.0683 745.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+317 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru6jqz/dragging_feet_to_do_social_media_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 722.4047 471.0513 733.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+318 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtzx1u/easytouse_solar_panels_are_coming_but_utilities/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 704.4047 542.0703 715.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+319 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtzx1u/easytouse_solar_panels_are_coming_but_utilities/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 692.4047 501.5613 703.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+320 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/artificial/comments/1ru0n4c/hello_everyone_im_losing_my_mind_a_bit_about_the/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 674.4047 544.0593 685.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+321 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/artificial/comments/1ru0n4c/hello_everyone_im_losing_my_mind_a_bit_about_the/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 662.4047 505.5663 673.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+322 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru5sum/how_do_apps_like_focusflight_grow_and_monetizei/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 608.4047 541.0623 619.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+323 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru5sum/how_do_apps_like_focusflight_grow_and_monetizei/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 596.4047 505.5663 607.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+324 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru4734/ohios_data_centers_face_growing_backlash_and_its/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 578.4047 545.5803 589.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+325 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru4734/ohios_data_centers_face_growing_backlash_and_its/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 566.4047 514.0803 577.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+326 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtwpa3/raised_5m_in_growth_capital_what_now_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 548.4047 541.0623 559.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+327 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtwpa3/raised_5m_in_growth_capital_what_now_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 536.4047 499.0503 547.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+328 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru4fat/teens_are_using_aifueled_slander_pages_to_mock/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 518.4047 541.0803 529.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+329 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru4fat/teens_are_using_aifueled_slander_pages_to_mock/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 506.4047 508.0773 517.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+330 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru0ut2/the_removed_doge_deposition_videos_have_already/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 488.4047 542.0793 499.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+331 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru0ut2/the_removed_doge_deposition_videos_have_already/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 476.4047 517.0863 487.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+332 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru8l50/the_new_robber_barons_are_the_tech_tycoons/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 398.4047 543.5823 409.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+333 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru8l50/the_new_robber_barons_are_the_tech_tycoons/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 386.4047 492.5703 397.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+334 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtza9j/us_army_announces_contract_with_anduril_worth_up/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 368.4047 540.5673 379.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+335 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtza9j/us_army_announces_contract_with_anduril_worth_up/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 356.4047 517.0683 367.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+336 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtzipg/us_and_gulf_states_race_for_ukrainian_interceptor/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 338.4047 542.5743 349.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+337 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtzipg/us_and_gulf_states_race_for_ukrainian_interceptor/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 326.4047 504.5673 337.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+338 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtecey/what_do_you_all_do_after_startup_credits_expire_i/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 296.4047 543.0693 307.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+339 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtecey/what_do_you_all_do_after_startup_credits_expire_i/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 284.4047 496.0623 295.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+340 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtyrji/what_would_you_do_in_my_position_with_this/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 266.4047 544.0503 277.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+341 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtyrji/what_would_you_do_in_my_position_with_this/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 254.4047 468.5493 265.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+342 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtqb5i/while_researching_an_idea_i_spoke_with_a_few/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 224.4047 545.0583 235.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+343 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1rtqb5i/while_researching_an_idea_i_spoke_with_a_few/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 212.4047 481.5633 223.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+344 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru2zyf/woman_wrongfully_imprisoned_for_6_months_due_to/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 182.4047 544.5633 193.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+345 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1ru2zyf/woman_wrongfully_imprisoned_for_6_months_due_to/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 516.0693 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+346 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/MachineLearning/comments/1rtkazr/d_acl_arr_2026_jan_cycle_does_the_commitment/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 152.4047 544.0593 163.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+347 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/MachineLearning/comments/1rtkazr/d_acl_arr_2026_jan_cycle_does_the_commitment/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 140.4047 525.0693 151.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+348 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/MachineLearning/comments/1ru8tmg/d_seeking_advice_wsl2_vs_dual_boot_for_ml/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 110.4047 542.0613 121.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+349 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/MachineLearning/comments/1ru8tmg/d_seeking_advice_wsl2_vs_dual_boot_for_ml/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 98.40472 515.0703 109.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+350 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/MachineLearning/comments/1ru7bnz/p_i_got_tired_of_pytorch_geometric_ooming_my/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 80.40472 542.0703 91.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+351 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/MachineLearning/comments/1ru7bnz/p_i_got_tired_of_pytorch_geometric_ooming_my/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 68.40472 526.0683 79.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+352 0 obj
+<<
+/Annots [ 314 0 R 315 0 R 316 0 R 317 0 R 318 0 R 319 0 R 320 0 R 321 0 R 322 0 R 323 0 R 
+  324 0 R 325 0 R 326 0 R 327 0 R 328 0 R 329 0 R 330 0 R 331 0 R 332 0 R 333 0 R 
+  334 0 R 335 0 R 336 0 R 337 0 R 338 0 R 339 0 R 340 0 R 341 0 R 342 0 R 343 0 R 
+  344 0 R 345 0 R 346 0 R 347 0 R 348 0 R 349 0 R 350 0 R 351 0 R ] /Contents 464 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+353 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru31rv/is_my_startup_internship_exploitation_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 545.5533 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+354 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/startups/comments/1ru31rv/is_my_startup_internship_exploitation_i_will_not/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 481.0503 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+355 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtxcfr/pok\351mon_go_players_have_been_unknowingly_training/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 734.4047 543.0603 745.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+356 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://reddit.com/r/technology/comments/1rtxcfr/pok\351mon_go_players_have_been_unknowingly_training/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 722.4047 516.5823 733.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+357 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://finance.yahoo.com/news/global-ai-chips-market-analysis-121000895.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 704.4047 541.5573 715.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+358 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://finance.yahoo.com/news/global-ai-chips-market-analysis-121000895.html)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 692.4047 421.5243 703.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+359 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://medium.com/@felixprehn/how-nvidias-ai-boom-is-reshaping-markets-in-2025-e3ab7c6ec2ef)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 674.4047 545.6703 685.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+360 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://medium.com/@felixprehn/how-nvidias-ai-boom-is-reshaping-markets-in-2025-e3ab7c6ec2ef)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 662.4047 491.5443 673.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+361 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://seekingalpha.com/symbol/NVDA/analysis)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 644.4047 514.5483 655.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+362 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.cnn.com/markets/stocks/NVDA)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 614.4047 494.5233 625.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+363 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.cnbc.com/quotes/NVDA)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 596.4047 466.0293 607.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+364 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://markets.financialcontent.com/wral/article/predictstreet-2025-12-26-nvidia-nvda-2025-research-feature-the-architect-of-the-intelligence-age)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 566.4047 544.5543 577.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+365 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://markets.financialcontent.com/wral/article/predictstreet-2025-12-26-nvidia-nvda-2025-research-feature-the-architect-of-the-intelligence-age)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 554.4047 545.0673 565.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+366 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://markets.financialcontent.com/wral/article/predictstreet-2025-12-26-nvidia-nvda-2025-research-feature-the-architect-of-the-intelligence-age)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 542.4047 450.5223 553.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+367 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://simplywall.st/stocks/us/semiconductors/nasdaq-nvda/nvidia)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 524.4047 544.5543 535.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+368 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://simplywall.st/stocks/us/semiconductors/nasdaq-nvda/nvidia)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 512.4047 361.9983 523.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+369 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://carboncredits.com/nvidia-controls-92-of-the-gpu-market-in-2025-and-reveals-next-gen-ai-supercomputer/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 494.4047 542.5563 505.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+370 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://carboncredits.com/nvidia-controls-92-of-the-gpu-market-in-2025-and-reveals-next-gen-ai-supercomputer/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 482.4047 545.5443 493.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+371 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://finance.yahoo.com/quote/NVDA/analysis/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 464.4047 514.0713 475.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+372 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://finance.yahoo.com/quote/NVDA/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 434.4047 479.0613 445.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+373 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://investor.nvidia.com/home/default.aspx)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 404.4047 501.5613 415.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+374 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://nvidianews.nvidia.com/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 386.4047 441.0273 397.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+375 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.morningstar.com/stocks/xnas/nvda/quote)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 368.4047 534.0603 379.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+376 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.wired.com/tag/nvidia/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 338.4047 455.0223 349.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+377 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.nvidia.com/en-us/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 320.4047 441.0183 331.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+378 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tipranks.com/stocks/nvda/forecast)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 290.4047 506.0433 301.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+379 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.investing.com/equities/nvidia-corp-opinion)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 260.4047 537.5523 271.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+380 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.alphaspread.com/market-news/stock-movements/nvidia-faces-rising-competition-amid-booming-ai-chip-market)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 242.4047 542.0433 253.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+381 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.alphaspread.com/market-news/stock-movements/nvidia-faces-rising-competition-amid-booming-ai-chip-market)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 230.4047 543.0243 241.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+382 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.alphaspread.com/market-news/stock-movements/nvidia-faces-rising-competition-amid-booming-ai-chip-market)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 218.4047 368.4873 229.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+383 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://blog.rwazi.com/nvidias-ai-chip-monopoly-is-cracking-amid-rising-competitors-in-2025/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 200.4047 544.5273 211.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+384 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://blog.rwazi.com/nvidias-ai-chip-monopoly-is-cracking-amid-rising-competitors-in-2025/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 188.4047 465.5073 199.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+385 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ap.org/news-highlights/spotlights/2025/nvidias-ai-chip-sales-surged-again-in-latest-quarter-but-worries-about-a-tech-bubble-persist/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 544.5723 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+386 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ap.org/news-highlights/spotlights/2025/nvidias-ai-chip-sales-surged-again-in-latest-quarter-but-worries-about-a-tech-bubble-persist/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 158.4047 544.0233 169.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+387 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ap.org/news-highlights/spotlights/2025/nvidias-ai-chip-sales-surged-again-in-latest-quarter-but-worries-about-a-tech-bubble-persist/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 146.4047 446.5263 157.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+388 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ainvest.com/news/nvidia-ai-driven-growth-trajectory-strategic-positioning-2025-ai-buy-zone-2510/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 128.4047 544.0323 139.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+389 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.ainvest.com/news/nvidia-ai-driven-growth-trajectory-strategic-positioning-2025-ai-buy-zone-2510/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 116.4047 534.5553 127.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+390 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tradingview.com/symbols/NASDAQ-NVDA/technicals/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 98.40472 544.5273 109.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+391 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.tradingview.com/symbols/NASDAQ-NVDA/technicals/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 86.40472 361.4943 97.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+392 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://patentpc.com/blog/the-ai-chip-market-explosion-key-stats-on-nvidia-amd-and-intels-ai-dominance)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 68.40472 545.5623 79.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+393 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://patentpc.com/blog/the-ai-chip-market-explosion-key-stats-on-nvidia-amd-and-intels-ai-dominance)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 56.40472 512.0283 67.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+394 0 obj
+<<
+/Annots [ 353 0 R 354 0 R 355 0 R 356 0 R 357 0 R 358 0 R 359 0 R 360 0 R 361 0 R 362 0 R 
+  363 0 R 364 0 R 365 0 R 366 0 R 367 0 R 368 0 R 369 0 R 370 0 R 371 0 R 372 0 R 
+  373 0 R 374 0 R 375 0 R 376 0 R 377 0 R 378 0 R 379 0 R 380 0 R 381 0 R 382 0 R 
+  383 0 R 384 0 R 385 0 R 386 0 R 387 0 R 388 0 R 389 0 R 390 0 R 391 0 R 392 0 R 
+  393 0 R ] /Contents 465 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+395 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.investing.com/news/stock-market-news/top-ai-chip-stocks-to-watch-in-2025-nvidia-leads-the-pack-93CH-4310800)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 545.0403 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+396 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.investing.com/news/stock-market-news/top-ai-chip-stocks-to-watch-in-2025-nvidia-leads-the-pack-93CH-4310800)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 543.0333 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+397 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://www.investing.com/news/stock-market-news/top-ai-chip-stocks-to-watch-in-2025-nvidia-leads-the-pack-93CH-4310800)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 740.4047 377.5053 751.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+398 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/16/canadian-peer-to-peer-clothing-rental-company-rax-is-expanding-to-the-u-s/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 722.4047 543.0963 733.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+399 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/16/canadian-peer-to-peer-clothing-rental-company-rax-is-expanding-to-the-u-s/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 710.4047 542.0343 721.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+400 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/01/02/clicks-debuts-its-own-take-on-the-blackberry-smartphone-plus-a-79-snap-on-mobile-keyboard/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 692.4047 545.5713 703.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+401 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/01/02/clicks-debuts-its-own-take-on-the-blackberry-smartphone-plus-a-79-snap-on-mobile-keyboard/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 680.4047 544.0413 691.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+402 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/01/02/clicks-debuts-its-own-take-on-the-blackberry-smartphone-plus-a-79-snap-on-mobile-keyboard/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 668.4047 390.5013 679.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+403 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/03/college-social-app-fizz-expands-into-grocery-delivery/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 650.4047 542.0793 661.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+404 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/03/college-social-app-fizz-expands-into-grocery-delivery/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 638.4047 454.5093 649.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+405 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/30/commanderai-says-its-building-the-salesforce-for-the-waste-management-industry/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 620.4047 545.5713 631.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+406 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/30/commanderai-says-its-building-the-salesforce-for-the-waste-management-industry/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 608.4047 545.5443 619.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+407 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/30/commanderai-says-its-building-the-salesforce-for-the-waste-management-industry/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 596.4047 343.4853 607.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+408 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/11/18/pt-software-rebuildr-recieves-1-1-million-investment-from-slow-ventures-creator-fund/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 578.4047 545.5713 589.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+409 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/11/18/pt-software-rebuildr-recieves-1-1-million-investment-from-slow-ventures-creator-fund/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 566.4047 545.5083 577.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+410 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/11/18/pt-software-rebuildr-recieves-1-1-million-investment-from-slow-ventures-creator-fund/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 554.4047 352.4943 565.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+411 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/10/22/david-sacks-craft-leads-42-million-series-a-in-govtech-startup-starbridge/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 536.4047 545.0763 547.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+412 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/10/22/david-sacks-craft-leads-42-million-series-a-in-govtech-startup-starbridge/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 524.4047 528.0213 535.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+413 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/02/fintech-ceo-and-forbes-30-under-30-alum-has-been-charged-for-alleged-fraud/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 506.4047 542.5923 517.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+414 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/02/fintech-ceo-and-forbes-30-under-30-alum-has-been-charged-for-alleged-fraud/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 494.4047 545.5533 505.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+415 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/02/fintech-ceo-and-forbes-30-under-30-alum-has-been-charged-for-alleged-fraud/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 482.4047 328.9863 493.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+416 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/01/28/jennifer-garners-once-upon-a-farm-resumes-ipo-plans/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 464.4047 542.5833 475.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+417 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/01/28/jennifer-garners-once-upon-a-farm-resumes-ipo-plans/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 452.4047 458.0103 463.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+418 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/10/29/phias-founders-on-how-ai-is-changing-online-shopping/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 434.4047 542.5923 445.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+419 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/10/29/phias-founders-on-how-ai-is-changing-online-shopping/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 422.4047 461.0253 433.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+420 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/04/snak-venture-partners-raises-50m-fund-to-back-digitizing-marketplaces/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 404.4047 545.5893 415.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+421 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/04/snak-venture-partners-raises-50m-fund-to-back-digitizing-marketplaces/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 392.4047 523.5213 403.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+422 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/16/solo-gp-neil-murray-closes-6m-fund-iii-to-back-nordic-founders/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 374.4047 542.5653 385.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+423 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/16/solo-gp-neil-murray-closes-6m-fund-iii-to-back-nordic-founders/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 362.4047 492.5163 373.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+424 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/24/south-koreas-silicon-valley-struggles-to-live-up-to-its-global-ambitions/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 344.4047 545.0763 355.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+425 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/24/south-koreas-silicon-valley-struggles-to-live-up-to-its-global-ambitions/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 332.4047 517.5183 343.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+426 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/08/space-dots-raises-1-5m-seed-round-to-provide-insights-on-orbital-threats/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 314.4047 544.0773 325.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+427 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/08/space-dots-raises-1-5m-seed-round-to-provide-insights-on-orbital-threats/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 302.4047 532.5393 313.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+428 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/25/startup-founders-say-trumps-100k-h-1b-fee-is-a-talent-tariff-that-will-hurt-innovation/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 284.4047 544.5903 295.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+429 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/25/startup-founders-say-trumps-100k-h-1b-fee-is-a-talent-tariff-that-will-hurt-innovation/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 272.4047 541.0173 283.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+430 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/09/25/startup-founders-say-trumps-100k-h-1b-fee-is-a-talent-tariff-that-will-hurt-innovation/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 260.4047 352.9983 271.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+431 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/31/tade-oyerinde-and-teddy-solomon-talk-about-building-engaged-audiences-at-techcrunch-disrupt/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 242.4047 545.5983 253.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+432 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/31/tade-oyerinde-and-teddy-solomon-talk-about-building-engaged-audiences-at-techcrunch-disrupt/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 230.4047 545.0673 241.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+433 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/31/tade-oyerinde-and-teddy-solomon-talk-about-building-engaged-audiences-at-techcrunch-disrupt/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 218.4047 398.0073 229.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+434 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/03/minnesota-tech-community-founders-investors-ice-response/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 200.4047 543.5823 211.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+435 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/03/minnesota-tech-community-founders-investors-ice-response/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 188.4047 482.0223 199.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+436 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/10/10/the-world-is-just-not-quite-ready-for-humanoids-yet/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 170.4047 544.0683 181.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+437 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/10/10/the-world-is-just-not-quite-ready-for-humanoids-yet/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 158.4047 444.5193 169.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+438 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/03/11/vc-mega-funds-are-back-with-general-catalyst-spark-rumored-to-be-raising-billions/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 140.4047 545.5803 151.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+439 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/03/11/vc-mega-funds-are-back-with-general-catalyst-spark-rumored-to-be-raising-billions/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 128.4047 545.5173 139.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+440 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/03/11/vc-mega-funds-are-back-with-general-catalyst-spark-rumored-to-be-raising-billions/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 116.4047 344.4843 127.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+441 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/26/whats-ahead-for-startups-and-vcs-in-2026-investors-weigh-in/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 98.40472 545.0853 109.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+442 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2025/12/26/whats-ahead-for-startups-and-vcs-in-2026-investors-weigh-in/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 86.40472 484.0203 97.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+443 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/03/yc-startups-can-now-recieve-investment-in-stablecoin/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 68.40472 543.0783 79.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+444 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://techcrunch.com/2026/02/03/yc-startups-can-now-recieve-investment-in-stablecoin/)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 56.40472 456.0123 67.20472 ] /Subtype /Link /Type /Annot
+>>
+endobj
+445 0 obj
+<<
+/Annots [ 395 0 R 396 0 R 397 0 R 398 0 R 399 0 R 400 0 R 401 0 R 402 0 R 403 0 R 404 0 R 
+  405 0 R 406 0 R 407 0 R 408 0 R 409 0 R 410 0 R 411 0 R 412 0 R 413 0 R 414 0 R 
+  415 0 R 416 0 R 417 0 R 418 0 R 419 0 R 420 0 R 421 0 R 422 0 R 423 0 R 424 0 R 
+  425 0 R 426 0 R 427 0 R 428 0 R 429 0 R 430 0 R 431 0 R 432 0 R 433 0 R 434 0 R 
+  435 0 R 436 0 R 437 0 R 438 0 R 439 0 R 440 0 R 441 0 R 442 0 R 443 0 R 444 0 R ] /Contents 466 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+446 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://twitter.com/search?q=Nvidia AI chip market analysis 2025)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 764.4047 521.8023 775.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+447 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://twitter.com/search?q=Nvidia AI chip market analysis 2025)
+>> /Border [ 0 0 0 ] /Rect [ 321.4803 752.4047 376.5063 763.2047 ] /Subtype /Link /Type /Annot
+>>
+endobj
+448 0 obj
+<<
+/Annots [ 446 0 R 447 0 R ] /Contents 467 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 451 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+449 0 obj
+<<
+/PageMode /UseNone /Pages 451 0 R /Type /Catalog
+>>
+endobj
+450 0 obj
+<<
+/Author (\(anonymous\)) /CreationDate (D:20260315140645+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260315140645+05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (Market Intelligence Report) /Trapped /False
+>>
+endobj
+451 0 obj
+<<
+/Count 16 /Kids [ 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 45 0 R 76 0 R 123 0 R 172 0 R 218 0 R 
+  268 0 R 313 0 R 352 0 R 394 0 R 445 0 R 448 0 R ] /Type /Pages
+>>
+endobj
+452 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1846
+>>
+stream
+Gau0DgN)%,&:N/3ls&#!bQ&c1o369U->h0h[b?MJSdnGs,U=X#"/$WFqXGTq,0PgC/!Bh).fo".4aV>g'F58Cm;$#/]U6S-1CBA_F9[s7*2`2_olP:3$7MZHS3]DMP,''!s##ePbX_W+XBe2FZsWE6g2BZ97mS!^0Ed[G+cgmWdgF+`L&$B3hC=:l.HdXMKQF6&EBh>4,>=_X[7eG_^d=XKhrT&:8"^eO5)aAK)[FDt6oZFu#oMV-jHXqD`,QbE&<MiLRR07aQ>tV?6e@uMJ&:e5#-7u]`SNK;EM6MB"K'-j?C]eXd@0j7O\r\Jo&0hjFFPql:st'JHSPNHTNRi&Y=i"h!C+8OHm*:(3cBZajiU1'N3MLe[L_-32UT3^Gj#\4I!U!,P(>[qMg.]."<gKKSq*6Hp^J]0_I7HLc]1fT_oF%h5L=(9daKm6j\`f<(<=O(4.&Oj->Zm^J&(V:@^dtKrtM:\]Qs"t@:`5c0`qBl/#2FagJ!eOi/0>)/^@Xj`&-.(3)*nK6kElS9*pBhLHB3K:B?"lJV`e<MW5+?_@R-mm+Ef.'(6nF=\?Piq=g,-dBJGuNCBB3Mb%X)>tXjE@;?Sp/579s!st_ZA_`K2cn+ne^_7?!:F-pfHR:>7Y<QOR34VGeBW=[leQ20;8AC5Y1jtJZdfjp]rdk=_/g]@`d7/,d%^#AsKpajg_[br$6NAe4&rkKdBu)j*eK!s;rPp*@g0.<tCIKg&0UH\)>Yi.C;+NWs>Nlo"kXm=u*#-i`NO;Y7&4SUY!7fdWJVA0QSNn?gR)&)U\DRCpINDA]3!thmb;9?9kg=sS%=STGDam#$[f^QK3t`eFP]5%L5rO3?pO4H5cYYf7m5?&p;P,6706'j8038Znf.XXc1T:_\k4\>HN8hI5HiBplZRgoZrbn[SYl#c$Xq(D)P@R<$MWb.4*3.o"Qa1:_NNIo?5"Q,rSQ*-%WuI7t%H*CU>p`X>/A8V'g!sZPY:ekrC'Q0^dmLt)[Z]&7gNe)-oldQIr*ES4#&Ai,Pu$<ZJCEmGf7![s.k8hP99KT`1ps:DrkPe:#EBgc6a$^AE=8jO]XCDV"=diN0!q't_gJ^R6KIAC,0*(7V,e(kK3Md#$728@Jjil^XI,\cJPZO*1np4P"kP`_#1qC6s8:nKE\n@jQhJl<lGo[\WT1:0`1\W0Tdp7uc:D2L!B>mD-!"Dm<aso8Ji6B(3L!t_5%L$r<=#qrS&nDP5ZDkTB/18uC3;eg_P]mX9TI3\^1S>9>@<GjYb2`dpt5X`NOd(up,!lL=peDiCZuWUJ/3QZ[-06lWbQX]D,kYZo!7d+RK^=M9j,7hDR>I6/u5c_C*S."$b<ETTiQ#C=)-KW6V;Ee*Nq[ga';[\WhO)(%O)L&%&i%u1e)YKg?'7XGPf:fjpN.g>shp*=kR^[1m=bS&gpKp>r9+\n<IljNYO$V-XJq-bbp%@fAX)3\F0B>+$SOCWo9Pbm[amH&ap4,7c^1F9Wb7tQOBuEi+1r#"u""lc;mbU%oH8V?-&G?XcOr>N9F/R+oJE`5W[8i#EGZO.pIMUNf*.K[?0uK.H_(O4_iT./.3"c+P(31VY/L)HMB0*Y^JIY*`B@3](IPIH[qsGdIcR=gAc#H`fJu;)p%%*BXBo9AU3[2]:RpC_ei?,dWI\/ETZ-pE>Hr3h3D8f@ubJPd!.SdHVZacfZbM+g_i1[AU;a+WR+g^qsVl!EV!kT2+tR8n3(JH>tE_ZO8_aA)qiK$:>ZCW$q6md7u*gj!d!&Ofi6spml8#)2&>R\2bWr!Ti%Ne/*BNh53^\,_mVL3nk5klf)l)QQI9I.<HN`=dH"sWZqj1Q)#X]&KFFC~>endstream
+endobj
+453 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1654
+>>
+stream
+Gb!;d9lo&I&A@sB]UR^e_sj-n:A&8cR5f2'\]p*!ahZtp6qRLhYdCN^hZ5#bEpGQBA0#]Q^_m2lp[-^@/40OG&.ZHD$g^UWqC"`K@5:9=p^&9cEB)YJ]]FoGQtBk'@2@q!"MT4&AMDZc@afSS'DS?AT"W8*i"/KFa(Z1,Ldli`A4_MIMk(Mir[,Xi@VQfaOX^WLe7lfb@Ia_gTDs%+)C9hH-f`7FS;N18/a`=]lgr[?E&L=@"F33)UEIZU[*G'^*K?crIP;8KETWc`o&/Amn:?hB+hU!r&B9?D\T@/pm^GNJ[LaHB_L<Cd8KXX==dJ.Z4UK"<r%O,M8baD"E&<=\&I.iO%.KIL+DujK`-"Eq"Uds3gK,+m[c!TN8mCr=9!'3f$EXY5C]mZC@<A\FW#Jl3iLslOX>c[/iO0NgTbWl9WKd^cUA"&hgUR`r0(Z-eBQSA77ou$kEcmf3=3khLb*SWJjC.BpFCKUo77$[bntS#Z#8-knbd/RMWN^HHHW-#[Td^kWQgtS"h-/2t&!c4e^\2'6/1'1<IiJmP@7.&ZWq'Q>FJ=uFYrdE=qoKY[n`[qK[GP3>/K*oT&f6iBc=Nh?A%uknQ6d&R/5gKK:*0;c+qoT;b@<nGAVbp]Jc6#Jr%%#qL/23Y/`8GMB[@sh:)4V>0\SRU[V`2ncQJ`Cl.3^(i[n.Z$c.MNRLGm6r!6n4r.N#?=)8WWRqHgL@r4]uGl`=\V@agUTl<0A<'j[mF@P040\$AN:_g(TLPfjX>jK,(+W7+'$`2OiI7#E^F`D(`V'Pd]]`>0CoKsCG//\>8+\5,nb7t*7G/TR*%=M$-8X&\a-+f-+q'fUpebDS(?WT+./sLH(i1't7`P.a_XGbrF@*Z"?YXdDD+Y4--_%@pA%(f+g1FqkPWdr:!_h6eDal1&[^o+r\Is6-k,8/cNWN$3Vm[bDCfTSq+K%tr4mEKI]qGklA:P;]7:f/b!kXq$2k1:7Wn,>:138X=I-G-E(%j+3;4a`?N<-MG%,LU8EW+F9c>4g@<-/TZJ&$P.1:MqI7)-@NKW8HOhE1+N00oB.XB]mbVpOS3R-s`C<@.P'901XE[MJ\:-j&^<-%ZJ%DKjThRjVedW5#K/Mbhh9*kZ=$#E2p$^X\>`%^@/7!<g'@"Y6)laCH&EPl(B7UF.R=-&qhE%V5!@N>I@XSD7t:I=e\rsWgR:"'ErVq\&#Ikl)Uk>L,*a8/;@(1mG8kDOh>l+9%"HBID-,V+^RWm$O,ta[^D%d.@KF0H/;2keYO%"Sre13V'SnED82CZV<-Qml+hEA]^OO^_Q_"u3R3=.>QS+,.CmIql.";<cr+H0lXa#[Sl[9jgcT$(9.O]';pQd4(9;Yj,l@*t=4>jAn]Hg/j,Gk#%'csg:)7n*I^-1%`H:98O;gGc-6W=C-f[2d`ag&:0/jc@)I<%?j1+Ip2[$]CI>3U;k(hr-N:jsN(nkd+AmBCA*n)-nERPiXe.,D2CH%amFBfJ`%kUp7.bEk[Y&lU:DeOa)<g'l&rLt"7^=L/cG5VFo)JspU?H-*:e-epB)d*ZC(5o'!9ZDZA8h+@3HqrUg%#bs5.lp4D6^CqS$sW&3.D`l#`$j_ha=ER/!'PG@8=k*G,BZLU6;J]eV)p/QpY+mK\L@=U7V-E7!t$E8e,~>endstream
+endobj
+454 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1665
+>>
+stream
+Gb!;d9lo&I&A@sBm*Y41$pVN<op2CFgR0lmD7(23doh5P&e,/o!%;"Koc8RW,A6@B&Z(olU)@YJ0)"hKICgFa#U)V8PICOqk4%AI"AoU!,t':l0Rj=Gk%D/95nlh'2M3-p_Rs7f\?A=*\iSReRe\aJ:i+IjRVs8f!DA%jAOurC&L8o;)9c;Errr'cZLG3-e23mDaU'T!;qc[&o=n`5m:T3d@huuhRlu/A#HS2oSJ/c/h4F!:cAFGhOQWqm%Ts:SFif;N;8`lpE#(pLbU(7!E(hUi#DK\o0Aa\[,sJlpV0;j(d.Z2LQ)h>>=eZX'RKlo=r"A7l95HmEgiI*o[`'fi7il!s]*sEfs,?OHM*08NOV#!_,STu4lJHUF63gqbAQeG_?r9lg&>eoU7A).js.G(o_MWgKQ:&e!ClK2ePs$KsC;F3<+=,U.TN0"K8f4gH#\m5ehtc#u$Y`1rZ*7:*j0DNt'>Sa4F.M2na2Q;G'&Qrlm,g@PDt\]8:(Mt2%en"_-\g[(;[>O>2_#$;N5uK"T>0Z&fanF'XR9;Uerp86X'V)7BakOFP1O6[-kE(!Ck8@7'fMdS9<bS@eteu["CjhGYqa%Z>`lH;UfCo"kIn]h-K#j*:[oh&r/!rCGe&l8+G`rS$Y'I*.*l#`l#W\Ic,kL5-#"apnp?_,_+n6#-#DBj/f^-K@E7hd%>;!TA1;&3!JY]OS_3,^ao/mprBlke7k4R(.[V_'b?*FUK'unF1<*)7hq]-5q>7H0Q%Vo5ZKE!,1'T6P.p*0`Hb(,rQ)pLgl->HXfXRPX14WY#W84).CLmoVh&B!5R"6-k4_YF<CDMW%7rp&tA2HMal;/.U`'m%r*'fFJ[(lm38qXs7$n)RM<bhpo@;EkliQs2W.jXt$Sp_6Z7OqLr*R&U@5>17=7IasRVce$sl!ISQQ7B_c;YMV5:2TsA+f8HC:S6EhWTgi=aZ#urKe-NdhNfu-cMnb"6$RV5,TU,V<ehVl)P8(\3&s7_lqr<Eb_K)t8/ktrhT-K9]qH(c!4l'S\+*p7BYr3KTU$gQ>fihhXXDX%aMRRp$9='Z/7b&Z7hbHsSJsD3.BK1*oZP\Le25qi0pRK3mQ-RYcq9OOXQ$6oBP>u1EOSP%P%s!:FDZeR"7C]$.l,ZndFP$&-6Z#W%p3j7^g:r+Bh]VAlV[).SQ4#d.BN*29SoWQ.+G*`G[Wtn:-g<YSu#Ch`4deQUc@5DI4<B1"#"3lYE^'%:e83RA<ZB@e+R[8W=40X/7?qcb(CU6"E`C.".C-Z$dgpu;&V92kJr@a/n(YJL)k1CEMZk8<6AD"3(#:pU&B#l"LTY[i7Kk*TG:&6V'QSc?bUkA0UsY-?*@O3fln+,j!9JQV-K3DrsuYpn^6Fo"*%b>dp*NO)gG/&(9T32HUp%Ii_pM32oJ\;c?h]j^9$Tbm5>Z2DrCTLXD&to4a=/69@Dr(XD%Q:oL=8\&U.IqD26mfcHqpn-_H3=@n`JMrtq)-goVJT2Lrg>D<L)^!O/h)l&A[pC%2!fLSpc/7u1#OZa#*$=O>L(2f:W+XIDC=.kFokmRLeoUK^kpJ2oe)k-#nBr+'U4eJ7_>[_nX'#JqBqBgBlJ"!)*Lb&%0e$;.T6n8[hTmMk!A_RSl0fp\_S<G>QE3GH3c+08QCV^3)'rWQ6^;tg~>endstream
+endobj
+455 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2945
+>>
+stream
+Gatm=qet4K')k%D`Sd3@\;%'7gNN9#G>=ZOZb&fX`-hV[Z(Rqu`C;%OP)?%5lOTe%8^9=,j+799.)+j6br8#4!?5iobl9'n31@Z:D]Ne%Qn?,D/K\SS_T?W_a.DD&:(WH%E^G+4o"ic!;$^XA=&0a(3OUfFk8_b3KcTXbb6r^D"*\:$IcuP@bFj&K`!n1UAI?nN/s/R.Q^Dif?Gl+kbkh'7$!cA.4b(,Taotolpmi9Ep3u@N2@`6.mDEm&[TqQ/6Bl1qlsMYjIB`(Cm>OE7PWuP,auGAXI(dENDd@<EUYJ\HeiUF=Yn?[g\kH#59U+>brgj+Tk!RJ]n(%Q!7\MmP^`(tfOmRcYp)RdZ"CPWTd'b+%I4GT@0t_LC&."3nSo#6[/ah7\.eeE%*e<sD2U@>^'XuiGF[O?W?,%8(`=!8@0\E]6b9(m3IniV/$8S=iMQQt`jT>eE;5Nc:=hV(HTp!#Rc5KNF)u*pt"j:tATg&[bK\f3g'uk3hLdDEgU<F@5$6bL"-.FVpb6:@'.Ng9K9@Gub=\`'*'1UDJ;H`#f^0[C)-c`QWl!J%9n)ChNk9o/UBlB-46;Y+Dak:b98!FT$TmfhB-q%3$^#RZ3)54."3l<@S4QT4nE_p1k!9]tLVl,^Z>gb`1E<'?:c3NimVNfn"#bBO0TjOSW5ni(\D["m<8/aSa(p5.+l%@`u%^pT:0&4%q/4"N@he7Y5?I#Og(`$A,^l4'g1/ALJK!/-/d'&F]0a>T_:tZu![h(ZSIE*9'0W/VW3<RF>[G=(Yh=n%eBfbBf1X3<jDZG).m:sMRE@f0+$'$D%/hQi#93@9HnJ9qDb+c8!&L`P?&uheJF@d3=J]'ZPPd:B=N07cWM/P7p11Wue1cBn?WMh<==HW_s$8'GIcn,8$CXUih\eFEI6XP;ATKZRW*O-`LLaY9:o33,3!g?Q=&t0bTTFR\G?ok`:K;YC]N;RP_^8%WNF]?LSO;u6gO:=O'bI6j.78*gcAW\IA!I3L,NHsr[Xhrq;DfTh),`5Dj&GW#nU4RRsg`fI$;6Zuc"'+IUlc5[&PtlOX6D_SNKZWJJ9&lnD\&dKu#rS(Vnf9UWb<rd;JgamPW0-n-9<,t]i-u0G/LZ#D"o(`baIgFYJ\;eN]B5VBCKJP=UWa;%f`)9Qia/Pl)T/@A@Vlh>qoL;2M\?$O$t2S)!rJQ(Nb1OZ>Y$/E&ut/t@5eSNZo3^<i2FdAO;"<)$J>TRAs:9G_[grJI2+R4D*M0jE$1uXmpLi7F?r52*Z23.3)bYRe-9^,PDC)fbHup)*<Wj8#G;^('.7.aBZTZO("''>P9Ol2V-0+aVm5?E?6V<\F`MjJ=h_5%M2/]tT?`B-cZ2uad9D9gYZO@?f4d\6-6XR>F_r<9]$P.E(*k,^7O1]$&/ZQhBaLgCRBFJ/Uh+=MarHs$[CtI\#j7`8BFl=cQ-h\K*cWN@N2GM^9N%oR<0K\.OtIWlCZ*A?EP5LA27&^>MPQEQMWP`X=cj>[K#Ie$WC*OX^2c#>2`t'Gk:K75KK2MtO9fKbA\hHo*=c:>'-cMH8+>r+[s;Z=r):^;COaR79\.N+-l2L9<C%?`NR((erst`$-,odrJ9p2<7Ddlr;db2NC4IeZdi2ThEWPV]5'F!mXC*k/3ZUcdPKj=D'IDfg(0kC]n,\5@;7>7&XdJ=NYB/f8r8i4_D@0CSn@h60$"Y#f8#=)%Om7@gA4D68nF6jg8<n]OI&<nqh;0e#1>r9r3WH%NC!;KJ&<l;Gk_cL&(Dt2RcsYmYf*So$#2ZN4eF2##*cmHJrB>VBm[[.VVNVOGhl_<_;RnokMkp2^[9?^SA:N3$TIQcM/)j\pi((Tuf$ENOVN^>t?hMb:Q@$Vdf<9`t9oUZ%`%-O8q\"_1=n`2!<d`QgcfiW4ht6e]7dTjgB_;0@8!9)j;s=k7aEK7ehkH3',fH(J][V);-9.9,UbI5\4HT&ti<lE5a_?OIBJ,oVIR@arT"'7*eeuU+g-NoIn.fV]UI91mJ-?[UgdnDhQP3s\'.m?qVF;aX&QL.H6>>jHCUC(1A2FM'1V>>:.RC*8YrX&X0L*Qk>L):2F!<)lV*ll>S'bVM`t*:iHU^n28kM>pJeuT5#Xg*picW@!J6DFK7HjW<Q_OESgi5@O;Ep`D)!,+!,$:'O:S/-qQ]\6+r-E9-d!5$t9OJgr\S%\rN\n>4N6[5Y4Q[(O,AE$/iLMUd-tgj[abpFdeH.jM"_[-=@-:/LZd8qC#/XX9RAuTn*>'R!hcXneij9\U#5N*TF"%a<'I[6/W<>ou^l"?lHqm4$ke3UhT3'nE<s_+#r:XpJM[jg9(Q?&q+<XQP$>6Zc:mfTVU:M<.P0m-,H.>p<4=/,Gg]EG<?m[f.Rfd)3i4kbhlFt`d\hr;D@3Ka/?Xs7@+[Spr;_[:L]X6P2X(J%S;.L:gGQg\N-4L8O-2b)QXeh^Zi8S,DfLD,`'HZ4eiJrWDp<)@ZI.@Mi6Db*@E)E7D5S,DB_L>mbl-m7!qOBr4NSq8o9V#LZ0Mb8n%j*Ko0R8euN6VKe-s6*qCUPUZ?&Os;6W\[sm6IC#R0k3Z$'a8?\ZDP7,e^5Yb4Mh"^"YB7.uria&t'rC1oJ2`bXlnD(T"k=M[Fk]fLC9b?_la0nHq(m9[ONp;Qlqc?DXAnB-Vs_a%.;\ddjY`F8KhIY,UL2F95BU4qbg'#52oWG+SE@q\&R27\m3>TAfR3\1_&:H!';:+0VP\Ejrb\+pni"%rB""LC7"sZNe^t*"V"Q\j`s_pDitBB+;oX_\?2t06"rq=JM#E"Wgp_gTu9024mmSp;;c*VJp+XFGJ[tdgUPE7VC6IFZA+=d*8G'F8N2J=:g/A0&:?T2J32a=h[&aG3S/#b7"8dQYrt<>fZ5Tl/oS#)/jW]B%+.:L=6lI@k3&BPNt7EZLu/5d@/Fgm0\c_^M0eH5F=[fq_(!qFJ]~>endstream
+endobj
+456 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 645
+>>
+stream
+Gat$t?#S1W&:F5UR)`$[j)4>'kLW=V5_)C@M+?WqF6_=raSA0A^ILI-Il*"^.[$X_h3lsLbmJE/M"iR2^ibZ]*s;]iY94NXaM6Y]T'R+;88+3<$,]]B_"srdn=*qgAJ)hJ*AH+@5V/QbP?LNaZ:laC%.YuN?OQnt!^=$.2,1c(D<Z$"Id_Z/KDYcGeM@t8MNLlkP3%%qER6M[3nYl._J,(m.Rgo8buea0eR09@/6?5I&gE<I>&^8?bn\^IA9^`ehP%MQGiYCm$6BZ*WEfsM@rHW5)L($HO^Wj*3gSXj%_fSP/%K7ASSEZ0s$[s4/OFEjRpdZ()PdS@_kIu^Q#Qkh+uLhjN/7!7+EYpm/Md0+IJZtCWXBMX]0!BrlVQ,Kd?\q&^q9$]KFZPXUT/_YYWigc3.GaX<RkAX1a#Q:rQI2Wc9[oNode@rHXE"ucF<5@]-oWK;qYJr]boHWZW!Rtr1i'/-F%=GaF;,5<ZCL4HahaPiT1BYEa`ScYc0uggq@N1R*#9h7,T4sC"?WLR$F*q"_K>X/TLA:@1#fN_q7_^OV/Sf`e<anHlh6$TT=X9UsDtu&O'"V-/Ye;+adHh,_kXMoAaVNPFN."e`Y!)XFFCZ&q<[#kIgYEQd9B$oK)u5qu]PC2G4~>endstream
+endobj
+457 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2867
+>>
+stream
+Gb!#`?#SK;&q0MX(uW-<"hNB*P4pPbRpH>>g=f/=*su8SV2`Dq,#sMXl[N9C7'8r*p9(.#Tb5*!BIKH4_kZ=4\4[#?.'UtRnH.Xn#[Y2S^c79:"-Z-ikQC`F3rA6%0[>p.J1s]]<!%&OWhGlQ2.+Kahk;<4^@Psd*12:V6msJen<=3XV2!A!cEBoaB5>".C-/'N;d524>h`gmeN^k5$]KNs3/Z^YE$;RU;1:<"$[V7\^RtII[Kim473s3N7Q?Y>N#.K_<GBT%&=QI^Bh(cBZmEV;;PZ[)oo9+f)fge1G(*AmX0GsHTBC.`gNd+#/$ka/r:r]-L4^n_o[Pi*hF*L'RO8G57^J=O+IQakfgJ[;KnN#o<"c$M#!]@,.LVku4JSBumaBDE-8b]mefg`'PG<UjSl!7m4LY-(R6A9*RLq#)OnbJ;Gs-Xd?_1rJq!PYaY!;:?\<e&Z.;P*ok_X7)1Wk7SQ=u]Y:5RVpP#cH>g?7hEe9d'45h!B;X`'h"o/ZATrBkI`j:D013,nkC4ip@rcA_-d)p!)?d;7U*`H#it:Bo7=J0=1D?T)(t,Y\t(J5]0AOu2kPDGDE1X6\m4hljIC2ud_n8B0bcq;C9TQPZ!l)ro[%9@-ibS73P5,o!"c/YShC<7WTQatI=.1EjC5bqR+m;J\>;KW.Pi;B[;_6tcZ+-s@QAg.<a.>T#>8IV-?";`Y8$,fI!dOc1\OTLRoi9$f[d3/'+S.k![1>%uAZ9)Y$GR^su,-C5gW_HI8NHtcc@V^Oj[%,ho##d'a"7;J_g4"9hEm8_gbnb(BIFgF4\bP>FMLP6D9HmkLa'<:_E_YH[8&laT_SEd>9E.DCtjO(22FD^=n[pNtee4u+hTltN9C_:_&9*m)a-jl.D`Lm3"/#G`s9eg#H8T'u5^+C.Z<O;XnXZj5''C3<>@2XdOp[4YO6BrBa7OM-$TG0j%Rmq'!"XmPY-tji0XNKfh>TsF3%S%Y@#uu@4kldDG:]dD"bp&C'!YhaFJPd;oq.n0nLse7RZZh\_6n(./7Nsfa:^j+0AMc_+-qMa+5sZGiVHA7!X+d[)/uEn+EA7gZp?H'PW6PTH9/K)hksf@i7s'?&OJ9]\0kt)P*o"6-9Pl0%:N'JjQKpRbVN(OZ0O@!fk(hIq;hS`b(<*3!Q69+bifus>KQ3)_7HMol':#\?1N*r=T!W'=5O4R`K&R,LTI2?dBKDs!;!:Q6)PaHG&\V`qUhGm)N8F--WS0j&$X<LU02,fO[V?Il=5e=!OF?S(9G'/CjmR<V&u<GoKNU]!)@%]p>UX:Gon@NiKWoVdE4qaGbfp_::-1aR&gTsrY9SA>3(VHFi#'/j]`GglkMbD]aK_WS3j_65#YL0eV6l7r0B40D$\`#Rf&O/2?^&Un6TlqEC7Pp^hBT.U:d(aZi^l`R)+rR%d9XaXMA6O0g3?oLbpkjM-AZgn&g7Q]C/C$T92'q.:eKQ"eh@S3ZnN,O;Kjmf/t/E"rS(%VN-J)4jOri!8j\;\3.;9-#st>MY7Vdb*2I8a.#a2VAGUM6b14p>GO=l^2\3B/Go&3PKK/]EJf19(J<(P]Q*:B70M5._d7_JFMA?g7R]4M:==tbu6b2]N-oKq1MW\\F&0.J#j:OOb*2I7FE/_[-/o@6Z:@-Tf:T.REf@)ieiW^8BMC!8+D[)^lr,$O%#`:BQ32/p%K+om]MU<Y$o(Hg:MMM(sXho;16(5KML(cH*Sb*L6-1DVD0]`o&?6#bC\TkL1jKcq+Zhh2$koe<D?7;MhJ.KJW+XqtXN5CfLFDu5]U'61$<d_S<`T04Te?cAU6AW=XMd+C\i+/o+EY>lM.;^=+\2[%,!g+=Jgi@,`M:g;=]%O[$<FPjtP]F'i=UPsTs2\G/Pn#e!S5*>k(FUSM7.1os.9]sXUI;7Zq7ie\^91-'3&j5o+eHAE8.dmj?$m&N$(R\g_\'"X*2I8]TV1,1.f?A&#h?Q3<b0:[n$Af8YRIAdNTg2D7q]4`F^t]bCg5.cG$CIskjqAP9Z('(N)*]k>IP:Ba)eSYZo=f@dVi00APG%R2.k^*p8ba3@@a[U#reTlTQ.N5c6^-Qp2qc=o(3!>UX)8k%e!,sR]Z1:]^X*oA!=>_WCNg]!^iAF_]tVu9YD!+UJ0d[0_]FAs"O%l@d:7i`U`0Cn:^REg(26C/G\^LdGM-/Fj@:W[S)OnNNr[6:t?RUoW&jZ+W<^VHtDTr#?ul)YTR1h^4r*dp3iF`X4d=m+-5/fV'0Rd(e%:r6pj%_+eh7GHt@*bG&H`cU'\Y!12l3"YI?4]@Q1uGDJoEIj8_[V.$)S@bkj&"L3QN9g2@eO2,RV>rnD7;/15VkCqhP<T-$7&#1XIchMb`'k141DVs5uq5FOe3YkJ)qODUpSgAA:HFqtgIEjRoVcXofOcDroK3p>R7kS/a>Fa71\NH*"QR6rJkjnG;ZE-:u]>sWZ*Ie9W81rrM)F,-EYLfXAq&.ZSpi,4jXhQ:i9N?S`&@kX!s;#,MY(o.+YC'A_4HkaKir>C5@B-bUS47%Kn6Ld_N8Q.7+E4h!'E:;\u[b/9Cc'dr!9juH9Yl2N/7%a@rhHoTi3n*s9B6mXBG$IVMF6V!/SEX=BG?g=">eItpRGLBE@F/9s.d_oJ9^bS7@5u`J<$r)eHC*iKiCr]LSM6Se\n'@u_jTAHG/A3qGNhj>cL`aB$,`1f`B.Kfe%99P%(Zg6A=YEEl!6k.$tjmQl@e+imh20FSEX=\'8A<VMg!"2].eK`$,`1fV)r*Fe%9-<$tjl&mtBXnmp_hASE[)DmeL==kDQ=B9C997f>Vs:DW:E]Idf/H4!=hhC)m5TP0WHSh9S&\c*6R4hUqXL_DfBqk3L98lhu8'&'k.THol<\~>endstream
+endobj
+458 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2537
+>>
+stream
+Gb!$J>ArO[)M[_Z.gYK9[_T+08n.6mFM"$5Be`>q2g_m(A]E/##EM8!c+dW,&Tt><OIe/+0L3Y=-^"=55!$BO0L,U=I/FrH!;s2.huA9/-=D640S9e85Cn<c='o#?'?gOZ+:_3b0`]s;'S'r-l?3f\I1V@KI=>@D%:d15Umt9h8-C@L=9-o4\G9-*H_nPqTiIDT4&s3+go3YDl+_lD(U3o,U_QWA,a=."/"bouJT/!:n#NXmZ]9;6$">%YES`#U70*]TJ-(Q50`VBp3'8Nd!!GV,!KJ#X5p3rJ*.^_5qsRSLf]\DN7`UJ0$i,C9nDia3p2VXIF;^J5r[=6c<\JA2$&GOQ@DD=ne_,Xn8Jj]dL3ET<pM%"n8/Mm^hMKY),UAld6ia#B$s;..ML.['gYad5a0]b5T-uqT^<\MFoXUkkF8.`1k@XQk096:llr'B2S,XN+]?ulnNka;NDmjAb]/Yg:5*PM^>#u,"f)$!(A#PZoioFR`rD_F&^AI)U3XhdFK,e9J,d/_2i/b@,2pqIus7$!YOLtOaV1`iVG83n7q6S6O,MZ9[B?EINH@[MaJ14S)9RXp!K;m70Vt!'MKiV2TH;"\s=B<gF_$UK:dB$T$^AWHVn]+i9e@/u35et%J'fs-!(BTqiN*EjeW[^t[8'0?@.7ul/GrR<HGNga-^Qjj#1)$T;=Y^Or0*juV#bcqpKRKA_2J$0<K#_#/a2fV!.7PkALuVVuqBFtuUFK6nPoWe6J4Eo_&pB"S\.",gN8HHBgG83i<O,Gd'dKd-J,P)'.!8[hAQ*5^doEsAaT1Kf=CT@&-+4AN\.=nn/+lnDEiVBkK3-fAZ>"_V;[AMYZf:USAh)U_E@>L%F%rM?E8lR!m(a9@#Z&AD:C/rM<moregFDeD8eHY'ReQ[P=m@Kms.YZK'cS#<?+"1>$o$WD-"9B$7E[rqchM@@UT.Re3siGrL$g%SZhs0gH76*hVkork?5jhtZpTfa"F5nDm9(Bl8-6je]*.-DRQHZ,>M7MMlIe6Q'KV(-9V>*4#$Bde=6b;d?O3fc(L3G7(1k)E##aod<guufYE#<SdjFq5H&rRE"2nh8&$Ap0rm`?0d/0,^).:r%?d+'SZ4Oa_A=U[Fipt0(mHs9.N'eYL=]*lhj^[,b8UJ=3T=RX!Jda=d%Qe`Nf]b^BG!?l-9'JC>dZ(Q]F1&J0+I^tf5?(6>h.JJq%6=.[(nb1TFlqV\dtKdHIPNOOrJccDVjH8]K_&NaE`k4KX5bHg*."gR[H&0t?<h"&i02WDpuHlZ/sH2^Q3SEXdZ2V\7X6C)'(\9feqkjhC#65H]'8Kcnmm8sZ-&Je<DF?>PuB>:q4Z$(o&GT3o6=2N;I.D8EH#)?-S9LC3*3dYc4>J.5V=ZR"<tqW72FeD+n08eFKs%OAOi#?.<Nsq!TM(fB+Ec\=bo"4]Qj%'Wltuc.Ot+QW^eS)<is\CJI(gS?@-"Fqm%]Z.f+KGpH0<9?JKhoi6IO?\F[Xs4'ujt'e]rs.\C`L,KSQNp[4q4$f*RKJ9^VE\Utu"(?3C3agd@p16[ts905>hHL[Lk'[1>4r&;mD:T6/]ILb$cJA(aHgqeK\$h<,Z(]V2*Ral/.-S%;[O^C0Dn9LW+5H:X9T2/P#3+^23p>UsN#?Mlu`"g=!>]D>;dd3r3Gd#>p?$cm>]!O+rYR5mRL+o(pk,<`80(l-Q=8LL<)8KR[@d[Waqrqg]l:c(8@.Mb#7b0&t'6CP^*^LLRp[Wu2NeuFI700m_Te!!chIsIAPZ^?GC8),E*;[Ih_$KeaP;=P_[l;PsgqO!JQ>pd)`KoN:)ERs3J+#2;Pa?WqlEj)TS^s[X/P-/"n:?ILmHp_p=&M_)F+RjonE`c#B/$loS.lLu2O+K/XDG<eN7"cV#B_U[&ba&$KE(>8,?K%^B5_"-RDrDJO):pQeLmmVYJT<fD4=3:nKUFM@d*CI[U8Ig8D(.9"[aQf-$te!Lrd33;4/&!V/`TBg,u'7-e!$qC(ZC*mKH;i;r():Y%Vi/BU82&rt;-Y9'4su7*0;CCAXEZ?HjXI>QgBQ'_<LsMf#:3@@a1t'LE5/M-j1m5joG9(a*.hF0W^I`/aW.DKfbT7E^>D_jrC$doB2"6R:OCELObOD`4S4bR1sL<IRfM2P;'#k'$*Kj;G27KQ<O8^qgHRd>oeE0:<S3&ENUMceOZi5/U"b=)Q.Rc).lU[(;-aJ$1R$Z@\c`^D$o,U7;Jn?ka3qBq$?C*'Eq%>3Ef4enrg)NC/:_hJH`e\f-13RUO7s`\4^J=&%_'$g;EY51G'nrk-3Hll2"1s'^)_`DGp1+<fu5a$)Ci8gc'I#&1(>0aY5+4qp[X_'h^L+Z]t(Ba>.k*_o%=Yn+*RLlF`G)T"jt7?^PPlpH.=ihOkB,1pRhkYr!P;M.`pTHc>X<"1ldK20si,;mPA%5Lh69[t71298`+1/\3Me\ECen5KiZ;?KiQ#uNI20Um_LlU)j57mo%_B$/=g^SuUU@8BCAH;mS!M12c,K4'!n$qF<A$qu\:0)GJ8+'AI`>d3Aa~>endstream
+endobj
+459 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3659
+>>
+stream
+Gb!T[h2^6u&qKHF.0_aJ].J1D;PO0EX#+\B'M[%'%XM(3J1K)(]/&VCoXaqn#F%VKZ7S^EPVb?*OI2c<+c"q`LI3No0OQ$Rhrt@']*1=oOT=oZYl[6(KuG_7_rBtM.muK4KF&b6i[C[S9JI$NaKCteP3NpDioZZt(<qaDciEkBomQ==jO93FYh6b9CK<Q:%BlSiGqLj);\!aA<YbH]=Sr>\Y7KJ&GSGEe:&8f(NFa*hc4ds"rI&f6Qsbk89I!(eVDE33H;OYj_+BS7TS*pj<Lo8&+\Y3.0L\8E-?)Ia-oe<B^;ADngC=m%p"2@R?O1/VC>FA7GK'<F*n^AHWEkYWdl5;R_LCK7mcK5Mq7s[M'I)PEmsY60Qd1R2`BY::NA?rb6s`+lliHZK'[irE-ujo>05Lm)lLmqCHCF<f^?sr3Otr_PG!@CW<K`Vjr6"k1m`!)gJX_G)]W5T!UhTF1_^*EM1"ZQ*qQ]J&I9BE::`KYC!KVI27q#?AiSDP^I'*(Mr8q/<k2r:>G:6I\k(7sp9>R&`R]G8Ml(hin4S#B/"-c%oUqn$UGn[]V7FG_LXL+D*=r-+[(RMGh:LqYXE-WK3U;U@lFS49R8J2Jp7tNAp]b>^lIN(H+S->&!!hqm[`*"?[#*I+1@Qb-Z>4;9M2a;@hN`.pgha7p0@t`n'Z[0,=06k&Y/8/7R5-U!44U<_,4bY#8jrfPA'/biHWC/a\o+@6;WL8jnE4&U>K@!?7j+6Y(X'm)g8IOO7UilVVNp34Oo*>]Fi*?.n4C3H0l+/@H@r%0B8d-k./(4*s<aQWn>hn5G/s!3(o9)<.&@PJ9c=H)44pCdQ%LRn4SAbJ[#mN)AUr`fPc>N]pV>Vhb$_=lP`+sh-3(aiKQs^'5`C<*(Ne8K"+@1U2OF6jn:f`JulbQd=GhS&HS:A3>.0TW$XG7HkT1.1=f)=9)QYDm1lSqR=Ogel=`pWWqB'.hq-j]bN?bSa$h\6,S$e*K+VIu#JR;"c*e,O:)Zf#*F.okkSI`M;2'Fn&0YkM;<iE)kuRHD[OWE(%N0'b1p)CKS+'TW>QO//`T3GJL#5bi`j!/O#Wi@+],!3r'9;WRY/UD&bMcq,RW1Q/'Nkfb5f/%.PVP)lq)-LQt\32l#_ccF7L-RDr:4*QP+AuF=1mUj&8^/CW?*%BnR:Om!l8X!SN79[e\E&&d)OHY2=4<-2+)P=<\.^uL(YXOc>;b])iY)a9q5=`^FR]q&lO/0mFbT]bGA3uTNjnXRonu0Vs:dU+[pmE-0gTYcOV"Gjo3_4gb3J,Uk_H+T;OsX*ojp6/QZgH'#f_M:5m36-,?3J4hY\X^,_7^-6,E)l<qDU>Xc=s:a[@Q1joA`tUS?NqeO/,J?rGXCEU$2@iL?S_!-11M#o)^ZnA-T.3rHu6%q(98ARbbhrOVXrr.t)2;FRrD0/Ebp-&%b/F3Krr=$72lK?r@A<lq.`O>4@f(5cQuK=UBFU80_`C$@';DKh0m>$25XeGl>k;4d)hiQ:\ncppK)aQs@N"fAD&c-$q,VJNl,u_G*rf\P`r<#;dQV7dXhfFcH@HUq;s0a7b+m+$XcbaU&:uhd3P[?JqEQ#h..,E;%o,S^Vi15&#Uf0Y$DH#PKAO</V2=eOmoZ@&Wq6]$dicc-s("\]UL)(Tc$TI;=j$HX>ZQB63-#Ap;;IR=WU$2:jb4ZE`&m`sm)aJQLd?_.U'a^,$b_oT+XPVJ?U'[^Bl-r)tn'Ifj=^=t/(=)V!n-,Hh-VIIG`5q&=!Q#.0RS@WL_iBR^ncXa&S\<k'/)j[<-kgDd5)X5u[+2!<t(m@,WE9*,b'3(E/pgnpP/c*;_T->]^,,AEl^oIet9o:f[6=L'=7=K_C`_h")7r46oV)^Y0g]P[S1)l]"lNK@<B"P52!q,Wj6T[uk)m56CYAisj%Do!Ss)s\<ZGg=0q\22`_VoF&mHRFD!4l`%d_SKXL&Gla^iRLTljnkp$N/%ki%/Q)nW5nq&V)nf`QdMI62uhIqUgInC7)otLc)<'OC5C4ANke6RH\;[RJ;e^UDjJ)OBYlC^4HcRf"FB%\s0P;k8aSf8%Vc/#ej=P4(EkXh,^77TLCs7Ya="4EGGCQ8H\-SS):uHW=43>"-"ti=O_`Pd>Wo%9(7r:@6DG0Z]\Ek=iVbjJB6)d%ps[Yk(Usd1K$Z_(`.[)W&46^1kjW#m0@Wk#?*']h(Jq/Uns:t\kf3jmLk42d_k-4)c<fo()`k&&W#0O;#'q>g]kh0i-9?.'431EcA&BSD?m_Lgk+P^^6qG3<*-3$/QAjdUmFlh29m%BL_O.0+-Qbs-<A4`*?#Z[OXA"$o1q\<^$a7^)nQZ&iPuJ]bFopAD(b@tZ,3'>3Koq5((d1g;;=pP\reN#ThX_sdfkR?Ai01Tc`mLZ_prXRc[qY<*P8o[%enrFbd$3,L*0.?6;%LoW^F;\%FN8S^6T&=K1r1p>7dPuUZE4^5fIEI_dR8F+(FN=K;pp-VHOt5:Ms@&@j5k/%j(bW8Tg`.Ranb%:mnGQHfe/ohRMVXK6=qjDnD]3^n2$CWQgiIaaUCQV3:VL,4OngnXE>u7FB=bT[8?biV^g.=G:[t4^KeF%<7sa#S#\JbK4'$%_9C,cG;d5I6LTlD;a^hL4[r!uG_5Q\brnV3G8"sP0#n@n%QB/!Ha_aq8+p8/jP5T21"]3DEZpNblXKjn5dUI0i8u#=oe?nrLX)m8mr7[O:)5^ND-II:[L_d$.gP7jUd5RNcu%RoN4Gpm,kNoP2;pg;4H_&&WT:o-j7KG1314toV%<'IBpLuK)P4,m>J_IKYMnU&Ki@WIk8Is'``Tj5;uYpTJj3er8V@/+IaXJ\I_SB>54VUP@URnR1@+p+g1[ZID.d>GLgf!cp5&HD`+aCi=jW^Y+CZ*P'?Rr[>H`,/IKOL6LZbtuo)][SJ+YF*"^f+s4.qVj5B#DaC,,U7Rh]b]s86Vrjf+kdFgnO[*b:[l&IRa"Kt6:"jBu-)?*ir_HL44l&rgB6qrH73cn6B/V0b@0m5sorF7*V9C,^Pu$F^6X=_DT]X&XV'oN=B-MC4tWpmbPqF-++<F1D4@ac%$N='ictU=A[E"Uh[/qG@rr'$T@[Jc;-!LBS%hM^m:"V>Tlp`r(.0J)CD9m!nT4[Dle$V1.bBY-u2`X0aB-ks?2m7V[-C*6/ieAYn)rG3'pJ>WAAC!j59`[kbP03tf%\qEKq"l?-0,+N2/hE+\3!@@$B$iX)Mak4p]JimMQO=UVX>d5U"i/C]hGh83rKAf?JT$Qf"r1GfU;b<Hk"?aL7R*ta1Ji6#OFi!jh*Aqf)Y]-3'rD"A>;2F+]8g14E;&^mtqm%b_>RVu[mBfYkT%d!>jqXYGQ^TLCtQnSF>`I?_k'MocrIc)/&,!UUkqdP$'IPYo"<f^Z'_ksu`?GlH$-uQ2p%otW]G`TIiHhHe9m_8n'hp<.p)pC=`3^Th6BT)9g0CnDDTRMSH*VJNIGhd3RDP%43%1YI"I_X%o<"Z<876FWd`4[X!FB(WA.d0iWr@5!LKk[^t;ccEJhPcm;WsX3B0L]%Xo_N-VY0-2j_\?AkmT8AUb4g8-0L_=5k\J*%BZ'Ff/Mon/gAQJ_:;;V:CV2+MWh`^[F@N;qNbq47JDKu]3,t!Y#EqLgpGd"mDofk&8t4PlX$:Rr5EnS)2u~>endstream
+endobj
+460 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3731
+>>
+stream
+Gb"/+D0+aG&cV3*Z'/cHDC1,@5_(MUl*RaEkI>$"(S<A4I\\D`6;8(ROL4BRq@4qU'J5F]'=pasSX]-M>S%8oSd/A*+VMS@JQ.,o"Q8VVhS(@&.,6D)0Z;o;)W';@HoXKG'(,sSLl4Eg!@kFi$[R(r^D'Z9@-#r.SDD^1'4;e?S2h'U+$%PV0&.alH5#QKOi(1fM`@"qO[]Ci`EMO(O)Xhh\GPtg/Y"Ra*>Z"tq%,.^"?UQ"FRnO(:U,Ze`QY(g-"U_:hk_A!']?dI$rF_FnZ'm1JAJ!5E6Jl;h#Q:C+1-R;[jS\c[-99\<KHBqrdmY1Wc`eNg_GUq4YYt]W^958E+(srfEiPD(;>uXgejA`/g@[%pXAO&:;IsgJ/^JU1$XlhPd:?g5S!<hk1(Iu(*Q\3bs5@d54rX5o"2?>I@NdU1)6:[;jk$j3FnnL;=BUTcU'a)&2&!siQ"GKQQ_%H*+h,G0Ge/fI0V\T%o%+?7@FUT5u_C*8mlfGd7UPbMMli6aF"/X8hFQCSLo=9,HW`/a?)Io#1DU>It)>h/'L$qni[Hh:eD>oIIeS9O-Q5U,:>\7gbfV$S2g4jN%d29/$>^DJ2#r)[M6.T/gtSI25.EkpHZOY.aQ`"pMVQ4SC[`%1(fpXaE0%%<;iqjTL^B+KSW[.MUh9CkJ<X)1)69.;40GFjdU9IlN5V(R_mUr)F6DCWPkU4Z*)Q4aA((LE7^Lmd-\n$V@I=Y/%IR[\@A`+,qA3@ZGM>n@Xq=b4Ogp#@ZdeBVLCjF^kl&]h7uHVdS1,SXtu4QLPbF=61d`*Xhs9fkTebU#MAQE,N4DWr[9[mU%p66<KT`pKD.,1dn#3Jgkr1hF5*;8L!oHsl7@^_MGTX\`-[n@@13j6@$oA0NNO_D6V2m6hoSILH3cU.Mj2sKs%61,R8OM%g*V%-=?_.[OAN>2lhj(-bcEC#9D$fLVOZ*.%@uU'qTII<<`7Y`cLb;2JVtm!!'>c4P@tk'J4VTc6%;?X"s73D_<$GJ:r7X(22H&9o:p9\/4C6tmZZM(W0DMbSl<R1-gnGOqeq#^\LR#WMu(!<=ch&AC4l`M3pG\$=X9=!U/#:=>3KW7lD71@AdM<qT%h5`=b/,6enQH%U58PYCC"NRWN?5eXG^>\b8rEYGN=^0QqVmp9[dYn6RL(`!.<jB1:WF1N3_L:?55M.fp/@T1[SpD]-eWB\tMTS>tkA*ER+P"=-LeR#FCXopNs0LoF(^%mS(J$pBWBFU1k;X-IGpoiCp:k*ed`,Zh8V]d<%4>0uBO6KkNpfVQ];,D)Rl3,RZE_(C&5ZYu!Io"%^2Y.Vu=pg!.<S]me^k7m%)!]d*#+M5E"PAAOLOoD-#5I1Msh2fT9#!\tKTb&dqShh"N7TeiZG4$BdT\rT9Xc.S2^"Jk$+#E%JCKY"eS#0__eh?Pi*h!K30>`/$X=?Z`H>SgNqk#smiEfM34S0O_rh5m#:+*E3F4/(5^b'4-@S+*rne]aKcec%8&VpR=.eS^A,?T3p$WisiUX*IRR*1&^F"Isu:"<Y+UUKk\UMs7g#\a@p>-,UjKIfYA1fBHdi$t7k8MY*CK(t.-aJ9_C9@:[YsU6fc.lsA-X0K'5b]/R5/Hmd;u$GOf]nBJg(K'TX3UQrnmFM^*[Jm):3cAGl'.T&V=2ds(VWQ=!,N(,TD30-81:G)O'mX;*f*9q^@S\'^,hq]nbQI`4fEFn_Gl]qOMfU*mZD-g0L1N2$q0UpF89`CPOErMuEH!t.SV"6-P(=jaWMN'^C./.^'Mt"gLrueb&DA<V=-IFZ-7?_Dd=`>r+R:gJcpNLS\MrBFF>JY0DMa:N+6XcFGP<<geKPBr@IWqrXC_c72-IcMK5'"t0M=gC#=&G[!8>BgE+J1P^/o.R5O_&]+fc7!01@;M("36l6^18(pdqBX%?cO0)hWsjYDagBA`>l$l>!0WTQB1.l\d7mo$b.Sfm)3'kbB0n5RV7gHeA?jZk+*G`6H^U:c7+/s074bDj3hCK$Q3P#B`P<A:msDS\1c:c^ig`5R6Q0k)(,Ggj[n6_@5\FHNsHRuUM1EsSS9hV=N1fN8_D!!De$T,^HAjL]tCkbFlD0P3S]EYl0eM2`UH\3pG)"WbdoOQ0]LCDqV]*g`-Q2[PKR`,=#MR'\K="HIWJgZT53'R/!0j[dViLt%[dIP7g)A\d523_fU:)Rs-,\S).u2OX,VJ/ZtM@e(>^,<2b"#'1a$;!EJC^@qL_8E'DF[\SG9;QNW0(4(L+f.3PsF_F/$%pIkGm4?IW:>#\@J+=L>W*YZ$/C-gRI=buqQiPB+5AD7h@'OX@>^2U'T!l#V0L2oWJ&i/"o/1n)GRMRino*OT8l?C_na11.$L@0U)0Bb<Pi/$4]j$=n3!H!U[=_Ha)tN1h`9eDY`Hr7*LQL)PJZ%H3is>>gp-S(8*27&DYu_g>DEOjm5Oo4&7UgOtHA\04gc0mh@*f[ubr=i0RYft(;:g3r/RPYD5W,@[ItBGq&%B1h*3<^f,H^WGHjPK\'W>*LE+E*b_^]0`FWJU<%I=@Ea>(.Jhm@/.c>a7"Z*4TtR%`0Vj<Nq7VhRPpEK9pA12m=[rGlq!RTS*$e9.UP!<I\@5Ao9ETe8rMFUKhXV1;uAg'O@b7I7"B@t9r!MpV^-jWQ%4S%/>/KU!`7^+Z:q3Lf<DLR"M3b'bClS_rr:R&fNVuO<bF\q8[*\40Qn@/A$AbAruh"el8'$OF:S3++20!Vf\j$mpBfi\EuXXV%0!AkO$\?ReJQ.N62qN_gM&L(69gqPrTiH,Q<>*pnsfr@X-f2VJ9(`A&^Dnsa5Y(gA"aPBAoB@retUrQJ+tke%Lk=ET*Gd5hT5l^U*+\d)O0[:HDRu@jjRWBr:om6`RW3--5UgaLWXoIi9s*%"J(oaO'C*+_0@A-GT;['#i8=OBbZLRd9*/'="oQH'N,=+l(i?&^1R.V&<O`Dp#Ug-L-=73qGUbpl8\_kI?rbr-oO!oH+5`*4g\oWS*Wl!bW+SU16/3:gK#oC]]51E>)Pf&l.k.hD=Vk9=bl85T#PAL&2$\W#mSQo)YkU*b_&G2pk\/$,au`WBG-$r,e=S-*2`"8b9Rl-_c.QNiS21QPHNe7("W+PYM[RAl/9]ZYcG4f*dg[m+DCAD#I]!ufH(X4SO?BhAsn&5?I#"O^#VFP^_n((q"\A'(\1GK7662_n23Zu4gfK\O7Y[':HUVR?KW>\Z#)Z-_X3p^T]^9je.)Jn'IjpM_ml*,i+-ZnYQH8n6q4*$P_<2BjupfC$&_QOm\X"iIlUkMRGEPBf<alYSL32R$7M,M7%IB_b.ja$5kZ]%DJ.0H1PnaF8j(/e\]4clmCU_%8L0DU,D(r>BK@1jPGi7N'?X="06Aae[tA*D1]F>>QG7P+qKWsqjE6(o`i:Fcjjr3PCT#K1BMhGXFpN;\`Ju$&KDOm?JUa760.=Tc!6B@D%2^5FV[doC4!9<r`d[4rBteaeArRrrlpFYe1!f@_$23[4c&5T\"81;:\0\UAfT/%/CM:#^#+qCR+&jPTX=Z_$])Cp1[L/5QlcT>%\D8cR+1n'1$HfFbdC+ih,4<oc;44g9hA5W%&T*G>,@Wr3<+`8RD2[0i&T.3@bSlTWZp\KVMVPY]h%;YaOjf,bh_K&:D*C#-(@`CWD2W'P,!ek$B!'-kMqf>8dhXs'-tkn/BMdZr"E#GlXh%V5eI+1kQQX:"#[<Nrbi0Cg)\UY^`OkWAV*@u[i8ie_j^U.~>endstream
+endobj
+461 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3385
+>>
+stream
+Gb!lb?ZXs['#<E'.<^"j^.uQ'5KLLm3DIru)Q/GPVWlmkgcuQ!dABHgUoZPJrWWu9P-QK55.JkmNFsdD$XsG3LW'<&@R,GDYQ)XaJ/;;Vlnnu@i+`=\"UqQj^oON"cR/`?R#;4O/<C8X"==un.&JBb:!reY'SQ-B0<XSt0eaYFc6ri/#*]E@i+`b"(TP!m'qAp%:=EaRZWP,A?K=QJ=1GhrX7*N4iA_/M78^O[GA=,YUXh$c:HkE+di=O$+=7E5F46R3'LZsI+r#`e5nGc0jgm;e+HVrk7kERb7.:nG:hZ5DItH7:2D)p^h.3gd_&s=r5Mfaj[tU!V$+AWEHs+C6GMt4_&<3W1Ks-Xhm3t](#V]uXrUo_UX'hu<5_QZ8N;?NYKX1pr#Ul!jah"1u+[SnWc'r#uq\1:+l2#Sd]12Wo2-4@SO7TGSTBdjhqCZN2n9:/Ae4:CT/s9Q&[c7fPHZ`]p\7Q/u+I!l.5R959CdnaR2Y(%1H%7TJP=F2ME6QRjD][OoIt+NXFB2D"o(fV71J[6XgTa&4a,*FSgifaa/;sb+KHSL#+CVY&1nAV)&_bto$j?;l)BV55(KEtek!`XHZne&pWl(&AdVC:QOHG&!eqXic9T%CQl4QKPJl0Ghjj?80..tH:(r2+I<C_#g7Ge3W3McE(k(Z\N1.G)2aZaSrpVMn0^l9.17r[KW?]1DTRMGWB0@bGq(`kLFT(^Y\H.Y'`;%t/$bLWF`D67Do#fD6J:7I)7&0b9W]Yf8TITQsgZfXd.E7UPns(]Wa==^ErIqmk6EO.3K;0d4a^RBfIEHsBh-kN>D4tLu06Lh#L:%UC^(!/G&hUOVTrO]-&\i8,J;(!/K5"SXXVoHjRq'(fjhrZ.\1k72X^6l4lj]BH6K#GiP`U)u;BrrbRcffL3>)@MuY4ocVrP72QWAcMX;0<#c?M$*/O4:PXQeAl2bUn0teJ.T/>7e;&G>4qK6kI1;"6D^JSH1*E.,.qsn#"<eWZrq`U@1C4iW"&C30T#:gfegffm7&A,!V=N_j'so24QEdqV%1!8NPGO66A-2Zg_Yj8:Vo<59lp'8c#C4XkW#a9)bin="Tb9PIhcWHi)pjA>[@8rjhgpH2!Pn<0Q&U;3K9&0G]*kmU%V)(jf,&"NJ<^IlUP4;U59Tl!JQhX&RK]Jo_@l#;@]Se@VU:!@$Kp@5iBfIs]e$abE_c,aDir7*VYPpA4Lf)tpqC3eBLJqAT&S>)s3#7NSdc+oUPdd77h$R;.-`9\!AaoubNie<cS0PsLqd/V0c4lKb`Re[!\J%S*X8qraS)_q14shu568T3Y_l^V=EJ+$Y2Ml#Il%a:F(/65=rK*<DlNI1;!HEiUQZ3BIZ0+iW1tJJ\QD7=WBRi7o2-gRPAG";*E-S-caP"/MX_6Ht%bK-++2WUZaeTk:I.UgL5mk+L:PaI&q>5://767le@>].f?lh5-L_aDX&Q877)F\E<7mfkO'+QVHNeIg#MdFU(Y:s3s^96E3>9)1_igq8E;5RR)LX\E)j]52JA)9"FK#=SGp:Bm'[TkluE_N1]A..a1:Tr^pcSQ5MZX;=mBk5cQ<jB0t=$7,(OmEbCe[p$N-b"%+AZlt/P@J`Bjk1GV'iWb&br2;Z.3%t+L:)o,i+,Igd8+"8?%j`V%ZQ'&kr=Cn1QJb9`E8pfZCCsY4M9>Cg9%,ma4Im+)1iPF9inKC.G2(h1E/\ea3FKeq?3=i+-6@+N"+gl/<#pOZ(OZa1eP)%2]%'67B4gsg(q;q1N>adn>Hn?jD;#$B%R"d;0'I<D0Jb<L,Eg,44>=BNXb,qHX$pVPqQ)OfdlLh^od7e'5,tg7]I\2.-ROPup#U3k?W>/&k"Tm.hm1JuI$*Q8H>Gt3q8cT7fl6f/^;JE2Ok"a;Ht=r]*RF#o=QfDG=l/MloF*51AHbd4`)-B13atp2dFSf,gGDrd7hS!"\N+O4O9Z%SZK5DY8\E3(FM)1sfBqsO#Z8MhV2WK]h;5Wl`mPB'"%!rU<13\[[HO6U*F/Bl8BU(#D<j8FLL1j-<TtlMTo+(!Qp(O\E1Xu#3P<nC&le#%SPMHs-KfN6c_6eAGc/[kIae/U0U2`M+<C@),I,;)j+-`-Cafi*if@j3NQ%Km^Fr-`WJT?:2lcI<OsPBShD=,gS1u4Y"`H)<QJ0!2jp70WWgGtel?^$!!uPij?=p>7D:7K?ML9:noupIO;!u;g<LpVQpGU8&E\H2.Hd6Xj"3QP%_#m<tMA1qX2\=<\+j&Y:1=>S7:<`GZ-#>b3H/e\sT9l`fT)EX$l=Cu,HhYuBDdWGNcEm&HXGT*L.WdT:Nk6C^I&'YbSJO=fAQ?TG3.Gr<"O>nS4?kVJiKlmMbm,2cDmUG#93!EcQ`=e`(\88gRjG%gb<2B\-h)#:I+<p$DlPcYLC]Y"Wo]t.ZT-O8/l\\+A[.cBbG:*g>@$$p43k/`^K#oPY64N@=k"MIThX:89k>h;M@m*2<o,SP38fDT0cafbr9ZB_"GHkh]rPY'4kYj0RZFhlF-RHNANF")\^7<VV7pk9X:Mg$$=t5E8iW_.[)GC+lp3dO=5%<MFk)=kg^L7VV'WQFDRdAmFk1Ud@]1&ED!U-dhKu\E")sfM(u$NH>hCREZdWruQ4;pK_6pTE#5%c?iEiG6d+?lboPM,rs&ObNku>3RZ9uLk]7FC5(X&ek["H;>9pQ$jC>OHaKu'I2l[ebO5hOJBVSVDZq/T8o'&o>%VF`\"G<^V9`kY"U(O;EE.Ti[OElZd,?RCJeX%uQ*288C)d,o;e"3q]ShRg"NbZ;dET(k1_@o7TsNS.,sQ,N+G&4N;R&_gV@-5L+GV>'nK7;RVGF[oY;`:gY4'25%QA`1/?^Gr!b`cm3B5I?,.&GlKJ;_ORD@o%;.&P%2;)sXbW"lGT1<b[^k^Os\1V3Q$/nd/RaUCnKG2:&UD#0+]9flF5Niua5GQ)Q(/5a=$$A+R$A*!DP(0[ZoIj1c%BhN'nqM8ETVS0/_hg?Y8U)'a-@\#AjQ<E4B\FlQl*Vb(Lj[=.E>j1;#OF?Zta/BqR:p.&;Hoqq&WL1RbUjq=/Y>Tl%Y\ZD'e=&`q4bKXhV[>FI8'+EJ?JW.eXdh%1sPDDL9L4jS^?;!ODXPEQioB(s@PI0dI6iuLn&Y"R,3C^<rEAqbBn#49<TshV5_0o1oWPKmM)FA>V5['Lnaef3'AFl)5VM[EW^F_OsU[E2sjpoeP6Srum(3W(sCdbYb9\QKXF[`5@ES1qlU_C#9Lp]X\/&I:%KcQ:I3YCh<GY:H9,17)IdLdYNptoM8+HpmkhA,RHLic(]&K+VR,*R*md1qM(Lif68,b9LC3[0c0U2Fo-<c?()9p2lpWS:)#+JUj7%;Ci,e:tIj&8H#Y$XkQ6^]&kLrr@M2jF[~>endstream
+endobj
+462 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 4082
+>>
+stream
+Gb!;gD/\/g')nJ00u2V=fgVV],uLuB>8!iN(/<CbVn4$g%gPS$D75VkMKE)Vm`-CtOd$Pa[^&_\>ngtjpQp0fiQRD'J,fU&s%bD#lNd4D2$WEb_ZFf@L%+RADBI0<S9`c-,T;;j,8?2*n8r[b6*WO.NQ,NKjGcj&lNblnL6-W\$%i6UOV`[J(r8QDkP)@YbS8joMPVb/Z92RbJZVA7^4V2:nF6C_?3hU!IXoH*?D_hd!96P4?d?BUm>W)USr^b@LEt?L)3#h)-K'm2G_AEQ`Z`?A\XFKL`'+6S6B=O^(bY=a$3lFWcVW;/]jcrC-2Ro_$o*X_l2BZ3=p!S4_:G*49p)ZtPt,<p"lg_KPomM.46lZ^jC,gkpZ%$QNJ`^TJS5aebqPmaHkMI%%pjeH.#cD;Z%GT?400`60)HXc;/>KeS*q+QbYU=S9"O/U_msWAU>TV#q=10KY3nP)>,]\L^4O<NTC[F:Mh:&?ln2\X@KhCbhe'),9\MLtkNo7\!1M5B];"SUKLB@^)--2*M9e21-/m+dNN:Bs=KX\dA;(o?jS4<j]I@iY")ekeaM@NP01*ThUbJjlD)!@Y+XX/r>J#HChMl7`gn&V+-(M0'>0A";.$npkr^`XO7-$13VT_\$B!QjG8*1Hgjoa?KatHJ!ZgB)Rp>2[h5NV<uZ7ssRCTD6%Qqo:Do;Uh[ZR_a%3i-(dA!NFb;D^U[asMci4<]u]$5E52TL"=tX[$E5oX33s_(WaGec"P1Xp[PYM9%0KW0@9G$(a4!=RF\@O9nWa+[HF%ZN\YmLpc4K9qa*m1>/a7/"S7l,U1Q;U-L7pXV`TIC87b3'QA1"8\1$VpNc!Ah(qJQi1;<MOCDWTp#e3UYO;&(O"=oOY(5(1/_>s+-'VficnsQYo?jrJc\I9GMt`E-lo+Ni&r0tp`4e`tD_nI-#B?LYOk=9uEhBl4cpMe\1E6](ce<T)"ST)jr4%Y2?AsV+/@"#K4XDkoU;_LQM^D@NQE6%pGs:+V<U;82'T+Pg_J/;XCJ(OB$!TK\RqdugM3]jdH&D\s6:94L2M#SJ**8a?P>e1*,Re9:NO=l6-<oN][T_>?=3OO57^>aE_To]H^SN[fEg+_7Z4"c*b4jI;egu#MX6`.]pham&UK.@Rl<H6hZ.+O2CNWnek-&\2*c:9hZqB?J+LF0j9rl/?eXom;(RdY?8\A]&r&20k7&p(KSkAfE4:9%@$1DTJ@-e"S1FHnYM>H^ql"VS=?G3q&f.9Y8<j)5/F7P@)83[c`_*3F*,'&?b!Y:ElMgaU;,A>Rq5*`rB!;W^?=fu:fFq0U,9dpk'qo0'#eeBA?d7UNh)3qK]ij(FUB)<WnQp?Z5oUt>f]lJ.rA89/j]"N(R4_D`r?l2CAgdC$))610_L%-<J-44'oa3:/hT!14K36ajjEJbL$VGc`PPJI>o<k1c?EX0UlD0rVPs8Ht!\[m'rSc#r0ch-VNmr/5I!?m"5Of`?3F&f,l=R_PHfQ+BO7aD_pPCftQ(V.1l<hF:C,qn2!ALh-'>=Rd_2RLhd_aS@41K@8jQ99_tOBhOuoArOF#Y-8PEo28\*Z6!'?Eb6>,M!5DH/pB'+KsP;_'@s%aT(DBb;'h/gt^%(Dcn_Sb:$f8;FVtuG(<2Y?u0icT*0fi>CD2'd!W1THrrM"!=UGPb$ia2:ORPYX;Xj:NJ=K*<1r&[)]o7W1F2,#_"MdZ\(9g'C=P1T'?MTE_Up+a/A&Wu_q%6L*kOIPgFd8tHRkAX7sH^5K,>X13mE;p%+UsT0cn3(]34[:1-+3eifU*td%,bqfnq/"<9jBN,bN]6S=CDnM<@M6i$g6Al_oVW^FZ=L&)8$Ihf\F>8OeVKAQVo90B>V/U4:#(eXI*=\-!fVW91l5f<GMfbS=L&_'oAf#Hca<FAi5QDRFarRT*\AfVmCrNcp$[,KIU;G^RH;/'77IB;[o5:3):M0`F8sLjV^Q@>r+!jB."UNts4\RR@7d-:`^?JK_!iF9k-u/IXSL1n\kL'qQGHC,FOPX?,"b199G=%<h'2m:n+?QLCE?^--Tti5%;?]idEc0^2IUgaOC`p*hI#`\3:dG#0XU*5bY<0LPN1d_J?3#,'CG'!?G9:%Vks"%kCAR$8.M(C7Q=jSV'8alb6K;g:+sBS0K]<e]0W=)^r6\s&XBcmq"q&8P<C,mq/hSmio7"YVV;\Su]1j!U-lVBjA'9n>sq3M\_6<Z7POB>D6iCtM/:WY"FZE*#=$KtCNY8)ho.c3l`I*T9-I&JB2+?9IqChs!rAj)5m]>$H>!&_U@K/6C8a/Ctj<RB1/Gj11)`4RNoQe(XbBiKXa'cNs[sb70LJ3L=W^G1<J!gC0UBMct\SeJ=WDm&1'<+Wo<&ba-q-MT8M1+G2Th4KJEskt&pDUifqE@7P3?#jQ2X3D[LIKYS\JbmjRlS2A;`rAb2!n93`/>j4]llo.D+(eD6%Q8_iD!`p!UC%<-0%WeWgAA_#\Bu+kZ-[iYKP>g;PaU10FL#$L'ar'l^]ZSZ;rO@tPB2\;*ni83=R[o7dD=t%PdYK4*'X^]b>VTGWDkk9(CE0XV3TQnuG$bc)@n2XKT=Sb#M=f^_dYA^?2q%ZPU!rbT;P$]RiMOK[48rg/kAVY6WkAMpfi0#t_te(FY_5UpiG]4g,jtX+KU&hb4tRe.A#GlXSogr#83G=;i=?\f*R;M4CC>V3#2q9EIo<>m9iH0a8NQaXP\7o3GJ\Gl:+P\i7!p]ZiLdE#rDW7VSiR\]d()GslE>8BONZRZcIM?k#p@(O'2:E&T=j:Z:KX(:GKFD)ipH@R-3\n!6On#AYuRjIEkT&*%MkW(@)e)%1(\ah];o:G]Ott0W_eB:nODS[PH>elco%))%QE,@EK-hE<=;Z7VbLR.Es"l8oW+"I(V\i_'A<+V[tPgt*XXu9L&;+L!i-<oU;2ii$th]sGP;0-2)%fcm$$/K^@&RGIQP6N[5DnVT-8F9fPRD9cFLftXYRN#0qU=npI;;?Ii.4S>/Sd43'Ti[psdPR:[01&WGe/tH;boG#J%(0E4Ja.DQ;sfDJCh[B)I_<ldrFtO0a\,&Cs?5>k9f&ER?8]8`5(PHU!.pb5OLp4ZIcXFmTK^UUn_;1rD2WFE5E/d,#Vkgk!AJ9qa`,W't@ZHIG74K,3TjpKS*WI"$1SSP;cn`o\MOm^ePUJRG,3R+_A)M_8%Za=5XJL[bLn]^ZtRW;`e7%-$kR2F?!HX.2b`Ngho]IV$Vj2'-p9oJ7Slp_/:\A\hKGmlX38j6^_j:j=MOl$&ZM+5.).]Ei^Ca(:e@n"Z-8+_]dI&k;R[a*r\3H]#?G[e$BkC=RA9Y"DPP3@\+.QDcr<X^(VHiDR\h>=`m7n'EcF5`_h:_[P("mm\ZW])"Rl^<I_PI*Uk.gI]@>q><q!rL,E@S)"&9ESs:bJMY\Z&jGaUq<2#S4X["RNuD3*(<E`t[4WO#fgeh_m#c1>*@s\YD%nma;:d73`GL[@9'C]Ld9A!K&f(+B`:e=^jS(i'/R4lKffN<lOJaq+]MK\2'YVh&`?@_9+&a5tkC78"6Hn<c]N./TJ!:JC(5n1%WdHJ^bjDUER:V5(>,q&Kf;qe1q#1,.qYPIWTt.4oVE;nrI3rnq5^33r;7.j[a8_1IneW=qPjZ[qi\7-qguu4GjYZ7h"i"keRYWM15%]<EleUXil2n-V-_6akK&2,ES3iu\;#p"(+#=g_%ulT;e;6\7k=+'20FZ<U*'hlu`rTIrZmL?XV5:'CCS%m+l[]D<el=V!II8;d?6-CtcD&n[OrNY)FMUI5BEOM8_)CX_iOJU8GBIl?+PP)Q@0YD!=`>IC>uWMePJ3Z2dG[l6(d=L9nQ>fP&A1k*r,E#!B]KCDcj9@I!aGEZ\ubmVSPE>s`lNqZ<3^_Ib!Eb`W>h.g&+nnfg>f[ags65+*pTQe@78l]mW=FLl"^!uDgl;"G%"<rCH4(2C<rqu&Oif'S[:gr*&`^sdM7nq3'(c3_RS,g-X@<&[>N>0-CV0hTh`0Cgb-HdOWV%ZYEQ*p[AKX]Nc_!rLH=[Wg+^?lF/.IdoN\Pt,uqGE:5l+tdi'#lMPqt$;u0/_&'k.bJuOpI~>endstream
+endobj
+463 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 4392
+>>
+stream
+Gb!;gCNJ5g(B*Z.EMpE)EEe+thdjKDr/0eu:>ABXg1bad0F:=,.=qT939ojkhZ4%6PcY2@<O^f+9EYn[!r&4;b6ur+":3fFs(h^T3e8)#?#Vro9Yh1.!%+o-@WM,2aDj@%N)FWM#fT@8Nli[\nC`qAPW!B?PNXp&'A]o$60S)Pi;;FYNZUYT"Hs!/?XnO\,[?Ut'Et%i1*c:S</f!R@IaFG?Tm[#FAp6O;7bK)%A"/N]j?mEO$4UJ)*(0HLP"02CnYI),`rmui1qbq:]O6/\8L*GV?@%,(I<iY-]Fc6T">;J!n4?5:t',;@i%"$p=;nS@b5O)miUlYid5tYVV[]j4<s/B-`Mare;nJ.$'iJa\m?@:Y1N>nqt=$n@W,Zt8q"Aig6@U6"tB,Yn_H/3@QdT?6DWkMZZJ"jA(OLXQG1-/G*7UuW[&)V=*3JAG+#)Ch/>83>W:Lsbr?pOaWtLFblh^qNp6!8,_L*].kH@!TB"\r3OiK94)k>RZm[=QiGJrCnjE12N*hY)WY@9;I,bWonJ(>u:>kMNK2XFFOuS*uGb45SM9-PfDMh`W(AgiD-g#t32oWjZORMGH.U?0t035.&/rEr0btAGbF"&X0c&62&a84uXiPCosm#EJE5#>"EN%K.>HM"jEE`*H"LbA1Y([349gI/Br0%*OD0D#>'20JOE.<XXT"na"?*HahS;^WkIc]i"C?%m!:4$M7FAS.Kl'@U`4Eh0gH4u[QP6dtGgYtf!U3-2VY2PM@F.,5KWlR<aF!>I]<:r=aI`VU+rK(/;TYCF,E^H0cS#0DcL]VM&'\1MJnir[LcPr,7F@?$*iN9dJn.,b56d<bq)]F]3GK2XO:SA7/$Kc%Wt@1@9/)-gWS_@<C\/SFR1Hm0QVaDN'fRcRHhHO^DC/O]<&cjr#H3Js?R:&eH>BA$7ICu2)Y-^mtM$#E;/+&%qcFLlA7U2u_X:.K&1-=)343JB2Qc56-0OB&Z"1N[DkV_bk=U$8R**j^3JWFi+J[VCe:#105qZ&P#^LH5rVV)s3m#8q81/&P?HFj9?a#Asr#=]#HL;bOVW!k9d;\>]je3S[XqQ3:ML],_r"/Lo%0.>FB.QrCPKgG1,r;?SXk`]MjchgPgb<nS1tS(Qd+Ob:;c':ni'Q9Rbb[>$`eC-rA]<j=23SZJ8[2*@p[g_!0t?;-cd5g;n?.^nY[Bpo]61I\0\-+8p[N"88_D`9*T1XpAA"TB<;q!#MgBZpfdJa#LO$Oc>F9"H,HmYI*\6\XX7gNGPo[[W0D.H:f;^5o4CN%NOX>/IY427L3EnI.>[QT)ATSqFgO!EmZ-.:rAbpZgai':^_l73dK4B:*/%`g:aO_@77uhX$P1\ck0cH;-=_IcQ4J#DR-0bqF$t\'9h"%LP,C22iLh\sqop\%stJZ'$]W*:s(/Y;ieP@:I4l'e;j)2.)AV<@oc24'M>[hL`W>QMPg1i_MHdZ(%9cM]k9MF&St?N%$HbYt!&u&5^cfCY-AgMT7<Olu(LWU8DDohkf_:7G3kc%FAo])KKGU7TU<%bd\)fc",tHZr>`ea8eO[4G`e-"2s@F6OahR[&7-BhG9`e$/CR"[&/N[%.A.4^^4XrR7"Sh58/!.KFPR6T?V'r7W;O(31JA0X7E)4kD]b\C`7I=8C,:$j$^aEA,P!cE1+V/HmY(G?/ku>"iVEnC=U6CVC!g.&4ZXg2+U\dr4h+$jkRZ-''2k?]&A2=IH]HagmI'rR_Aa(dg@9m&",23mFaV8>=t&/gXr(2ldKr')C$+9R5)Em3tIL,"G_S:2kpj=e6k`LhR`):o(U)?XYY.Y*(p]QUf:R])(UF%FXGY9hF8>56/L+s@-h3LVo#WU0@!A=-5Yk6>@ZH9pZD.f^MN;("O!77Xo&F0KWFYW&X%.AVk6pg5t9*0-+Rl3:1mPc@K\(I`ZmHInli[Taf'Ku;dA1?5hE4lh@a)7jTmJ&f!M6F7rZT&9QbbX,T]5b2\BjU8%-D&a^bN=iDL0]mLB(7,,r[(UoX#9SMsgAGn-i6h;UH]#_-^iCA(nd%=aR@K^R_Mr8i+\00]e1;a#-6i,K%hepMf.?\JfWCk6@W4ntIr<c8Z?iaj%O3nGSPH2#$YeB@VA(="u@"#2uiL:/,BIc`RKn"hHf@]"]mb2/P#):8+iWK?"Qe[a5=H-68[d8\K'Q4IRNLg;g[%%Vl2RHW-rGZQ^T5_nl-_?$*OOJ)koWZQm!dF==OP/CC28HbRRAL1LF>@u(!P5:>]P$oLQDrZd..U4UbUr:5M;"<`dl$0o"679,ffB8^SS^LDQV'@sr&uINn[])pNra'*g\^V:UbtD*A)'rbA*bC><9/V=1[+4K7EQ,NWJ#3B$5O[)u59(H`(p9Q`j).^jjIe3_IY-Krn[<fM"WL5Kre;'NG7khj6+U&_)d""!D89jbB*G%'FJ0AT:,WPfNDjHF1Q>\8BH"]+j>H;beILSWd+OUuF'>7<D0)RAL$^5u0A2OZf/@$ji8'E0J8aOS&gOM1"jAN2:X9an9X8*D0%omk4Y#),S'c-,4NpWSA^`GdXT+;3mtggV0&`PeX<MW'$C9Yj%INthen@"$b:+qi1Z#()a>\'5,c1ae3t5b"gVt6W5Cna=<(NjO]l(dpHnU'*Wf89G0'PtCV9o<1E/d*S_S'k;_QiZJ?`^a>>\mY*UQ+-5#iORnkWA2jEV(7c7U,ga'Pom<Fi2Q4rT*uL**<'].,H;2)LTP]C*72TblG$3Q!*FVF$_H:GBfGYXQr<=9clgPH=CRuCCQRgH,ZX6h_Qhm`-8WQAnWJS5fbG>#9/<)n6bjC\_&3a??DQ5iHVgS*bMA0Jf*hlfjB5Kj4t\JF[:Y-Y"0l_Dgf8V!<5a.jl?ik-W8**XJrpHZiiB:B=FcTb0tIJgO*UN<G:"=4q1WuNf2>F3Y;Nj)#Uof.mXQ3YnED0U+[*oPb:[N"Jo_Y`4;^aI66CAhLq9&#G#ZHg4j]@<o4d?=C@_gaE9S_9P0Z0Mb89o@?@)i5lO'()NO`J$s0Zl8WILV38cnH\RND"o&a[GQ?S=,Y\^Q/LJA\(gsbuqnll@LC0=DhnX7L>p46aPkB\r?$CG*rjahq"E6%?"6ZJ:P<:7baS#gZOpV,U+;D)Ct=:UjWjoV:I`NhKV92_-n`H(YA,%0-rhrL:6!\,%_jAdtVaX9uj8tAdZ"gO]0a#DoS1;5e2Gm+pqH(E&qiR]T)TLAl-PNq+Y8b0(@(u9<MZM'(sh5n)jEXMj%oDR734f.70LaD2hY3^J@`M.QekjmG'rT]+4=Bt.,`JeqKbOYC>$uJ(91h/+C5%XZ*&RZro?>X]BK*Z9Qi54/UL)S:&i#qd=:-$,tmGG]JTu-`8\-H9)X=c:Q?p[9/\UP:0nJ'l33jF79^nl\cf4?klVtVq,GU^56OMlN9U]:oK\C6cHlB4a?(mY<n^,>21Hi#&%K;*<@58#>;UVDO*QqKK:)9'QAL<'PpA9)nJ/fd#1i^psYSQs\(rk0J>2OWNX17V&tAp\H<OB,QliuR479/ti^fO9LQ9GhtL_Q7t#eVS@M!0:RB7\Kf`'g,;QLYiDVI<867h1*I#JNha,G%6$Rl`RksL!n3Hbp[U/neY_a^tukc>BHbZp^-L#T(TCYVcBQlaojc)$t8p?c(Q4qouGP!J:GA*YChcj'`6"'TjMu1J#:fn=V(2pgMuNeF^]n4p:l$d'DT2rF`6'U%Z::`\<jO_;tgmlhfllVjW=];X^2]&=YdP\%e*ng5N'E+5t2cMr*<r1_iZV2TAK7m0]d*OGI=(i&HX"Q?tOt2!`XcipYC6c2Oua'idqHP8c]+3]Hm<^IpacDG]))B6k^NrGd8&D./fWa,fjQi\PEL1_<W\EC^8)omnM'X*!Z%VCt^>e(eU0.b"Ok<VGleGjkJGH+,1d</e8t5UnR-7a?<pZ#Hrdg'fE-R'a3Bb>_7if;+WNcohp3MKA@9'Q1lpO3.W_FoJQR;k2Hb^/pIs<+)2tR42iJ#D@X]h^mk`k\U#U\MtU\CjRA3"q_&p+cWOQ7E7M>(9g7--_OHFId/GWV\"J@pcf$;\D;"?\p&f500lg+'nZpGIm$Pba"2'ALq@;r9LP`FQq233K;nIg<-_Kn"rbX?oNe?42\a\S!M,X(k]&4i_kbS;>8`KQ>Y?'EJ6[5hbk.9dUcrFZ%ElTSZKs"mVU%SdboTQFd;gD)%p(:IW[lrA.jDB8-ZF5N61k5AUeEF3HL)54(+2#$fR,!n9X;N(]^)+)9UM+4I<7Vh1_+Kh+fV1'*.8j;Q'Wd7hZDK$@=5H\`D3;<U8nID;A`36><7W*p`[`^GZF2/`/IHemhTBW4XJK7/dRn(f;6VfeQ*j'KC6@6c,qC95J!j>=kqPlY$:q6=/Lo*S6op]L:nU!;FQnk25</KMCfOnd~>endstream
+endobj
+464 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 4079
+>>
+stream
+Gb!#_D/\2f')q<+0ut(G[rkZ`9AB=TfQ!+d81q$X\_a#/$Eh<Q0pY@aUqB]H5Q3o>UpSf6D,3EU!3rIG`Ktikc>\O(J.4Crc2U?9E&EF>?97#S0OKFl><^8<_[l@FO(Xd=3^G_-b6dPap;'YG3!?rVlPe$:2RX?ED6E$WLE5jdb6r^D"#mYN5P.=1(NB?XnTuhGL.\!!A;+`Li>.c=bHG@R!Tr9ep6EF]=fuD`2S\f=>%)B_6'G[$5+ZWa*4V;MqiM7XTk4tYTc4/Cc0SSLqd@Zra,-8<:p;,6I0aZH$Gp`dc^Yh3L?1@,G4X+1`fAkKg"eAkLchRQhVWM&`H/X?k^%HSiX+II3M'B^2tJ4lGtqnaVlgtmQK.\rI<YR7:iW]n&33Lp(nE-.2t1Ig$^TsDTc\CjFUUZ#otat`c*Yff+P9fmiSsTqS>7Zqe!.qe]pVk-B=$'5F+R]R]uUIJ:Bb"R&mljecF9&Q"l`Fq]0!Mi1m*GgTa,]=/!1^^>qSRc3/2oHOH^lt]Rd,@j=./'O'M#;keM+D2=P]M.ujZZ^ia6i&Gl5l%X5%f'0BW5fhpCeQ#t'RgY&%;mp@k1c_N,2pYRk"3:HjR9!K"0kSN&^`$JQLKV5u)Og(Rq</RjBE)FP!dmCIpifBt`/EW[m3*!$9^,otRmCRD8+,&34='cQnI<=(=q[gcr^cjjjqe<V[%K!@sci9p(CQ;FG6<CD0=Ft(F1([.D&IPTNrV(K+F8:k9=HbiPb09(p9?mkkgV)jaX1=Dn3"GoV<9Urs'u]WKkkd.dLn$+#I3B2h<@RVB^C!2Qr7%"[DRk,TG;rXHh`XT_4f%qJ<Cg2)eC$Jn_h)-O.?b#4&59usBETD(l"W$s]Lhnf!tt8_XbUP8o>)PON]<8Zi`lKC(_Tj\]"3D\^XJfVP2o"Dgt%S"<l@n+_E"V^B"0hG%.@_=fN']\98qN3m.^r#6fKAd/8)#0+#W,W5Fnf)@3fU@o7BsD)u/TPGL*Aqrm4,)=)#(i'c*(3P#9:d9"<>H+s'%,8\,g5M'2@alRd(!Fn[-+EsDC?o9rMb2bsh&R8D6_C+'?^!PtKPcT,158h.3cZB>sC^m<+rH@J\Uc!-&UNcIJT6-*fO2!n1qKrRT3"-I8Zf9Z+-q>7?=6Y2*'X>;-PVau,PRQP:j&ci9DW^%76R*a@sGbQ])(fA!&2IiL2@%!-F4LkG[RgEZi!NTiU.7W=mEJiJ"`HXfV39j^kr+Q&;b,0X9PqiMsNa):P-Yj)!D3TqGTgaer>IAo&1tDNSKI*(k%<f*!bjZe0#!jpLD.gn'4&&eOC$U+E=L'%%=ugZ&/-Y+q*lF2./?-S2S?+IP:LM/p)A#UP2[W$Z,bK$gom1fmL2PikAse^QFJ=WJ8'-^bDI"A7h'QWImB[6QR)X5NC4iATTH-4mN+JcCmYt,#DIP#gPsPsY_4?5dTfmu7PB8[N$I4JDD"lW^D+</V!@a0;&kjV6!gY7N%0r+@>G1%@7j>Rt0GHo='sL/t,:[\Z*<!n^]58@3bLqgPR;73oj<+-N.R3M%Y/E*4`7B3'XgRlIg(i5L8*5ojXhH[pSIW(V5ib6*c(@]4Ici]cVs.qIq#,FMnD>E6E!jE#+LD0^bTK1tOXRtXSLVe5cf+iuN<0(B)uof=O+RDq?r,VTUW<e:a1:fbFbr6:VHM_@,V.6u&"s)m9+C3)jn6/I6[JL)B(J7c;"'1g:r");JP!Ek9n?[b=(mUK'l_8L]PGeEQT(Iro<Q4n:>tGCNbF;1W9f+\C3Uj=]OAoFbVMpPbV;^Fbf+QS"Fkt1iI3.&["?sIU;@aGYXHph`cTrLoV_=rE#q8Tfdsj$j0op\Vu.:\#/c,3$C9HhA:ZZK$bR'&R&$df/F^Li%7.AM&BlqqE%BQC:>u':Wup7<QV7r*9o"4\'XL!4nY8,X?fi?'["^)i.9rS-*iJM1KZf$)+k0*?<*)(C:9fKP_HR@#3D!(r!=1kgkm@OQ.HWSnR5**u=_A/C11r"P6l6u6+fKA5IonS3()S;Q[<XRr-A6!I<=O.C<kR`e3=]&g:A_p`Fe;k_!U'QH*%c1>N95e&;"$Y)c7tS'7j(9jTpYX\ng#FjfK)cQpLN/WL$eTS"D33"g5jkcZRb;*g6nfs*s;]bR$fr-8lnRnjLQ/0R_"*.`9?T^"lCK;Hi>jLpQ+ooR]]-OI?NIL9rMn<S1PMD_ZFgI]>/NC60T4sSZkCPF"b*fmppOPQ=D"UmMsEA4^)gFH!kQARh!694gfHIc2!(fC!#5ooj:NYlc42-&#.gH#2LNpp!\"?)Vt*4a-q3rE64"V&>cJ&#o8UV.QL*HW15PHd^8!Zn*LSE14uT+#3IGf^,cc#A)lA+`S#6QBM38AR#_pRne7I?peL^##0&gk9`WeH\B2FklTWD2pLe`I""d=fd%4Wj#lAL%%JE:;mAK2`/G@oh`;GZ8mD6Mo:VEe!,m]>Q(;Np0CWSQK]B=uHJuCt!;;Ouu9?B/hS5Cgi^q5>a.mXLG95tFJ'=.B4^2biBgBLUiS/`(:]#XA8gZCfhs8+IT`*Q*4a3#)oY-s]QYRfIV=]P8q+)`&LBsZ3B^m7Z`O%S`_KFa$m%T;CjaF,=67ca0=l"W%T]G%9MgJ%OF!aI1,RT4n/]ZGs\-0EPXGp)'*,m3Ak5>/k5'+`hiJ;f;:*?Fi+/d1_DK0\M,@BrB@#f?u"1`:tP;RR;BW**[OqqP0"YEVBQf]Z5&Q<$",j4L;"oA^rD:<aaE@E"%er\Ro?AVCeiGhI)G!GPZ@AlYE\`(6;R%2UmhGX1:Uac,l)Gel+tj8m.UiAa]C,[j+JK#e:u-AjNgmgZNVbcsrUNn]5CpK\)`/3EbrLQ&"HWVHe)9cU!lD)9U]a"YNOQAni:fs,k]KIJJoieeCDEr@:(O[l%@X3k2BUM75)EXWoqN)VWiXoQl3WX.C1.+pb$ab!oWf*:r*ArH6/MWX&Jdo'IuDsiD.<7-@EI9uGKYX2ViTdpZh00)nG;@@pu>A!*nUKhhkPHUp0<Y4Z5?Q#kZADSOWe&Oo(PDS?I*/+X&BWXDWY%]5Zq")[nNDas?B$<uoog(XL-go?nknK,u`D=t5BKA.$dV4b0`md/R2.q$=XRa".;CJV&MUU_c&jjF5b^.0j<[n^j92t#Y<bZo'2jr]ZX_>'$*@Jb0JaXdMKD']uH,'%)*p<'hE^/)I9a=^lScctlR)M!C[^6CMN[8+`%n1*a&PFVfdpe*BE9])4p/#0cAq#o7`\J\EFsJA<j)K\)J%P\#/ml8GbM-6?D)[-?&;?oTEX^:P>2=lPVDFI*M,]oJ'l:F!D_4Qc"d1?uX$XD_IG[;$>:?EMN66D%hL_[A"VF)sC.C8tT1kZ*<ubN#qf7pHK@J2-?Xq%)?-p8sj;ra7RV]K@.+&88`&0'0^:M>q`fr<k1S.dB^WZnKPWKm,]ZbNX2S4`$,BEUDoJAas5DAc,Uq+D<^;4pf5SEuXr-J+kKa.Y1(!>Km0raMqiPD#8OQ$M8Za(`Ml`3mmSc9W145Omeqdf\58F4;#Y'#$7Fo=g(KIW9V:BOnI,jO.7f9BrjT^@WX?(KR49ng.EZ=$@Dfp<mIG`JDN$R7G'POp[m"Ytr5q"]-DJJF@kM+XtX-2_#o),E#4L"0%PP6BaVI5AP8?IY(3;R5ip"G7ZTL.MdZ?@;W%I)9.gi$DfC%4dI]bd><1V)%4s_4iQE&9*!l"u'%_kOnBCpot7VBtnD&eW4jf<%;H1Mk\05,clLq<IT,B=;a^f9'i.;%NCbB<!q0@[9@^\iK%<&S[n<`c5cUuAjnNK1N'F+05tPf=E3\RJYuQ)ncDp_?U5M,n"<ZXYC#>b:io_041fq$L>A?5@8hHlGK_Ra6Z0VGIcoO9TeDif`.@WtRMpV%e8QYArB59"$!l8RbDu#Xc#MG!FZA,hTo);RDMl;^aP.DS]dS[pH;[0Vni'#:5ica=S6k9s)^89=U0pn6oHGsD&?2B9H(-!r+L3ppFt[lgGUQHY,B>_3DD-%iNJ18!,MIgH1Jjk,Cl4aVL,Tk&YJl73G<a-=]n&3H$j/;4"*6VC4-\Dc`-'L8RX];M5>q7<oD~>endstream
+endobj
+465 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3932
+>>
+stream
+Gb!$K>BAT.'nG37.koFdU1>el]T[eY(#S$%EI?H8%o&r(EM6Z+,XI&bXd/.3mskO+:g,KF#2=;`@hAi8&-q(n%aI)i!$HeWd/RJ(!.;6W:L=8J#f5dE">PkOl7I7k3r=:/K.ojE!l,pI=WRYnMg5[)k"OT1o_0JqX*_QbW<WYN:10=);$=`U7WB?E?r_jN+#(GQ!k`4MW@GJ&9hE,jdP<Gh!NTSDlJ$Y]8V."u&LsYRH&jle"L3*mLU5<>%pD^p(nrtt6!;CfjEVYU$%N1/EYJUX`'KLX]kIHJ=WE%s`@sm4!aGjghum;7H\VBPN]dkKhrX>mLHu[ZrTjF@E*o>9F[9C/M=#OZ%UY_B&4K$PR>Y-G<&<-\=UKe#I-scPhc^h"JcT!c-t0'JKOGK0-j242Z8Bj+7g"B7,Tf"+FPlKW+Ie8F(B2rX026Gl?;iT5RZUKO'T[#]8.ILI4&Fgc:1,\t/YJ(G]]ll3"lr<\0e0E#XSENS"89+%oNRkF9RrG8RL(bHVL"1:?hECE*lfCTH'Wt!KOG9d(?lJIpb^L$l6%N`P,Y1W4OD9FF/H/4+p-q3+klA;e%QdalH_-gY[k.*U&HN%FfJQL\gEE``IREOJD[@>mJ]*ce9CrBGP?T6$22\Bk=;MP'=R9#2<q@b#'JQPnT7h.0h?@Mj<r.3qe=3@r6u,M?b^542/C!Cp,-M6Hq/Dd[eQ/=.mb/YCMk'!Vp2*M1XlemBg\@!=HeX!&q1'F]4.L=<e7)+I]*;K9_)<q-k[Ain:.27Js>#E<GZ_8VZc!PH*+8fV2Rq029d);%[>mO8W$jqb!AjZeki;$H6A7-TD65eFhlm-;]XgKDQ*a<OeV+7NV_su?/Z,q^&cQh[-`B!<%]+ph0$*:B;D'trSu';Qd8_d?`5](s8A#I?N($l#ab(B*fWC9.*H5u7gPhK4t6N`[)#I.i#UZ0AuS'`p6tVJ0>NL>J>kRXV(gG>h2CpBRe;qb<IGD_#ben%i)\@X0pk<m0P:kLHYLVCB&mMYs.8Vo]3DkDq!1[!r>fB*GU"C"[^_TDp40W?X3YJ^657]uD?eso(Hc6B"N;q()1j8"/\<lCdp6fVqr_`md4[(!gI@aeZFs_Ol(utea7tOsqEc,V,JY+AF\lP<J?Bt\)g*8,X:@gTYHfo0AOrtbJ=[I(5gPc_pX>?_kXjn?oQNO7\-28LIe2RD-$[^[bBRqOK""jD:4Q,lPrFG;4dRfg^*j?u\ZnCDLsg[2ilD5?*?dAKg#/md@LM;cY.eA1.S+!H6bLq!(aQ(&[L*8J]JS`qQC$`[[!I8<LE.$2]]ZXI!&n]_MK)PRDVd?3+>(:KI?:`?U,Y1[8Gi?,Q;(jDUh2-`Vdng_B+]7pTfDUo:lZM,o$Waa6;c[YW0Hk"B$X9266XmsoOK)f9MgnSG@^.r5qP[g5$)_4PINS8=')4%en<Yr=-NbN-j:)/H"kDA-1o:3BPs[4+o8#Oj=fE_es`u/#j14a]HUJE3-f+4>&=SUjQ2[7;@:4BSTZ?"mUk7.M)"EBLpC-T0\0N?eL11jc6Y"aMJ%/$@HPK()eM#glsM6E9%F9rfR*EWa*J'2>gTc#HFqJER[1fGp]Msj#@j6E6)`,+'0FVVf(e2u>Rd8S?4TE%8n'kW$ecHJ_l:fFHG%grR\O(mhmJmH8]Dmu]GLZp\?'k&RW;Fje(jD\kshemh&:clVNam&im&<NS32,P1hbI!k/7NP_5tK;A_Y_^\ukDo\>ipa%N,L5@ks.7QE46X9#8#$g%5?p$8?5Am2A3s<TG!eYobqM#<9CRjUPqeC%nA2MahYdFeB$?.&VBr-/eInT<nua2J+<#(Cb(i33<BX06tW5Mm@GbffkL;ik9etq%[[;3H'i$p/BYnEN/#qMFBKhTl/STjfbs1=9l>.\65<CrK^j?6pn]PgGVIWB:K@cXsL_kFh8<?+*6G]I\M%s6hJZ";pG^^'jdE?#<W%,?lJ1md=_<.$efF.-fAP`BJ'/di%$b"=;&j\mm%/T8)]-@pRHT=\%q1?"34N%r5?d!LNo5ZVVG<I:X5EBa"tNQSXnL)3Kgg!R/<[*),0W$,LU2Nne6r(*F_lpRW:nKnS!$uA6j`S=hU>1Yh7e/^uPcqdfMn+>LEhtiNNGhaD>"]M-6$X]W21R?2N_#30>:1JOA55:K-]>G\Kp(,:=DT=T-GUR\dI]6PC.fM.]a^HpBKl,(kdaYaHXZ8A(&C&1I(tPWKa2o!hk+$^4bN0#5*B:G4=bN38qNSiQtuOqd=M'*_m;_Jr`aABhVXKTLING*'Z![=2hofqOLRdEfF7\Q^coF$G%4"AAYLjij'*cGu+@0-,9VCn:<)-C?WjJ#7"uQG"Q%?,&T;71i5UrJ/+cg/Cbt(/G!M-M,`lM()+S+5dhC+VI"6\V$).P1*o)N+_'eN)sfaQJaXZJ2Z>K$[POD_q%LTPGI1#rI1.mRq8UcjDnp^MbZH;4g9^#@pjM&@hqO_LiS<9ph@mAW6bcH(C6`:j]MdgHZ2/Z_;*q9klC,b[1obthcSPcW4u@/act8IF5!cKMX,id/[N\t*pj]Ljg_kck#Olc)8'8_Cr[YdIdhE7)#.gf*C&B8mop)'i(W"c=5_,b2R[g;RA6U-5Hq7fLpE3tK>UHE2B."gqRiSTP&@QH)E00b[:aUn_%Ec#V9kt^<Xuim5>=.J'kEB$G\3Kd\9`j%dXdIdP=^.B%4$Q!*eMS(Y0BQfoDR_R.\"t&p'O\Vj3%f/U42s-&,lbeM<@6.)+8.]([37>/#hnlVRi',]RGt6@_D=08bS(fia]I9o)2cah%S#9jbRTRIm5Q?Iks.>j'P_*+1N4Yk[#Z&2C((j-[CBcZmPK&)*7s(r&!N<23B!HdRo+VJd"#I=Nd^+5W_e_>frj'J8O*[`m@FkQ<s,i<&^DpLPTGr_UEtXF&fISjEpeDI1RHHOS*@`W8qQR@.bgDL81&:8<9hoe-a2+k/SOLI"T3Fm1(9G5>A];N_VrgLF^f(DT=\H%IaSN7W,?.IZJAss1H6S&H2f;m=Z/HKq#hrRO(pd7i$snb)Ed^/>31j3@:Y1.9ag&g"DS&k&X0SgPTmW@u=g?`8niBm\!.H4ri+PIWS6l=H8Ncftg-,beYuJ(YW6HO-s<JG5D-.EGg"_2c%IqbZpmo/c"Lk\c:rpdNS(Fn;_Z^^ST,d35Z)Ypl1W+*q:\A(K]q$KhA-o35$UIGg4oJCr)"h?\qIA\Jot"T*32dChO.3Z`Z5)>h>Xud<RrR[NqA;dKjC?;0()2W)pE92f\UkU5=;01hYW;;5[:`ZIC:D9B27Q[9dR`C:Zq**_>0BT6oqsrP,U,.n5m/k\,-o+0BJf:3gR<&[<c,CXYn)-qR)-M4NKAZg.^cDA\Z6j]hs9*-]Z1;(P4A/4L0SVbL4WSMM7hBsY@HAH1So%[/s0b<]!=V/]Vp:M\o1oc3gbOVJ?\ZN"s$bR:$u@9RN7<T;e,q;$<d=n<("Q/$pd!fIOjKFS[o'6*cb$b(5<s5:fpI!2@s$3ZRfZoOd2QDr<7S^]=e&"5_H-?jFL?uN<,(8WKb>6ZiXe_#7*B.f],"gtUs9VPgbo)-;G>0Ga09N4#+."=5b^oqB)/*)b[!168J=Mt4%Go.ii*!I0*?uLK-U`P"#6l,GLA75g[Fbr;;L,38<cAX^U(E[m^3JAgQjpC0O:PL6U7Iu0pdD$@C?SN>@'k%jf^CE"]6C/bcjZrENqHh75:5d47Z=p8dBiSnJ7FS9XW^>/a1fbpUUe2Cs<K^.XP'j><VcD\X($Cbcb+bk-VH&IQ2&0#*#q;<8,I4*W9r/G)dYQo))p4nSMC*A178no;<G8H@o?aY'78oIFWtMH_S5t>E'q4&6Me3_s-[3\l\?DB&7:T=PH2#28#u*qIlL)$gp[nS^[).cY;$/Z&M,CI@(*Hg+<:,J?+#s-Vcu\WK~>endstream
+endobj
+466 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 4397
+>>
+stream
+Gb!#`>E@Ms(4Ml_EI]VpZULXP\ln=A,+38YBle(08[4>`6sImVUe4ME:4E.nP"80QAQrFt#mrL5O"?IWS58=J_12LdY5b,1!M1n%`toSs$d1D8hsk.N$N@`OqW#`7/e5`8*#t\AjFa4_;$_2`ec$u"ItO8irQVZ[qd9h]i-9hAH/M/PkD+Klb:VM^-M!`XGf^]FF1.c)U%"Wh6E5OPne3Rhhg7tGA&n7=4FG:5ZCuf$hG8U4qW$jKjhQ"Dj=ab/[e_gX'Y92&S/B3Wo"g02N#2/$3$;>u4p8rNJhW/B$'%8K=FYgSlA'O1`i)),HfVuHn8Q(SIiL\2kI*l7pYCZu-M7)X;=#DYp(mAa,uaW\^$[(dYhM>8_u!NK)gdNp"i`,M>#@=ui5`nBa2<h^?aL'W<^f.L^eW>NZ#=S$%p7_%IWrk9Q7Ajb8ARc^ZYU!/GhR0t34@[A'_(`@gh*X<4!g'e&sRq(M+TO2**hP/5FKdO]_V?nq9,]*MNY=LPu2crP5EY/)C^Bfiq-"'s'.(M)`Z4hJ1\:6k6.IrkAXLdZ"M22#m/FH=F*UM63k%e44M1L(Yj`,6?@CpMfBNL9r:lerq']Kb+&*sh/;C0r]j,qpr5nD[[lT'=14Hlk2hfhH<\,dSfHO\7+"]ZbU'@(,KX%Lh`R`_@W$*;G$6ro2<4(XQBYP3JYe=4K3Sf-4<^Ke<C-!>XD6X;\,U1*Hk2tXTi'56TO/W;^UCa%f!)rYB.695/<LZCZ4!lOZl48o5SI,[Q>i!B_P*W%mL)n<6';V@0tmZ[\K\SL6mB&CiK*K"r!BG-qI`*=Wp`l\`ncE^o;E$L6eq`C+V)P#jgrM>!e1V[PF6J#=.P:rT[J_R?=MMkK^D4VZFIs)6Ul8:ZW+j;G1a%Vcl2$c')C!Ac+qDX@t1Hf?^1Z]O/F\mc%@0e!JY2hC(c8?E!/Ol?ba'1dl&YOX%JYm<!d$S6'6L$K%F+LQBUD/)3sd?_Pc0%WJXAgq?%FW<<@a?(,;&DQkug]YSA\>3>a^LoPl159[<ga*:.]ejuY!2-g[8e"<efg?5PcF`IFpO)oJ44)8bOQ!&1CkdPA-@N^8N8&j+qncQInr;_*G%e?$#*='Cgm5$!aLb^!b@D[bDF2E1BLqnriMO`O/L;Eb9-+?oDZ]F^CsH!&@ue.c!hd2D>bb\b!-Gtp:48s(fj""=S%_*3?d/QE+9.fgS<'&%tL8os^QRi$k3fhEOA0'!.T49ctqGn+lTYA1[GCb@i&Tn\=lHYZ@ph(FX5Y??XSc^tFHa<HXK"4VAHij.P;8S&Fq;0MC0AY3P58]pIJdoL;AVME=.h%H;Wq=GttjADD?lOm55b8[')l`A/Ja_A:$181ofZF3Oj;CW#X_T@OM.CX<s%HD/&W_;8hmMOD)NpiXf+*[AtK`9g6l=.,FaJ,LGJrPu$.'1h\:h&RGHk*5OBk:g/-KN!;[FB$jAn5NdBAJ61>(e78k"^<aNZcQ\!+E2b2$m])@a\`h@?M6L,V7&I:>hFW/iZCj;"d.Ip^TA&[Ofami'$_rpfe+0el$>C/f-VE8@b`G/[(jrU:pLo`D[d?eQN"BQ;EIHg(?p&U[QtMrt>1`BFK;1Fq>^SZb?_AYjqI,e6Wj3R]2$Y2K5Z6C@EHpTiT%o"#XK)HiLP&[!4@31l.B*CDP.5Y.]3rV/,'I/Rg5<MrAft:V(b!1sm_1i%[3Pa*Eu>Jk(;F&Waug]BA7+V/Sqfq\i(;Xe<ra_0<Wj)XaP7["P?m3]M#qKAIu?MF^b3>U#:\ajSFZJ=YNfTss2F5s1a<5bSkdUCktAa]'+`jdLuSeL\*DW!f10c.t!Rf)`thGJ8D<1hA7m]jSpY"'^''4CTn-hPcR]8XoqTi$>r8-aP?]#q,^'3-i>bXnB1'ILCh,n3Y22/\sgD6+\WCK&kJ5U*Ls0X=31lA41<K>!%S:%KfU292_<V5PXZ79[9=l_@FTRBlgWu9rBY7!/4c=qr$mLX;eSe"Aoj3&>"%th5Y+G$qrconoItsqib2_m:Abg)bI$F<%G<XYH\h8[9]Tn6Jdn3S#'TTU;[9ARq8QJ#kR2X:]3U?B59!UB-K@$f-S)[-.EHZi'?3(OWCqW/ZUHTiT7\\:um:rB<cQ%O2l;%(l_u.H_I2B;d[B1*2Mk)j19YR3G8ggbt"7uj%0b."rr=S1<-JuM)<Rmfk_'l@IriSjepVaMrmn2ke+LQZd^7CT3A$OY3ta67]oBdMu!TWl5Y!pG.L#`8o6E[7V<\DcPc27%V6uEK(7*2I6Y3_U\^#,EIEn=^`Uf8HsogoU^W->fseG!jF5B7la5N'(H/O+$U'7'p=Gc#`eeGuIT#3YGr5MPmXoeNR\]IP91m5^rpJ%[?VT;cmtas>m0&TV;Fg]eH4B0eFLUPL,0;u1:oRP`EbL?r78=JA_$g:uSdtk[3uEr(Q<iQ4kUV?*L[L:CH4Mti`Vh]*[T3?r]q+R17;pi7%K^0IopYLL29o4R3KUNU;s\Q1OM38@ikh5i(\iUEJU*QMKF8L?d6)@qEWI8#l`fB6GTa&W6B`c/'&HHN_s9oedT'@PaJb'>']'+`ZGaH[PH*+57`E]o(O#[SC]oWI;&cdU%e<(6Lp,;e:l=&Z9MAR4.5UX`D9^d@F&%mV%Ns^BHn`Q8+GC?FdFb6n#]\mM&9:'P^cY7a6&<.?a)Zu.Aala^<4biUG:[B`i:'U!@uo5<.TpDFPlP(oZT+ok4f(4H2RurSioP@&'GD;$$YMC^0iNedcp;"1D:Bk;CHaR^9taeQfB@Y9E4?.2LRQgQXX'sl-Dq+IC7>)Z[+HaLr;qs<N&,(!EY9\W4=Ib5;ErK*P>L8bK9Cg3'V<'FhH?``42G\\.8<*c4l<9$idmr[dZeR3WB("kElAa76"N+9IK<'dD>XqkY+n'%`geT=*>ElOeU%s1Q^Y+t&JFB--\ZnD$#Dn[g/Lqord@&=,-VC07M,Ft9Igf]\#`#>&hDg$=Lk*O5L35kY_)'.\_?%s%DPR,#YS<;Me`b@KRO*R+cDsqbcE8Dd5cbn7<2[p<(+%bqAN=&'^Sqn6WQb^N-"MS<3M*<%O(H\>,LhHOs?!X^`,_0LReF+R\;B=n@(3kR`/SU?ac!`TXRT&b!HU^j*V_KL0*M?e=p`nIaUd6%^[3-`/'i5+uR]LAChOB<Pr!#T>Dh5Anh7_(UO@iZd][Oic&?O_XY'b,tTPuIAE%rPh(uDP,@Igkh'RLgHS8I5<lY$.oE:K.u3[)d8^oZV+cA];aRZi]VJ,B>Fu(jZVjhX3Xa'97lo3*J8o\*mc$5m1lBCDkQL>5la?h]YfS[mAOW\/'!57G8h[3rDk3cV3G_+7_9ARY(>JAFSQ:F+7O(G[DL\M7ktY\d'=Ce8!mmR9o*o'R#;FJ%P5sgkdcS*a.(j/^;c8FAPu&8YFXL5/R<jN[jJheW[JqoT#1?+Yr*:hqb6G=&>H_1-jU)^Vdd-L$41G#q%O=O(C$H6iJa\%4=ZY%2\^c'ZKsISR=4%`:%RU]/O./G!&@1>lCWn48_98#WIZ3GU^]bJPH'XnP!&PVrG!b>jG4@arV#i7`r)#1;5uNk0l4Ugb5ZV_.(G%/sO^;Enc>E)bTG3B/Na^PgL]99T1%q?n;lTT&ms/W=g+8ZW"\^e7XYuBMK7L>S=3KuSr('VtnBZN;GbMQQ:i2h9V('R$3;0K!A9i[;Ke;-5P&I09q2(nD(L2,WAahM;<;+%)]-W?qO/;[RmKt0,5uq25C"$`el[4=C"fnM=l$VV9r!RquBDO1"K,tI;oQC!]_gP`s)_N4+P'C=F`p'b9S6gP8QY4l91>0$(<5tZ>Jhl2MQBo?f,I<$h[DcGs75JdF9tk=pHFefH(;sKTn=O9gC":NiXNU&Md@V&5N0:%SX:9L!g2Hh4>INEsL]=YbIq_S?lmUV!]cPB2<R9o4lO]%WF@+UT<^$Yo:tfL!-HU"G*`rfpg(#p-aTnN_6ddtq:HGkC3*S9?/a]@/2%L0LBEOW5V+EY6!s\e=m1_c.*4XXhmXOHnq=iU&9;N#jM7>tNVjB2lGhg@1HmeEt[92ECkp^mR[1iFK1`*c!q5m^upZN.;Hgm:npX#5Za-?Lg.h&&QS40OZAdUM[(V$^\:)(6Fi+_mG?3!(a-V(W$+!&`r_r$.e_R@.sbb8Xg%GR<=L\8n^Sn"\FJ8Uues/8Q]KPkIq&-^(MWpf/+p'u<*2Lg+MH%[%USE7i_BXf^+Vo*2`(d57%?q:WN,jZ"3fX7Lt)NaU<P5N-Co[&]t39l_"d#u6h.I<1Oa7Xf"p#6!D%kT4MP/89^)j7iT#n9J),Ir^58ImDp+-QOC#n>OfLDKI>J;8I'q3XO4f-?t4$$E%__"\K6:,P/`^:'beY$1g.j[92FmBjRW:"7eDQMOha+'eaTPFc8n~>endstream
+endobj
+467 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 684
+>>
+stream
+GatU0>AMtI(k).^33\aN0NIskYuDQMKl(pR@nf,=gG#4g\;PEJ]QO2I_m6A^9emP3i:,RJq9G+=!=fUuT1'2oAiP8n+:-X@KOP;A2;Vod-=MLZ2@`CtSlu<KL";ob-"4mj):!&c\]b,ZJC7,+,pgVfWJiURC.phQc-N]7eZpbCMeZ9FM\=KZ]kZ8faR51]4[IK40p:=O;82+t'#O!pga&BMJ2pVq&Q^E=\l3+@Ti?Y)mOVFI:'m&/2+qm:$dBF8`]1UD(/9XtZ\3\LSRB:I@QL5";Z#Q^**4=5#RG:VX'\Ru*q-LsETq!poO_+8371?t@=f]gfBMs7hju2,3nOuROc`\)':9K5;/+B*ioQ7BhX6?9iX$2=RD*Td'K@ce_Y#;ho^jW#r;#c;-JP9:f4B#dF_B5:;PF,Sp"Oc<RQXVe>;k-"GuMp?nG.;$UWW-#$H9Y]U\;0AfP-L%o>Taug4D<KPFKRUqY*!D5PXOm,dXI>%H<mLU*6eWD-mfbXViK"_QNYr"6OI4hHg=$_I)&e_2;551;,8X2Qrb9bK!$/5%1GV4tg;EC2s[*>*<'47PLh30YEtLmep*CqB.f`^-6*(K]F9gLOA8.7*LV4EL`*]6TT[V4DKg!Wn#"pm-6<_F\8XJ%":;A:LtPa'8]2[YoJ$YUq>m,Zd0MH2u\Tn0?f8U>Q~>endstream
+endobj
+xref
+0 468
+0000000000 65535 f 
+0000000061 00000 n 
+0000000102 00000 n 
+0000000209 00000 n 
+0000000321 00000 n 
+0000000528 00000 n 
+0000000735 00000 n 
+0000000942 00000 n 
+0000001149 00000 n 
+0000001356 00000 n 
+0000001555 00000 n 
+0000001743 00000 n 
+0000001933 00000 n 
+0000002123 00000 n 
+0000002320 00000 n 
+0000002513 00000 n 
+0000002715 00000 n 
+0000002902 00000 n 
+0000003093 00000 n 
+0000003289 00000 n 
+0000003493 00000 n 
+0000003699 00000 n 
+0000003901 00000 n 
+0000004088 00000 n 
+0000004276 00000 n 
+0000004468 00000 n 
+0000004654 00000 n 
+0000004846 00000 n 
+0000005044 00000 n 
+0000005228 00000 n 
+0000005424 00000 n 
+0000005615 00000 n 
+0000005807 00000 n 
+0000005997 00000 n 
+0000006199 00000 n 
+0000006391 00000 n 
+0000006574 00000 n 
+0000006791 00000 n 
+0000007008 00000 n 
+0000007208 00000 n 
+0000007396 00000 n 
+0000007587 00000 n 
+0000007793 00000 n 
+0000007999 00000 n 
+0000008189 00000 n 
+0000008379 00000 n 
+0000008859 00000 n 
+0000009050 00000 n 
+0000009246 00000 n 
+0000009440 00000 n 
+0000009630 00000 n 
+0000009826 00000 n 
+0000010023 00000 n 
+0000010220 00000 n 
+0000010432 00000 n 
+0000010644 00000 n 
+0000010848 00000 n 
+0000011042 00000 n 
+0000011235 00000 n 
+0000011425 00000 n 
+0000011620 00000 n 
+0000011833 00000 n 
+0000012046 00000 n 
+0000012241 00000 n 
+0000012430 00000 n 
+0000012621 00000 n 
+0000012808 00000 n 
+0000013009 00000 n 
+0000013205 00000 n 
+0000013397 00000 n 
+0000013597 00000 n 
+0000013812 00000 n 
+0000014027 00000 n 
+0000014236 00000 n 
+0000014445 00000 n 
+0000014650 00000 n 
+0000014852 00000 n 
+0000015288 00000 n 
+0000015494 00000 n 
+0000015704 00000 n 
+0000015914 00000 n 
+0000016119 00000 n 
+0000016384 00000 n 
+0000016649 00000 n 
+0000016895 00000 n 
+0000017141 00000 n 
+0000017381 00000 n 
+0000017621 00000 n 
+0000017825 00000 n 
+0000018023 00000 n 
+0000018222 00000 n 
+0000018413 00000 n 
+0000018607 00000 n 
+0000018818 00000 n 
+0000019029 00000 n 
+0000019433 00000 n 
+0000019837 00000 n 
+0000020241 00000 n 
+0000020645 00000 n 
+0000021049 00000 n 
+0000021384 00000 n 
+0000021720 00000 n 
+0000022056 00000 n 
+0000022392 00000 n 
+0000022734 00000 n 
+0000023076 00000 n 
+0000023418 00000 n 
+0000023760 00000 n 
+0000024048 00000 n 
+0000024336 00000 n 
+0000024624 00000 n 
+0000024997 00000 n 
+0000025370 00000 n 
+0000025743 00000 n 
+0000026116 00000 n 
+0000026489 00000 n 
+0000026721 00000 n 
+0000026953 00000 n 
+0000027202 00000 n 
+0000027451 00000 n 
+0000027712 00000 n 
+0000027973 00000 n 
+0000028197 00000 n 
+0000028421 00000 n 
+0000028999 00000 n 
+0000029322 00000 n 
+0000029645 00000 n 
+0000029968 00000 n 
+0000030291 00000 n 
+0000030544 00000 n 
+0000030797 00000 n 
+0000031090 00000 n 
+0000031383 00000 n 
+0000031676 00000 n 
+0000031934 00000 n 
+0000032192 00000 n 
+0000032409 00000 n 
+0000032626 00000 n 
+0000032847 00000 n 
+0000033068 00000 n 
+0000033294 00000 n 
+0000033520 00000 n 
+0000033790 00000 n 
+0000034060 00000 n 
+0000034330 00000 n 
+0000034575 00000 n 
+0000034820 00000 n 
+0000035055 00000 n 
+0000035290 00000 n 
+0000035528 00000 n 
+0000035766 00000 n 
+0000036044 00000 n 
+0000036322 00000 n 
+0000036600 00000 n 
+0000036857 00000 n 
+0000037114 00000 n 
+0000037364 00000 n 
+0000037614 00000 n 
+0000037867 00000 n 
+0000038120 00000 n 
+0000038374 00000 n 
+0000038628 00000 n 
+0000038842 00000 n 
+0000039056 00000 n 
+0000039341 00000 n 
+0000039626 00000 n 
+0000039911 00000 n 
+0000040142 00000 n 
+0000040373 00000 n 
+0000040563 00000 n 
+0000040764 00000 n 
+0000040973 00000 n 
+0000041182 00000 n 
+0000041799 00000 n 
+0000042008 00000 n 
+0000042217 00000 n 
+0000042422 00000 n 
+0000042627 00000 n 
+0000042837 00000 n 
+0000043047 00000 n 
+0000043299 00000 n 
+0000043551 00000 n 
+0000043758 00000 n 
+0000043965 00000 n 
+0000044172 00000 n 
+0000044379 00000 n 
+0000044632 00000 n 
+0000044885 00000 n 
+0000045097 00000 n 
+0000045309 00000 n 
+0000045538 00000 n 
+0000045767 00000 n 
+0000045969 00000 n 
+0000046172 00000 n 
+0000046379 00000 n 
+0000046586 00000 n 
+0000046799 00000 n 
+0000047012 00000 n 
+0000047225 00000 n 
+0000047438 00000 n 
+0000047650 00000 n 
+0000047862 00000 n 
+0000048152 00000 n 
+0000048442 00000 n 
+0000048732 00000 n 
+0000048937 00000 n 
+0000049142 00000 n 
+0000049407 00000 n 
+0000049672 00000 n 
+0000049937 00000 n 
+0000050347 00000 n 
+0000050757 00000 n 
+0000051167 00000 n 
+0000051577 00000 n 
+0000051987 00000 n 
+0000052242 00000 n 
+0000052497 00000 n 
+0000052758 00000 n 
+0000053019 00000 n 
+0000053612 00000 n 
+0000053874 00000 n 
+0000054136 00000 n 
+0000054544 00000 n 
+0000054952 00000 n 
+0000055360 00000 n 
+0000055768 00000 n 
+0000056176 00000 n 
+0000056460 00000 n 
+0000056744 00000 n 
+0000057028 00000 n 
+0000057428 00000 n 
+0000057828 00000 n 
+0000058228 00000 n 
+0000058628 00000 n 
+0000059028 00000 n 
+0000059438 00000 n 
+0000059848 00000 n 
+0000060258 00000 n 
+0000060668 00000 n 
+0000061078 00000 n 
+0000061437 00000 n 
+0000061796 00000 n 
+0000062155 00000 n 
+0000062514 00000 n 
+0000062762 00000 n 
+0000063010 00000 n 
+0000063300 00000 n 
+0000063590 00000 n 
+0000063880 00000 n 
+0000064273 00000 n 
+0000064666 00000 n 
+0000065059 00000 n 
+0000065452 00000 n 
+0000065845 00000 n 
+0000066143 00000 n 
+0000066441 00000 n 
+0000066739 00000 n 
+0000067038 00000 n 
+0000067337 00000 n 
+0000067636 00000 n 
+0000067947 00000 n 
+0000068258 00000 n 
+0000068569 00000 n 
+0000068880 00000 n 
+0000069278 00000 n 
+0000069676 00000 n 
+0000070074 00000 n 
+0000070472 00000 n 
+0000070870 00000 n 
+0000071495 00000 n 
+0000071800 00000 n 
+0000072105 00000 n 
+0000072410 00000 n 
+0000072695 00000 n 
+0000072980 00000 n 
+0000073265 00000 n 
+0000073513 00000 n 
+0000073761 00000 n 
+0000074113 00000 n 
+0000074465 00000 n 
+0000074817 00000 n 
+0000075169 00000 n 
+0000075423 00000 n 
+0000075677 00000 n 
+0000076087 00000 n 
+0000076497 00000 n 
+0000076907 00000 n 
+0000077317 00000 n 
+0000077727 00000 n 
+0000078131 00000 n 
+0000078535 00000 n 
+0000078939 00000 n 
+0000079343 00000 n 
+0000079747 00000 n 
+0000080145 00000 n 
+0000080543 00000 n 
+0000080941 00000 n 
+0000081339 00000 n 
+0000081737 00000 n 
+0000081986 00000 n 
+0000082235 00000 n 
+0000082426 00000 n 
+0000082672 00000 n 
+0000082918 00000 n 
+0000083169 00000 n 
+0000083420 00000 n 
+0000083667 00000 n 
+0000083914 00000 n 
+0000084163 00000 n 
+0000084412 00000 n 
+0000084662 00000 n 
+0000084912 00000 n 
+0000085162 00000 n 
+0000085412 00000 n 
+0000085997 00000 n 
+0000086245 00000 n 
+0000086493 00000 n 
+0000086738 00000 n 
+0000086983 00000 n 
+0000087234 00000 n 
+0000087485 00000 n 
+0000087737 00000 n 
+0000087989 00000 n 
+0000088238 00000 n 
+0000088487 00000 n 
+0000088739 00000 n 
+0000088991 00000 n 
+0000089240 00000 n 
+0000089489 00000 n 
+0000089739 00000 n 
+0000089989 00000 n 
+0000090240 00000 n 
+0000090491 00000 n 
+0000090737 00000 n 
+0000090983 00000 n 
+0000091235 00000 n 
+0000091487 00000 n 
+0000091740 00000 n 
+0000091993 00000 n 
+0000092244 00000 n 
+0000092495 00000 n 
+0000092739 00000 n 
+0000092983 00000 n 
+0000093229 00000 n 
+0000093475 00000 n 
+0000093726 00000 n 
+0000093977 00000 n 
+0000094230 00000 n 
+0000094483 00000 n 
+0000094733 00000 n 
+0000094983 00000 n 
+0000095236 00000 n 
+0000095489 00000 n 
+0000096023 00000 n 
+0000096273 00000 n 
+0000096523 00000 n 
+0000096779 00000 n 
+0000097035 00000 n 
+0000097266 00000 n 
+0000097497 00000 n 
+0000097743 00000 n 
+0000097989 00000 n 
+0000098188 00000 n 
+0000098381 00000 n 
+0000098567 00000 n 
+0000098867 00000 n 
+0000099167 00000 n 
+0000099467 00000 n 
+0000099686 00000 n 
+0000099905 00000 n 
+0000100168 00000 n 
+0000100431 00000 n 
+0000100631 00000 n 
+0000100822 00000 n 
+0000101021 00000 n 
+0000101205 00000 n 
+0000101409 00000 n 
+0000101596 00000 n 
+0000101779 00000 n 
+0000101978 00000 n 
+0000102186 00000 n 
+0000102455 00000 n 
+0000102724 00000 n 
+0000102993 00000 n 
+0000103239 00000 n 
+0000103485 00000 n 
+0000103783 00000 n 
+0000104081 00000 n 
+0000104379 00000 n 
+0000104641 00000 n 
+0000104903 00000 n 
+0000105116 00000 n 
+0000105329 00000 n 
+0000105585 00000 n 
+0000105841 00000 n 
+0000106402 00000 n 
+0000106675 00000 n 
+0000106948 00000 n 
+0000107221 00000 n 
+0000107483 00000 n 
+0000107745 00000 n 
+0000108023 00000 n 
+0000108301 00000 n 
+0000108579 00000 n 
+0000108821 00000 n 
+0000109063 00000 n 
+0000109330 00000 n 
+0000109597 00000 n 
+0000109864 00000 n 
+0000110137 00000 n 
+0000110410 00000 n 
+0000110683 00000 n 
+0000110945 00000 n 
+0000111207 00000 n 
+0000111470 00000 n 
+0000111733 00000 n 
+0000111996 00000 n 
+0000112236 00000 n 
+0000112476 00000 n 
+0000112717 00000 n 
+0000112958 00000 n 
+0000113216 00000 n 
+0000113474 00000 n 
+0000113725 00000 n 
+0000113976 00000 n 
+0000114237 00000 n 
+0000114498 00000 n 
+0000114759 00000 n 
+0000115020 00000 n 
+0000115295 00000 n 
+0000115570 00000 n 
+0000115845 00000 n 
+0000116125 00000 n 
+0000116405 00000 n 
+0000116685 00000 n 
+0000116930 00000 n 
+0000117175 00000 n 
+0000117415 00000 n 
+0000117655 00000 n 
+0000117925 00000 n 
+0000118195 00000 n 
+0000118465 00000 n 
+0000118713 00000 n 
+0000118961 00000 n 
+0000119202 00000 n 
+0000119443 00000 n 
+0000120076 00000 n 
+0000120294 00000 n 
+0000120512 00000 n 
+0000120749 00000 n 
+0000120821 00000 n 
+0000121116 00000 n 
+0000121291 00000 n 
+0000123230 00000 n 
+0000124977 00000 n 
+0000126735 00000 n 
+0000129773 00000 n 
+0000130510 00000 n 
+0000133470 00000 n 
+0000136100 00000 n 
+0000139852 00000 n 
+0000143676 00000 n 
+0000147154 00000 n 
+0000151329 00000 n 
+0000155814 00000 n 
+0000159986 00000 n 
+0000164011 00000 n 
+0000168501 00000 n 
+trailer
+<<
+/ID 
+[<2f6d3cdaff5d3e665631a9722e4ea550><2f6d3cdaff5d3e665631a9722e4ea550>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 450 0 R
+/Root 449 0 R
+/Size 468
+>>
+startxref
+169277
+%%EOF
