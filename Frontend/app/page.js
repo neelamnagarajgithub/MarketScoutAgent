@@ -19,6 +19,65 @@ const SUGGESTIONS = [
   "Anthropic vs OpenAI strategy deep-dive",
 ];
 
+
+
+function SidebarIcon({ icon }) {
+  if (icon === "edit") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 20h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16.5 3.5a2.12 2.12 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (icon === "search") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
+        <path d="m20 20-3.6-3.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (icon === "image") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="9" cy="10" r="1.6" fill="currentColor" />
+        <path d="m6 17 4-4 3 3 2-2 3 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (icon === "apps") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="13" y="4" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="4" y="13" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="13" y="13" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+      </svg>
+    );
+  }
+
+  if (icon === "research") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3.5 19.8 7v10L12 20.5 4.2 17V7L12 3.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="m12 8 4.3 2.2V15L12 17.2 7.7 15v-4.8L12 8Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M8 7h8M8 12h8M8 17h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
 function makeId() {
   return `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 }
@@ -92,6 +151,10 @@ function AnalysisStatusCard({ msg, onDownload, activePhaseIndex = -1, isStreamin
 
   return (
     <div className={`analysis-card${isSuccess ? " analysis-card-success" : ""}${isFailed ? " analysis-card-failed" : ""}`}>
+      <div className={`ai-orb${isStreaming ? " live" : ""}`} aria-hidden="true">
+        <video src="/logo_animation.mp4" autoPlay muted loop playsInline />
+      </div>
+
       <div className="analysis-card-header">
         <div>
           <p className="analysis-card-kicker">MarketScout run</p>
@@ -346,10 +409,33 @@ export default function HomePage() {
   return (
     <main
       className="shell"
-      style={{ "--sidebar-width": sidebarOpen ? "290px" : "76px" }}
+      style={{ "--sidebar-width": sidebarOpen ? "260px" : "68px" }}
     >
       <aside className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
         <div className="sidebar-head">
+          {sidebarOpen ? (
+            <div className="sidebar-top-row">
+              <img src="/logo_nobg.png" alt="Scout AI" className="brand-logo" />
+              <button
+                className="icon-btn sidebar-toggle-btn"
+                onClick={() => setSidebarOpen((v) => !v)}
+                aria-label="Toggle history sidebar"
+              >
+                <span className="hamburger" />
+              </button>
+            </div>
+          ) : null}
+
+          {!sidebarOpen ? (
+            <button
+              className="icon-btn sidebar-toggle-btn"
+              onClick={() => setSidebarOpen((v) => !v)}
+              aria-label="Toggle history sidebar"
+            >
+              <span className="hamburger" />
+            </button>
+          ) : null}
+
           {sidebarOpen && (
             <div className="sidebar-actions">
               <button className="sidebar-action-btn" onClick={handleNewChat} title="New chat">
@@ -370,19 +456,14 @@ export default function HomePage() {
               </button>
             </div>
           )}
-          <button
-            className="icon-btn sidebar-toggle-btn"
-            onClick={() => setSidebarOpen((v) => !v)}
-            aria-label="Toggle history sidebar"
-          >
-            <span className="hamburger" />
-          </button>
         </div>
 
         {sidebarOpen ? (
           <div className="sidebar-content">
+            
+
             <div className="history-section-head">
-              <p className="history-section-title">Previous history</p>
+              <p className="history-section-title">Your chats</p>
             </div>
 
             {searchOpen ? (
@@ -450,16 +531,18 @@ export default function HomePage() {
           >
             <span className="hamburger" />
           </button>
-          <div>
-            <p className="chat-title">MarketScout Assistant</p>
-            <p className="chat-subtitle">Ask. Analyze. Get report-ready PDF.</p>
-          </div>
+          <button className="chat-model-btn" type="button" aria-label="Current model">
+            <span className="chat-title">Scout AI</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </header>
 
         <div className={`messages${isEmpty ? " messages-empty" : ""}`}>
           {isEmpty ? (
             <div className="hero-center">
-              <h1 className="hero-heading">What are you analysing today?</h1>
+              <h1 className="hero-heading">What are you analyzing today?</h1>
               <div className="hero-composer-area">
                 <div className="composer">
                   <textarea
@@ -495,11 +578,7 @@ export default function HomePage() {
                 </div>
                 <div className="suggestions-row">
                   {SUGGESTIONS.map((s) => (
-                    <button
-                      key={s}
-                      className="suggestion-chip"
-                      onClick={() => setInput(s)}
-                    >
+                    <button key={s} className="suggestion-chip" onClick={() => setInput(s)}>
                       {s}
                     </button>
                   ))}
