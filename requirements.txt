@@ -69,3 +69,8 @@ pinecone-client
 pytest
 pytest-asyncio
 pytest-mock
+
+
+# Server
+fastapi
+uvicorn
