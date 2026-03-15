@@ -200,6 +200,8 @@ class GuardrailEngine:
             flags.append(f"low_quality_items_removed={low_quality}")
         if dup:
             flags.append(f"duplicates_removed={dup}")
+        # Intentionally do not expose per-item redaction counts in report-facing flags.
+        # Redaction is a sanitization step and does not imply dropping an item.
         if redacted:
-            flags.append(f"sanitized_or_redacted_items={redacted}")
+            flags.append("content_sanitization_applied=true")
         return clean, blocked + dup + low_quality, flags

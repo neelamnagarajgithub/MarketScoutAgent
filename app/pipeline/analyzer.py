@@ -152,6 +152,18 @@ class AnalyzerAgent:
                 return [str(x) for x in v]
             return fallback
 
+        def _safe_guardrail_summary(v: Any) -> Dict[str, Any]:
+            # Keep guardrail information high-level in report-facing output.
+            summary: Dict[str, Any] = {
+                "content_safety_checks": "applied",
+                "items_after_guardrails": context.get("item_count", 0),
+                "dropped_count": 0,
+            }
+            if isinstance(v, dict):
+                if "dropped_count" in v:
+                    summary["dropped_count"] = v.get("dropped_count", 0)
+            return summary
+
         base = {
             "executive_overview": sections.get("executive_overview") or context["query"],
             "business_context": sections.get("business_context") or "Insufficient structured business context generated.",
@@ -169,10 +181,7 @@ class AnalyzerAgent:
             "source_breakdown": sections.get("source_breakdown") or context["source_breakdown"],
             "theme_breakdown": sections.get("theme_breakdown") or context["theme_breakdown"],
             "timeline_breakdown": sections.get("timeline_breakdown") or context["timeline_breakdown"],
-            "guardrail_summary": sections.get("guardrail_summary") or {
-                "flags": context["guardrail_flags"],
-                "judge_notes": context["judge_notes"],
-            },
+            "guardrail_summary": _safe_guardrail_summary(sections.get("guardrail_summary")),
         }
 
         # enforce minimum density for key list sections
@@ -207,7 +216,7 @@ class AnalyzerAgent:
                 f"Evidence spans {diversity} distinct sources." if diversity else "Evidence diversity is limited.",
                 f"Most represented sources: {', '.join(top_sources[:5])}" if top_sources else "No dominant source distribution detected.",
                 f"Dominant themes: {', '.join(dominant_terms[:6])}" if dominant_terms else "Theme extraction was limited.",
-                f"Guardrail notes: {', '.join(ds.guardrail_flags)}" if ds.guardrail_flags else "No guardrail violations remained after filtering.",
+                "Content was sanitized for safety and quality before analysis.",
             ],
             risks=[
                 "Some retrieved evidence may reflect reporting lag or secondary-source amplification.",
@@ -267,8 +276,7 @@ class AnalyzerAgent:
                 "theme_breakdown": context["theme_breakdown"],
                 "timeline_breakdown": context["timeline_breakdown"],
                 "guardrail_summary": {
-                    "flags": ds.guardrail_flags,
-                    "judge_notes": ds.judge_notes,
+                    "content_safety_checks": "applied",
                     "dropped_count": ds.dropped_count,
                 },
             },
@@ -509,9 +517,16 @@ Compact context:
         if not candidate:
             return None
 
+        c = candidate.strip()
+
+        # Remove common markdown fence wrappers.
+        if c.startswith("```"):
+            c = re.sub(r"^```(?:json)?\s*", "", c, flags=re.IGNORECASE)
+            c = re.sub(r"\s*```$", "", c)
+
         # 1) strict JSON
         try:
-            obj = json.loads(candidate)
+            obj = json.loads(c)
             if isinstance(obj, dict):
                 return obj
             if isinstance(obj, list):
@@ -521,9 +536,29 @@ Compact context:
         except Exception:
             pass
 
+        # 1b) repaired JSON passes for common LLM malformations
+        repaired = c
+        repaired = re.sub(r"\bNaN\b|\bInfinity\b|-Infinity", "null", repaired)
+        repaired = re.sub(r",\s*([}\]])", r"\1", repaired)  # trailing commas
+        repaired = "".join(ch if (ch >= " " or ch in "\n\r\t") else " " for ch in repaired)
+        repaired = re.sub(r"\\(?![\"\\/bfnrtu])", r"\\\\", repaired)  # invalid escapes
+        repaired_no_newlines = repaired.replace("\r", " ").replace("\n", " ")
+
+        for variant in (repaired, repaired_no_newlines):
+            try:
+                obj = json.loads(variant)
+                if isinstance(obj, dict):
+                    return obj
+                if isinstance(obj, list):
+                    for item in obj:
+                        if isinstance(item, dict):
+                            return item
+            except Exception:
+                pass
+
         # 2) Python-literal style dicts using single quotes/trailing commas
         try:
-            obj = ast.literal_eval(candidate)
+            obj = ast.literal_eval(c)
             if isinstance(obj, dict):
                 return obj
             if isinstance(obj, list):
@@ -536,6 +571,11 @@ Compact context:
         return None
 
     def _parse_llm_output(self, text: str) -> Dict[str, Any]:
+        # First, try the whole text directly (covers cases where brace scanning fails).
+        direct = self._try_parse_candidate(text)
+        if isinstance(direct, dict):
+            return direct
+
         for candidate in self._extract_balanced_json(text):
             obj = self._try_parse_candidate(candidate)
             if isinstance(obj, dict):
