@@ -31,6 +31,80 @@ class AnalyzerAgent:
             "have", "will", "market", "analysis", "including", "risks", "recommendations"
         }
 
+    def _analysis_json_schema(self) -> Dict[str, Any]:
+        """JSON schema used to force structured responses from Gemini where supported."""
+        return {
+            "type": "object",
+            "required": ["summary", "key_findings", "risks", "recommendations", "confidence_score", "sections"],
+            "properties": {
+                "summary": {"type": "string"},
+                "key_findings": {"type": "array", "items": {"type": "string"}},
+                "risks": {"type": "array", "items": {"type": "string"}},
+                "recommendations": {"type": "array", "items": {"type": "string"}},
+                "confidence_score": {"type": "number"},
+                "sections": {
+                    "type": "object",
+                    "required": [
+                        "executive_overview", "business_context", "market_landscape",
+                        "customer_and_user_signals", "competitive_landscape", "product_implications",
+                        "feature_recommendations", "go_to_market_implications", "strategic_implications",
+                        "opportunities", "risks_and_constraints", "decision_ready_next_steps",
+                        "evidence_highlights", "source_breakdown", "theme_breakdown",
+                        "timeline_breakdown", "guardrail_summary"
+                    ],
+                    "properties": {
+                        "executive_overview": {"type": "string"},
+                        "business_context": {"type": "string"},
+                        "market_landscape": {"type": "string"},
+                        "customer_and_user_signals": {"type": "array", "items": {"type": "string"}},
+                        "competitive_landscape": {"type": "array", "items": {"type": "string"}},
+                        "product_implications": {"type": "array", "items": {"type": "string"}},
+                        "feature_recommendations": {"type": "array", "items": {"type": "string"}},
+                        "go_to_market_implications": {"type": "array", "items": {"type": "string"}},
+                        "strategic_implications": {"type": "array", "items": {"type": "string"}},
+                        "opportunities": {"type": "array", "items": {"type": "string"}},
+                        "risks_and_constraints": {"type": "array", "items": {"type": "string"}},
+                        "decision_ready_next_steps": {"type": "array", "items": {"type": "string"}},
+                        "evidence_highlights": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": ["title", "source", "why_it_matters"],
+                                "properties": {
+                                    "title": {"type": "string"},
+                                    "source": {"type": "string"},
+                                    "why_it_matters": {"type": "string"},
+                                },
+                            },
+                        },
+                        "source_breakdown": {"type": "object"},
+                        "theme_breakdown": {"type": "object"},
+                        "timeline_breakdown": {"type": "object"},
+                        "guardrail_summary": {"type": "object"},
+                    },
+                },
+            },
+        }
+
+    def _invoke_with_json_mode(self, prompt: str) -> Any:
+        """Invoke Gemini with strict JSON settings when available, then degrade gracefully."""
+        attempts = [
+            {"response_mime_type": "application/json", "response_schema": self._analysis_json_schema()},
+            {"response_mime_type": "application/json"},
+            None,
+        ]
+        errors: List[str] = []
+
+        for attempt in attempts:
+            try:
+                runner = self.llm.bind(**attempt) if attempt else self.llm
+                return runner.invoke([HumanMessage(content=prompt)])
+            except Exception as exc:
+                mode = "default" if attempt is None else ",".join(sorted(attempt.keys()))
+                errors.append(f"{mode}:{type(exc).__name__}:{str(exc)[:140]}")
+
+        raise RuntimeError("; ".join(errors))
+
     def _infer_query_lens(self, query: str) -> Dict[str, str]:
         query_lower = (query or "").lower()
         if any(k in query_lower for k in ["competitor", "competition", "landscape", "vs", "compare"]):
@@ -496,6 +570,9 @@ Compact context:
         if isinstance(content, str):
             return content
 
+        if isinstance(content, dict):
+            return json.dumps(content, ensure_ascii=False)
+
         if isinstance(content, list):
             parts: List[str] = []
             for item in content:
@@ -624,7 +701,7 @@ Compact context:
             "Malformed output to repair:\n"
             f"{(raw_output or '')[:14000]}"
         )
-        resp = self.llm.invoke([HumanMessage(content=repair_prompt)])
+        resp = self._invoke_with_json_mode(repair_prompt)
         repaired_txt = self._response_to_text(resp)
         return self._parse_llm_output(repaired_txt)
 
@@ -641,10 +718,10 @@ Compact context:
         prompt = self._build_prompt(context)
 
         try:
-            resp = self.llm.invoke([HumanMessage(content=prompt)])
+            resp = self._invoke_with_json_mode(prompt)
             txt = self._response_to_text(resp)
             if self._is_token_truncated(resp):
-                resp = self.llm.invoke([HumanMessage(content=self._build_compact_prompt(context))])
+                resp = self._invoke_with_json_mode(self._build_compact_prompt(context))
                 txt = self._response_to_text(resp)
 
             try:
@@ -666,7 +743,7 @@ Compact context:
                     "Ensure minimum 8 key_findings and 8 recommendations.\n\n"
                     + prompt
                 )
-                retry_resp = self.llm.invoke([HumanMessage(content=retry_prompt)])
+                retry_resp = self._invoke_with_json_mode(retry_prompt)
                 retry_txt = self._response_to_text(retry_resp)
                 retry_obj = self._parse_llm_output(retry_txt)
                 obj = retry_obj
