@@ -1,187 +1,227 @@
-# 🚀 Enhanced Semantic Search System - Complete API Integration
+# API Integration Status
 
-## 🎉 **SYSTEM STATUS: FULLY ENHANCED & OPERATIONAL**
+This document describes the current external-provider surface area of the market-intelligence pipeline. It is aligned to the current code in `app/simple_semantic_search.py`, `app/api_validator.py`, `app/fetchers/`, and `config.yaml`.
 
-Your semantic search system has been completely upgraded with **25+ API integrations** and **8 intelligence categories**!
+## Why This Document Exists
 
-## 📊 **Performance Upgrade**
+The system depends on many third-party providers, but they do not all play the same role.
 
-### Before Integration:
-- 4-5 data sources
-- 150-200 documents per search
-- Basic news and web search
+Some are:
 
-### After Integration:
-- **25+ data sources**  
-- **300-1000+ documents per search**
-- **8 intelligence categories**
-- **Multi-platform coverage**
+- always-important core providers for mainstream queries
+- optional enrichers for broader coverage
+- scraper-backed or dynamic integrations that can fail more often
+- validated services that may not be actively scheduled for every query type
 
-## 🔧 **Integrated APIs & Data Sources**
+This document clarifies what is actually wired into the runtime and how failures are handled.
 
-### 🔍 **Search & Discovery**
-- ✅ **SerpAPI** - Web search results
-- 🔧 **Bing Search API** - Microsoft search
-- 🔧 **Google Custom Search** - Targeted Google search
+## Provider Families
 
-### 📰 **News Intelligence**  
-- ✅ **NewsAPI** - Global news articles
-- ✅ **GNews** - Real-time news
-- 🔧 **Mediastack** - News aggregation  
-- 🔧 **Currents API** - Live news feeds
+The search engine organizes providers into these retrieval families:
 
-### 💼 **Business Intelligence**
-- 🔧 **Crunchbase** - Company funding data
-- 🔧 **Clearbit** - Company enrichment
-- 🔧 **Apollo** - Contact intelligence  
-- 🔧 **BuiltWith** - Technology stacks
+1. Search discovery
+2. News intelligence
+3. GitHub intelligence
+4. Financial intelligence
+5. Business intelligence
+6. Social media
+7. Community intelligence
+8. Startup intelligence
+9. Security intelligence
 
-### 💹 **Financial Intelligence**
-- ✅ **Alpha Vantage** - Stock data & financial news
-- ✅ **Massive.com** - Market data & dividends
-- 🔧 **Finnhub** - Financial information
-- 🔧 **Quandl** - Economic data
+Each query activates only a subset of these families.
 
-### 🐙 **Code Intelligence** 
-- ✅ **GitHub** (PAT token) - Repositories & code
-- 🔧 **GitLab** - Project management & code
+## Search Discovery
 
-### 🌐 **Social Media Intelligence**
-- 🔧 **Twitter/X API** - Social sentiment  
-- 🔧 **LinkedIn API** - Professional insights
+Current primary provider:
 
-### 👥 **Community Intelligence**
-- ✅ **Reddit** (scraping) - Community discussions
-- ✅ **Hacker News** - Tech community  
-- ✅ **Indie Hackers** - Startup community
-- ✅ **Product Hunt** - Product launches
+- `serpapi`
 
-### 🚀 **Startup Intelligence**
-- 🔧 **Startup Tracker** - Custom startup data
-- ✅ **BetaList** - Early-stage startups
-- ✅ **Y Combinator** - Accelerator data
-- ✅ **TechCrunch** - Startup news
+Supplementary security-style discovery:
 
-## 🎯 **Intelligence Categories**
+- `shodan`
 
-1. **🔍 Search Discovery** - Web trends, trending topics
-2. **📰 News Intelligence** - Real-time news, press releases  
-3. **💼 Business Intelligence** - Company data, tech stacks
-4. **💹 Financial Intelligence** - Market data, financial metrics
-5. **🐙 Code Intelligence** - Repository analysis, tech trends
-6. **🌐 Social Media Intelligence** - Social sentiment, viral content
-7. **👥 Community Intelligence** - Community discussions, user feedback  
-8. **🚀 Startup Intelligence** - Funding rounds, accelerator programs
+Notes:
 
-## 📈 **Current Performance Metrics**
+- SerpAPI is the main general web-search discovery source in the current runtime
+- Bing and Google Custom Search are present in configuration shape but are not active in the current task builders
 
-```
-🧪 Latest Test Results:
-✅ Search completed successfully  
-📊 Retrieved 361 documents from 5 sources
-💾 Automatic JSON export active
-🗄️ SQLite database integration working
-⚡ Query optimization enhanced
-```
+## News Intelligence
 
-## 🔧 **Technical Enhancements**
+Actively supported providers:
 
-### **New Fetcher Modules:**
-- `social_media.py` - Twitter/X, LinkedIn integration
-- `startup_tracker.py` - Startup ecosystem tracking  
-- Enhanced `business_intelligence.py` - B2B data sources
-- Enhanced `financial_apis.py` - Multiple financial data providers
-- Enhanced `community_sources.py` - Social community scraping
+- `newsapi`
+- `gnews`
+- `currents`
+- `guardian`
+- `nytimes`
 
-### **Updated Core Components:**
-- ✅ **APIValidator** - Validates all 25+ APIs
-- ✅ **SimpleSemanticSearch** - Enhanced with 8 intelligence categories
-- ✅ **Query Optimizer** - Financial symbol mapping & search enhancement
-- ✅ **Database Integration** - PostgreSQL + SQLite fallback
+Supplementary community/news crossover:
 
-### **Configuration Updates:**
-- ✅ **GitHub PAT Token** - Proper Bearer token authentication  
-- ✅ **Reddit Scraping** - No API key required
-- ✅ **Multi-source Concurrent Processing** - Parallel API calls
-- ✅ **Enhanced Error Handling** - Graceful API failure management
+- Hacker News search scraping
 
-## 🚀 **Usage Examples**
+Notes:
 
-### **Quick Search:**
-```bash
-python simple_search.py "NVIDIA AI market dominance"
-python simple_search.py "Tesla Model Y production data" 
-python simple_search.py "OpenAI ChatGPT business strategy"
-```
+- Guardian and NYTimes are dynamically resolved and safely skipped if the expected fetcher symbol is absent
+- News-family coverage is one of the most important contributors to report quality for broad market-analysis queries
 
-### **Interactive Mode:**
-```bash
-python semantic_cli.py
-```
+## GitHub and Code Signals
 
-### **Comprehensive Test:**  
-```bash
-python comprehensive_test.py
-```
+Actively supported:
 
-## 📋 **API Key Configuration** 
+- GitHub PAT-backed organization repository fetch
+- GitHub trending repository fetch
 
-Your `config.yaml` supports **25+ services**:
+Notes:
 
-```yaml
-keys:
-  # Search & Discovery (3)
-  serpapi: "configured ✅"
-  bing_search: "add_key 🔧"  
-  google_custom_search: "add_key 🔧"
-  
-  # News APIs (4)  
-  newsapi: "configured ✅"
-  gnews: "configured ✅"
-  mediastack: "add_key 🔧"
-  currents: "configured ✅"
-  
-  # Business Intelligence (4)
-  crunchbase: "add_key 🔧"
-  clearbit: "add_key 🔧" 
-  apollo: "configured ✅"
-  builtwith: "add_key 🔧"
-  
-  # Financial APIs (4)
-  alpha_vantage: "configured ✅"
-  massive: "configured ✅"
-  finnhub: "add_key 🔧"
-  quandl: "add_key 🔧"
-  
-  # Code Repositories (2)
-  github: "configured ✅ (PAT)"
-  gitlab: "configured ✅"
-  
-  # Social Media (2)  
-  twitter: "add_key 🔧"
-  linkedin: "add_key 🔧"
-  
-  # Community (4) - Some scraping, no keys needed
-  reddit: "scraping ✅"
-  hacker_news: "scraping ✅"  
-  product_hunt: "add_key 🔧"
-  startup_tracker: "add_key 🔧"
-```
+- GitHub is treated as a product and engineering market signal, not only as a code host
+- GitLab is integrated separately and appears in the business-intelligence family rather than a dedicated GitLab code family
 
-## 🎯 **Next Steps**
+## Financial Intelligence
 
-1. **Add Missing API Keys** - Configure remaining 🔧 services
-2. **Test Specific Use Cases** - Run searches for your specific needs
-3. **Monitor Performance** - Check document retrieval rates  
-4. **Customize Sources** - Enable/disable specific intelligence categories
+Actively supported:
 
-## 🏆 **Achievement Summary**
+- `alpha_vantage`
+- `massive`
+- free/public Yahoo Finance path when helper exists
 
-✅ **25+ API Integrations** - Comprehensive data coverage  
-✅ **8 Intelligence Categories** - Multi-dimensional analysis
-✅ **Enhanced Performance** - 2-5x more data per search
-✅ **Robust Error Handling** - Graceful API failure management
-✅ **Scalable Architecture** - Easy to add more sources
-✅ **Production Ready** - Full testing and validation
+Notes:
 
-Your semantic search system is now a **comprehensive market intelligence platform**! 🚀
+- Alpha Vantage is used for both company overview and company-news style enrichment
+- Massive is used for market/dividend-style data where supported
+- financial-symbol generation is heavily influenced by the query optimizer
+
+## Business Intelligence
+
+Actively supported:
+
+- `apollo`
+- `gitlab`
+- `shodan`
+
+Notes:
+
+- this family blends company, project, and infrastructure signals
+- it is useful for competitor and company-analysis flows rather than broad market-trend queries
+
+## Social and Community Intelligence
+
+Actively supported:
+
+- Reddit public JSON access
+- Mastodon token-backed timeline access
+- Stack Overflow public API
+- Hacker News scraping path
+
+Notes:
+
+- Reddit is intentionally keyless in the current design
+- community providers are lower-authority than financial/news providers, but they add important demand, sentiment, and developer-signal context
+
+## Startup Intelligence
+
+Supported sources include:
+
+- startup tracker
+- AngelList scraping path
+- Crunchbase-news scraping path
+- TechCrunch startup feed/path
+
+Notes:
+
+- these providers are useful for funding and emerging-company discovery
+- some are inherently more fragile because they are scraper-backed or custom integrations
+
+## Security Intelligence
+
+Supported source:
+
+- `shodan`
+
+Notes:
+
+- only relevant for certain query types
+- used as optional enrichment rather than universal retrieval
+
+## Validation Strategy
+
+`APIKeyValidator` validates both keyed and free providers before the main search execution begins.
+
+### Keyed providers checked
+
+- `serpapi`
+- `shodan`
+- `newsapi`
+- `gnews`
+- `currents`
+- `guardian`
+- `nytimes`
+- `github_pat`
+- `gitlab`
+- `apollo`
+- `alpha_vantage`
+- `massive`
+- `mastodon`
+
+### Free/public providers checked
+
+- `hackernews`
+- `yahoo_finance`
+- `reddit`
+- `npm_registry`
+- `pypi`
+- `stackoverflow`
+- `coingecko`
+
+### Storage/backend check
+
+- Supabase REST accessibility is checked separately from search providers
+
+## Runtime Failure Model
+
+Third-party providers are expected to fail intermittently. Common causes include:
+
+- invalid/expired keys
+- upstream rate limits
+- provider quota exhaustion
+- temporary provider outage
+- schema drift in scraper-backed sources
+
+The runtime is designed around partial success, not all-or-nothing execution.
+
+Protection mechanisms:
+
+- provider validation before search execution
+- safe task registration for optional fetchers
+- `asyncio.gather(..., return_exceptions=True)`
+- per-result normalization guarded by `try/except`
+
+## What “Integrated” Means in This Repo
+
+This repo supports more providers than it uses on every single request.
+
+The correct interpretation is:
+
+- the codebase contains a broad provider surface area
+- only a subset is scheduled for any given query
+- actual runtime usage depends on query type, configured keys, and source health
+
+That is a healthier and more accurate model than claiming every configured service is always active.
+
+## Most Important Providers for Reliable Output
+
+If only a subset of services can be kept healthy, prioritize:
+
+1. `serpapi`
+2. `newsapi`
+3. `gnews`
+4. `alpha_vantage`
+5. `github_personal_access_token`
+6. Supabase database and storage access
+
+Those have outsized influence on analysis quality for mainstream business and market queries.
+
+## Related Docs
+
+- `SEMANTIC_SEARCH_MODULE.md`
+- `OPTIMIZER_INTEGRATION.md`

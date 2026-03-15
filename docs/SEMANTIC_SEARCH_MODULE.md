@@ -4,26 +4,34 @@ File: `app/simple_semantic_search.py`
 
 ## Purpose
 
-`SimpleSemanticSearch` is the retrieval engine that turns a natural-language query into a large normalized evidence dataset from multiple provider families (search, news, code, financial, social, startup, and security).
+`SimpleSemanticSearch` is the retrieval entry point for the end-to-end market-intelligence system. It converts a user query into a large, structured, multi-source evidence bundle.
 
-It is designed for breadth-first intelligence collection with strong operational resilience:
+This stage is optimized for recall, source breadth, and resilience. It intentionally gathers more material than the final analysis needs, because downstream stages are responsible for safety, deduplication, and precision filtering.
 
-- Async fan-out over many sources
-- Safe task registration to avoid pipeline crashes on missing fetchers
-- Per-result normalization into one common schema
-- Query planning based on intent class
+## Position in the Full Runtime
+
+The end-to-end flow is:
+
+1. semantic search retrieves broad evidence
+2. guardrails and judge reduce noise
+3. analyzer generates structured business analysis
+4. report generator creates the PDF
+5. orchestrator persists metadata and uploads final artifact to Supabase
+
+Because of that design, this module should be evaluated primarily on collection quality and fault tolerance, not on final-answer polish.
 
 ## Core Responsibilities
 
-1. Query understanding and planning
-2. Source-family selection by query type
-3. Async task creation and execution
-4. Data normalization and packaging
-5. Session persistence and JSON export
+1. classify the user query
+2. build a `SearchPlan`
+3. schedule retrieval tasks by source family
+4. execute provider calls concurrently
+5. normalize results into a stable nested structure
+6. persist a lightweight search session summary to the database
 
-## Key Types
+## Core Types
 
-### `QueryType` enum
+### `QueryType`
 
 - `COMPANY_ANALYSIS`
 - `MARKET_TREND`
@@ -34,7 +42,7 @@ It is designed for breadth-first intelligence collection with strong operational
 - `NEWS_MONITORING`
 - `GENERAL_INTELLIGENCE`
 
-### `SearchPlan` dataclass
+### `SearchPlan`
 
 Fields:
 
@@ -45,111 +53,154 @@ Fields:
 - `search_terms`
 - `financial_symbols`
 
-## Retrieval Lifecycle
+`SearchPlan` is the contract that separates planning from execution.
 
-### 1) Plan Phase
+## Query Planning
 
-Methods:
+### Query optimization
 
-- `plan_search(query)`
-- `_classify_query(query)`
-- `_extract_entities(query)`
-- `_plan_sources(query_type)`
-- `_generate_search_terms(query, entities, keywords)`
-- `_map_to_symbols(entities)`
+`plan_search(query)` first calls the query optimizer. The optimizer contributes:
 
-Output: `SearchPlan` used downstream by task builders.
+- keywords
+- search-term expansions
+- financial-symbol suggestions
 
-### 2) Task Builder Phase
+### Query classification
 
-Task-family builders:
+`_classify_query(query)` maps the query to a broad intent class using keyword rules.
 
-- `_create_search_tasks`
-- `_create_news_tasks`
-- `_create_github_tasks`
-- `_create_financial_tasks`
-- `_create_business_intelligence_tasks`
-- `_create_social_media_tasks`
-- `_create_community_tasks`
-- `_create_startup_tasks`
-- `_create_security_tasks`
+### Entity extraction
 
-Important behavior:
+`_extract_entities(query)` identifies known companies or injects representative fallback entities when the query is too generic.
 
-- `_add_task(...)` prevents non-callable fetchers from breaking the run.
-- Optional fetchers are dynamically resolved via `getattr` with fallback names.
+### Source-family selection
 
-### 3) Async Execution Phase
-
-`execute_search(plan)`:
-
-- Builds a flat list of task descriptors with metadata (`type`, `source`, `query`, `coro`)
-- Executes coroutines with `asyncio.gather(*coroutines, return_exceptions=True)`
-- Re-attaches metadata to each completed result
-- Passes output to `_process_task_results`
-
-### 4) Normalization and Packaging
-
-`_process_task_results(task_results)`:
-
-- Normalizes each raw item through `normalize_item(source, item)`
-- Organizes results by source family and source name
-- Computes task-level success metadata
-
-Result shape includes:
-
-- `search_discovery`
-- `news_intelligence`
-- `github_intelligence`
-- `financial_intelligence`
-- `business_intelligence`
-- `social_media`
-- `community_intelligence`
-- `startup_intelligence`
-- `security_intelligence`
-- `_metadata`
-
-### 5) Final Response and Persistence
-
-`comprehensive_search(query)`:
-
-- Validates available APIs
-- Plans and executes retrieval
-- Builds response with summary, insights, and recommendations
-- Saves one internal session record to DB (`_save_search_session`)
-- Saves a full JSON file under `search_results/` (`_save_json_file`)
-
-## API/Key Handling Strategy
-
-Dynamic key lookup is centralized in `_key(*names)` so config variants remain compatible.
+`_plan_sources(query_type)` chooses which families to activate.
 
 Examples:
 
-- `GOOGLE_API_KEY`, `google_api_key`, etc. are handled where relevant
-- Missing keys usually skip one provider rather than failing the full search
+- company and funding flows activate financial, GitHub, business, startup, and social families
+- product flows emphasize GitHub, community, and social signals
+- technology-stack flows include security-oriented enrichment
 
-## Source Coverage Strategy
+### Search-term and symbol generation
 
-The module intentionally mixes high-signal and high-volume sources:
+The plan is finalized with bounded search terms and stock symbols to prevent excessive provider fan-out.
 
-- High-signal: financial/news/search/code sources
-- Community sentiment: reddit/hackernews/mastodon
-- Emerging signal streams: startup/security/social feeds
+## Retrieval Families
 
-Then downstream judge/guardrails reduce noise.
+Task builders currently exist for:
 
-## Failure Handling
+- search discovery
+- news intelligence
+- GitHub intelligence
+- financial intelligence
+- business intelligence
+- social media
+- community intelligence
+- startup intelligence
+- security intelligence
 
-Built-in tolerance includes:
+Not every family is used for every query.
 
-- Task-creation failures are logged and skipped
-- Execution exceptions are captured and do not terminate the pipeline
-- Per-item normalization exceptions are isolated
+## Task Builder Design
 
-This design keeps recall high while preserving runtime stability.
+Each builder creates task descriptors that include:
 
-## Outputs Consumed by Next Stage
+- the source-family type
+- the concrete provider name
+- the query term or symbol
+- the coroutine to execute
 
-Output is consumed by `LLMJudge` in `app/pipeline/llm_judge.py`.
+`_add_task(...)` is a defensive helper that prevents missing or non-callable fetchers from crashing the run.
 
-`LLMJudge` flattens `raw_data` into `RetrievedItem` records and performs guardrail + relevance filtering before analysis.
+This matters because some integrations are optional, dynamic, or scraper-backed.
+
+## Async Execution
+
+`execute_search(plan)`:
+
+- assembles all task descriptors
+- extracts coroutines and metadata
+- runs them with `asyncio.gather(..., return_exceptions=True)`
+- reattaches metadata to each result
+- forwards results to `_process_task_results(...)`
+
+The use of exception-tolerant gather is central to pipeline reliability.
+
+## Normalization
+
+`_process_task_results(...)` normalizes each provider-specific payload with `normalize_item(source, item)`.
+
+The normalized output is stored in a nested structure grouped by family and provider, plus a `_metadata` summary.
+
+This output is intentionally not flattened yet. Flattening occurs later in `LLMJudge._flatten_raw(...)`.
+
+## Validation and Gating
+
+Before executing retrieval, `validate_apis()` calls `APIKeyValidator.validate_all_keys()`.
+
+Important behavior:
+
+- providers are tested before use
+- invalid providers are logged but do not necessarily block the run
+- the search engine requires at least one viable search/news route to proceed usefully
+
+## Final Response Shape
+
+`_generate_final_response(...)` produces a bundle containing:
+
+- query metadata
+- query type
+- plan summary
+- total source and document counts
+- high-level insights and recommendations
+- `raw_data`
+
+The `raw_data` field is the most important handoff to the judge stage.
+
+## Persistence Behavior
+
+Current runtime persistence behavior:
+
+- saves a lightweight search-session summary to the database
+- does not save local JSON result artifacts anymore
+
+This changed when the system moved toward Supabase-backed persistence instead of local-file retention.
+
+## Failure Model
+
+This stage expects intermittent failures from third-party providers.
+
+Typical failure causes:
+
+- missing keys
+- invalid keys
+- provider quotas
+- rate limiting
+- scraper drift
+- transient upstream outages
+
+Resilience mechanisms:
+
+- validation before execution
+- safe task registration
+- exception-tolerant gather
+- per-item normalization guarded with `try/except`
+
+## What This Module Does Not Do
+
+It does not:
+
+- sanitize prompt-injection deeply
+- rank final relevance precisely
+- build business recommendations
+- render the PDF report
+
+Those are downstream responsibilities.
+
+## Related Docs
+
+- `API_INTEGRATION_STATUS.md`
+- `OPTIMIZER_INTEGRATION.md`
+- `GUARDRAIL_AND_LLM_JUDGE.md`

@@ -4,103 +4,164 @@ File: `app/pipeline/analyzer.py`
 
 ## Purpose
 
-`AnalyzerAgent` converts a validated `JudgedDataset` into a structured `AnalysisReport` suitable for strategic decision-making and PDF rendering.
+`AnalyzerAgent` transforms a validated `JudgedDataset` into a structured `AnalysisReport` that can be returned by the API, rendered as a PDF, and persisted by the orchestrator.
 
-It combines:
+This stage is the synthesis layer of the system. It is responsible for turning evidence into product, market, and strategy meaning.
 
-- Deterministic dataset introspection
-- Strict JSON schema prompting
-- Robust parsing and JSON repair
-- Safe fallback synthesis
-
-## Input and Output
+## Position in the Runtime
 
 Input:
 
-- `JudgedDataset` (`query`, validated `items`, guardrail/judge notes)
+- `JudgedDataset`
 
 Output:
 
 - `AnalysisReport`
-  - `summary`
-  - `key_findings`
-  - `risks`
-  - `recommendations`
-  - `confidence_score`
-  - `sections` (deep structured map)
 
-## Analysis Strategy
+Consumers:
 
-### 1) Query Lens Inference
+- `app/orchestrator.py`
+- `app/pipeline/reporting.py`
 
-`_infer_query_lens(query)` classifies the business framing:
+## Primary Goals
 
-- Competitive intelligence
-- Funding intelligence
-- Product intelligence
-- Generic market intelligence
+- produce structured output instead of free-form prose
+- remain useful even when the model is unstable
+- guarantee a stable schema for the report layer
+- expose fallback state clearly when the LLM path fails
 
-This informs the narrative orientation used in prompts.
+## Output Contract
 
-### 2) Context Construction
+The analyzer returns:
 
-`_build_dataset_context(ds)` composes a compact but rich context object with:
+- `summary`
+- `key_findings`
+- `risks`
+- `recommendations`
+- `confidence_score`
+- `sections`
 
-- Source breakdown (`_source_breakdown`)
-- Theme breakdown (`_theme_breakdown`)
-- Timeline breakdown (`_timeline_breakdown`)
-- Evidence samples (`_evidence_samples`)
-- Guardrail and judge notes
+The `sections` map contains both narrative sections and machine-oriented support structures such as:
 
-### 3) LLM Generation
+- `source_breakdown`
+- `theme_breakdown`
+- `timeline_breakdown`
+- `evidence_highlights`
+- `guardrail_summary`
 
-Primary prompt:
+## Analysis Flow
 
-- `_build_prompt(context)`
-- Requires strict JSON-only output
-- Enforces density and section-level depth targets
+### Query-lens inference
 
-Compact prompt fallback:
+`_infer_query_lens(query)` chooses the report framing.
 
-- `_build_compact_prompt(context)`
-- Used when token truncation is detected
+Examples:
 
-### 4) Parse and Repair Pipeline
+- competitor-style terms bias toward competitive intelligence
+- funding terms bias toward financial and capital signals
+- launch or feature terms bias toward product intelligence
 
-Resilience helpers:
+This influences the narrative orientation of the prompt.
 
-- `_response_to_text(resp)`
-- `_extract_balanced_json(text)`
-- `_try_parse_candidate(candidate)`
-- `_parse_llm_output(text)`
-- `_repair_json_with_llm(raw_output, prompt)`
+### Context construction
 
-If model output is malformed, repair is attempted before fallback is triggered.
+`_build_dataset_context(ds)` builds a compact structured context from the judged evidence set.
 
-### 5) Section Normalization
+It includes:
 
-`_normalize_sections(sections, context)` guarantees required keys exist and minimum list density is maintained, so downstream report generation never receives sparse or missing sections.
+- source counts
+- source-type counts
+- dominant terms
+- monthly timeline distribution
+- evidence samples
+- guardrail flags
+- judge notes
 
-### 6) Fallback Synthesis
+This means the model is reasoning over a curated evidence summary, not the entire raw retrieval corpus.
 
-`_fallback(ds)` produces a deterministic report when:
+### Prompt generation
 
-- No items are available
-- LLM is unavailable
-- Parsing and repair fail
+Primary generation uses `_build_prompt(context)`.
 
-Fallback includes explicit judge note:
+The prompt requires:
 
-- `analyzer_fallback_reason=...`
+- strict JSON only
+- section-level detail
+- evidence-backed analysis
+- explicit `evidence_highlights`
+- a bounded confidence score
 
-This is surfaced to API consumers through orchestrator metadata.
+### Compact retry path
+
+If the larger prompt proves unstable or too long, `_build_compact_prompt(context)` is used as a reduced-output fallback while keeping the same top-level schema.
+
+### Parsing and repair pipeline
+
+Successful HTTP responses from Gemini do not guarantee parseable JSON. The analyzer therefore uses multiple defensive helpers:
+
+- `_response_to_text(...)`
+- `_extract_balanced_json(...)`
+- `_try_parse_candidate(...)`
+- `_parse_llm_output(...)`
+- `_repair_json_with_llm(...)`
+
+Current parser behavior attempts to recover from:
+
+- markdown-fenced JSON
+- arrays containing a dict
+- Python-literal-like dict output
+- quoted JSON strings
+- wrapper objects such as `report` or `analysis`
+
+### Section normalization
+
+`_normalize_sections(...)` guarantees that the report stage always receives a complete structure.
+
+Important behaviors:
+
+- missing sections are filled from deterministic context
+- under-dense list sections are padded
+- guardrail summary is kept high-level and report-safe
+
+### Deterministic fallback
+
+`_fallback(ds)` guarantees a usable report when:
+
+- no judged items exist
+- no Gemini key exists
+- parse and repair fail
+- model invocation throws an exception
+
+Fallback uses evidence count, source diversity, dominant terms, and sampled titles to preserve some analytical value even without a valid LLM JSON response.
 
 ## Confidence Handling
 
-Confidence score is bounded to `[0.0, 1.0]`. Fallback confidence is derived from evidence count and source diversity to avoid misleading certainty.
+Confidence is bounded to `[0.0, 1.0]`.
 
-## Operational Guarantees
+Fallback confidence is derived from evidence breadth and diversity so the system does not present sparse evidence as highly certain.
 
-The module guarantees the caller always receives a valid `AnalysisReport` object, even during provider/model instability.
+## Fallback Visibility
 
-This guarantee is critical for uptime of PDF and persistence stages.
+When the analyzer falls back, it adds a note like:
+
+- `analyzer_fallback_reason=...`
+
+The orchestrator then exposes:
+
+- `analysis_mode`
+- `fallback_reason`
+
+This is the primary operational signal for analyzer health monitoring.
+
+## Why This Stage Is Separate from the Judge
+
+The judge answers: “Which evidence is safe and relevant enough to trust?”
+
+The analyzer answers: “What strategic meaning should product and market teams draw from that evidence?”
+
+Separating those concerns improves reliability and makes debugging much clearer.
+
+## Related Docs
+
+- `GUARDRAIL_AND_LLM_JUDGE.md`
+- `REPORT_GENERATION_MODULE.md`

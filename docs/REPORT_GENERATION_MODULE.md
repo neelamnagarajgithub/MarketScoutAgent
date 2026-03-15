@@ -4,112 +4,157 @@ File: `app/pipeline/reporting.py`
 
 ## Purpose
 
-`ReportGenerator` transforms `AnalysisReport` + `JudgedDataset` into a professional PDF artifact with:
+`ReportGenerator` is the presentation layer of the pipeline. It converts the structured `AnalysisReport` into the final branded PDF artifact that is uploaded to Supabase and linked from the API response.
 
-- Structured sections
-- Bulleted findings/risks/recommendations
-- Evidence highlights table
-- Numbered bibliography with clickable links
-- Inline numeric citations in section content
+This stage is responsible for layout, branding, attribution, and PDF rendering safety. It is not responsible for creating or ranking the underlying analysis content.
 
-## Inputs
+## Position in the End-to-End Flow
 
-- `query: str`
-- `judged: JudgedDataset`
-- `report: AnalysisReport`
-- `out_dir` (default `search_results`)
+1. Orchestrator calls `render_pdf(...)`
+2. The PDF is rendered into a temporary local directory
+3. `Database.upload_pdf_report(...)` uploads the file to Supabase storage
+4. The temporary local file disappears when the request completes
+
+This means the report module still writes a file during generation, but it is a transient rendering artifact rather than a retained local deliverable.
+
+## Inputs and Output
+
+Inputs:
+
+- `query`
+- `judged`
+- `report`
+- `out_dir`
 
 Output:
 
-- Path to generated PDF file
+- local path to the generated PDF, intended for immediate upload by the orchestrator
+
+## Branding
+
+Current branding behavior includes:
+
+- product name `Scout AI`
+- logo loaded from `utils/logo.png`
+- branded cover/title block
+- branded footer text on each page
+
+This keeps the report self-identifying even outside the frontend.
 
 ## Rendering Stack
 
-- ReportLab (`SimpleDocTemplate`, `Paragraph`, `Table`, `ListFlowable`, `PageBreak`)
-- Helvetica-based typography for broad compatibility
-- Custom header/footer per page
+The module uses ReportLab primitives such as:
 
-## Citation System
+- `SimpleDocTemplate`
+- `Paragraph`
+- `Table`
+- `ListFlowable`
+- `PageBreak`
+- `Image`
 
-### Bibliography Collection
+Typography and spacing are intentionally conservative to reduce PDF rendering edge cases.
 
-`_collect_bibliography(judged)`:
+## Document Structure
 
-- Deduplicates URLs
-- Keeps source + title + URL rows
-- Sorts deterministically
+The final report generally includes:
 
-### Source Index
+1. branded title block and metadata
+2. executive summary table
+3. key findings
+4. risks
+5. recommendations
+6. major strategic sections
+7. evidence highlights table
+8. bibliography table
 
-`_source_index(bibliography)` builds:
+Major strategic sections cover business context, market landscape, customer signals, competition, product implications, feature recommendations, GTM implications, strategic implications, opportunities, risks, and next steps.
 
-- `by_url`: URL -> reference number
-- `by_source`: source name -> first reference number
+## Citation Strategy
 
-### Inline Citation Formatting
+### Bibliography construction
 
-`_citation_text(numbers)` returns bracket style references such as:
+`_collect_bibliography(judged)` builds a deduplicated reference list from judged evidence URLs.
 
-- `[1][11][48]`
+Each entry includes:
 
-### Section Citation Inference
+- source
+- title
+- URL
 
-`_section_citations(section_name, evidence, source_idx)`:
+### Index generation
 
-- Uses section-to-source preference rules
-- Augments with evidence URLs/sources
-- Produces small citation sets per section
+`_source_index(...)` builds lookups for:
 
-## Glyph and Text Safety
+- URL to bibliography number
+- source name to first bibliography number
 
-### `_safe_text(text)`
+### Citation formatting
 
-This is the key method for preventing PDF parser and font rendering issues.
+`_citation_text(numbers)` formats references as bracket chains such as:
 
-Safety pipeline includes:
+- `[1][4][12]`
 
-1. Unicode normalization (`NFKC`)
-2. Character translation of problematic punctuation to ASCII
-3. Removal of known square/replacement glyph ranges
-4. Removal of zero-width and unsupported symbol classes
-5. Final ASCII hardening to avoid Helvetica black-box artifacts
-6. XML escaping for ReportLab paragraph parser
-7. Soft-wrap insertion for long tokens/URLs
+### Section-level attribution
 
-This is the primary defense against artifacts like:
+The current report uses section-level source attribution rather than citation spam on every bullet line.
 
-- `e■g■`
-- `3.■5`
-- `go■to■market`
+That means:
 
-## Document Sections
+- bullet lists remain readable
+- a single `Section Sources:` line appears after a section when references exist
 
-Rendered order includes:
+This was intentionally chosen for readability.
 
-1. Title and run metadata
-2. Executive summary block
-3. Key findings
-4. Risks
-5. Recommendations
-6. Named strategic sections from `report.sections`
-7. Evidence highlights table
-8. Bibliography table (`#`, source, title, URL)
+## Evidence Highlights Section
 
-## Link Activation
+The evidence-highlights table is a compact audit trail between the analysis and the underlying evidence.
 
-`_link_p(url, style)` renders URL cells as clickable links in the final PDF using ReportLab `<link>` tags.
+Each row contains:
 
-## Pagination and Layout
+- title
+- source
+- why it matters
 
-- Automatic page breaks for long sections
-- Repeat headers in tables where configured
-- Compact paddings to maximize signal density
+This section helps readers quickly inspect the supporting evidence behind the synthesized narrative.
 
-## Extension Ideas
+## PDF Safety and Glyph Handling
 
-Potential next improvements:
+The PDF layer historically suffered from Unicode glyph issues, especially unsupported characters rendering as black squares.
 
-- Sentence-level evidence-to-claim mapping
-- Source credibility scoring in bibliography
-- Optional executive one-page summary mode
-- Themed report templates by query type
+`_safe_text(...)` hardens text by applying:
+
+1. Unicode normalization
+2. punctuation translation into ASCII-safe equivalents
+3. removal of invisible Unicode characters
+4. removal of unsupported symbol categories
+5. final ASCII-only hardening
+6. XML escaping for ReportLab paragraph safety
+7. soft-wrap handling for long tokens and URLs
+
+This is the main defense against rendering artifacts and paragraph-parser failures.
+
+## Links and Bibliography URLs
+
+`_link_p(url, style)` renders bibliography URLs as clickable links using ReportLab link markup.
+
+That makes the bibliography both an attribution layer and a navigation aid.
+
+## Relationship to Orchestrator and Storage
+
+`ReportGenerator` only renders the file. It does not upload it and does not control retention.
+
+Upload and retention behavior belong to:
+
+- `app/orchestrator.py`
+- `app/db.py`
+
+Current behavior is remote-first:
+
+- render locally to a temporary directory
+- upload to Supabase storage
+- discard the local temporary file
+
+## Related Docs
+
+- `ANALYSIS_MODULE.md`
+- `API_INTEGRATION_STATUS.md`
