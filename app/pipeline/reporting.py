@@ -31,7 +31,7 @@ class ReportGenerator:
         nums = sorted({int(n) for n in numbers if isinstance(n, int) and n > 0})
         if not nums:
             return ""
-        return " [" + ", ".join(str(n) for n in nums[:6]) + "]"
+        return " " + "".join(f"[{n}]" for n in nums[:6])
 
     def _section_citations(self, section_name: str, evidence: list, source_idx: dict) -> list:
         by_source = source_idx.get("by_source", {})
@@ -100,32 +100,44 @@ class ReportGenerator:
 
     def _safe_text(self, text: str, max_len: int = 12000) -> str:
         """
-        Make arbitrary text safe for ReportLab Paragraph (XML-like parser).
+        Make arbitrary text safe for ReportLab Paragraph.
+        Removes unicode junk that breaks Helvetica rendering.
         """
         t = "" if text is None else str(text)
         t = t[:max_len]
 
-        # Normalize and strip problematic glyphs/symbol bullets that render as black squares in PDF.
+        # normalize unicode
         t = unicodedata.normalize("NFKC", t)
-        t = t.replace("\u25A0", " ").replace("\u25AA", " ").replace("\u25CF", " ").replace("\u2022", " ")
-        t = re.sub(r"[\u25A0-\u25FF]", " ", t)
-        t = t.replace("\uFFFD", " ")
-        t = re.sub(r"[\uFFF9-\uFFFD]", " ", t)
+
+        char_map = {
+            "\u2018": "'", "\u2019": "'",
+            "\u201C": '"', "\u201D": '"',
+            "\u2013": "-", "\u2014": "-", "\u2212": "-",
+            "\u2026": "...",
+            "\u00A0": " ",
+        }
+
+        t = t.translate(str.maketrans(char_map))
+
+        # remove invisible unicode
         t = re.sub(r"[\u200B\u200C\u200D\uFEFF]", "", t)
+
+        # remove problematic symbol blocks
         t = "".join(ch for ch in t if unicodedata.category(ch) not in {"So", "Cs"})
+
+        # keep ascii only (safe for Helvetica)
+        t = t.encode("ascii", "ignore").decode("ascii")
+
+        # collapse whitespace
         t = re.sub(r"\s+", " ", t).strip()
 
-        # Escape XML-sensitive chars first
+        # escape XML chars
         t = html.escape(t, quote=False)
 
-        zws = "\u200b"  # zero-width space
+        # allow wrapping for long URLs without zero-width space
+        t = re.sub(r"([/_\-])", r"\1<wbr/>", t)
 
-        # Use lambda replacements to avoid "bad escape \\u" in re.sub replacement parsing
-        t = re.sub(r"([/_\-.])", lambda m: f"{m.group(1)}{zws}", t)
-        t = re.sub(r"([A-Za-z0-9]{32})(?=[A-Za-z0-9])", lambda m: f"{m.group(1)}{zws}", t)
-
-        t = t.replace("\n", "<br/>")
-        return t
+        return t.replace("\n", "<br/>")
 
     def _p(self, text: str, style):
         return Paragraph(self._safe_text(text), style)
