@@ -162,7 +162,7 @@ class ReportGenerator:
         )
 
     def _section_title(self, label: str, style):
-        return Paragraph(self._safe_text(f"Scout AI - {label}"), style)
+        return Paragraph(self._safe_text(f"{label}"), style)
 
     def render_pdf(self, query: str, judged: JudgedDataset, report: AnalysisReport, out_dir: str = "search_results") -> str:
         os.makedirs(out_dir, exist_ok=True)
