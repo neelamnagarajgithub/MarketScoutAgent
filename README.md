@@ -1,350 +1,766 @@
-# Market Aggregator - End-to-End Market Intelligence Pipeline
+# Market Aggregator
 
-This repository provides a production-oriented market intelligence system that runs an end-to-end flow:
+Market Aggregator is a full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
 
-1. Multi-source retrieval (`SimpleSemanticSearch`)
-2. Guardrail sanitization and filtering (`GuardrailEngine`)
-3. LLM-as-Judge evidence selection (`LLMJudge`)
-4. Strategic analysis generation (`AnalyzerAgent`)
-5. PDF report generation with citations (`ReportGenerator`)
-6. Storage of results, PDFs, and response envelopes (`Database`)
+The current production path in code is:
+- request intake (`FastAPI`)
+- prompt safety validation (multi-layered)
+- multi-source retrieval (async, heterogeneous)
+- guardrail enforcement + relevance judgment
+- strategic report synthesis
+- PDF generation with citations
+- database and storage persistence
 
-The API entry point is `POST /v1/analyze` in `app/main.py`.
+Primary API entrypoint: `POST /v1/analyze` in `app/main.py`.
 
 ## Table of Contents
+1. Scope and Objectives
+2. Architecture Views
+3. System Methodology (Deep Dive)
+4. Component-by-Component Implementation
+5. Data Contracts and Schemas
+6. Operational Flows
+7. Prompt Safety Engineering
+8. Retrieval and Source Strategy
+9. LLM Judge Strategy and Scoring
+10. Analysis Generation Strategy
+11. Report Generation Strategy
+12. Persistence and Storage Strategy
+13. Frontend and API Integration
+14. Runtime Configuration and Environment Strategy
+15. Build, Run, and Validation Commands
+16. Deployment Architecture
+17. Security Model and Hardening Checklist
+18. Reliability and Failure Modes
+19. Performance Engineering Notes
+20. Testing Strategy and Coverage
+21. Extension Patterns
+22. Documentation Map
 
-1. Overview
-2. Architecture
-3. Methodology
-4. Project Structure
-5. Runtime Flow
-6. Setup and Installation
-7. Configuration
-8. Running the System
-9. API Contract
-10. Output Artifacts
-11. Reliability and Guardrails
-12. Troubleshooting
-13. Documentation Map
+## Scope and Objectives
 
-## Overview
+### Primary objectives
+- Provide evidence-backed market intelligence for product, strategy, and GTM teams.
+- Maintain strict boundary safety for user prompts.
+- Remain resilient when some external sources fail.
+- Keep architecture modular so stages can evolve independently.
 
-The system is designed for product, strategy, and market-intelligence workflows where a single query needs to be converted into:
+### Non-goals (current implementation)
+- Not a real-time streaming analytics system.
+- Not a guaranteed-fresh financial terminal.
+- Not a full SOC/security observability product.
 
-- A validated evidence set from heterogeneous external sources
-- A structured, decision-oriented analysis object
-- A human-readable PDF report with in-text citations and a bibliography
-- Persisted records in DB/storage for historical retrieval
+## Architecture Views
 
-The architecture intentionally separates retrieval, judging, analysis, and reporting so each stage can be independently improved without breaking the full pipeline.
-
-## Architecture
-
-### High-Level Component Diagram
-
+### 1. Context architecture (system boundary)
 ```mermaid
 flowchart LR
-		U[Client / UI] --> A[FastAPI /v1/analyze]
-		A --> O[IntelligenceOrchestrator]
+  User[User / Analyst] --> FE[Frontend Next.js]
+  FE --> API[FastAPI /v1/analyze]
+  API --> ORCH[IntelligenceOrchestrator]
 
-		O --> S[SimpleSemanticSearch]
-		S --> F1[Search APIs]
-		S --> F2[News APIs]
-		S --> F3[Financial APIs]
-		S --> F4[Community + Social]
-		S --> F5[Code + Startup Sources]
+  ORCH --> EXT1[Search APIs]
+  ORCH --> EXT2[News APIs]
+  ORCH --> EXT3[Financial APIs]
+  ORCH --> EXT4[Community and Social APIs]
+  ORCH --> EXT5[Tech and Startup Sources]
 
-		O --> J[LLMJudge]
-		J --> G[GuardrailEngine]
-
-		O --> Z[AnalyzerAgent]
-		Z --> LLM[Gemini via LangChain]
-
-		O --> R[ReportGenerator]
-		R --> PDF[PDF Artifact]
-
-		O --> D[Database Layer]
-		D --> DB[(Supabase / PostgreSQL / SQLite)]
-		D --> ST[(Object Storage Bucket)]
-
-		O --> RESP[API Response Envelope]
+  ORCH --> DB[(Supabase/PostgreSQL/SQLite)]
+  ORCH --> OBJ[(Supabase Storage reports bucket)]
+  ORCH --> FE
 ```
 
-### Sequence Diagram
+### 2. Container architecture
+```mermaid
+flowchart TB
+  subgraph Frontend
+    U1[app/page.js UI]
+    U2[app/api/analyze/route.js proxy]
+  end
 
+  subgraph Backend
+    B1[app/main.py FastAPI]
+    B2[app/prompt_safety.py]
+    B3[app/orchestrator.py]
+    B4[app/simple_semantic_search.py]
+    B5[app/pipeline/llm_judge.py]
+    B6[app/pipeline/analyzer.py]
+    B7[app/pipeline/reporting.py]
+    B8[app/db.py]
+  end
+
+  U1 --> U2 --> B1
+  B1 --> B2 --> B3
+  B3 --> B4 --> B5 --> B6 --> B7 --> B8
+```
+
+### 3. Component architecture (backend internals)
+```mermaid
+flowchart LR
+  IN[AnalyzeRequest.query] --> SAFETY[assert_safe_query]
+  SAFETY --> SEARCH[SimpleSemanticSearch.comprehensive_search]
+  SEARCH --> JUDGE[LLMJudge.judge]
+  JUDGE --> ANALYZE[AnalyzerAgent.analyze]
+  ANALYZE --> REPORT[ReportGenerator.render_pdf]
+  REPORT --> STORE1[Database.upload_pdf_report]
+  REPORT --> STORE2[Database.save_analysis_report]
+  STORE1 --> OUT[AnalyzeResponse]
+  STORE2 --> OUT
+```
+
+### 4. Sequence architecture (request lifecycle)
 ```mermaid
 sequenceDiagram
-		participant C as Client
-		participant API as FastAPI
-		participant OR as Orchestrator
-		participant SS as SemanticSearch
-		participant JD as LLMJudge
-		participant AN as Analyzer
-		participant RP as Reporter
-		participant DB as Database
+  participant C as Client
+  participant F as Frontend API Route
+  participant A as FastAPI
+  participant S as PromptSafety
+  participant O as Orchestrator
+  participant R as SearchEngine
+  participant J as LLMJudge
+  participant N as Analyzer
+  participant P as ReportGenerator
+  participant D as Database
 
-		C->>API: POST /v1/analyze {query,user_id}
-		API->>OR: run(query,user_id)
-		OR->>SS: comprehensive_search(query)
-		SS-->>OR: raw retrieval bundle
-		OR->>JD: judge(query, raw)
-		JD-->>OR: JudgedDataset
-		OR->>AN: analyze(JudgedDataset)
-		AN-->>OR: AnalysisReport
-		OR->>RP: render_pdf(query, judged, report)
-		RP-->>OR: local PDF path
-		OR->>DB: upload_pdf_report(path)
-		OR->>DB: save_analysis_report(payload)
-		OR-->>API: normalized response envelope
-		API-->>C: AnalyzeResponse
+  C->>F: POST /api/analyze
+  F->>A: POST /v1/analyze
+  A->>S: assert_safe_query(query)
+  S-->>A: sanitized query
+  A->>O: run(query, user_id)
+  O->>R: comprehensive_search(query)
+  R-->>O: raw_results
+  O->>J: judge(query, raw_results)
+  J-->>O: JudgedDataset
+  O->>N: analyze(judged)
+  N-->>O: AnalysisReport
+  O->>P: render_pdf(...)
+  P-->>O: local pdf path
+  O->>D: upload_pdf_report(path)
+  O->>D: save_analysis_report(payload)
+  O-->>A: response envelope
+  A-->>F: JSON response
+  F-->>C: JSON response
 ```
 
-## Methodology
+### 5. Deployment architecture (current + target)
+```mermaid
+flowchart TB
+  subgraph Client Tier
+    Browser[Browser]
+  end
 
-The methodology is evidence-first and staged:
+  subgraph App Tier
+    Next[Next.js Frontend]
+    Fast[FastAPI Backend]
+  end
 
-1. Query planning:
-- Classify query intent (`company_analysis`, `funding_intelligence`, etc.)
-- Extract entities and keywords
-- Select source families based on query type
-- Generate bounded search terms to reduce provider throttling risk
+  subgraph Data Tier
+    PG[(Supabase/PostgreSQL)]
+    S3[(Supabase Storage bucket)]
+  end
 
-2. Heterogeneous retrieval:
-- Run async tasks across multiple providers
-- Normalize payloads into a common shape
-- Capture success/failure metadata for each source
+  subgraph External Providers
+    APIs[News/Search/Financial/Social APIs]
+    LLM[Gemini API]
+  end
 
-3. Guardrail enforcement:
-- Sanitize HTML/markup/noise
-- Redact sensitive token-like patterns
-- Block prompt-injection-like text
-- Apply quality threshold and deduplicate
+  Browser --> Next --> Fast
+  Fast --> PG
+  Fast --> S3
+  Fast --> APIs
+  Fast --> LLM
+```
 
-4. Judge-stage reduction:
-- Heuristic scoring for relevance and source quality
-- Diversity balancing across sources
-- Optional LLM keep/drop refinement
-- Produce `JudgedDataset` for analysis
+### 6. Dataflow architecture
+```mermaid
+flowchart LR
+  Q[Raw Query] --> Q1[Safety Validate and Sanitize]
+  Q1 --> Q2[SearchPlan Build]
+  Q2 --> Q3[Async Retrieval]
+  Q3 --> Q4[Normalization]
+  Q4 --> Q5[Guardrails and Dedupe]
+  Q5 --> Q6[Relevance Judge]
+  Q6 --> Q7[Strategic Analysis JSON]
+  Q7 --> Q8[PDF Render]
+  Q8 --> Q9[Storage + DB Persist]
+  Q9 --> Q10[Final API Response]
+```
 
-5. Strategic analysis:
-- Build structured context (source, theme, timeline breakdowns)
-- Ask LLM for strict JSON output with section schema
-- Parse/repair malformed JSON when needed
-- Fallback synthesis if LLM output is unusable
+## System Methodology (Deep Dive)
 
-6. Report rendering:
-- Convert analysis object to sectioned PDF
-- Add inline numeric citations (`[1][2]` style)
-- Add full bibliography table with clickable URLs
-- Normalize text to safe glyphs to avoid black-box artifacts
+### Stage 0: boundary policy and trust model
+- All user input is untrusted.
+- External source payloads are semi-trusted and must be sanitized.
+- LLM output is treated as potentially malformed and must be parsed/repaired/validated.
+- Persistence calls are best-effort and should not break primary response path.
 
-7. Persistence and serving:
-- Upload PDF to storage bucket
-- Save response envelope to `analysis_reports`
-- Return stable API response to caller
+### Stage 1: query safety methodology
+Implemented in `app/prompt_safety.py`.
 
-## Project Structure
+Algorithmic flow:
+1. Pre-checks:
+- not empty
+- max length <= 4000
+2. Scope gate:
+- allow only market-intelligence intent+context patterns
+- block meta-AI/system-probing style prompts
+3. Risk evaluation:
+- weighted score from content policy + injection + obfuscation + guardrails baseline
+4. Thresholds:
+- score >= 70 => block
+- 45 <= score < 70 => optional semantic LLM adjudication
+5. Deterministic checks:
+- content policy patterns
+- injection/recon patterns
+- secret-like token patterns
+6. Sanitization:
+- `GuardrailEngine.sanitize` before orchestration
 
-Key paths:
+Key design choice:
+- Domain allowlisting is used to constrain problem space and block indirect reconnaissance that bypasses naive regex-only systems.
 
-- `app/main.py`: FastAPI endpoint entrypoint (`/v1/analyze`)
-- `app/orchestrator.py`: end-to-end orchestration
-- `app/simple_semantic_search.py`: retrieval planning + async execution
-- `app/pipeline/guardrails.py`: sanitization, redaction, dedupe
-- `app/pipeline/llm_judge.py`: evidence selection
-- `app/pipeline/analyzer.py`: structured analysis generation
-- `app/pipeline/reporting.py`: PDF rendering + citations + bibliography
-- `app/pipeline/types.py`: core dataclasses
-- `app/db.py`: dynamic DB backend + report persistence
-- `config.yaml`: API keys, source lists, DB settings
-- `docs/`: detailed module guides
+### Stage 2: query planning methodology
+Implemented in `app/simple_semantic_search.py` + `app/query_optimizer.py`.
 
-## Runtime Flow
+Planner outputs a `SearchPlan` with:
+- `query_type` enum
+- entities
+- keywords
+- source families
+- search terms
+- financial symbols
 
-The API runtime flow in `app/orchestrator.py`:
+Routing strategy:
+- classify query intent
+- map intent to source families
+- generate bounded search terms to avoid source overload
+- derive likely stock symbols for financial enrichment
 
-1. `raw = await search_engine.comprehensive_search(query)`
-2. `judged = await judge.judge(query, raw)`
-3. `analyzed = await analyzer.analyze(judged)`
-4. `pdf_local = reporter.render_pdf(query, judged, analyzed)`
-5. `pdf_url = await db.upload_pdf_report(pdf_local, bucket="reports")`
-6. `report_id = await db.save_analysis_report(...)`
-7. Return response envelope with `analysis_mode` and optional `fallback_reason`
+### Stage 3: retrieval execution methodology
 
-## Setup and Installation
+Task generation is source-family based:
+- `_create_search_tasks`
+- `_create_news_tasks`
+- `_create_github_tasks`
+- `_create_financial_tasks`
+- `_create_business_intelligence_tasks`
+- `_create_social_media_tasks`
+- `_create_community_tasks`
+- `_create_startup_tasks`
+- `_create_security_tasks`
 
-### 1. Prerequisites
+Execution model:
+- create coroutines per task
+- run with `asyncio.gather(..., return_exceptions=True)`
+- preserve metadata (`type`, `source`, `query`)
+- continue even when subset fails
 
-- Python 3.10+
-- Network access for external APIs
-- Optional: Supabase/PostgreSQL (SQLite fallback exists)
+Normalization model:
+- each raw item goes through `normalize_item(source, item)`
+- transformed into a canonical shape used downstream
 
-### 2. Install Dependencies
+### Stage 4: guardrail and quality methodology
+Implemented in `app/pipeline/guardrails.py`.
 
+Each retrieved item is processed as:
+1. sanitize title/content
+2. redact sensitive strings
+3. validate URL
+4. compute quality score
+5. classify risk flags
+6. drop policy-violating or low-quality records
+7. deduplicate via deterministic fingerprint
+
+Output:
+- cleaned list
+- dropped item count
+- high-level guardrail flags
+
+### Stage 5: evidence judging methodology
+Implemented in `app/pipeline/llm_judge.py`.
+
+Heuristic scoring factors include:
+- query term overlap
+- title hit bonus
+- source-type/source-name weighting
+- recency bonus
+- content/quality signal from guardrail metadata
+
+Diversity strategy:
+- source-balanced selection to avoid overfitting to one provider
+- caps to control volume and source skew
+
+Optional LLM judge pass:
+- asks Gemini for strict JSON keep/drop index output
+- fallback behavior keeps heuristic-selected items when LLM path fails
+
+### Stage 6: analysis synthesis methodology
+Implemented in `app/pipeline/analyzer.py`.
+
+Model strategy:
+- uses Gemini `gemini-2.5-flash` when key is present
+- strict JSON expected
+- explicit section schema requested
+
+Robustness strategy:
+- parse raw content via multiple parsers
+- extract balanced JSON candidates
+- attempt repair pass if malformed
+- compact prompt retry when truncated or too verbose
+- deterministic fallback report when model path fails
+
+Output contract:
+- `AnalysisReport` with summary/findings/risks/recommendations/confidence/sections
+
+### Stage 7: reporting methodology
+Implemented in `app/pipeline/reporting.py`.
+
+Rendering strategy:
+- generate branded PDF with section templates
+- include evidence table
+- include bibliography with links
+- infer section-source citations
+- harden text with unicode and xml-safe normalization
+
+### Stage 8: persistence methodology
+Implemented in `app/db.py`.
+
+Backend initialization order:
+1. Supabase via asyncpg direct
+2. Supabase via REST client (where relevant)
+3. PostgreSQL via asyncpg
+4. SQLite fallback
+
+Persistence operations:
+- upload PDF to storage bucket (`reports`)
+- save final analysis payload to `analysis_reports`
+- keep pipeline alive even if persistence partially fails
+
+## Component-by-Component Implementation
+
+### API gateway (`app/main.py`)
+- Validates request via `AnalyzeRequest`
+- Runs safety boundary check
+- Calls orchestrator
+- Normalizes response shape to `AnalyzeResponse`
+- Maps exceptions to HTTP 400/500
+
+### Orchestrator (`app/orchestrator.py`)
+Main method: `run(query, user_id)`.
+
+Sequential responsibilities:
+1. retrieve
+2. judge
+3. analyze
+4. render PDF
+5. upload PDF
+6. save report
+7. return envelope
+
+### Search engine (`app/simple_semantic_search.py`)
+- loads config
+- initializes sentence transformer
+- validates APIs
+- builds query plan
+- creates and executes async tasks
+- normalizes task results
+- packages final retrieval response
+
+### Prompt safety (`app/prompt_safety.py`)
+- normalization and deobfuscation helpers
+- encoded token decoding candidates
+- multi-family pattern matching
+- risk scoring
+- optional semantic adjudication
+- output guardrail support
+
+### Pipeline modules (`app/pipeline/*`)
+- `guardrails.py`: sanitize/redact/filter/dedupe
+- `llm_judge.py`: relevance and diversity selection
+- `analyzer.py`: strategic synthesis with robust fallbacks
+- `reporting.py`: PDF rendering and bibliography
+- `types.py`: structured contracts between stages
+
+### Database abstraction (`app/db.py`)
+- dynamic backend selection
+- document persistence
+- report persistence
+- storage upload helper
+
+## Data Contracts and Schemas
+
+### API request schema (`app/schemas.py`)
+```json
+{
+  "query": "string",
+  "user_id": "string|null"
+}
+```
+
+### API response schema (`app/schemas.py`)
+```json
+{
+  "query": "string",
+  "status": "string",
+  "response": "object",
+  "pdf_url": "string|null",
+  "report_id": "string|number|null",
+  "timestamp": "string"
+}
+```
+
+### Analyzer logical schema
+- summary
+- key_findings[]
+- risks[]
+- recommendations[]
+- confidence_score
+- sections{...}
+
+Sections include:
+- executive_overview
+- business_context
+- market_landscape
+- customer_and_user_signals[]
+- competitive_landscape[]
+- product_implications[]
+- feature_recommendations[]
+- go_to_market_implications[]
+- strategic_implications[]
+- opportunities[]
+- risks_and_constraints[]
+- decision_ready_next_steps[]
+- evidence_highlights[]
+- source_breakdown{}
+- theme_breakdown{}
+- timeline_breakdown{}
+- guardrail_summary{}
+
+## Operational Flows
+
+### API flow
+1. `Frontend/app/api/analyze/route.js` sends request to backend.
+2. backend validates safety.
+3. orchestrator executes full pipeline.
+4. backend returns normalized JSON.
+
+### CLI flow
+Main scripts:
+- `semantic_cli.py`
+- `run_semantic.sh`
+- `simple_search.py`
+- `json_query.py`
+- `quick_test.py`
+
+Use cases:
+- quick testing
+- ad-hoc market queries
+- API validation
+- interactive exploration
+
+## Prompt Safety Engineering
+
+### Defensive layers implemented
+1. syntactic checks
+2. normalized and decoded candidate scanning
+3. injection and recon detection
+4. content policy enforcement
+5. baseline guardrail checks
+6. suspicious secret token checks
+7. domain gating
+8. risk thresholding
+9. optional semantic adjudication
+
+### Risk-scoring strategy
+Risk score accumulates from:
+- out-of-scope reason
+- content-policy hit
+- injection hit
+- encoded payload candidate count
+- baseline guardrail pattern
+- suspicious token indicators
+- abnormal length
+
+Thresholds:
+- block >= 70
+- LLM review >= 45
+
+### Safety architecture diagram
+```mermaid
+flowchart TD
+  A[Query] --> B[Normalize and Decode Candidates]
+  B --> C[Scope Gate]
+  C -->|fail| X[Block 400]
+  C -->|pass| D[Risk Scoring]
+  D -->|>=70| X
+  D -->|45-69| E[Optional Gemini Safety Review]
+  E -->|unsafe| X
+  E -->|safe| F[Content Policy Checks]
+  D -->|<45| F
+  F -->|unsafe| X
+  F -->|safe| G[Injection Checks]
+  G -->|unsafe| X
+  G -->|safe| H[Guardrail Baseline]
+  H -->|unsafe| X
+  H -->|safe| I[Sanitize Query]
+  I --> J[Orchestrator]
+```
+
+## Retrieval and Source Strategy
+
+### Source family coverage
+- Search: serpapi and optional search APIs
+- News: newsapi, gnews, currents, guardian/nytimes adapters
+- Financial: alpha_vantage, massive, yahoo helpers
+- Community: reddit, hackernews, stackoverflow, mastodon
+- Social: twitter/x, linkedin
+- Tech/product: github and package ecosystem helpers
+- Business/startup/security: apollo, startup trackers, shodan, etc.
+
+### Query-type to source-family routing
+- `COMPANY_ANALYSIS`: adds financial, github, business, startup, social
+- `FUNDING_INTELLIGENCE`: similar broad business+financial profile
+- `MARKET_TREND`: adds financial, social, startup
+- `COMPETITOR_ANALYSIS`: adds business, financial, social, startup, security
+- `PRODUCT_RESEARCH`: emphasizes github + community + social
+
+## LLM Judge Strategy and Scoring
+
+### Why judge stage exists
+Raw retrieval is noisy and source-biased. Judge stage compresses evidence into a high-signal, diverse dataset for analysis.
+
+### Judge process
+1. flatten raw payload
+2. enforce guardrails
+3. compute heuristic score
+4. apply weak relevance cutoff
+5. diversify by source
+6. optional LLM keep list
+7. return `JudgedDataset`
+
+### Scoring intuition
+- lexical overlap improves precision
+- stronger source weights improve trust
+- recency boosts topical relevance
+- diversity limits monoculture bias
+
+## Analysis Generation Strategy
+
+### Analyzer strategy stack
+1. infer query lens (competitive, funding, product, market)
+2. build context bundle (sources, themes, timeline, evidence samples)
+3. invoke LLM with strict JSON mode
+4. parse and normalize sections
+5. quality gate and retry if sparse
+6. repair malformed outputs when needed
+7. fallback deterministic report if all else fails
+
+### Why this design is robust
+- handles non-JSON model output safely
+- maintains response contract under LLM failures
+- keeps service live with actionable fallback content
+
+## Report Generation Strategy
+
+### PDF structure
+- cover header and query metadata
+- executive summary panel
+- key findings, risks, recommendations
+- deep section pages
+- evidence highlights table
+- bibliography with links
+
+### Citation method
+- builds source/url index from judged items
+- maps section to source-priority hints
+- renders section citation tokens (e.g., `[1][5]`)
+
+## Persistence and Storage Strategy
+
+### Database strategy
+- support supabase/postgres/sqlite with fallback sequence
+- lazy table creation for resilience
+- non-fatal persistence errors in report save path
+
+### Storage strategy
+- upload generated pdf to storage bucket
+- return URL when available
+- keep local fallback behavior if storage path unavailable
+
+## Frontend and API Integration
+
+### Frontend architecture
+Files:
+- `Frontend/app/page.js`
+- `Frontend/app/api/analyze/route.js`
+
+Behavior:
+- chat-like interaction model
+- local history persistence
+- stage simulation for progress UX
+- renders report sections
+- downloads pdf when url is available
+
+Proxy behavior:
+- forwards to `BACKEND_ANALYZE_URL`
+- returns mock payload when backend unavailable for UI development continuity
+
+## Runtime Configuration and Environment Strategy
+
+### Config sources
+- `config.yaml`: fetch settings, source lists, db settings, key map
+- environment variables: LLM keys and runtime toggles
+
+### Important env vars
+- `GOOGLE_API_KEY`
+- `GEMINI_API_KEY`
+- `PROMPT_SAFETY_LLM_CHECK`
+- `BACKEND_ANALYZE_URL`
+
+### Security warning
+If any secret exists in tracked files, rotate and move to secret manager immediately.
+
+## Build, Run, and Validation Commands
+
+### Backend
 ```bash
 pip install -r requirements.txt
-```
-
-### 3. Configure Environment and Keys
-
-- Update `config.yaml` with valid provider keys
-- Optionally export:
-
-```bash
-export GOOGLE_API_KEY="<your-gemini-key>"
-```
-
-### 4. Validate Configuration
-
-- Ensure at least one search/news provider key is valid
-- Verify DB settings under `database` in `config.yaml`
-
-## Configuration
-
-### Database Block
-
-`app/db.py` supports fallback order:
-
-1. Supabase
-2. PostgreSQL (`asyncpg`)
-3. SQLite (`data/market_intelligence.db`)
-
-### Fetch Controls
-
-From `config.yaml`:
-
-- `fetch.concurrency`
-- `fetch.rate_limit_per_sec`
-
-### Source Lists
-
-Configured source groups include:
-
-- RSS feeds
-- GitHub orgs
-- Subreddits
-- Mastodon instances
-
-## Running the System
-
-### Run API Server
-
-```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### Run Semantic CLI
-
+### Frontend
 ```bash
-python semantic_cli.py
+cd Frontend
+npm install
+npm run dev
 ```
 
-### Run One-Off Agent Script
-
+### CLI workflows
 ```bash
-python run_agent.py scan
+python semantic_cli.py --interactive
+python simple_search.py "NVIDIA AI strategy"
+python json_query.py "AI chip funding trends"
+bash run_semantic.sh search "OpenAI enterprise product strategy"
 ```
 
-## API Contract
-
-### Request
-
-`POST /v1/analyze`
-
-```json
-{
-	"query": "Anthropic AI chip market analysis 2025",
-	"user_id": "optional-user-id"
-}
+### Safety regression tests
+```bash
+python -m unittest tests.test_prompt_safety
 ```
 
-### Response Envelope
+### Additional test scripts
+- `tests/test_semantic_search.py`
+- `tests/test_optimizer.py`
+- `tests/test_agent.py`
+- `tests/comprehensive_test.py`
+- `tests/run_query.py`
 
-```json
-{
-	"query": "...",
-	"status": "success",
-	"response": {
-		"status": "success",
-		"query": "...",
-		"pdf_link": "...",
-		"report": {
-			"summary": "...",
-			"key_findings": [],
-			"risks": [],
-			"recommendations": [],
-			"confidence_score": 0.0,
-			"sections": {}
-		},
-		"analysis_mode": "llm|fallback",
-		"fallback_reason": null,
-		"sources_count": 0,
-		"documents_count": 0,
-		"report_id": "..."
-	},
-	"pdf_url": "...",
-	"report_id": "...",
-	"timestamp": "..."
-}
-```
+## Deployment Architecture
 
-## Output Artifacts
+### Current repository deployment artifacts
+- `Dockerfile` builds backend container (`python:3.11-slim`)
+- `docker-compose.yml` currently empty
 
-Artifacts produced per run:
+### Suggested production topology
+1. Frontend service (Next.js)
+2. Backend service (FastAPI + orchestrator)
+3. Managed database and object storage (Supabase)
+4. Secret manager for API keys
+5. Observability stack (logs + metrics + alerts)
 
-- JSON search dump in `search_results/`
-- PDF report in `search_results/` (then uploaded to storage)
-- DB record in `analysis_reports`
+### Release strategy
+- deploy backend first with compatibility checks
+- canary API traffic to validate source health and latency
+- deploy frontend after backend envelope compatibility is verified
 
-PDF characteristics:
+## Security Model and Hardening Checklist
 
-- Sectioned report layout
-- Inline citations in `[n]` form
-- Bibliography with source/title/url
-- Clickable URL links
+### Existing controls
+- boundary prompt safety checks
+- content sanitization and secret redaction
+- domain allowlisting
+- output leakage pattern checks
 
-## Reliability and Guardrails
+### Production checklist
+1. secret vaulting + key rotation
+2. authenticated API access and user-level authz
+3. rate limiting and abuse controls
+4. request size and timeout policies
+5. strict CORS and network egress controls
+6. source allowlist and URL validation hardening
+7. security event logging for blocked prompts
 
-### Current Reliability Controls
+## Reliability and Failure Modes
 
-- Source-task isolation via safe task builders
-- `asyncio.gather(..., return_exceptions=True)` in retrieval
-- Guardrail quality filtering and dedupe
-- Analyzer JSON extraction + repair + compact retry
-- Fallback analysis generation when model output is invalid
-- DB backend failover strategy
+### Failure mode handling already present
+- source task failures isolated by `return_exceptions=True`
+- LLM failures degrade to deterministic fallback analysis
+- persistence failures return generated ids and continue
+- missing Gemini key triggers heuristic/fallback modes
 
-### Known Operational Realities
+### Primary residual failure risks
+- external API outages reduce source diversity
+- malformed or noisy source data can lower report quality
+- latency spikes due to external provider variability
 
-- Third-party APIs can return `401`, `403`, `404`, `429`
-- LLM output may occasionally require repair or fallback
-- Evidence quality depends on external source health and query quality
+## Performance Engineering Notes
 
-## Troubleshooting
+### Current performance levers
+- fetch concurrency in `config.yaml`
+- limited search term fan-out
+- source caps and judge-stage item caps
+- temp directory report generation
 
-1. Empty or weak reports:
-- Check provider key validity in `config.yaml`
-- Confirm `summary.total_documents` in retrieval output
-- Inspect guardrail flags for high drop counts
+### Practical optimization options
+1. cache frequent source responses by query hash and TTL
+2. adaptive source fan-out based on query complexity
+3. separate retrieval and analysis into async jobs for long-running queries
+4. pre-warm embeddings/model clients on startup
 
-2. Frequent analyzer fallback:
-- Check `response.fallback_reason`
-- Reduce prompt scope or query breadth
-- Validate Gemini API availability
+## Testing Strategy and Coverage
 
-3. PDF glyph artifacts:
-- Confirm latest `app/pipeline/reporting.py` is deployed
-- Re-run report generation after restart
+### Safety testing
+- `tests/test_prompt_safety.py` provides broad attack-category coverage including indirect and encoded attacks.
 
-4. Persistence failures:
-- Verify Supabase/Postgres credentials
-- Check `analysis_reports` schema compatibility
+### Functional and utility tests
+- query optimizer behavior tests
+- semantic search scripts for end-to-end smoke checks
+- business intelligence adapter debug scripts
+
+### Recommended CI test matrix
+1. unit tests (safety, optimizer, normalizer)
+2. integration tests with mocked external APIs
+3. contract tests for response envelope stability
+4. regression tests on known dangerous prompt suites
+
+## Extension Patterns
+
+### Add a new data source
+1. implement fetcher in `app/fetchers/`
+2. create task-builder route in `app/simple_semantic_search.py`
+3. add normalization mapping in `app/normalizer.py`
+4. add tests for source adapter and normalization behavior
+
+### Add a new analysis output format
+1. reuse `AnalysisReport` as canonical internal contract
+2. implement renderer (markdown/html/slides)
+3. add output selector in orchestrator response assembly
+
+### Add stricter policy modes
+1. policy profile config (`strict`, `balanced`, `research`)
+2. map profile to risk thresholds and scope rules
+3. expose selected profile in response metadata
 
 ## Documentation Map
 
+Detailed module docs:
+- `docs/DETAILED_ARCHITECTURE.md`
 - `docs/SEMANTIC_SEARCH_MODULE.md`
 - `docs/GUARDRAIL_AND_LLM_JUDGE.md`
 - `docs/ANALYSIS_MODULE.md`
 - `docs/REPORT_GENERATION_MODULE.md`
+- `docs/PROMPT_SAFETY_MODULE.md`
+- `docs/OPTIMIZER_INTEGRATION.md`
+- `docs/API_INTEGRATION_STATUS.md`
 
-These documents provide implementation-level details for each major stage.
+This README is the consolidated architecture and methodology reference intended for engineering, security, and platform teams.
