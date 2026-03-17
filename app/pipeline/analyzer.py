@@ -691,15 +691,33 @@ Compact context:
                 return obj
         raise ValueError("No valid JSON object found in LLM output")
 
-    def _repair_json_with_llm(self, raw_output: str, prompt: str) -> Dict[str, Any]:
-        """Ask model to repair its own malformed output into strict JSON."""
+    def _repair_json_with_llm(self, raw_output: str, prompt: str, compact_prompt: str = "") -> Dict[str, Any]:
+        """Ask model to repair its own malformed output into strict JSON.
+
+        If raw_output is too short/empty to be meaningful, skip repair and do a
+        fresh compact generation instead to avoid wasting a round-trip.
+        """
+        stripped = (raw_output or "").strip()
+
+        # Nothing meaningful to repair — request a completely fresh response.
+        if len(stripped) < 80:
+            logger.warning(
+                "Analyzer repair: raw_output too short (%d chars); doing fresh compact generation", len(stripped)
+            )
+            target_prompt = compact_prompt or prompt
+            resp = self._invoke_with_json_mode(target_prompt)
+            fresh_txt = self._response_to_text(resp)
+            return self._parse_llm_output(fresh_txt)
+
         repair_prompt = (
-            "You returned malformed output previously. Convert it into STRICT valid JSON only. "
-            "No markdown, no commentary, no code fences. The response MUST begin with '{' and end with '}'.\n\n"
-            "The JSON must match the schema implied by this original task prompt:\n"
-            f"{prompt[:10000]}\n\n"
-            "Malformed output to repair:\n"
-            f"{(raw_output or '')[:14000]}"
+            "CRITICAL: Your previous response could not be parsed as JSON. "
+            "Output ONLY a single raw JSON object. "
+            "The response MUST start with '{' and end with '}'. "
+            "Absolutely NO markdown fences, NO code blocks, NO explanation text outside the JSON.\n\n"
+            "Required JSON schema (all keys mandatory):\n"
+            f"{prompt[:6000]}\n\n"
+            "Repair the following malformed output into strict JSON:\n"
+            f"{stripped[:10000]}"
         )
         resp = self._invoke_with_json_mode(repair_prompt)
         repaired_txt = self._response_to_text(resp)
@@ -716,19 +734,21 @@ Compact context:
 
         context = self._build_dataset_context(ds)
         prompt = self._build_prompt(context)
+        compact_prompt = self._build_compact_prompt(context)
+        txt = ""  # ensure txt is always defined for the repair step
 
         try:
             resp = self._invoke_with_json_mode(prompt)
             txt = self._response_to_text(resp)
             if self._is_token_truncated(resp):
-                resp = self._invoke_with_json_mode(self._build_compact_prompt(context))
+                resp = self._invoke_with_json_mode(compact_prompt)
                 txt = self._response_to_text(resp)
 
             try:
                 obj = self._parse_llm_output(txt)
             except ValueError:
-                # Retry once with compact prompt before repair step.
-                compact_resp = self.llm.invoke([HumanMessage(content=self._build_compact_prompt(context))])
+                # Retry with compact prompt in JSON mode (never use bare llm.invoke here).
+                compact_resp = self._invoke_with_json_mode(compact_prompt)
                 compact_txt = self._response_to_text(compact_resp)
                 obj = self._parse_llm_output(compact_txt)
 
@@ -762,7 +782,7 @@ Compact context:
         except ValueError as e:
             logger.warning("Analyzer parse failed on first pass; attempting JSON repair: %s", e)
             try:
-                repaired_obj = self._repair_json_with_llm(txt if 'txt' in locals() else "", prompt)
+                repaired_obj = self._repair_json_with_llm(txt, prompt, compact_prompt)
                 repaired_sections = self._normalize_sections(repaired_obj.get("sections", {}), context)
                 return AnalysisReport(
                     summary=str(repaired_obj.get("summary", "") or fallback.summary),
