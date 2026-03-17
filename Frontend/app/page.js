@@ -308,12 +308,14 @@ export default function HomePage() {
     });
   }
 
-  async function advanceThroughStages() {
+  async function advanceThroughStages(control) {
     phaseIndexRef.current = 0;
     setPhaseIndex(0);
 
     for (let index = 1; index < PHASES.length; index += 1) {
+      if (control?.cancelled) break;
       await sleep(STAGE_DELAY_MS);
+      if (control?.cancelled) break;
       phaseIndexRef.current = index;
       setPhaseIndex(index);
     }
@@ -334,8 +336,11 @@ export default function HomePage() {
     setInput("");
     setIsSending(true);
 
+    const stageControl = { cancelled: false };
+    let stageSequence = Promise.resolve();
+
     try {
-      const stageSequence = advanceThroughStages();
+      stageSequence = advanceThroughStages(stageControl);
       const response = await fetch("/api/analyze", {
         method: "POST",
         headers: {
@@ -344,25 +349,41 @@ export default function HomePage() {
         body: JSON.stringify({ query, user_id: "default-user" })
       });
 
+      let payload;
+      try {
+        payload = await response.json();
+      } catch {
+        payload = {
+          status: "failed",
+          detail: "Backend returned an invalid JSON response"
+        };
+      }
+
+      const status = payload?.status || (response.ok ? "success" : "failed");
+      stageControl.cancelled = status === "failed";
       await stageSequence;
 
-      const payload = await response.json();
       const pdfUrl = getPdfUrl(payload);
 
       const assistantMessage = {
         id: makeId(),
         role: "assistant",
         query,
-        status: payload?.status || (response.ok ? "success" : "failed"),
-        successText: getSuccessText(payload),
+        status,
+        successText:
+          status === "success"
+            ? getSuccessText(payload)
+            : (payload?.detail || payload?.response?.detail || "Analysis failed"),
         payload,
         pdfUrl,
-        phaseIndex: payload?.status === "failed" ? phaseIndexRef.current : PHASES.length - 1,
+        phaseIndex: status === "failed" ? phaseIndexRef.current : PHASES.length - 1,
         createdAt: new Date().toISOString()
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
+      stageControl.cancelled = true;
+      await stageSequence;
       setMessages((prev) => [
         ...prev,
         {

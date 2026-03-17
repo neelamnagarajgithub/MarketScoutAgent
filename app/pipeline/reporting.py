@@ -6,6 +6,7 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
+from reportlab.lib.utils import ImageReader
 from reportlab.platypus import (
     Paragraph, SimpleDocTemplate, Spacer, ListFlowable, ListItem, Table, TableStyle, PageBreak, Image
 )
@@ -102,6 +103,16 @@ class ReportGenerator:
         canvas.drawRightString(195 * mm, 10 * mm, f"Page {doc.page}")
         canvas.restoreState()
 
+    def _build_logo_image(self, logo_path: str) -> Image:
+        """Build a logo image with preserved aspect ratio for the report header."""
+        iw, ih = ImageReader(logo_path).getSize()
+        max_w = 24 * mm
+        max_h = 24 * mm
+        scale = min(max_w / float(iw), max_h / float(ih))
+        width = float(iw) * scale
+        height = float(ih) * scale
+        return Image(logo_path, width=width, height=height)
+
     def _safe_text(self, text: str, max_len: int = 12000) -> str:
         """
         Make arbitrary text safe for ReportLab Paragraph.
@@ -188,7 +199,7 @@ class ReportGenerator:
         story = []
         logo_path = self._logo_path()
         if os.path.exists(logo_path):
-            logo = Image(logo_path, width=16 * mm, height=16 * mm)
+            logo = self._build_logo_image(logo_path)
             cover_head = Table(
                 [[logo, Paragraph("Scout AI - Market Intelligence Report", title)]],
                 colWidths=[20 * mm, 158 * mm],
