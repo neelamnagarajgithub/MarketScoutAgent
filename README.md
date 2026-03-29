@@ -1,6 +1,9 @@
 # Market Aggregator
 
-Market Aggregator is a full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
+![MarketScout Logo](Frontend/public/logo_nobg.png)
+
+
+**Market Aggregator** (MarketScout) is a full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
 
 The current production path in code is:
 - request intake (`FastAPI`)
@@ -184,6 +187,252 @@ flowchart LR
   Q7 --> Q8[PDF Render]
   Q8 --> Q9[Storage + DB Persist]
   Q9 --> Q10[Final API Response]
+```
+
+### 7. Use Case Architecture
+```mermaid
+flowchart LR
+  %% Actors
+  Analyst["**Analyst / User**"]
+  Admin["**Admin**"]
+  System["**External APIs**"]
+
+  %% Use Cases
+  UC1["**Submit Market Query**"]
+  UC2["**Validate Query Safety**"]
+  UC3["**Retrieve Multi-Source Data**"]
+  UC4["**Synthesize Analysis**"]
+  UC5["**Generate PDF Report**"]
+  UC6["**Manage API Integrations**"]
+  UC7["**View Analysis History**"]
+
+  %% Analyst Flow
+  Analyst -->|Submit query| UC1
+  UC1 --> UC2
+  UC2 --> UC3
+  UC3 --> UC4
+  UC4 --> UC5
+  UC5 -->|Download PDF| Analyst
+
+  %% Additional Interactions
+  Analyst -->|View history| UC7
+  Admin -->|Configure APIs| UC6
+  System -->|Provide data| UC3
+```
+
+### 8. Logical Architecture (Component Relationships)
+```mermaid
+graph TB
+  subgraph "Interface Layer"
+    FE["Next.js Frontend<br/>Chat UI & Report Viewer"]
+  end
+  
+  subgraph "API Layer"
+    HTTP["FastAPI Handler<br/>POST /v1/analyze"]
+    VAL["Input Validation<br/>Error Mapping"]
+  end
+  
+  subgraph "Service Layer"
+    SAFETY["Prompt Safety<br/>Domain Scope | Risk Score<br/>Encoding Detection"]
+    SEARCH["Query Planning<br/>Intent Classification<br/>Entity Extraction"]
+    JUDGE["Evidence Judging<br/>Relevance Scoring<br/>Source Balancing"]
+    ANALYZER["Analysis Agent<br/>LLM Synthesis<br/>Schema Validation"]
+  end
+  
+  subgraph "Data Access Layer"
+    RETRIEVAL["Multi-Source Retrieval<br/>Async Orchestration<br/>Normalization"]
+    GUARDRAILS["Quality Enforcement<br/>Sanitization | Dedup<br/>Risk Classification"]
+    REPORTER["Report Generation<br/>PDF Rendering<br/>Branding"]
+  end
+  
+  subgraph "Persistence Layer"
+    DB["PostgreSQL Database<br/>Analysis Records"]
+    STORAGE["Supabase Storage<br/>PDF Artifacts"]
+    CACHE["SQLite Fallback<br/>Local Cache"]
+  end
+  
+  subgraph "External Integration"
+    APIs["API Providers<br/>Search | News | Finance<br/>Social | GitHub | Security"]
+    LLM["Gemini API<br/>JSON-Mode Inference"]
+  end
+  
+  FE --> HTTP
+  HTTP --> VAL
+  VAL --> SAFETY
+  SAFETY --> SEARCH
+  SEARCH --> RETRIEVAL
+  RETRIEVAL --> GUARDRAILS
+  GUARDRAILS --> JUDGE
+  JUDGE --> ANALYZER
+  ANALYZER --> REPORTER
+  REPORTER --> DB
+  REPORTER --> STORAGE
+  JUDGE --> APIs
+  ANALYZER --> LLM
+  DB -.fallback.-> CACHE
+```
+
+### 9. Implementation View (Module Structure)
+```mermaid
+graph TB
+  subgraph "Frontend (Next.js)"
+    FEApp["app/page.js<br/>Chat Interface"]
+    FEApi["app/api/analyze/route.js<br/>API Proxy"]
+    FEStyles["app/globals.css<br/>Styling"]
+  end
+  
+  subgraph "Backend (Python)"
+    Main["main.py<br/>FastAPI Entry"]
+    Safety["prompt_safety.py<br/>Query Validation"]
+    Orch["orchestrator.py<br/>Pipeline Orchestration"]
+    
+    Fetchers["fetchers/"]
+    FetchSearch["search_apis.py<br/>news_api.py<br/>github.py<br/>financial_apis.py<br/>social_media.py"]
+    
+    Search["simple_semantic_search.py<br/>query_optimizer.py<br/>Semantic Planning"]
+    
+    Pipeline["pipeline/"]
+    Guard["guardrails.py<br/>Sanitization & QA"]
+    Judge["llm_judge.py<br/>Relevance Scoring"]
+    Analyzer["analyzer.py<br/>LLM Analysis"]
+    Report["reporting.py<br/>PDF Generation"]
+    
+    DB["db.py<br/>Database & Storage"]
+    Utils["utils.py<br/>Helpers"]
+  end
+  
+  subgraph "Configuration & Testing"
+    Config["config.yaml<br/>Environment Config"]
+    Tests["tests/"]
+    TestSafety["test_prompt_safety.py"]
+    TestAgent["test_agent.py"]
+  end
+  
+  Main --> Safety
+  Safety --> Orch
+  Orch --> Search
+  Search --> Fetchers
+  Fetchers --> FetchSearch
+  Orch --> Guard
+  Guard --> Judge
+  Judge --> Analyzer
+  Analyzer --> Report
+  Report --> DB
+  Main --> Utils
+  Tests --> TestSafety
+  Tests --> TestAgent
+```
+
+### 10. Process View (Runtime Execution Timeline)
+```mermaid
+sequenceDiagram
+  autonumber
+  participant C as Client/Browser
+  participant FE as Frontend<br/>Next.js
+  participant API as FastAPI<br/>Handler
+  participant PS as Prompt Safety
+  participant O as Orchestrator
+  participant SS as Semantic Search
+  participant MF as Multi-Source<br/>Fetchers
+  participant GR as Guardrails<br/>Engine
+  participant J as LLM Judge
+  participant A as Analyzer<br/>Agent
+  participant R as Report<br/>Generator
+  participant D as Database<br/>& Storage
+  
+  C->>FE: User submits query
+  FE->>API: POST /v1/analyze {query}
+  activate API
+  API->>PS: assert_safe_query(query)
+  activate PS
+  PS->>PS: Domain scope gate
+  PS->>PS: Risk scoring
+  PS->>PS: Content policy check
+  PS->>PS: Sanitize & normalize
+  PS-->>API: sanitized_query | error
+  deactivate PS
+  
+  break Query unsafe (score ≥ 70)
+    API-->>FE: 400 Bad Request
+    FE-->>C: Error: Unsafe query
+  end
+  
+  API->>O: run(query, user_id)
+  activate O
+  
+  O->>SS: comprehensive_search(query)
+  activate SS
+  SS->>SS: Classify query type
+  SS->>SS: Extract entities
+  SS->>SS: Generate search terms
+  SS->>SS: Plan source families
+  SS-->>O: search_plan
+  deactivate SS
+  
+  O->>MF: Execute async tasks
+  activate MF
+  MF->>MF: Parallel fetch from all sources
+  MF-->>O: raw_results (with errors)
+  deactivate MF
+  
+  O->>GR: enforce(raw_results)
+  activate GR
+  GR->>GR: Sanitize & normalize items
+  GR->>GR: Redact sensitive data
+  GR->>GR: Validate URLs
+  GR->>GR: Quality scoring
+  GR->>GR: Deduplication
+  GR-->>O: cleaned_items
+  deactivate GR
+  
+  O->>J: judge(query, cleaned_items)
+  activate J
+  J->>J: Heuristic relevance scoring
+  J->>J: Source balancing
+  J->>J: Optional LLM validation
+  J-->>O: JudgedDataset
+  deactivate J
+  
+  O->>A: analyze(JudgedDataset)
+  activate A
+  A->>A: Invoke Gemini JSON-mode
+  A->>A: Parse & validate schema
+  A->>A: Apply fallback chain
+  A->>A: Normalize sections
+  A-->>O: AnalysisReport
+  deactivate A
+  
+  O->>R: render_pdf(report_data)
+  activate R
+  R->>R: Create ReportLab object
+  R->>R: Add title & branding
+  R->>R: Format findings & risks
+  R->>R: Build bibliography
+  R->>R: Render to PDF
+  R-->>O: temp_pdf_path
+  deactivate R
+  
+  O->>D: upload_pdf_report(temp_pdf)
+  activate D
+  D->>D: Upload to Supabase Storage
+  D->>D: Get remote URL
+  D-->>O: pdf_url
+  deactivate D
+  
+  O->>D: save_analysis_report(payload)
+  activate D
+  D->>D: Persist to PostgreSQL
+  D->>D: Cleanup temp files
+  D-->>O: report_id
+  deactivate D
+  
+  deactivate O
+  O-->>API: response_envelope
+  API-->>FE: JSON {analysis, pdf_url}
+  deactivate API
+  
+  FE->>C: Render report in UI
+  C->>C: Download PDF
 ```
 
 ## System Methodology (Deep Dive)
