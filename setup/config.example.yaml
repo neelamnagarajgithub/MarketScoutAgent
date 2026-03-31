@@ -1,44 +1,59 @@
-
 database:
-  url: "postgresql+asyncpg://postgres:password@localhost:5432/marketdb"
+  # Primary: Supabase PostgreSQL
+  provider: "supabase"  
+  supabase_url: ""
+  supabase_key: ""
+  supabase_service_key: ""
+  # Fallback: Direct PostgreSQL URL (Supabase connection string)
+  url: ""
+  # Local fallback
+  sqlite_path: "data/market_intelligence.db"
 
 fetch:
   concurrency: 8
   rate_limit_per_sec: 5
 
 keys:
-  # Search & Discovery APIs
+  # ── Search & Discovery ──────────────────────────────────────────────
   serpapi: ""
   serpapi_engine: "google"
   bing_search: ""
   google_custom_search: ""
   google_custom_search_id: ""
-  
-  # News APIs
+  shodan: ""
+
+  # ── News APIs  ────────────────────────────────────────────────
   newsapi: ""
   gnews: ""
-  mediastack: ""
   currents: ""
-  
-  # Tech/Product APIs
-  github: ""
+
+  # ── News APIs  ─────────────────────────────────────────
+  guardian: ""
+  nytimes_key: ""
+  nytimes_secret: ""
+
+  # ── Tech / Product APIs ─────────────────────────────────────────────
+  # GitHub: use PAT token (not API key)
+  github_personal_access_token: ""
   gitlab: ""
-  crunchbase: ""
-  clearbit: ""
   apollo: ""
-  builtwith: ""
-  
-  # Financial APIs
+  product_hunt_secret: ""
+  stackoverflow: ""   # Free – no key needed
+
+  # ── Financial APIs ──────────────────────────────────────────────────
   alpha_vantage: ""
-  polygon: ""
-  
-  # Social/Community APIs
-  reddit_client_id: ""
-  reddit_client_secret: ""
-  reddit_user_agent: "MarketScoutBot/1.0"
+  massive: ""   # https://massive.com/docs/rest/quickstart
+
+  # ── Social / Community ───────────────────────────────────────────────
+  # Reddit: read-only public JSON – NO key needed
+  mastodon_instance_url: ""
+  mastodon_access_token: ""
+
+  # ── Company / Business Data ─────────────────────────────────────────
+  companies_house: ""   # UK company data
+  GOOGLE_API_KEY: ""
 
 sources:
-  # RSS feeds for company/product intelligence
   rss_feeds:
     - "https://blog.openai.com/rss/"
     - "https://github.blog/feed/"
@@ -48,8 +63,46 @@ sources:
     - "https://blog.google/technology/ai/rss/"
     - "https://techcrunch.com/feed/"
     - "https://news.ycombinator.com/rss"
-  
-  # Target organizations for monitoring
+    - "https://rss.cnn.com/rss/money_news_international.rss"
+    - "https://feeds.bloomberg.com/markets/news.rss"
+    - "https://www.theguardian.com/business/rss"
+    - "https://feeds.reuters.com/reuters/businessNews"
+    - "https://blog.ycombinator.com/feed/"
+    - "https://blog.discord.com/feed"
+    - "https://engineering.fb.com/feed/"
+    - "https://blog.twitch.tv/feed/"
+    - "https://blog.dropbox.com/feed"
+
+  free_apis:
+    - name: "hackernews"
+      url: "https://hacker-news.firebaseio.com/v0/"
+      docs: "https://github.com/HackerNews/API"
+    - name: "hackernews_algolia"
+      url: "https://hn.algolia.com/api/v1/"
+      docs: "https://hn.algolia.com/api"
+    - name: "yahoo_finance"
+      url: "https://query1.finance.yahoo.com/v8/finance/"
+      docs: "https://finance.yahoo.com"
+    - name: "reddit_public"
+      url: "https://www.reddit.com/r/"
+      docs: "https://www.reddit.com/dev/api/"
+      note: "Read-only, no key needed, append .json to any Reddit URL"
+    - name: "coingecko"
+      url: "https://api.coingecko.com/api/v3/"
+      docs: "https://www.coingecko.com/en/api/documentation"
+    - name: "npm_registry"
+      url: "https://registry.npmjs.org/"
+      docs: "https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md"
+    - name: "pypi_api"
+      url: "https://pypi.org/pypi/"
+      docs: "https://warehouse.pypa.io/api-reference/json/"
+    - name: "github_trending"
+      url: "https://api.github.com/search/repositories"
+      docs: "https://docs.github.com/en/rest/search"
+    - name: "stackoverflow"
+      url: "https://api.stackexchange.com/2.3/"
+      docs: "https://api.stackexchange.com/docs"
+
   github_orgs:
     - "openai"
     - "vercel"
@@ -57,19 +110,30 @@ sources:
     - "aws"
     - "microsoft"
     - "google"
-    
-  # Product Hunt categories to monitor
+    - "facebook"
+    - "netflix"
+    - "uber"
+    - "airbnb"
+    - "shopify"
+    - "twilio"
+    - "nvidia"
+    - "anthropics"
+
+  subreddits:
+    - "startups"
+    - "artificial"
+    - "technology"
+    - "machinelearning"
+    - "entrepreneur"
+    - "investing"
+
+  mastodon_instances:
+    - "mastodon.social"
+    - "fosstodon.org"
+
   product_hunt_categories:
     - "artificial-intelligence"
     - "developer-tools"
     - "saas"
     - "productivity"
-    
-  # Subreddits for market intelligence
-  subreddits:
-    - "startups"
-    - "entrepreneur"
-    - "SaaS"
-    - "MachineLearning"
-    - "programming"
-    - "technology"
+    - "analytics"

@@ -1,9 +1,7 @@
-# Market Aggregator
-
-![MarketScout Logo](Frontend/public/logo_nobg.png)
+# Market Scout Agent
 
 
-**Market Aggregator** (MarketScout) is a full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
+**Market Scout Agent**  is a full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
 
 The current production path in code is:
 - request intake (`FastAPI`)
