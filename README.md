@@ -1,7 +1,7 @@
-# Market Scout Agent
+# Market Scout Agent - By Team Phoenix
 
 
-**Market Scout Agent**  is a full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
+**Market Scout Agent**  is a Agentic full-stack, safety-first market intelligence platform that converts a single natural-language business query into structured strategic output.
 
 The current production path in code is:
 - request intake (`FastAPI`)
@@ -997,6 +997,16 @@ python -m unittest tests.test_prompt_safety
 1. policy profile config (`strict`, `balanced`, `research`)
 2. map profile to risk thresholds and scope rules
 3. expose selected profile in response metadata
+
+
+## TEAM
+
+| Name | GitHub | Role | Responsibilities |
+|------|--------|------|------------------|
+| Nagaraj Neelam | [@neelamnagarajgithub](https://github.com/neelamnagarajgithub) | Team Leader, Backend Developer & GenAI | Architecture, backend pipeline orchestration, LLM integration, safety engineering |
+| Shatakshi Palli | [@ShatakshiPalli](https://github.com/ShatakshiPalli) | Team Member, GenAI Engineer & Frontend Developer | Frontend development, GenAI prompt engineering, UI/UX implementation |
+| Srivathsav Thaneeru | [@srivathsavsree](https://github.com/srivathsavsree) | Team Member, Data Engineer | Data retrieval, source integration, data normalization, pipeline optimization |
+
 
 ## Documentation Map
 
