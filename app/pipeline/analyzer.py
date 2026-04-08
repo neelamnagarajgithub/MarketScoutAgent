@@ -20,6 +20,7 @@ class AnalyzerAgent:
 
     def __init__(self, google_api_key: Optional[str] = None):
         key = google_api_key or os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        print("api key:", key  )
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
             google_api_key=key,

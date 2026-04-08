@@ -1,0 +1,21 @@
+# Render.com configuration (alternative to Cloud Run)
+services:
+  - type: web
+    name: market-scout-api
+    runtime: python
+    pythonVersion: 3.11
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHONUNBUFFERED
+        value: true
+      # Add these in Render dashboard:
+      # - DATABASE_URL (from Supabase)
+      # - GOOGLE_API_KEY
+      # - SUPABASE_URL
+      # - SUPABASE_KEY
+    autoDeploy: false

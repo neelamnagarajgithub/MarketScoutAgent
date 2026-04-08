@@ -1,5 +1,6 @@
 # app/main.py
 import asyncio
+import os
 from app.ingest import Ingestor
 import argparse
 from fastapi import FastAPI, HTTPException
@@ -10,6 +11,12 @@ from datetime import datetime
 
 app = FastAPI(title="Market Intelligence API")
 orchestrator = IntelligenceOrchestrator(config_path="config.yaml")
+
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Cloud Run"""
+    return {"status": "healthy"}
 
 
 @app.post("/v1/analyze", response_model=AnalyzeResponse)
@@ -34,7 +41,7 @@ async def analyze(req: AnalyzeRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-async def main():
+async def run_ingestion():
     parser = argparse.ArgumentParser()
     parser.add_argument("--once", action="store_true", help="Run ingestion once and exit")
     parser.add_argument("--interval", type=int, default=3600, help="Seconds between runs")
@@ -48,4 +55,13 @@ async def main():
         await ing.run_periodic(interval_seconds=args.interval)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import os
+    import uvicorn
+    
+    # Check if running as API server (default for Cloud Run)
+    if os.getenv("RUN_MODE") == "ingestion":
+        asyncio.run(run_ingestion())
+    else:
+        # Start FastAPI server on 0.0.0.0:8080 for Cloud Run
+        port = int(os.getenv("PORT", 8080))
+        uvicorn.run(app, host="0.0.0.0", port=port)

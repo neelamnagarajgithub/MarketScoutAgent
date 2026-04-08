@@ -1,0 +1,17 @@
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.git
+.gitignore
+.env
+.venv
+venv
+Frontend
+node_modules
+tests
+data
+search_results
+docs
+.DS_Store
+README.md
