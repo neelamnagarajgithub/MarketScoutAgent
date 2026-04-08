@@ -4,10 +4,11 @@ services:
     name: market-scout-api
     runtime: python
     pythonVersion: 3.11
-    plan: starter
+    plan: starter  # ⚠️ UPGRADE FROM FREE (512MB) to STARTER (1GB) minimum
     autoScaleFactor: 0.5
-    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
-    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 8080"
+    # Use optimized requirements to reduce memory footprint
+    buildCommand: "pip install --upgrade pip && pip install -r requirements-prod.txt"
+    startCommand: "gunicorn --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8080 app.main:app"
     healthCheckPath: /health
     healthCheckInterval: 30
     healthCheckTimeout: 10
@@ -19,6 +20,8 @@ services:
         value: "true"
       - key: PORT
         value: "8080"
+      - key: WEB_CONCURRENCY
+        value: "2"
     # Add these in Render dashboard Settings → Environment:
     # - DATABASE_URL (from Supabase)
     # - GOOGLE_API_KEY  

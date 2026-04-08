@@ -1,0 +1,69 @@
+# Production-optimized requirements for Render
+# Removes unused/optional packages to reduce memory footprint
+
+# ── Async HTTP & core ──────────────────────────────────────────────────────────
+httpx
+aiohttp
+aiofiles
+requests
+
+# ── Database ───────────────────────────────────────────────────────────────────
+asyncpg
+sqlalchemy
+supabase
+gotrue
+
+# ── Rate limiting & scheduling ─────────────────────────────────────────────────
+aiolimiter
+tenacity
+APScheduler
+
+# ── Config & validation ────────────────────────────────────────────────────────
+PyYAML
+python-dotenv
+pydantic
+jsonschema
+
+# ── NLP / Embeddings (REDUCED) ─────────────────────────────────────────────────
+# Only load when needed - use lazy loading
+# sentence-transformers  # Removed - load on demand only
+# transformers  # Removed - load on demand only
+# torch  # Removed - load on demand only
+# faiss-cpu  # Removed - load on demand only
+
+numpy
+
+# ── LangChain ──────────────────────────────────────────────────────────────────
+# langchain  # Removed - add if using
+langchain-google-genai
+google-generativeai
+
+# ── Data / parsing / scraping ─────────────────────────────────────────────────
+beautifulsoup4
+feedparser
+html5lib
+python-dateutil
+dateparser
+xmltodict
+# pandas  # Removed - only import when needed
+# reportlab  # Removed - only import when needed
+# selenium  # Removed - only for testing
+# webdriver-manager  # Removed - only for testing
+praw
+tweepy
+
+# ── Utility / quality ──────────────────────────────────────────────────────────
+fuzzywuzzy
+python-levenshtein
+cryptography
+pytz
+
+# ── Server ─────────────────────────────────────────────────────────────────────
+fastapi
+uvicorn[standard]
+gunicorn
+
+# ── Dev / test (only for development) ──────────────────────────────────────────
+# pytest
+# pytest-asyncio
+# pytest-mock
