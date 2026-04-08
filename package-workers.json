@@ -1,0 +1,21 @@
+{
+  "name": "market-scout-cloudflare-workers",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers API Gateway for Market Scout Backend",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:prod": "wrangler deploy --env production",
+    "deploy:staging": "wrangler deploy --env staging",
+    "format": "prettier --write .",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250127.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "wrangler": "^3.59.0"
+  },
+  "dependencies": {}
+}
