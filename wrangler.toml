@@ -1,26 +1,26 @@
-name = "market-scout-api-gateway"
+name = "scoutai"
 main = "src/index.ts"
 compatibility_date = "2024-04-08"
 type = "service"
 
 [env.production]
-name = "market-scout-api-prod"
+name = "scoutai-prod"
 route = "api.marketscout.io/*"
 zone_id = "your-zone-id"
 
 [env.staging]  
-name = "market-scout-api-staging"
+name = "scout-api-staging"
 route = "staging-api.marketscout.io/*"
 zone_id = "your-staging-zone-id"
 
 [[kv_namespaces]]
 binding = "CACHE"
-id = "your-kv-namespace-id"
-preview_id = "your-kv-preview-id"
+id = "30cfc6efed42446bb06389e2d324a335"
+
 
 [env.production.kv_namespaces]
 binding = "CACHE"
-id = "prod-kv-id"
+id = "30cfc6efed42446bb06389e2d324a335"
 
 [triggers]
 crons = ["0 */6 * * *"]
