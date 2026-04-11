@@ -83,10 +83,20 @@ if __name__ == "__main__":
     import os
     import uvicorn
     
+    print("=" * 60)
+    print("🚀 Starting Market Intelligence API")
+    print(f"   Environment: {os.getenv('ENVIRONMENT', 'development')}")
+    print(f"   Port: {os.getenv('PORT', 8080)}")
+    print("=" * 60)
+    
     # Check if running as API server (default for Cloud Run)
     if os.getenv("RUN_MODE") == "ingestion":
+        print("📥 Running in INGESTION mode")
         asyncio.run(run_ingestion())
     else:
         # Start FastAPI server on 0.0.0.0:8080 for Cloud Run
         port = int(os.getenv("PORT", 8080))
+        print("🌐 Starting FastAPI server...")
+        print(f"   Listening on http://0.0.0.0:{port}")
+        print(f"   Health check: http://0.0.0.0:{port}/health")
         uvicorn.run(app, host="0.0.0.0", port=port)
