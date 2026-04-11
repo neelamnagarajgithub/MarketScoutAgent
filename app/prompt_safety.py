@@ -6,7 +6,7 @@ import logging
 import os
 import re
 import unicodedata
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from urllib.parse import unquote_plus
 
 from app.pipeline.guardrails import GuardrailEngine
@@ -321,7 +321,7 @@ def _decoded_candidates(query: str) -> list[str]:
     return unique
 
 
-def _detect_prompt_injection_reason(query: str) -> str | None:
+def _detect_prompt_injection_reason(query: str) -> Optional[str]:
     base = _normalized_for_detection(query)
     candidates = _decoded_candidates(query)
 
@@ -369,7 +369,7 @@ def _detect_prompt_injection_reason(query: str) -> str | None:
     return None
 
 
-def _detect_content_policy_reason(query: str) -> str | None:
+def _detect_content_policy_reason(query: str) -> Optional[str]:
     candidates = _decoded_candidates(query)
 
     for candidate in candidates:
@@ -438,7 +438,7 @@ def _is_business_analysis_query(query: str) -> bool:
     return intent_hits >= 1 and context_hits >= 1
 
 
-def _detect_out_of_scope_reason(query: str) -> str | None:
+def _detect_out_of_scope_reason(query: str) -> Optional[str]:
     normalized = _normalized_for_detection(query)
     if any(re.search(pattern, normalized, flags=re.IGNORECASE | re.DOTALL) for pattern in OUT_OF_SCOPE_META_PATTERNS):
         return "query is outside the allowed market-intelligence domain"
@@ -504,7 +504,7 @@ def evaluate_query_risk(query: str) -> Dict[str, Any]:
     }
 
 
-def _semantic_llm_unsafe_reason(query: str, risk: Dict[str, Any]) -> str | None:
+def _semantic_llm_unsafe_reason(query: str, risk: Dict[str, Any]) -> Optional[str]:
     """Optional semantic adjudication for borderline-risk prompts.
 
     Enabled only when Gemini dependencies and API key are available.
