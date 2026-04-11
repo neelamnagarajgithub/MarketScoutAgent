@@ -27,10 +27,10 @@ jsonschema
 
 # ── NLP / Embeddings (REDUCED) ─────────────────────────────────────────────────
 # Only load when needed - use lazy loading
-# sentence-transformers  # Removed - load on demand only
-# transformers  # Removed - load on demand only
-# torch  # Removed - load on demand only
-# faiss-cpu  # Removed - load on demand only
+sentence-transformers  # Removed - load on demand only
+transformers  # Removed - load on demand only
+torch  # Removed - load on demand only
+faiss-cpu  # Removed - load on demand only
 
 numpy
 
@@ -46,10 +46,10 @@ html5lib
 python-dateutil
 dateparser
 xmltodict
-# pandas  # Removed - only import when needed
-# reportlab  # Removed - only import when needed
-# selenium  # Removed - only for testing
-# webdriver-manager  # Removed - only for testing
+pandas  # Removed - only import when needed
+reportlab  # Removed - only import when needed
+selenium  # Removed - only for testing
+webdriver-manager  # Removed - only for testing
 praw
 tweepy
 
@@ -65,6 +65,6 @@ uvicorn[standard]
 gunicorn
 
 # ── Dev / test (only for development) ──────────────────────────────────────────
-# pytest
-# pytest-asyncio
-# pytest-mock
+pytest
+pytest-asyncio
+pytest-mock
