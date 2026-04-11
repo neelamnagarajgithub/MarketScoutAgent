@@ -20,9 +20,13 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class Ingestor:
-    def __init__(self, config_path="config.yaml"):
-        with open(config_path, "r") as fh:
-            self.config = yaml.safe_load(fh)
+    def __init__(self, config_path="config.yaml", config=None):
+        from app.config_loader import ConfigLoader
+        # Support both file path and direct config dict
+        if config is None:
+            self.config = ConfigLoader.load(config_path)
+        else:
+            self.config = config
         self.db = Database(self.config)
         self.concurrency = self.config['fetch'].get('concurrency', 8)
         self.rate_limit = self.config['fetch'].get('rate_limit_per_sec', 5)

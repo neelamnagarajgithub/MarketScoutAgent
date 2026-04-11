@@ -212,6 +212,10 @@ class PromptSafetyTests(unittest.TestCase):
         output = assert_safe_query("Analyze NVIDIA's competitive position against AMD in the data center GPU market")
         self.assertIn("Analyze NVIDIA", output)
 
+    def test_allows_top_funded_startups_query(self):
+        output = assert_safe_query("Top funded AI startups - Q1 2026")
+        self.assertIn("Top funded AI startups", output)
+
 
 if __name__ == "__main__":
     unittest.main()

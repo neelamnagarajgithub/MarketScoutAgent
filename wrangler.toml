@@ -1,31 +1,83 @@
-name = "scoutai"
+# ============================================================================
+# Cloudflare Workers Configuration for Market Scout Agent
+# ============================================================================
+# This configuration deploys the Market Intelligence API as a Cloudflare Worker.
+# All secrets and environment variables are managed via Cloudflare Secrets.
+# ============================================================================
+
+# ── Basic Worker Configuration ──────────────────────────────────────────────
+name = "market-scout-api"
 main = "src/index.ts"
-compatibility_date = "2024-04-08"
-type = "service"
 
-[env.production]
-name = "scoutai-prod"
-route = "api.marketscout.io/*"
-zone_id = "your-zone-id"
+# Compatibility settings
+compatibility_date = "2024-10-15"
+compatibility_flags = ["nodejs_compat"]
 
-[env.staging]  
-name = "scout-api-staging"
+# ── Account Information ────────────────────────────────────────────────────
+# Replace with your actual Cloudflare account ID
+account_id = "your-cloudflare-account-id"
+workers_dev = true
+
+# ── Environment Variables (Application Settings) ───────────────────────────
+[env.development]
+name = "market-scout-api-dev"
+route = "dev-api.marketscout.local/*"
+vars = { ENVIRONMENT = "development", BACKEND_URL = "http://localhost:8080" }
+
+[[env.development.kv_namespaces]]
+binding = "CACHE"
+id = "dev-cache-kv-id"
+
+[env.staging]
+name = "market-scout-api-staging"
 route = "staging-api.marketscout.io/*"
 zone_id = "your-staging-zone-id"
+vars = { ENVIRONMENT = "staging", BACKEND_URL = "https://market-scout-api-staging.onrender.com" }
 
+[[env.staging.kv_namespaces]]
+binding = "CACHE"
+id = "staging-cache-kv-id"
+
+[env.production]
+name = "market-scout-api"
+route = "api.marketscout.io/*"
+zone_id = "your-production-zone-id"
+vars = { ENVIRONMENT = "production", BACKEND_URL = "https://market-scout-api.onrender.com" }
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "prod-cache-kv-id"
+
+# ── Secrets Configuration ──────────────────────────────────────────────────
+# These are set via: wrangler secret put SECRET_NAME --env production
+# See scripts/upload-secrets.sh for bulk upload
+# All secrets are automatically available in your Python code as environment variables
+
+# Example secrets (set these via wrangler CLI):
+# - DATABASE_URL
+# - SUPABASE_URL
+# - SUPABASE_KEY
+# - GOOGLE_API_KEY
+# - SERPAPI
+# - NEWSAPI
+# - And 20+ more API keys (see CLOUDFLARE_SECRETS_SETUP.md)
+
+# ── KV Namespace Configuration ─────────────────────────────────────────────
+# Default KV namespace for caching API responses
 [[kv_namespaces]]
 binding = "CACHE"
-id = "30cfc6efed42446bb06389e2d324a335"
+id = "dev-cache-kv-id"
 
-
-[env.production.kv_namespaces]
-binding = "CACHE"
-id = "30cfc6efed42446bb06389e2d324a335"
-
+# ── Triggers and Scheduled Tasks ───────────────────────────────────────────
 [triggers]
+# Run data ingestion every 6 hours
 crons = ["0 */6 * * *"]
 
-limits = { cpu_sec = 30 }
+# ── Performance and Limits ──────────────────────────────────────────────────
+# Workers default: 30 seconds CPU time, 30 seconds total timeout
+# Note: These are handled by Cloudflare automatically, TOML config is limited
 
-[observability]
-enabled = true
+# ── Build Configuration ─────────────────────────────────────────────────────
+[build]
+command = "npm install"
+cwd = "./"

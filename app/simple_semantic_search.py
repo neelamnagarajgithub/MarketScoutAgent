@@ -51,9 +51,13 @@ class SearchPlan:
 class SimpleSemanticSearch:
     """Simplified semantic search without external vector databases"""
 
-    def __init__(self, config_path: str = "config.yaml"):
-        with open(config_path, "r") as fh:
-            self.config = yaml.safe_load(fh)
+    def __init__(self, config_path: str = "config.yaml", config=None):
+        from app.config_loader import ConfigLoader
+        # Support both file path and direct config dict
+        if config is None:
+            self.config = ConfigLoader.load(config_path)
+        else:
+            self.config = config
 
         logger.info("Loading sentence transformer model...")
         self.embedding_model = SentenceTransformer("all-MiniLM-L6-v2")

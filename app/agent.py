@@ -22,16 +22,19 @@ from app.fetchers import (
 )
 from app.normalizer import normalize_item
 from app.db import Database
+from app.config_loader import ConfigLoader
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class MarketIntelligenceAgent:
-    def __init__(self, config_path="config.yaml"):
+    def __init__(self, config_path="config.yaml", config=None):
         # Load configuration
-        with open(config_path, "r") as fh:
-            self.config = yaml.safe_load(fh)
+        if config is None:
+            self.config = ConfigLoader.load(config_path)
+        else:
+            self.config = config
         
         # Initialize Gemini LLM
         gemini_api_key = os.getenv("GOOGLE_API_KEY")

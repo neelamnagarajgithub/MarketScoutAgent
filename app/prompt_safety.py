@@ -198,11 +198,12 @@ RISK_SCORE_LLM_REVIEW_THRESHOLD = 45
 BUSINESS_INTENT_PATTERNS = [
     r"\b(analyze|compare|summarize|assess|evaluate|forecast|estimate|identify|rank|track|review)\b",
     r"\b(what are|what is|latest|recent|news|outlook|trends?|analysis)\b",
+    r"\b(top|leading|best|most funded|highest funded|funded|raised)\b",
 ]
 
 BUSINESS_CONTEXT_PATTERNS = [
-    r"\b(trends?|market|industry|competitive|competition|landscape|position|strategy|revenue|growth|funding|investment|startup|enterprise|pricing|demand|supply|gtm|customer|segment|share)\b",
-    r"\b(company|companies|business|sector|vendor|competitor|competitors|product|products|earnings|margin|ipo|acquisition|partnership|chip|gpu)\b",
+    r"\b(trends?|market|industry|competitive|competition|landscape|position|strategy|revenue|growth|funding|investment|startups?|enterprise|pricing|demand|supply|gtm|customer|segment|share|ai|ml)\b",
+    r"\b(company|companies|business|sector|vendor|competitor|competitors|product|products|earnings|margin|ipo|acquisition|partnership|chip|gpu|semiconductor)\b",
 ]
 
 OUT_OF_SCOPE_META_PATTERNS = [

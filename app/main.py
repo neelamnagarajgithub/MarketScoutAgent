@@ -7,23 +7,48 @@ from fastapi import FastAPI, HTTPException
 from app.schemas import AnalyzeRequest, AnalyzeResponse
 from app.orchestrator import IntelligenceOrchestrator
 from app.prompt_safety import QuerySafetyError, assert_safe_query
+from app.config_loader import ConfigLoader
 from datetime import datetime
 
 app = FastAPI(title="Market Intelligence API")
-orchestrator = IntelligenceOrchestrator(config_path="config.yaml")
+
+# Global orchestrator - lazy initialization
+orchestrator = None
+
+def get_orchestrator():
+    """Get or initialize the orchestrator lazily on first request"""
+    global orchestrator
+    if orchestrator is None:
+        try:
+            config = ConfigLoader.load()
+            from app.orchestrator import IntelligenceOrchestrator
+            orchestrator = IntelligenceOrchestrator(config=config)
+            print("✓ Orchestrator initialized successfully")
+        except Exception as e:
+            print(f"⚠ Warning: Could not initialize orchestrator: {e}")
+            print("  Health checks will work, but /analyze will fail until configured")
+            return None
+    return orchestrator
 
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint for Cloud Run"""
-    return {"status": "healthy"}
+    """Health check endpoint for Cloud Run / Render"""
+    return {"status": "healthy", "version": "1.0"}
 
 
 @app.post("/v1/analyze", response_model=AnalyzeResponse)
 async def analyze(req: AnalyzeRequest):
     try:
+        orch = get_orchestrator()
+        if orch is None:
+            raise HTTPException(
+                status_code=503,
+                detail="Service not configured. Please check environment variables and configuration."
+            )
+        
         safe_query = assert_safe_query(req.query)  # prompt safety check before orchestration
-        out = await orchestrator.run(safe_query, req.user_id)
+        out = await orch.run(safe_query, req.user_id)
 
         # Normalize response envelope for schema safety
         normalized = {

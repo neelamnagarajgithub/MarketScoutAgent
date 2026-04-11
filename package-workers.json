@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "deploy": "wrangler deploy --env staging",
     "deploy:prod": "wrangler deploy --env production",
     "deploy:staging": "wrangler deploy --env staging",
     "format": "prettier --write .",

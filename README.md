@@ -907,12 +907,39 @@ python -m unittest tests.test_prompt_safety
 ### Current repository deployment artifacts
 - `Dockerfile` builds backend container (`python:3.11-slim`)
 - `docker-compose.yml` currently empty
+- `wrangler.toml` for Cloudflare Workers deployment
+- Configuration loader supports environment variables for serverless
+
+### Supported Deployment Targets
+1. **Local Development** - Uses `config.yaml`
+2. **Docker/Render** - Environment variables + config
+3. **Cloudflare Workers** - Environment variables/secrets (NEW!)
+4. **AWS/GCP/Azure** - Container deployment
+5. **GitHub Actions/CI-CD** - Environment variable configuration
+
+### Cloudflare Workers Deployment
+The application now supports deployment to Cloudflare Workers! 
+
+**Quick Start:**
+```bash
+# 1. Prepare secrets
+cp .secrets.example.json .secrets.json
+# Edit with your API keys
+
+# 2. Upload to Cloudflare
+./scripts/upload-secrets.sh production
+
+# 3. Deploy
+wrangler deploy --env production
+```
+
+For detailed instructions, see: **[DEPLOY_TO_CLOUDFLARE.md](DEPLOY_TO_CLOUDFLARE.md)**
 
 ### Suggested production topology
 1. Frontend service (Next.js)
-2. Backend service (FastAPI + orchestrator)
+2. Backend service (FastAPI + orchestrator) OR Cloudflare Workers edge
 3. Managed database and object storage (Supabase)
-4. Secret manager for API keys
+4. Secret manager for API keys (Cloudflare Secrets or vault)
 5. Observability stack (logs + metrics + alerts)
 
 ### Release strategy

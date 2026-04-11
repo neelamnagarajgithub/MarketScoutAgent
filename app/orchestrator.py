@@ -12,6 +12,7 @@ from app.simple_semantic_search import SimpleSemanticSearch
 from app.pipeline.analyzer import AnalyzerAgent
 from app.pipeline.llm_judge import LLMJudge
 from app.pipeline.reporting import ReportGenerator
+from app.config_loader import ConfigLoader
 
 logger = logging.getLogger(__name__)
 
@@ -19,11 +20,14 @@ logger = logging.getLogger(__name__)
 class IntelligenceOrchestrator:
     """Sequential orchestrator: retrieve -> judge -> analyze -> report -> store."""
 
-    def __init__(self, config_path: str = "config.yaml"):
-        with open(config_path, "r") as fh:
-            self.config = yaml.safe_load(fh)
+    def __init__(self, config: Dict[str, Any] = None, config_path: str = "config.yaml"):
+        # Support both direct config dict and file path for backward compatibility
+        if config is None:
+            self.config = ConfigLoader.load(config_path)
+        else:
+            self.config = config
         self.db = Database(self.config)
-        self.search_engine = SimpleSemanticSearch(config_path=config_path)
+        self.search_engine = SimpleSemanticSearch(config=self.config)
         self.reporter = ReportGenerator()
 
         keys = self.config.get("keys", {}) if isinstance(self.config, dict) else {}
